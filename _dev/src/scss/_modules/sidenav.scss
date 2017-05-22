@@ -1,0 +1,37 @@
+.usa-section-dark {
+    .usa-sidenav-list li > span {
+        color: $color-primary-alt-light;
+    }
+
+    .usa-sidenav-list a {
+        color: $color-white;
+
+        &:hover {
+            background: $color-primary-alt-dark;
+            color: $color-primary-darkest;
+
+
+        }
+
+    }
+}
+
+
+.sidenav.sticky {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+
+    .admin-bar & {
+        top: 32px;
+
+        @media screen and (max-width: 782px) {
+            top: 46px;
+        }
+    }
+
+    @media(max-width: $medium-screen){
+        display: none;
+    }
+
+}

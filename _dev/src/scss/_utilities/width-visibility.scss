@@ -1,0 +1,25 @@
+// sidebar = .visible-medium-up
+.usa-width-full-medium-only {
+    @media(max-width: $large-screen){
+        margin-right: 0;
+        width: 100%;
+    }
+}
+
+// sidebar = .hidden-medium-up
+.usa-width-full-medium-up {
+
+    @media(min-width: $medium-screen){
+        margin-right: 0;
+        width: 100%;
+    }
+}
+
+// sidebar = .hidden-large-up
+.usa-width-full-large-up {
+
+    @media(min-width: $large-screen){
+        margin-right: 0;
+        width: 100%;
+    }
+}

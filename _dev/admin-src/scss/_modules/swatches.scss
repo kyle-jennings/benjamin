@@ -1,0 +1,27 @@
+/* Swatches */
+.swatches {
+    margin: 0;
+    padding: 0;
+}
+
+.swatch {
+    background: black;
+    float: left;
+    margin-left: -1px;
+    padding: 20px;
+}
+.swatch--white {
+    background-color: #fff;
+}
+.swatch--navy {
+    background-color: #112e51;
+}
+.swatch--blue {
+    background-color: #02bfe7;
+}
+.swatch--grey {
+    background-color: #f1f1f1;
+}
+.swatch--grey-medium {
+    background-color: #d6d7d9;
+}

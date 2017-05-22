@@ -1,0 +1,17 @@
+.usa-logo-text {
+    font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', 'sans-serif';
+    line-height: 4rem;
+}
+
+.usa-logo-image a{
+    display: block;
+    height: 4rem;
+    line-height: 4rem;
+
+    img {
+        vertical-align: middle;
+        @media(max-width: 950px){
+            height: 2rem;
+        }
+    }
+}
