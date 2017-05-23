@@ -6,7 +6,7 @@ Benjamin
 
 Benjamin is a flexible and feature rich WordPess theme build with Automattic's _s (underscores) theme 18f's [Web Design Standards](https://standards.usa.gov).  
 
-
+Be sure to install the companion plugin, [Franklin](https://github.com/kyle-jennings/Franklin/) to include various 18F components via shortcodes!
 <br>
 
 
@@ -49,17 +49,6 @@ As mentioned, both the frontpage and widgetized pages are sortable, so you have 
 * Or lets you override settings on specific templates
 * The "Feed" settings are used by default, all other templates must be activated
 
-#### Shortcodes and Components!
-* Accordions
-* Labels
-* Buttons
-* Alerts
-* Side Navigation
-* Contact Blocks
-* Media Blocks
-* Alerts
-* Brands
-* Grid columns
 
 #### 3 Color schemes
 ##### Standard - The regular US Design Standard colors

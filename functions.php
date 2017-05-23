@@ -122,7 +122,6 @@ if( !is_admin() ){
     $files = array(
         '/inc/frontend/assets.php',
         '/inc/frontend/template-tags.php',
-        '/inc/frontend/shortcodes.php',
         '/inc/frontend/class-FeaturedPost.php',
         '/inc/frontend/hero-settings.php',
         '/inc/frontend/template-settings.php',
