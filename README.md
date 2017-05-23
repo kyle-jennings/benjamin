@@ -49,6 +49,22 @@ As mentioned, both the frontpage and widgetized pages are sortable, so you have 
 * Or lets you override settings on specific templates
 * The "Feed" settings are used by default, all other templates must be activated
 
+#### Shortcodes and Components!
+These shortcodes are NOT included in the theme by default, but are available in the companion plugin, [Franklin](https://github.com/kyle-jennings/Franklin).
+
+
+Here are a list of the currently available shortcodes in [Franklin](https://github.com/kyle-jennings/Franklin):
+* Labels
+* Buttons
+* Alerts
+* Accordions
+* Contact Block
+* Brand
+* Media Block
+* Callout
+* Navlist
+
+
 
 #### 3 Color schemes
 ##### Standard - The regular US Design Standard colors
