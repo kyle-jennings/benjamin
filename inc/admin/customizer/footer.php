@@ -22,7 +22,7 @@ function uswds_footer_settings($wp_customize) {
     // footer size
     $wp_customize->add_setting( 'footer_size_setting', array(
         'default' => '',
-        'sanitize_callback' => 'uswds_footer_size_sanitizer',
+        'sanitize_callback' => 'uswds_footer_size_sanitize',
     ) );
     $wp_customize->add_control('footer_size_control', array(
             'label' => 'Footer Size',
@@ -39,7 +39,7 @@ function uswds_footer_settings($wp_customize) {
 
     $wp_customize->add_setting( 'footer_top_content_setting', array(
         'default' => '',
-        'sanitize_callback' => 'uswds_footer_top_content_sanitizer',
+        'sanitize_callback' => 'uswds_footer_top_content_sanitize',
     ) );
     $wp_customize->add_control('footer_top_content_control', array(
             'label' => 'Footer Top Content',
@@ -74,11 +74,11 @@ add_action('customize_register', 'uswds_footer_settings');
 
 
 
-function uswds_footer_size_sanitizer($val){
+function uswds_footer_size_sanitize($val){
     $valid = array(
-            'slim' => 'Slim',
-            'medium' => 'Medium',
-            'big' => 'Big'
+            'slim',
+            'medium',
+            'big',
         );
 
     if( in_array($val, $valid) == false )
@@ -87,9 +87,10 @@ function uswds_footer_size_sanitizer($val){
     return $val;
 }
 
-function uswds_footer_top_content_sanitizer($val){
-    $valid = array( 'widgets' => 'Widgets',
-                    'menu' => 'Menu'
+function uswds_footer_top_content_sanitize($val){
+    $valid = array(
+        'widgets',
+        'menu',
             );
     if (in_array($val, $valid) == false)
         $val = 'widgets';
@@ -110,6 +111,3 @@ function uswds_footer_menu_sanitizer($val){
 
     return $val;
 }
-
-
-// examine(wp_get_nav_menus());

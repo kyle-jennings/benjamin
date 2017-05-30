@@ -1,6 +1,6 @@
 <?php
 
-$sticky = get_theme_mod('navbar_sticky_setting') ? 'sticky' : '';
+$sticky = get_theme_mod('navbar_sticky_setting') == 'yes' ? 'sticky' : '';
 ?>
 <header class="usa-header usa-header-basic
     <?php echo uswds_navbar_header_class() . ' ' . $sticky ; ?>" role="banner">
@@ -12,10 +12,7 @@ $sticky = get_theme_mod('navbar_sticky_setting') ? 'sticky' : '';
         </div>
 
         <nav role="navigation" class="usa-nav">
-            <button class="usa-nav-close">
-
-            </button>
-
+            <button class="usa-nav-close"></button>
 
             <?php
                 $args =  array(

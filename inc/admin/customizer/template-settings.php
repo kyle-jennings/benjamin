@@ -51,7 +51,7 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
     if( $name !== 'archive'):
         $wp_customize->add_setting( $name . '_settings_active', array(
             'default' => 'no',
-            'sanitize_callback' => 'template_setting_sanitization',
+            'sanitize_callback' => 'uswds_template_settings_active_sanitize',
         ) );
 
         $wp_customize->add_control(new Activate_Layout_Custom_Control( $wp_customize,
@@ -70,26 +70,25 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
     endif;
 
 
-
-        // WP_Customize_Image_Control
-        $wp_customize->add_setting( $name . '_image_setting', array(
-            'default'      => '',
-            'sanitize_callback' => 'template_setting_sanitization',
-        ) );
-        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize,
-            $name . '_image_setting', array(
-                'label'   => 'Hero Image Setting',
-                'section' => $name . '_section',
-                'settings'   => $name . '_image_setting',
-                'priority' => 8
-                )
+    // WP_Customize_Image_Control
+    $wp_customize->add_setting( $name . '_image_setting', array(
+        'default'      => null,
+        'sanitize_callback' => 'uswds_hero_image_sanitization',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize,
+        $name . '_image_setting', array(
+            'label'   => 'Hero Image Setting',
+            'section' => $name . '_section',
+            'settings'   => $name . '_image_setting',
+            'priority' => 8
             )
-        );
+        )
+    );
 
     // header size
     $wp_customize->add_setting( $name . '_hero_size_setting', array(
         'default' => 'slim',
-        'sanitize_callback' => 'template_setting_sanitization',
+        'sanitize_callback' => 'uswds_hero_size_sanitize',
     ) );
     $wp_customize->add_control($name . '_hero_size_control', array(
             'label' => 'Hero Size',
@@ -108,7 +107,7 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
 
     $wp_customize->add_setting( $name . '_sidebar_position_setting', array(
         'default' => 'none',
-        'sanitize_callback' => 'template_setting_sanitization',
+        'sanitize_callback' => 'uswds_sidebar_position_sanitize',
     ) );
 
 
@@ -129,7 +128,7 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
 
     $wp_customize->add_setting( $name . '_sidebar_visibility_setting', array(
         'default' => 'always-visible',
-        'sanitize_callback' => 'template_setting_sanitization',
+        'sanitize_callback' => 'uswds_sidebar_visibility_sanitize',
     ) );
 
     $wp_customize->add_control($name . '_sidebar_visibility_control', array(
@@ -151,6 +150,80 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
 }
 
 
-function template_setting_sanitization($val) {
+
+
+function uswds_hero_image_sanitization( $val ) {
+	/*
+	 * Array of valid image file types.
+	 *
+	 * The array includes image mime types that are included in wp_get_mime_types()
+	 */
+    $mimes = array(
+        'jpg|jpeg|jpe' => 'image/jpeg',
+        'gif'          => 'image/gif',
+        'png'          => 'image/png',
+        'bmp'          => 'image/bmp',
+        'tif|tiff'     => 'image/tiff',
+        'ico'          => 'image/x-icon'
+    );
+	// Return an array with file extension and mime_type.
+    $file = wp_check_filetype( $val, $mimes );
+	// If $image has a valid mime_type, return it; otherwise, return the default.
+    return ( $file['ext'] ? $val : null );
+}
+
+
+function uswds_template_settings_active_sanitize($val) {
+    $valids = array(
+        'no',
+        'yes'
+    );
+
+    if( !in_array($val, $valids) )
+        return null;
+
+    return $val;
+}
+
+function uswds_hero_size_sanitize($val) {
+    $valids = array(
+        'slim',
+        'medium',
+        'big',
+        'full',
+    );
+
+    if( !in_array($val, $valids) )
+        return null;
+
+    return $val;
+}
+
+
+function uswds_sidebar_position_sanitize($val) {
+    $valids = array(
+        'none',
+        'left',
+        'right'
+    );
+
+    if( !in_array($val, $valids) )
+        return null;
+
+    return $val;
+}
+
+function uswds_sidebar_visibility_sanitize($val) {
+    $valids = array(
+        'always-visible',
+        'hidden-medium-up',
+        'hidden-large-up',
+        'visible-medium-up',
+        'visible-large-up',
+    );
+
+    if( !in_array($val, $valids) )
+        return null;
+
     return $val;
 }

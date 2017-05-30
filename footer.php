@@ -15,6 +15,7 @@
 
     <?php
         $footer_size = get_theme_mod('footer_size_setting');
+
         $footer_size = $footer_size ? $footer_size : 'slim';
         get_template_part('components/footers/footer', $footer_size);
     ?>

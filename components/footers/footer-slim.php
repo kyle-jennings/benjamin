@@ -1,5 +1,7 @@
 <?php
     $footer_content = get_theme_mod('footer_top_content_setting');
+
+
 ?>
 <footer class="usa-footer usa-footer-medium" role="contentinfo">
     <div class="usa-grid usa-footer-return-to-top">

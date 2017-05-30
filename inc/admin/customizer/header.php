@@ -30,7 +30,7 @@ function uswds_header_settings($wp_customize){
 
     $wp_customize->add_setting( 'header_order_setting', array(
         'default' => 'banner-navbar-hero',
-        'sanitize_callback' => 'header_setting_sanitization',
+        'sanitize_callback' => 'uswds_header_sortable_sanitize',
     ) );
 
     $wp_customize->add_control(
@@ -48,7 +48,7 @@ function uswds_header_settings($wp_customize){
 
     $wp_customize->add_setting( 'navbar_search_setting', array(
         'default' => 'none',
-        'sanitize_callback' => 'header_setting_sanitization',
+        'sanitize_callback' => 'uswds_navbar_search_setting_sanitize',
     ) );
 
     $wp_customize->add_control('navbar_search_control', array(
@@ -70,7 +70,7 @@ function uswds_header_settings($wp_customize){
 
         $wp_customize->add_setting( $nav . '_color_setting', array(
             'default' => 'light',
-            'sanitize_callback' => 'header_setting_sanitization',
+            'sanitize_callback' => 'uswds_navbar_color_setting_sanitize',
         ) );
 
         $wp_customize->add_control($nav . '_color_control', array(
@@ -88,7 +88,7 @@ function uswds_header_settings($wp_customize){
 
     $wp_customize->add_setting( 'navbar_sticky_setting', array(
         'default' => 'no',
-        'sanitize_callback' => 'header_setting_sanitization',
+        'sanitize_callback' => 'uswds_navbar_sticky_sanitize',
     ) );
 
     $wp_customize->add_control('navbar_sticky_control', array(
@@ -105,7 +105,7 @@ function uswds_header_settings($wp_customize){
 
     $wp_customize->add_setting( 'navbar_brand_setting', array(
         'default' => 'text',
-        'sanitize_callback' => 'header_setting_sanitization',
+        'sanitize_callback' => 'uswds_navbar_brand_sanitize',
     ) );
 
     $wp_customize->add_control('navbar_brand_control', array(
@@ -115,13 +115,82 @@ function uswds_header_settings($wp_customize){
             'type' => 'select',
             'choices' => array(
                 'text' => 'Text',
-                'Logo' => 'Logo',
+                'logo' => 'Logo',
             )
         )
     );
 }
 add_action('customize_register', 'uswds_header_settings');
 
-function header_setting_sanitization($val) {
+function uswds_header_sortable_sanitize($val) {
+    $valids = array(
+        'navbar',
+        'hero',
+        'banner',
+    );
+
+    $valid = true;
+    $tmp_val = json_decode($val);
+    foreach($tmp_val as $v){
+        if( !in_array($v->name, $valids) )
+            $valid = false;
+    }
+
+    if(!$valid)
+        return null;
+
+    return $val;
+}
+
+
+function uswds_navbar_brand_sanitize($val) {
+    $valids = array(
+        'text',
+        'logo'
+    );
+
+    if( !in_array($val, $valids) )
+        return null;
+
+    return $val;
+}
+
+
+
+function uswds_navbar_sticky_sanitize($val) {
+    $valids = array(
+        'no',
+        'yes'
+    );
+
+    if( !in_array($val, $valids) )
+        return null;
+
+    return $val;
+}
+
+
+function uswds_navbar_color_setting_sanitize($val) {
+    $valids = array(
+        'light',
+        'dark'
+    );
+
+    if( !in_array($val, $valids) )
+        return null;
+
+    return $val;
+}
+
+
+function uswds_navbar_search_setting_sanitize($val) {
+    $valids = array(
+        'none',
+        'navbar'
+    );
+
+    if( !in_array($val, $valids) )
+        return null;
+
     return $val;
 }

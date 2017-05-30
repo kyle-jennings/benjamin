@@ -15,7 +15,7 @@ function uswds_site_identity($wp_customize) {
     // color scheme
     $wp_customize->add_setting( 'color_scheme_setting', array(
         'default' => 'standard',
-        'sanitize_callback' => 'identity_setting_sanitization',
+        'sanitize_callback' => 'uswds_color_scheme_sanitize',
         )
     );
 
@@ -37,7 +37,7 @@ function uswds_site_identity($wp_customize) {
     // This is broken due to a bug in the USWDS css
     // $wp_customize->add_setting( 'sidebar_size_setting', array(
     //     'default' => 'ONE_THIRD',
-    //     'sanitize_callback' => 'identity_setting_sanitization',
+    //     'sanitize_callback' => 'uswds_sidebar_width_sanitize',
     //     )
     // );
     //
@@ -56,6 +56,21 @@ function uswds_site_identity($wp_customize) {
 }
 add_action('customize_register', 'uswds_site_identity');
 
-function identity_setting_sanitization($val) {
+
+function uswds_sidebar_width_sanitize($val) {
+    return $val;
+}
+
+
+function uswds_color_scheme_sanitize($val) {
+    $valids = array(
+        'standard',
+        'classic',
+        'red'
+    );
+
+    if( !in_array($val, $valids) )
+        return null;
+
     return $val;
 }
