@@ -13,7 +13,7 @@ $template = uswds_template_settings('template');
 $sidebar_position = get_theme_mod($template . '_sidebar_position_setting');
 
 $main_width = ($sidebar_position == 'none' || !$sidebar_position)
-        ? FULL_WIDTH : TWO_THIRDS;
+        ? FULL_WIDTH : MAIN_WIDTH;
 $main_width .= ' ' . uswds_get_width_visibility($template, $sidebar_position);
 
 ?>

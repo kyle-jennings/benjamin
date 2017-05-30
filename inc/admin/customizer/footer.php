@@ -11,6 +11,7 @@
  * of creating a new footer nav widget
  * @param  object $wp_customize
  */
+
 function uswds_footer_settings($wp_customize) {
 
     $wp_customize->add_section( 'footer_settings_section', array(
@@ -21,7 +22,7 @@ function uswds_footer_settings($wp_customize) {
     // footer size
     $wp_customize->add_setting( 'footer_size_setting', array(
         'default' => '',
-        'sanitize_callback' => 'footer_setting_sanitization',
+        'sanitize_callback' => 'uswds_footer_size_sanitizer',
     ) );
     $wp_customize->add_control('footer_size_control', array(
             'label' => 'Footer Size',
@@ -38,7 +39,7 @@ function uswds_footer_settings($wp_customize) {
 
     $wp_customize->add_setting( 'footer_top_content_setting', array(
         'default' => '',
-        'sanitize_callback' => 'footer_setting_sanitization',
+        'sanitize_callback' => 'uswds_footer_top_content_sanitizer',
     ) );
     $wp_customize->add_control('footer_top_content_control', array(
             'label' => 'Footer Top Content',
@@ -55,7 +56,7 @@ function uswds_footer_settings($wp_customize) {
 
     $wp_customize->add_setting( 'footer_menu_setting', array(
         'default' => '',
-        'sanitize_callback' => 'footer_setting_sanitization',
+        'sanitize_callback' => 'uswds_footer_menu_sanitizer',
         )
     );
 
@@ -73,6 +74,42 @@ add_action('customize_register', 'uswds_footer_settings');
 
 
 
-function footer_setting_sanitization($val) {
+function uswds_footer_size_sanitizer($val){
+    $valid = array(
+            'slim' => 'Slim',
+            'medium' => 'Medium',
+            'big' => 'Big'
+        );
+
+    if( in_array($val, $valid) == false )
+        $val = 'slim';
+
     return $val;
 }
+
+function uswds_footer_top_content_sanitizer($val){
+    $valid = array( 'widgets' => 'Widgets',
+                    'menu' => 'Menu'
+            );
+    if (in_array($val, $valid) == false)
+        $val = 'widgets';
+
+    return $val;
+}
+
+
+function uswds_footer_menu_sanitizer($val){
+    $menus = wp_get_nav_menus();
+    $valids = array();
+
+    foreach($menus as $menu)
+        $valids[] = $menu->term_id;
+
+    if( in_array($val, $valids) == false)
+        return null;
+
+    return $val;
+}
+
+
+// examine(wp_get_nav_menus());

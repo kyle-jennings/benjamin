@@ -34,24 +34,24 @@ function uswds_site_identity($wp_customize) {
         )
     );
 
-
-    $wp_customize->add_setting( 'sidebar_size_setting', array(
-        'default' => 'ONE_THIRD',
-        'sanitize_callback' => 'identity_setting_sanitization',
-        )
-    );
-
-    $wp_customize->add_control( 'sidebar_size_control', array(
-            'label'   => 'Sizebar Size',
-            'section' => 'title_tagline',
-            'settings' => 'sidebar_size_setting',
-            'type' => 'select',
-            'choices' => array(
-                        'ONE_THIRD' => 'Wide',
-                        'ONE_FOURTH' => 'Narrow',
-                    ),
-        )
-    );
+    // This is broken due to a bug in the USWDS css
+    // $wp_customize->add_setting( 'sidebar_size_setting', array(
+    //     'default' => 'ONE_THIRD',
+    //     'sanitize_callback' => 'identity_setting_sanitization',
+    //     )
+    // );
+    //
+    // $wp_customize->add_control( 'sidebar_size_control', array(
+    //         'label'   => 'Sizebar Size',
+    //         'section' => 'title_tagline',
+    //         'settings' => 'sidebar_size_setting',
+    //         'type' => 'select',
+    //         'choices' => array(
+    //                     'ONE_THIRD' => 'Wide',
+    //                     'ONE_FOURTH' => 'Narrow',
+    //                 ),
+    //     )
+    // );
 
 }
 add_action('customize_register', 'uswds_site_identity');
