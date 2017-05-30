@@ -1,0 +1,34 @@
+@media screen and (min-width: 600px) {
+
+    .usa-width-one-fourth {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 23.23176%;
+    }
+    .usa-width-one-fourth:last-child {
+        margin-right: 0;
+    }
+    .usa-width-one-fourth:nth-child(2n) {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 23.23176%;
+    }
+    .usa-width-one-fourth:nth-child(2n):last-child {
+        margin-right: 0;
+    }
+    .usa-width-one-fourth:nth-child(4n) {
+        margin-right: 0;
+    }
+    .usa-width-three-fourths {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 74.41059%;
+    }
+    .usa-width-three-fourths:last-child {
+        margin-right: 0;
+    }
+
+}

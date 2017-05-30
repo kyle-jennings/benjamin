@@ -38,16 +38,15 @@ define('ONE_FOURTH' , 'usa-width-one-fourth');
 define('THREE_FOURTHS' , 'usa-width-three-fourths');
 define('ONE_HALF' , 'usa-width-one-half');
 
-// set the sidebar width - this is broken due to CSS bug with USWDS
-// $sidebar_width = get_theme_mod('sidebar_size_setting');
-// $sidebar_width = $sidebar_width ? constant($sidebar_width) : ONE_THIRD;
-// $main_width = ($sidebar_width == ONE_THIRD) ? TWO_THIRDS : THREE_FOURTHS;
-//
-// // sidebar and main column constants
-// define('SIDEBAR_WIDTH', $sidebar_width);
-// define('MAIN_WIDTH', $main_width);
-define('SIDEBAR_WIDTH', ONE_THIRD);
-define('MAIN_WIDTH', TWO_THIRDS);
+
+$sidebar_width = get_theme_mod('sidebar_size_setting');
+$sidebar_width = $sidebar_width ? constant($sidebar_width) : ONE_THIRD;
+$main_width = ($sidebar_width == ONE_THIRD) ? TWO_THIRDS : THREE_FOURTHS;
+
+// sidebar and main column constants
+define('SIDEBAR_WIDTH', $sidebar_width);
+define('MAIN_WIDTH', $main_width);
+
 
 
 function uswds_is_dot_gov() {
