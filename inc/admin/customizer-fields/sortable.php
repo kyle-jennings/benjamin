@@ -49,7 +49,9 @@ class Sortable_Custom_Control extends WP_Customize_Control
     private function map_saved_components($saved = array()){
         $ret = array();
         $saved = json_decode($saved);
-
+        if(empty($saved))
+            return $this->choices;
+            
         foreach($saved as $comp){
             $name = $comp->name;
             $label = $comp->label;
