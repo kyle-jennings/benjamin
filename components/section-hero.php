@@ -29,7 +29,7 @@ if ( $hero_image = uswds_hero_image($template) ){
                 echo '<h1>'.get_the_title().'</h1>';
                 if ( 'post' === get_post_type() ) :
         		echo '<div class="entry-meta">';
-        			echo get_hero_meta();
+        			echo uswds_get_hero_meta();
         		echo '</div>';
         		endif;
             }

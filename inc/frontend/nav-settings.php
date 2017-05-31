@@ -2,7 +2,7 @@
 
 
 
-function get_uswds_nav_title() {
+function uswds_get_uswds_nav_title() {
     $output = '';
     $link = '<a href="'.esc_url( home_url( '/' ) ).'"
         accesskey="1" title="Home" aria-label="Home"> '.get_bloginfo( 'name' ).'
@@ -18,7 +18,7 @@ function get_uswds_nav_title() {
 
 
 function uswds_nav_title() {
-    echo get_uswds_nav_title();
+    echo uswds_get_uswds_nav_title();
 }
 
 

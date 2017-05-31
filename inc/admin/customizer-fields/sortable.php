@@ -3,7 +3,7 @@
 if ( ! class_exists( 'WP_Customize_Control' ) )
     return null;
 
-class Sortable_Custom_Control extends WP_Customize_Control
+class USWDS_Sortable_Custom_Control extends WP_Customize_Control
 {
 
     public function __construct($manager, $id, $args = array(), $options = array())
@@ -51,7 +51,7 @@ class Sortable_Custom_Control extends WP_Customize_Control
         $saved = json_decode($saved);
         if(empty($saved))
             return $this->choices;
-            
+
         foreach($saved as $comp){
             $name = $comp->name;
             $label = $comp->label;

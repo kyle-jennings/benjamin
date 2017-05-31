@@ -22,7 +22,7 @@ function uswds_hero_image($template = null) {
 
         $post_type = is_home() ? 'post' : $post->post_type;
         $f_id = get_option('featured-post--'.$post_type, false);
-        $featuredPost = new FeaturedPost($f_id, $post_type);
+        $featuredPost = new USWDSFeaturedPost($f_id, $post_type);
 
         $hero_image = ($featuredPost && $featuredPost->image)
             ? $featuredPost->image : get_theme_mod($template . '_image_setting');
@@ -109,7 +109,7 @@ function uswds_get_feed_title() {
     } elseif(is_home() ){
 
         $f_id = get_option('featured-post--post', false);
-        $featuredPost = new FeaturedPost($f_id, 'post');
+        $featuredPost = new USWDSFeaturedPost($f_id, 'post');
         $title = $featuredPost->output;
 
     }else {

@@ -3,7 +3,7 @@
 if ( ! class_exists( 'WP_Customize_Control' ) )
     return null;
 
-class Activated_Sortable_Custom_Control extends WP_Customize_Control
+class USWDS_Activated_Sortable_Custom_Control extends WP_Customize_Control
 {
 
     public function __construct($manager, $id, $args = array(), $options = array())

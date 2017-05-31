@@ -49,7 +49,7 @@ As mentioned, both the frontpage and widgetized pages are sortable, so you have 
 * Or lets you override settings on specific templates
 * The "Feed" settings are used by default, all other templates must be activated
 
-#### Shortcodes and Components!
+#### Shortcodes and Components
 These shortcodes are NOT included in the theme by default, but are available in the companion plugin, [Franklin](https://github.com/kyle-jennings/Franklin).
 
 
@@ -102,22 +102,3 @@ Here are a list of the currently available shortcodes in [Franklin](https://gith
 * Choose what's displayed in the "top" footer (available in the medium and big sizes)
 
 #### Contact Form 7 checkbox/radio support
-
-
-## The Future
-
-#### Widgets
-* Provides intuitive UI for the shortcode components
-
-#### A Page builder
-* To make embedding the aforementioned components a breeze
-
-#### Support for more popular form plugins
-* Gravity Forms
-* Ninja Forms
-
-#### Misc
-* Videos for Hero backgrounds
-* Hero content options for feeds
-* Settings for every template type WordPress offers (with a smart fallback system)
-* More color schemes

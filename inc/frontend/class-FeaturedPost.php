@@ -1,6 +1,6 @@
 <?php
 
-class FeaturedPost {
+class USWDSFeaturedPost {
     public $id;
     public $post_type;
     public $format;
@@ -82,7 +82,7 @@ class FeaturedPost {
     }
 
 
-    function getMeta(){
+    public function getMeta(){
 
 
         $id = $this->ID;

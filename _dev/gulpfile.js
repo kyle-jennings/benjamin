@@ -51,6 +51,7 @@ paths.adminJSGlob = paths.adminSrcPath + '/js/**/*.js';
 // JS
 gulp.task('front-js',['clean:front-js'], function(){
   return gulp.src( [
+      paths.npmPath + '/uswds/dist/js/uswds.js',
       paths.npmPath + '/uswds/dist/js/uswds.min.js',
       paths.npmPath + '/uswds/dist/js/uswds.min.js.map'
     ])

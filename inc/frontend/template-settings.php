@@ -2,7 +2,7 @@
 
 function uswds_template_settings($ret = null) {
 
-    $settings = set_uswds_template_settings();
+    $settings = uswds_set_template_settings();
 
     // if an arg was passed in, return that single setting
     if($ret)
@@ -12,7 +12,7 @@ function uswds_template_settings($ret = null) {
 }
 
 
-function set_uswds_template_settings(){
+function uswds_set_template_settings(){
 
     $template = uswds_get_template();
     $date_type = is_date() ? uswds_is_date() : null;

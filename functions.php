@@ -8,9 +8,9 @@
 */
 
 // use this to examine objects and arrays
-if(!function_exists('examine')){
+if(!function_exists('uswds_examine')){
 
-    function examine($object, $examine_type = 'print_r', $die = 'hard'){
+    function uswds_examine($object, $examine_type = 'print_r', $die = 'hard'){
         if(empty($object))
             return;
         echo '<pre>';
@@ -25,27 +25,28 @@ if(!function_exists('examine')){
 
 // Define some constants
 
-define('FULL_WIDTH' , 'usa-width-one-whole');
-define('FULL_WIDTH_MEDIUM_UP' , 'usa-width-full-medium-up');
-define('FULL_WIDTH_LARGE_UP' , 'usa-width-full-large-up');
+define('USWDS_FULL_WIDTH' , 'usa-width-one-whole');
+define('USWDS_FULL_WIDTH_MEDIUM_UP' , 'usa-width-full-medium-up');
+define('USWDS_FULL_WIDTH_LARGE_UP' , 'usa-width-full-large-up');
 
 // wide sidebar
-define('TWO_THIRDS' , 'usa-width-two-thirds');
-define('ONE_THIRD' , 'usa-width-one-third');
+define('USWDS_TWO_THIRDS' , 'usa-width-two-thirds');
+define('USWDS_ONE_THIRD' , 'usa-width-one-third');
 
 // narrow sidebar
-define('ONE_FOURTH' , 'usa-width-one-fourth');
-define('THREE_FOURTHS' , 'usa-width-three-fourths');
-define('ONE_HALF' , 'usa-width-one-half');
+define('USWDS_ONE_FOURTH' , 'usa-width-one-fourth');
+define('USWDS_THREE_FOURTHS' , 'usa-width-three-fourths');
+define('USWDS_ONE_HALF' , 'usa-width-one-half');
 
 
 $sidebar_width = get_theme_mod('sidebar_size_setting');
-$sidebar_width = $sidebar_width ? constant($sidebar_width) : ONE_THIRD;
-$main_width = ($sidebar_width == ONE_THIRD) ? TWO_THIRDS : THREE_FOURTHS;
+
+$sidebar_width = $sidebar_width ? constant($sidebar_width) : USWDS_ONE_THIRD;
+$main_width = ($sidebar_width == USWDS_ONE_THIRD) ? USWDS_TWO_THIRDS : USWDS_THREE_FOURTHS;
 
 // sidebar and main column constants
-define('SIDEBAR_WIDTH', $sidebar_width);
-define('MAIN_WIDTH', $main_width);
+define('USWDS_SIDEBAR_WIDTH', $sidebar_width);
+define('USWDS_MAIN_WIDTH', $main_width);
 
 
 

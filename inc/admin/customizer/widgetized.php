@@ -9,7 +9,7 @@ function uswds_widgetized_settings($wp_customize) {
         'sanitize_callback' => 'uswds_widgetized_sortable_sanitize',
     ) );
 
-    $wp_customize->add_control( new Activated_Sortable_Custom_Control( $wp_customize,
+    $wp_customize->add_control( new USWDS_Activated_Sortable_Custom_Control( $wp_customize,
        'widgetized_section_control', array(
            'label'   => 'Sortable Sections',
            'section' => 'widgetized_section',

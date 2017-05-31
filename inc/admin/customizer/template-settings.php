@@ -54,7 +54,7 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
             'sanitize_callback' => 'uswds_template_settings_active_sanitize',
         ) );
 
-        $wp_customize->add_control(new Activate_Layout_Custom_Control( $wp_customize,
+        $wp_customize->add_control(new USWDS_Activate_Layout_Custom_Control( $wp_customize,
         $name . '_settings_active_control', array(
                 'label' => 'Settings Active',
                 'section' => $name . '_section',
@@ -169,7 +169,7 @@ function uswds_hero_image_sanitization( $val ) {
 	// Return an array with file extension and mime_type.
     $file = wp_check_filetype( $val, $mimes );
 	// If $image has a valid mime_type, return it; otherwise, return the default.
-    return ( $file['ext'] ? $val : null );
+    return ( ($file['ext'] || $val == null) ? $val : null );
 }
 
 

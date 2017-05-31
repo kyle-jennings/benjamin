@@ -6,7 +6,7 @@ if ( ! class_exists( 'WP_Customize_Control' ) )
 /**
  * Class to create a custom menu control
  */
-class Menu_Dropdown_Custom_Control extends WP_Customize_Control
+class USWDS_Menu_Dropdown_Custom_Control extends WP_Customize_Control
 {
     private $menus = false;
 

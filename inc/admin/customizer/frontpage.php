@@ -23,7 +23,7 @@ function uswds_frontpage_settings($wp_customize) {
          'sanitize_callback' => 'uswds_frontpage_sortable_sanitize',
      ) );
 
-     $wp_customize->add_control( new Activated_Sortable_Custom_Control( $wp_customize,
+     $wp_customize->add_control( new USWDS_Activated_Sortable_Custom_Control( $wp_customize,
         'frontpage_section_control', array(
             'label'   => 'Sortable Sections',
             'section' => 'frontpage_section',

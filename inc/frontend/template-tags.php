@@ -7,7 +7,7 @@
  * @package Benjamin
  */
 
- function get_hero_meta(){
+ function uswds_get_hero_meta(){
 
      $post = get_queried_object();
      $id = $post->ID;
@@ -37,10 +37,10 @@
 
 
 function uswds_posted_on() {
-    echo get_uswds_posted_on();
+    echo uswds_get_posted_on();
 }
 
-function get_uswds_posted_on(){
+function uswds_get_posted_on(){
     global $post;
 
     $id = get_the_ID();

@@ -8,9 +8,9 @@ function uswds_get_sidebar($template, $sidebar_pos = 'none'){
 
     $class = '';
     if(in_array($sidebar_pos, $vertical)):
-        $class = SIDEBAR_WIDTH;
+        $class = USWDS_SIDEBAR_WIDTH;
     else:
-        $class = FULL_WIDTH;
+        $class = USWDS_FULL_WIDTH;
     endif;
     $visibility = get_theme_mod($template . '_sidebar_visibility_setting');
     $class .= ' '. $visibility;

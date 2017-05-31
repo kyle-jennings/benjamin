@@ -60,7 +60,7 @@ function uswds_footer_settings($wp_customize) {
         )
     );
 
-    $wp_customize->add_control( new Menu_Dropdown_Custom_Control(
+    $wp_customize->add_control( new USWDS_Menu_Dropdown_Custom_Control(
         $wp_customize, 'footer_menu_control', array(
             'label'   => 'Footer Menu Dropdown Setting',
             'section' => 'footer_settings_section',

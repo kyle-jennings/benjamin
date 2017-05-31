@@ -34,7 +34,7 @@ function uswds_header_settings($wp_customize){
     ) );
 
     $wp_customize->add_control(
-        new Sortable_Custom_Control( $wp_customize,
+        new USWDS_Sortable_Custom_Control( $wp_customize,
             'header_order_control', array(
                 'label' => 'Header Order',
                 'section' => 'header_settings_section',
