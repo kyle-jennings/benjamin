@@ -17,7 +17,7 @@ var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var transform = require('vinyl-transform');
 var watch = require('gulp-watch');
-
+var wpPot = require('gulp-wp-pot');
 
 
 function swallowError(error){
@@ -225,6 +225,15 @@ gulp.task('clean:admin-js', function() {
 //  Utilities
 // ---------------------------------------------------------------------------
 
+gulp.task('pot', function () {
+
+    return gulp.src('../**/*.php')
+        .pipe(wpPot( {
+            domain: 'uswds',
+            package: 'Example project'
+        } ))
+        .pipe(gulp.dest('../languages/uswds.pot'));
+});
 
 /**
  * Handle errors.

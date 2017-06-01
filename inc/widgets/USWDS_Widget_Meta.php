@@ -27,10 +27,10 @@ class USWDS_Widget_Meta extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'widget_meta',
-			'description' => __( 'Login, RSS, &amp; WordPress.org links.' ),
+			'description' => __( 'Login, RSS, &amp; WordPress.org links.', 'uswds' ),
 			'customize_selective_refresh' => true,
 		);
-		parent::__construct( 'meta', __( 'Meta' ), $widget_ops );
+		parent::__construct( 'meta', __( 'Meta','uswds' ), $widget_ops );
 	}
 
 
@@ -86,8 +86,8 @@ class USWDS_Widget_Meta extends WP_Widget {
         wp_register();
         ?>
         <li><?php wp_loginout(); ?></li>
-        <li><a href="<?php echo esc_url( get_bloginfo( 'rss2_url' ) ); ?>"><?php _e('Entries <abbr title="Really Simple Syndication">RSS</abbr>'); ?></a></li>
-        <li><a href="<?php echo esc_url( get_bloginfo( 'comments_rss2_url' ) ); ?>"><?php _e('Comments <abbr title="Really Simple Syndication">RSS</abbr>'); ?></a></li>
+        <li><a href="<?php echo esc_url( get_bloginfo( 'rss2_url' ) ); ?>"><?php _e('Entries <abbr title="Really Simple Syndication">RSS</abbr>', 'uswds'); ?></a></li>
+        <li><a href="<?php echo esc_url( get_bloginfo( 'comments_rss2_url' ) ); ?>"><?php _e('Comments <abbr title="Really Simple Syndication">RSS</abbr>', 'uswds'); ?></a></li>
         <?php
         /**
          * Filters the "Powered by WordPress" text in the Meta widget.
@@ -97,9 +97,9 @@ class USWDS_Widget_Meta extends WP_Widget {
          * @param string $title_text Default title text for the WordPress.org link.
          */
         echo apply_filters( 'widget_meta_poweredby', sprintf( '<li><a href="%s" title="%s">%s</a></li>',
-            esc_url( __( 'https://wordpress.org/' ) ),
-            esc_attr__( 'Powered by WordPress, state-of-the-art semantic personal publishing platform.' ),
-            _x( 'WordPress.org', 'meta widget link text' )
+            esc_url( __( 'https://wordpress.org/', 'uswds' ) ),
+            esc_attr__( 'Powered by WordPress, state-of-the-art semantic personal publishing platform.', 'uswds' ),
+            _x( 'WordPress.org', 'meta widget link text', 'uswds' )
         ) );
 
         wp_meta();
@@ -123,7 +123,7 @@ class USWDS_Widget_Meta extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
-		$title = apply_filters( 'widget_title', empty($instance['title']) ? __( 'Meta' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters( 'widget_title', empty($instance['title']) ? __( 'Meta', 'uswds' ) : $instance['title'], $instance, $this->id_base );
         $style = ! empty( $instance['menu_style'] ) ? $instance['menu_style'] : 'side_nav';
 
 
@@ -176,7 +176,7 @@ class USWDS_Widget_Meta extends WP_Widget {
         $saved_style = isset( $instance['menu_style'] ) ? $instance['menu_style'] : '';
 
 ?>
-			<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" placeholder="<?php esc_attr_e( 'Meta' ); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+			<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'uswds'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" placeholder="<?php esc_attr_e( 'Meta', 'uswds' ); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 <?php
         // styles
         $find = array('-', '_');

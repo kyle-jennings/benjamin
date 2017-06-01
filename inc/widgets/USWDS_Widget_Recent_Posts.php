@@ -23,10 +23,10 @@ class USWDS_Widget_Recent_Posts extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'widget_recent_entries',
-			'description' => __( 'Your site&#8217;s most recent Posts.' ),
+			'description' => __( 'Your site&#8217;s most recent Posts.', 'uswds' ),
 			'customize_selective_refresh' => true,
 		);
-		parent::__construct( 'recent-posts', __( 'Recent Posts' ), $widget_ops );
+		parent::__construct( 'recent-posts', __( 'Recent Posts', 'uswds' ), $widget_ops );
 		$this->alt_option_name = 'widget_recent_entries';
 	}
 
@@ -137,7 +137,7 @@ class USWDS_Widget_Recent_Posts extends WP_Widget {
 		}
         $style = ! empty( $instance['menu_style'] ) ? $instance['menu_style'] : 'side_nav';
 
-        $title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Posts' );
+        $title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Posts', 'uswds' );
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 
@@ -217,14 +217,14 @@ class USWDS_Widget_Recent_Posts extends WP_Widget {
 		$show_date = isset( $instance['show_date'] ) ? (bool) $instance['show_date'] : false;
         $saved_style = isset( $instance['menu_style'] ) ? $instance['menu_style'] : '';
 ?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" placeholder="<?php esc_attr_e( 'Recent Posts' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'uswds' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" placeholder="<?php esc_attr_e( 'Recent Posts', 'uswds' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of posts to show:' ); ?></label>
+		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of posts to show:', 'uswds' ); ?></label>
 		<input class="tiny-text" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="number" step="1" min="1" value="<?php echo $number; ?>" size="3" /></p>
 
 		<p><input class="checkbox" type="checkbox"<?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?' ); ?></label></p>
+		<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?', 'uswds' ); ?></label></p>
 
         <?php
         // styles

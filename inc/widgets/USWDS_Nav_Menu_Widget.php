@@ -140,7 +140,7 @@ class USWDS_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 		<div class="nav-menu-widget-form-controls"
             <?php if ( empty( $menus ) ) { echo ' style="display:none" '; } ?>>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:','uswds' ) ?></label>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'uswds' ) ?></label>
 				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>"/>
 			</p>
 			<p>

@@ -25,10 +25,10 @@ class USWDS_Widget_Archives extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'widget_archive',
-			'description' => __( 'A monthly archive of your site&#8217;s Posts.' ),
+			'description' => __( 'A monthly archive of your site&#8217;s Posts.', 'uswds' ),
 			'customize_selective_refresh' => true,
 		);
-		parent::__construct('archives', __('Archives'), $widget_ops);
+		parent::__construct('archives', __('Archives', 'uswds'), $widget_ops);
 	}
 
 
@@ -69,19 +69,19 @@ class USWDS_Widget_Archives extends WP_Widget {
 
         switch ( $dropdown_args['type'] ) {
             case 'yearly':
-                $label = __( 'Select Year' );
+                $label = __( 'Select Year', 'uswds' );
                 break;
             case 'monthly':
-                $label = __( 'Select Month' );
+                $label = __( 'Select Month', 'uswds' );
                 break;
             case 'daily':
-                $label = __( 'Select Day' );
+                $label = __( 'Select Day', 'uswds' );
                 break;
             case 'weekly':
-                $label = __( 'Select Week' );
+                $label = __( 'Select Week', 'uswds' );
                 break;
             default:
-                $label = __( 'Select Post' );
+                $label = __( 'Select Post', 'uswds' );
                 break;
         }
         ?>
@@ -141,7 +141,7 @@ class USWDS_Widget_Archives extends WP_Widget {
 
 
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
-		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Archives' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Archives', 'uswds' ) : $instance['title'], $instance, $this->id_base );
 
 		echo $args['before_widget'];
 		if ( $title ) {
@@ -197,7 +197,7 @@ class USWDS_Widget_Archives extends WP_Widget {
         $saved_style = isset( $instance['menu_style'] ) ? $instance['menu_style'] : '';
 
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" placeholder="<?php esc_attr_e( 'Archives' ); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'uswds'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" placeholder="<?php esc_attr_e( 'Archives', 'uswds' ); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
         <?php
         // styles
         $find = array('-', '_');
@@ -223,7 +223,7 @@ class USWDS_Widget_Archives extends WP_Widget {
         </p>
 
 		<p>
-			<input class="checkbox" type="checkbox"<?php checked( $instance['count'] ); ?> id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" /> <label for="<?php echo $this->get_field_id('count'); ?>"><?php _e('Show post counts'); ?></label>
+			<input class="checkbox" type="checkbox"<?php checked( $instance['count'] ); ?> id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" /> <label for="<?php echo $this->get_field_id('count'); ?>"><?php _e('Show post counts', 'uswds'); ?></label>
 		</p>
 		<?php
 	}

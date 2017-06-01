@@ -24,6 +24,7 @@
     "gulp-sourcemaps" : "1.6.0",
     "gulp-util" : "3.0.7",
     "gulp-watch" : "4.3.5",
+    "gulp-wp-pot" : "2.0.4",
     "imagemin-pngquant" : "4.2.2",
     "uswds" : "1.1.0",
     "vinyl-transform" : "1.0.0",
