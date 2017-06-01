@@ -1,6 +1,6 @@
 <?php
 
-class USWDSNavMenu extends WP_Nav_Menu_Widget {
+class USWDS_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 
     private function menuStyleArgs($style = 'side_nav'){
         if($style == 'side_nav'):
