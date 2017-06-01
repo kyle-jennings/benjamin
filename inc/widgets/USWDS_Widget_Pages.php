@@ -73,12 +73,10 @@ class USWDS_Widget_Pages extends WP_Widget {
     public function dropdown($sortby, $exclude, $show_children)
     {
         $dropdown_id = "{$this->id_base}-dropdown-{$this->number}";
-        $style_args = $this->menuStyleArgs($style);
-        $class = $style_args ? 'class="'.$style_args.'"' : '';
 
         $output = '';
 		$output .= '<select id="'.$dropdown_id.'">';
-        $output .= '<option>-- Select Comment --</option>';
+        $output .= '<option>-- Select Page --</option>';
         $pages = get_pages(array(
             'sort_column' => $sortby,
             'exclude' => $exclude,

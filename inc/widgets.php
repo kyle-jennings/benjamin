@@ -6,7 +6,7 @@ $uswds_widgets = array(
     'WP_Widget_Categories' => 'USWDS_Widget_Categories',
     'WP_Widget_Recent_Comments' => 'USWDS_Widget_Recent_Comments',
     'WP_Widget_Recent_Posts' => 'USWDS_Widget_Recent_Posts',
-    // 'WP_Widget_Links' => 'USWDS_Widget_Links',
+    'WP_Widget_Meta' => 'USWDS_Widget_Meta',
     'WP_Widget_Pages' => 'USWDS_Widget_Pages',
 );
 

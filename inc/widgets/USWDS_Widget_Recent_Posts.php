@@ -78,7 +78,7 @@ class USWDS_Widget_Recent_Posts extends WP_Widget {
         $dropdown_id = "{$this->id_base}-dropdown-{$this->number}";
 
 		echo '<select id="'.$dropdown_id.'">';
-        echo '<option>-- Select Comment --</option>';
+        echo '<option>-- Select Post --</option>';
 
         while ( $r->have_posts() ) : $r->the_post(); ?>
 			<option value="<?php the_permalink(); ?>">
