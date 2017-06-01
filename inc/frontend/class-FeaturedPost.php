@@ -36,7 +36,7 @@ class USWDSFeaturedPost {
         $output = '';
 
         $output .= '<span class="post-title">';
-            $output .= $pre_title;
+            $output .= 'Featured Post';
         $output .= '</span>';
 
         $output .= '<h1>';
@@ -106,8 +106,12 @@ class USWDSFeaturedPost {
             $author .= '</a>';
         $author .= '</span>';
 
+        if ( $categories_list = uswds_get_the_category_list($this->id) ) {
+			$cats = '<span class="cat-links">' . __('Posted in&nbsp;', 'uswds') . $categories_list . '</span>';
+		}
+
         return '<span class="posted-on">' . $date . '</span>
-            <span class="byline"> - ' . $author . '</span>';
+            <span class="byline"> - ' . $author . '</span> <br > ' .$cats;
     }
 
 

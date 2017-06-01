@@ -84,10 +84,10 @@ function uswds_get_hero_callout(){
  */
 function uswds_get_feed_title() {
 
-    if(is_author()) {
+    if( is_author() ) {
         $auth = get_user_by('slug', get_query_var('author_name'));
         $title = '<h1>' . 'Posts by: '.$auth->nickname . '</h1>';
-    } elseif(is_date() ){
+    } elseif( is_date() ){
 
         if( is_month())
             $title = 'Posted in: ' . get_the_date('F, Y');
@@ -95,30 +95,45 @@ function uswds_get_feed_title() {
             $title = 'Posted in: ' . get_the_date('Y');
         $title = '<h1>' . $title .'</h1>';
 
-    } elseif(is_category()){
+    } elseif( is_category() ){
+
         ob_start();
         single_cat_title();
         $buffered_cat = ob_get_contents();
         ob_end_clean();
         $title = '<h1>' . 'Posted in: '.$buffered_cat . '</h1>';
-    } elseif(is_search()){
+
+    } elseif( is_search() ){
+
         global $wp_query;
         $total_results = $wp_query->found_posts;
         $title = $total_results ? 'Search Results for: '.get_search_query() : 'No results found' ;
         $title = '<h1>' . $title . '</h1>';
-    } elseif(is_home() ){
 
-        $f_id = get_option('featured-post--post', false);
-        $featuredPost = new USWDSFeaturedPost($f_id, 'post');
-        $title = $featuredPost->output;
+    } elseif( is_home() ){
+
+        $post = get_queried_object();
+        $fid = get_option('featured-post--post', false);
+        if($fid) {
+            $featuredPost = new USWDSFeaturedPost($fid, 'post');
+            $title = $featuredPost->output;
+        } elseif( $post->post_title )  {
+                $title = '<h1>' . $post->post_title . '</h1>';
+        } elseif($post->name) {
+                $title = '<h1>' . $post->name . '</h1>';
+        } else {
+            $title = '<h1> Home </h1>';
+        }
 
     }else {
+
         $post = get_queried_object();
         if( $post->post_title)
             $title = $post->post_title;
         elseif($post->name)
             $title = $post->name;
         '<h1>' . $title .'</h1>';
+        
     }
 
     return $title;
