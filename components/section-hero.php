@@ -25,9 +25,9 @@ if ( $hero_image = uswds_hero_image($template) ){
                 uswds_get_hero_callout();
             elseif( !is_page() && !is_single() && !is_singular() ) {
                 echo uswds_get_feed_title();
-            } else{
+            } else {
                 echo '<h1>'.get_the_title().'</h1>';
-                if ( 'post' === get_post_type() ) :
+                if ( 'page' !== get_post_type() ) :
         		echo '<div class="entry-meta">';
         			echo uswds_get_hero_meta();
         		echo '</div>';

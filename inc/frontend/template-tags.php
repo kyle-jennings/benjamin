@@ -89,7 +89,7 @@ if ( ! function_exists( 'uswds_entry_footer' ) ) :
  */
 function uswds_entry_footer() {
 	// Hide category and tag text for pages.
-	if ( 'post' === get_post_type() ) {
+	if ( 'page' !== get_post_type() ) {
 
 
 		/* translators: used between list items, there is a space after the comma */

@@ -33,7 +33,7 @@ $main_width .= ' ' . uswds_get_width_visibility($template, $sidebar_position);
   <div class="<?php echo $main_width; ?>">
 		<?php
 		if ( have_posts() ) :
-            
+
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
 

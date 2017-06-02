@@ -44,6 +44,11 @@ As mentioned, both the frontpage and widgetized pages are sortable, so you have 
 #### Feed Featured Posts
 * a post can be marked as "featured" and displayed promptly in the feed page hero
 
+### Custom post type support
+
+### Co-authors Plus support
+
+
 #### Template settings use a "fallback" system
 * Allows setting things once for all templates
 * Or lets you override settings on specific templates

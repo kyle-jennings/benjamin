@@ -20,7 +20,9 @@ function uswds_hero_image($template = null) {
             $hero_image = get_the_post_thumbnail_url();
     } else{
 
-        $post_type = is_home() ? 'post' : $post->post_type;
+        $post = get_queried_object();
+        $post_type = is_a($post, 'WP_Post_Type') && !is_home() ? $post->name : 'post';
+
         $f_id = get_option('featured-post--'.$post_type, false);
         $featuredPost = new USWDSFeaturedPost($f_id, $post_type);
 
@@ -110,10 +112,12 @@ function uswds_get_feed_title() {
         $title = $total_results ? 'Search Results for: '.get_search_query() : 'No results found' ;
         $title = '<h1>' . $title . '</h1>';
 
-    } elseif( is_home() ){
+    } elseif( is_home() || is_archive() ){
 
         $post = get_queried_object();
-        $fid = get_option('featured-post--post', false);
+        $post_type = is_a($post, 'WP_Post_Type') ? $post->name : 'post';
+
+        $fid = get_option('featured-post--'.$post_type, false);
         if($fid) {
             $featuredPost = new USWDSFeaturedPost($fid, 'post');
             $title = $featuredPost->output;
@@ -132,8 +136,9 @@ function uswds_get_feed_title() {
             $title = $post->post_title;
         elseif($post->name)
             $title = $post->name;
-        '<h1>' . $title .'</h1>';
-        
+
+        $title = '<h1>' . $title .'</h1>';
+
     }
 
     return $title;

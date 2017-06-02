@@ -22,11 +22,19 @@ function uswds_featured_post_metabox_markup($post) {
 
 
 function uswds_featured_post_metabox() {
+    $args = array(
+       'public'   => true,
+       'publicly_queryable' => true,
+       '_builtin' => false
+    );
+    $cpts = get_post_types($args);
+    array_push($cpts, 'post');
+
     add_meta_box(
         'featured_post',
         'Featured Post',
         'uswds_featured_post_metabox_markup',
-        array('post'),
+        $cpts,
         'side',
         'high',
         null
