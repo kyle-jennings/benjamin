@@ -100,10 +100,14 @@ class USWDSFeaturedPost {
 
 
         $author = '<span class="author vcard">';
+        if ( function_exists( 'coauthors_posts_links' ) ) {
+            $author .= coauthors_posts_links(null, null, null, null, false);
+        } else {
             $author .= '<a class="url fn n"
                 href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">';
                 $author .= get_the_author_meta('display_name', $aid);
             $author .= '</a>';
+        }
         $author .= '</span>';
 
         if ( $categories_list = uswds_get_the_category_list($this->id) ) {

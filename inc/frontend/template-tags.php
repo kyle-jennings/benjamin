@@ -25,10 +25,15 @@
 
 
      $author = '<span class="author vcard">';
+     if ( function_exists( 'coauthors_posts_links' ) ) {
+         $author .= coauthors_posts_links(null, null, null, null, false);
+     } else {
          $author .= '<a class="url fn n"
              href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">';
              $author .= get_the_author_meta('display_name', $aid);
          $author .= '</a>';
+     }
+
      $author .= '</span>';
 
      return '<span class="posted-on">' . $date . '</span>
@@ -58,14 +63,21 @@ function uswds_get_posted_on(){
 
 
     $author = '<span class="author vcard">';
+    if ( function_exists( 'coauthors_posts_links' ) ) {
+        $author .= coauthors_posts_links(null, null, null, null, false);
+    } else {
         $author .= '<a class="url fn n"
             href="' . get_author_posts_url( get_the_author_meta( 'ID', $post->post_author ) ) . '">';
             $author .= ' - ' .get_the_author();
         $author .= '</a>';
+    }
     $author .= '</span>';
 
-    return '<span class="posted-on">' . $date . '</span>
-        <span class="byline"> ' . $author . '</span>'; // WPCS: XSS OK.
+    $output = '';
+    $output .= '<span class="posted-on">' . $date . '</span>';
+    $output .= '<span class="byline"> - ' . $author . '</span>'; // WPCS: XSS OK.
+
+    return $output;
 }
 
 
