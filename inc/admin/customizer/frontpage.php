@@ -11,23 +11,23 @@ function uswds_frontpage_settings($wp_customize) {
      ) );
      $wp_customize->add_control( 'frontpage_hero_callout_control', array(
          'label'   => 'Callout Button',
-         'section' => 'frontpage_section',
+         'section' => 'frontpage_settings_section',
          'settings'=> 'frontpage_hero_callout_setting',
          'type'    => 'dropdown-pages',
          'priority' => 1
      ) );
 
 
-     $wp_customize->add_setting( 'frontpage_section_setting', array(
+     $wp_customize->add_setting( 'frontpage_sortables_setting', array(
          'default'        => '',
          'sanitize_callback' => 'uswds_frontpage_sortable_sanitize',
      ) );
 
      $wp_customize->add_control( new USWDS_Activated_Sortable_Custom_Control( $wp_customize,
-        'frontpage_section_control', array(
+        'frontpage_sortables_control', array(
             'label'   => 'Sortable Sections',
-            'section' => 'frontpage_section',
-            'settings'=> 'frontpage_section_setting',
+            'section' => 'frontpage_settings_section',
+            'settings'=> 'frontpage_sortables_setting',
             'priority' => 2,
             'choices' => array(
                     'widget-area-1' => 'Widget Area 1',

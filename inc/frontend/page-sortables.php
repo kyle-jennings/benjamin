@@ -1,8 +1,10 @@
 <?php
 
 function uswds_page_sortables($target = null) {
+
     if($target == null)
         return false;
+
     $target_name = strtok($target, '_');
 
     $sortables = get_theme_mod($target);

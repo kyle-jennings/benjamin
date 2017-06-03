@@ -41,8 +41,9 @@ function uswds_template_layout_settings($wp_customize) {
 }
 add_action('customize_register', 'uswds_template_layout_settings');
 
+
 function uswds_template_settings_loop(&$wp_customize, $name, $label){
-    $wp_customize->add_section( $name . '_section', array(
+    $wp_customize->add_section( $name . '_settings_section', array(
         'title'          => $label . ' Settings',
         'priority'       => 36,
     ) );
@@ -57,7 +58,7 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
         $wp_customize->add_control(new USWDS_Activate_Layout_Custom_Control( $wp_customize,
         $name . '_settings_active_control', array(
                 'label' => 'Settings Active',
-                'section' => $name . '_section',
+                'section' => $name . '_settings_section',
                 'settings' => $name . '_settings_active',
                 'type' => 'radio',
                 'choices' => array(
@@ -76,9 +77,9 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
         'sanitize_callback' => 'uswds_hero_image_sanitization',
     ) );
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize,
-        $name . '_image_setting', array(
+        $name . '_image_setting_control', array(
             'label'   => 'Hero Image Setting',
-            'section' => $name . '_section',
+            'section' => $name . '_settings_section',
             'settings'   => $name . '_image_setting',
             'priority' => 8
             )
@@ -92,7 +93,7 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
     ) );
     $wp_customize->add_control($name . '_hero_size_control', array(
             'label' => 'Hero Size',
-            'section' => $name . '_section',
+            'section' => $name . '_settings_section',
             'settings' => $name . '_hero_size_setting',
             'type' => 'radio',
             'choices' => array(
@@ -113,7 +114,7 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
 
     $wp_customize->add_control($name . '_sidebar_position_control', array(
             'label' => 'Sidebar Position',
-            'section' => $name . '_section',
+            'section' => $name . '_settings_section',
             'settings' => $name . '_sidebar_position_setting',
             'type' => 'radio',
             'choices' => array(
@@ -133,7 +134,7 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
 
     $wp_customize->add_control($name . '_sidebar_visibility_control', array(
             'label' => 'Sidebar Visibility',
-            'section' => $name . '_section',
+            'section' => $name . '_settings_section',
             'settings' => $name . '_sidebar_visibility_setting',
             'type' => 'radio',
             'choices' => array(

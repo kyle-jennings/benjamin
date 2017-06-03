@@ -31,7 +31,7 @@ $main_width .= ' ' . uswds_get_width_visibility($template, $sidebar_position);
     ?>
 
     <div class="<?php echo $main_width; ?>">
-    	<?php uswds_page_sortables('frontpage_section_setting') ;?>
+    	<?php uswds_page_sortables('frontpage_sortables_setting') ;?>
     </div>
 
     <?php

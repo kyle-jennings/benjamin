@@ -12,21 +12,24 @@ function uswds_hero_image($template = null) {
     $hero_image = null;
 
     // this is gross, clean me up
-    if( (
-            in_array( $template, array('single','page' ))
-            || (is_single() || is_page())
+    if( (   in_array( $template, array('single','page') )
+            || ( is_single() || is_page() )
         )
-        && has_post_thumbnail()) {
-            $hero_image = get_the_post_thumbnail_url();
-    } else{
+        && has_post_thumbnail()
+    ) {
 
+
+            $hero_image = get_the_post_thumbnail_url();
+    } elseif ( $template == 'frontpage' ) {
+        $hero_image = get_theme_mod($template . '_image_setting');
+    } else {
         $post = get_queried_object();
         $post_type = is_a($post, 'WP_Post_Type') && !is_home() ? $post->name : 'post';
 
         $f_id = get_option('featured-post--'.$post_type, false);
         $featuredPost = new USWDSFeaturedPost($f_id, $post_type);
 
-        $hero_image = ($featuredPost && $featuredPost->image)
+        $hero_image = ($featuredPost && $featuredPost->image )
             ? $featuredPost->image : get_theme_mod($template . '_image_setting');
     }
 

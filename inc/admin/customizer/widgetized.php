@@ -4,16 +4,16 @@
 
 function uswds_widgetized_settings($wp_customize) {
 
-    $wp_customize->add_setting( 'widgetized_section_setting', array(
+    $wp_customize->add_setting( 'widgetized_sortables_setting', array(
         'default'        => '',
         'sanitize_callback' => 'uswds_widgetized_sortable_sanitize',
     ) );
 
     $wp_customize->add_control( new USWDS_Activated_Sortable_Custom_Control( $wp_customize,
-       'widgetized_section_control', array(
+       'widgetized_sortables_control', array(
            'label'   => 'Sortable Sections',
-           'section' => 'widgetized_section',
-           'settings'=> 'widgetized_section_setting',
+           'section' => 'widgetized_settings_section',
+           'settings'=> 'widgetized_sortables_setting',
            'priority' => 1,
            'choices' => array(
                    'widget-area-1' => 'Widget Area 1',

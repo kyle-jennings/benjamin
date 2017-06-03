@@ -93,7 +93,7 @@ class USWDS_Activated_Sortable_Custom_Control extends WP_Customize_Control
     */
     public function render_content()
     {
-    $target = str_replace('_section_control', '', $this->id);
+    $target = str_replace('_sortables_control', '', $this->id);
     ?>
         <label>
             <span class="customize-control-title">

@@ -2,7 +2,7 @@
 
 function uswds_footer() {
 
-    $sortables = get_theme_mod('footer_section_setting');
+    $sortables = get_theme_mod('footer_sortables_setting');
     if(!$sortables){
         return;
     }

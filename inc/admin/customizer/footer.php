@@ -25,16 +25,16 @@ function uswds_footer_settings($wp_customize) {
         'priority'       => 38,
     ) );
 
-    $wp_customize->add_setting( 'footer_section_setting', array(
+    $wp_customize->add_setting( 'footer_sortables_setting', array(
         'default'        => '',
         'sanitize_callback' => 'uswds_footer_sortable_sanitize',
     ) );
 
     $wp_customize->add_control( new USWDS_Activated_Sortable_Custom_Control( $wp_customize,
-       'footer_section_control', array(
+       'footer_sortables_control', array(
            'label'   => 'Sortable Sections',
            'section' => 'footer_settings_section',
-           'settings'=> 'footer_section_setting',
+           'settings'=> 'footer_sortables_setting',
            'priority' => 1,
            'choices' => $choices
            )
