@@ -89,7 +89,7 @@ Mixed License (https://github.com/18F/web-design-standards/blob/develop/LICENSE.
 
 == Changelog ==
 
-* 1.1.1
+* 1.1.2
 * namespaced all functions, classes, and constants
 * properly sanitized all customizer and settings API
 * replaced the screenshot
