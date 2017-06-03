@@ -2,7 +2,7 @@
 
 Requires at least: 4.5
 Tested up to: 4.7
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -20,6 +20,48 @@ Theme Demo: https://uswds.sites.usa.gov
 1. In your admin panel, go to Appearance > Themes and click the Add New button.
 2. Click Upload and Choose File, then select the theme's .zip file. Click Install Now.
 3. Click Activate to use your new theme right away.
+
+== Documentation for site identity  ==
+* The color scheme settings will change Benjamin's colors to a series of preset combinations.
+* The sidebar size setting has 2 options, wide (1/3rd page) and narrow (1/4th)
+* The logo is used for the navbar brand (if the navbar brand setting is changed.)
+
+== Documentation for menus ==
+* the menus only go 2 levels deep, the top level and a single dropdown
+
+== Documentation for header settings and navbar ==
+* The header order is a draggable, sortable setting which lets you select the position of the hero, navbar, and banner (banner is available if and only if your site domain is a .gov or .mil)
+* Search location allows you to place a search field in the navbar
+* You can change the navbar color scheme from light (default) to dark (kind of inverted)
+* The navbar can be set to stick to the top of the window when scrolling down
+* As mentioned in the site identity section, the brand can be set from text (default) to the logo
+
+== Documentation for templates setup ==
+* There are template which can be configured: the feed (default), frontpage, single post, single page, and widgetized page
+* Each template can be activated to override the feed (default) template settings
+* The hero image can be set
+* the hero size can be set to predefined sizes include a fullscreen size
+* the position can be hidden, or set to th left or right of the page
+* the sizebar's visibility can be hidden or shown on different screen sizes
+
+== Documentation for frontpage setup ==
+* The frontpage has 2 extra settings
+* the "hero callout" button can be set to point to a specific page
+* There are draggable, sortable widget areas which can be ordered
+
+
+== Documentation for widgetized page ==
+* There are draggable, sortable widget areas which can be ordered
+
+== Documentation for footer settings ==
+* The footer size can be set to slim, medium, and big
+* Slim simply shows a shared widget or menu area, also called the footer "top".
+* The footer top contents can be set to the aforementioned menu or widgets area
+* Medium shows the footer bottom area only (this area is filled with widgets)
+* Big shows both the footer top and bottom
+* This will change shortly to be fully sortable
+
+
 
 == Copyrights and License ==
 
@@ -44,3 +86,13 @@ Mixed License (https://github.com/18F/web-design-standards/blob/develop/LICENSE.
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
+
+== Changelog ==
+
+* 1.1.1
+* namespaced all functions, classes, and constants
+* properly sanitized all customizer and settings API
+* replaced the screenshot
+* included unminified JS alongside the minified JS
+* added support for custom post types
+* added support for co-authors plus plugin
