@@ -9,6 +9,7 @@ jQuery(document).ready(function($) {
   require('./sortable');
   require('./frontpage-sortables');
   require('./widgetized-sortables');
+  require('./footer-sortables');
 
 
   if($('body.widgets-php')){

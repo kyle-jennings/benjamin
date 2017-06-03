@@ -13,100 +13,60 @@
  */
 
 function uswds_footer_settings($wp_customize) {
+    $choices = array(
+            'return-to-top' => 'Return to Top',
+            'footer-menu' => 'Footer Menu',
+            'widget-area-1' => 'Widget Area 1',
+            'widget-area-2' => 'Widget Area 2'
+    );
 
     $wp_customize->add_section( 'footer_settings_section', array(
         'title'          => 'Footer Settings',
         'priority'       => 38,
     ) );
 
-    // footer size
-    $wp_customize->add_setting( 'footer_size_setting', array(
-        'default' => '',
-        'sanitize_callback' => 'uswds_footer_size_sanitize',
+    $wp_customize->add_setting( 'footer_section_setting', array(
+        'default'        => '',
+        'sanitize_callback' => 'uswds_footer_sortable_sanitize',
     ) );
-    $wp_customize->add_control('footer_size_control', array(
-            'label' => 'Footer Size',
-            'section' => 'footer_settings_section',
-            'settings' => 'footer_size_setting',
-            'type' => 'radio',
-            'choices' => array(
-                'slim' => 'Slim',
-                'medium' => 'Medium',
-                'big' => 'Big',
-            )
-        )
-    );
 
-    $wp_customize->add_setting( 'footer_top_content_setting', array(
-        'default' => '',
-        'sanitize_callback' => 'uswds_footer_top_content_sanitize',
-    ) );
-    $wp_customize->add_control('footer_top_content_control', array(
-            'label' => 'Footer Top Content',
-            'section' => 'footer_settings_section',
-            'settings' => 'footer_top_content_setting',
-            'type' => 'radio',
-            'choices' => array(
-                'widgets' => 'Widgets',
-                'menu' => 'Menu',
-            )
-        )
-    );
+    $wp_customize->add_control( new USWDS_Activated_Sortable_Custom_Control( $wp_customize,
+       'footer_section_control', array(
+           'label'   => 'Sortable Sections',
+           'section' => 'footer_settings_section',
+           'settings'=> 'footer_section_setting',
+           'priority' => 1,
+           'choices' => $choices
+           )
+       )
+   );
 
-
-    $wp_customize->add_setting( 'footer_menu_setting', array(
-        'default' => '',
-        'sanitize_callback' => 'uswds_footer_menu_sanitizer',
-        )
-    );
-
-    $wp_customize->add_control( new USWDS_Menu_Dropdown_Custom_Control(
-        $wp_customize, 'footer_menu_control', array(
-            'label'   => 'Footer Menu Dropdown Setting',
-            'section' => 'footer_settings_section',
-            'settings'   => 'footer_menu_setting',
-            )
-        )
-    );
 
 }
 add_action('customize_register', 'uswds_footer_settings');
 
 
 
-function uswds_footer_size_sanitize($val){
-    $valid = array(
-            'slim',
-            'medium',
-            'big',
-        );
 
-    if( in_array($val, $valid) == false )
-        $val = 'slim';
+function uswds_footer_sortable_sanitize($val) {
 
-    return $val;
-}
+    $valids = array(
+            'return-to-top',
+            'footer-menu',
+            'widget-area-1',
+            'widget-area-2',
+    );
 
-function uswds_footer_top_content_sanitize($val){
-    $valid = array(
-        'widgets',
-        'menu',
-            );
-    if (in_array($val, $valid) == false)
-        $val = 'widgets';
+    $valid = true;
+    $tmp_val = json_decode($val);
+    foreach($tmp_val as $v){
+        if( !in_array($v->name, $valids) ){
+            // error_log($v->name)
+            $valid = false;
+        }
+    }
 
-    return $val;
-}
-
-
-function uswds_footer_menu_sanitizer($val){
-    $menus = wp_get_nav_menus();
-    $valids = array();
-
-    foreach($menus as $menu)
-        $valids[] = $menu->term_id;
-
-    if( in_array($val, $valids) == false)
+    if(!$valid)
         return null;
 
     return $val;

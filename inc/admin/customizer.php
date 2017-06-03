@@ -8,10 +8,10 @@ $files = array(
     'customizer-fields/menu-dropdown.php',
     'customizer/identity.php',
     'customizer/header.php',
-    'customizer/footer.php',
-    'customizer/frontpage.php',
     'customizer/template-settings.php',
+    'customizer/frontpage.php',
     'customizer/widgetized.php',
+    'customizer/footer.php',
 );
 
 foreach($files as $file)

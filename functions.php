@@ -124,6 +124,7 @@ if( !is_admin() ){
     $files = array(
         '/inc/frontend/assets.php',
         '/inc/frontend/filters.php',
+        '/inc/frontend/footer.php',
         '/inc/frontend/template-tags.php',
         '/inc/frontend/class-FeaturedPost.php',
         '/inc/frontend/hero-settings.php',

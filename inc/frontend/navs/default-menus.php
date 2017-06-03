@@ -27,20 +27,3 @@ function uswds_create_default_nav() {
 
 }
 uswds_create_default_nav();
-
-
-function uswds_footer_nav() {
-    $args = array(
-        'container' => 'nav',
-        'container_class' => 'usa-footer-nav',
-        'depth'=> 0,
-        'menu_class' => 'usa-unstyled-list',
-        'walker' => new FooterNavbarWalker()
-    );
-    if( has_nav_menu('footer-top') )
-        $args['theme_location'] = 'footer-top';
-    else
-        $args['menu'] = 'default-menu';
-
-    wp_nav_menu( $args );
-}

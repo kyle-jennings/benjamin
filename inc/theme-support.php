@@ -1,7 +1,8 @@
 <?php
 
 
-if ( ! function_exists( 'uswds_setup' ) ) :
+if ( !function_exists( 'uswds_setup' ) ):
+
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -39,7 +40,7 @@ function uswds_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'uswds' ),
-        'footer-top' => esc_html__('Footer Top', 'uswds')
+        'footer' => esc_html__('Footer', 'uswds')
 	) );
 
 	/*

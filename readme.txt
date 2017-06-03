@@ -48,19 +48,23 @@ Theme Demo: https://uswds.sites.usa.gov
 * The frontpage has 2 extra settings
 * the "hero callout" button can be set to point to a specific page
 * There are draggable, sortable widget areas which can be ordered
+* 3 widget area rows
+* a row to display the page contents
 
 
 == Documentation for widgetized page ==
 * There are draggable, sortable widget areas which can be ordered
+* Sortables include:
+* 3 widget area rows
+* a row to display the page contents
+
 
 == Documentation for footer settings ==
-* The footer size can be set to slim, medium, and big
-* Slim simply shows a shared widget or menu area, also called the footer "top".
-* The footer top contents can be set to the aforementioned menu or widgets area
-* Medium shows the footer bottom area only (this area is filled with widgets)
-* Big shows both the footer top and bottom
-* This will change shortly to be fully sortable
-
+* There are draggable, sortable widget areas which can be ordered
+* Sortables include:
+* a return to top row
+* a footer menu row (set by the "footer" menu location)
+* and 2 widget area rows
 
 
 == Copyrights and License ==

@@ -20,8 +20,8 @@ function uswds_widgets_init() {
         'widgetized-widget-area-1' => 'Widgetized Page Area 1',
         'widgetized-widget-area-2' => 'Widgetized Page Area 2',
         'widgetized-widget-area-3' => 'Widgetized Page Area 3',
-        'footer' => 'Footer',
-        'footer-below' => 'Footer Below'
+        'footer-widgets-1' => 'Footer Widgets 1',
+        'footer-widgets-2' => 'Footer Widgets 2'
     );
 
     $advanced_templates = array(
@@ -52,6 +52,8 @@ function uswds_widgets_init() {
             'frontpage-widget-area-1',
             'frontpage-widget-area-2',
             'frontpage-widget-area-3',
+            'footer-widgets-1',
+            'footer-widgets-2',
         );
 
 
@@ -60,10 +62,6 @@ function uswds_widgets_init() {
         if ( in_array($name, $horizontals) ){
             $sidebar_size = 'full';
         }
-
-
-
-
 
         // figure out which width rules to use
         if($sidebar_size == 'full')
