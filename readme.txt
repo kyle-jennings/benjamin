@@ -100,3 +100,5 @@ Mixed License (https://github.com/18F/web-design-standards/blob/develop/LICENSE.
 * included unminified JS alongside the minified JS
 * added support for custom post types
 * added support for co-authors plus plugin
+* moved contact settings to Franklin as customizer settings
+* changed footer settings to sortable components

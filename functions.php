@@ -110,7 +110,6 @@ if (is_admin()) {
     $files = array(
         '/inc/admin/assets.php',
         '/inc/admin/widgets.php',
-        '/inc/admin/contact-settings.php',
         '/inc/admin/metabox-featured-post.php',
         '/inc/admin/set-default-settings.php',
     );
