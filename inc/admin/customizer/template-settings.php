@@ -18,20 +18,28 @@ function uswds_template_layout_settings($wp_customize) {
         'frontpage' => 'Front Page',
         'single' => 'Single Post',
         'page' => 'Single Page',
-        'widgetized' => 'Widgetized Page'
+        'widgetized' => 'Widgetized Page',
+        'template-1' => 'Page Template 1',
+        'template-2' => 'Page Template 2',
+        'template-3' => 'Page Template 3',
+        'template-4' => 'Page Template 4',
+        '404' => '404 Page',
     );
+
+    $args = array(
+       'public'   => true,
+       'publicly_queryable' => true,
+       '_builtin' => false
+    );
+    $cpts = get_post_types($args);
+    // $templates = array_merge($templates, $cpts);
 
     // not used yet
     // $advanced_templates = array(
-    //     '404' => 'Page Not Found',
     //     'search' => 'Search Results',
     //     'date' => 'Filtered by Date',
     //     'category' => 'Filtered by Category',
     //     'tag' => 'Filtered by Tag',
-    //     'template_1' => 'Page Template 1',
-    //     'template_2' => 'Page Template 2',
-    //     'template_3' => 'Page Template 3',
-    //     'template_4' => 'Page Template 4',
     // );
 
 
@@ -44,7 +52,7 @@ add_action('customize_register', 'uswds_template_layout_settings');
 
 function uswds_template_settings_loop(&$wp_customize, $name, $label){
     $wp_customize->add_section( $name . '_settings_section', array(
-        'title'          => $label . ' Settings',
+        'title'          => ucfirst($label) . ' Settings',
         'priority'       => 36,
     ) );
 
@@ -147,7 +155,29 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
         )
     );
 
+    if( $name !== 'archive'):
 
+        $wp_customize->add_setting( $name.'_page_layout_setting', array(
+            'default'        => '',
+            'sanitize_callback' => 'uswds_hide_layout_sanitize',
+        ) );
+
+        $wp_customize->add_control( new USWDS_Checkbox_Group_Control( $wp_customize,
+            $name.'_page_layout_control', array(
+                'label'   => 'Page Layout',
+                'section' => $name.'_settings_section',
+                'settings'=> $name.'_page_layout_setting',
+                'priority' => 6,
+                'choices' => array(
+                        'banner' => 'Hide Banner',
+                        'navbar' => 'Hide Navbar',
+                        'page-content' => 'Hide Page Content and Sidebar',
+                        'footer' => 'Hide Footer'
+                    )
+                )
+            )
+        );
+    endif;
 }
 
 
@@ -226,5 +256,10 @@ function uswds_sidebar_visibility_sanitize($val) {
     if( !in_array($val, $valids) )
         return null;
 
+    return $val;
+}
+
+
+function uswds_hide_layout_sanitize($val) {
     return $val;
 }

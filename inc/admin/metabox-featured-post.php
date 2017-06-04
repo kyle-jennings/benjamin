@@ -1,7 +1,7 @@
 <?php
 
 
-// examine(get_post_types( $args, $output, $operator ) );
+
 function uswds_featured_post_metabox_markup($post) {
     wp_nonce_field(basename(__FILE__), "meta-box-nonce");
     $featured_post = get_option('featured-post--'.$post->post_type, null);

@@ -5,7 +5,7 @@ function toggleLayoutSettings($parent, thisVal) {
 
   id = id.split('-');
   id = id[id.length - 1];
-  target = id.replace('_section', '');
+  target = id.replace('_settings_section', '');
   var $targets = $("[id*='customize-control-"+target+"'");
 
   $.each($targets, function(k,v){

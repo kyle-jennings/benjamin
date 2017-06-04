@@ -19,10 +19,25 @@
     padding-bottom: 9rem;
 }
 
+
+// Full hgiht hero
 .usa-hero--full {
     height: 100vh;
 }
 
+// trim hero a little more if the admin bar is showing
+.admin-bar .usa-hero--full {
+    height: calc( 100vh - 46px);
+
+    @media(min-width: 782px) {
+        height: calc( 100vh - 32px);
+
+    }
+}
+
+
+
+// the image BG overlay
 .usa-hero::before {
     background-color:rgba(0, 0, 0, .4);
     content: '';

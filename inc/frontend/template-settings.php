@@ -37,6 +37,8 @@ function uswds_get_template() {
         return $single;
     elseif ( is_page() && $page = uswds_is_page()) :
         return $page;
+    elseif (is_404() && uswds_settings_active('404') ) :
+        return '404';
     else :
         return uswds_is_feed();
     endif;
@@ -47,8 +49,6 @@ function uswds_is_single(){
 
     if (is_embed() && uswds_settings_active('embed') ) :
         return 'embed';
-    elseif (is_404() && uswds_settings_active('404') ) :
-        return '404';
     elseif (is_attachment() && uswds_settings_active('attachment') ) :
         return 'attachment';
     elseif (is_single() && uswds_settings_active('single') ) :
@@ -105,6 +105,14 @@ function uswds_is_page_template(){
 
     if ( is_page_template('page-templates/widgetized.php') && uswds_settings_active('widgetized') )
         return 'widgetized';
+    if ( is_page_template('page-templates/template-1.php') && uswds_settings_active('template-1') )
+        return 'template-1';
+    if ( is_page_template('page-templates/template-2.php') && uswds_settings_active('template-2') )
+        return 'template-2';
+    if ( is_page_template('page-templates/template-3.php') && uswds_settings_active('template-3') )
+        return 'template-3';
+    if ( is_page_template('page-templates/template-4.php') && uswds_settings_active('template-4') )
+        return 'template-4';
     else
         return false;
 }
@@ -114,4 +122,23 @@ function uswds_settings_active($template = null){
     $mods = get_theme_mods();
     $active = $mods[$template . '_settings_active'];
     return ($active == 'yes') ? true : false;
+}
+
+
+function uswds_hide_layout_part( $needle, $template ) {
+
+    $layout_settings = get_theme_mod($template.'_page_layout_setting');
+    $layout_settings = json_decode($layout_settings);
+    $layout_settings = $layout_settings ? $layout_settings : array();
+    $result = in_array($needle, $layout_settings);
+
+    return $result;
+}
+
+
+function uswds_get_main_width($sidebar_position) {
+    $width = ($sidebar_position == 'none' || !$sidebar_position)
+            ? USWDS_FULL_WIDTH : USWDS_MAIN_WIDTH;
+
+    return $width;
 }

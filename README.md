@@ -29,7 +29,7 @@ As mentioned, both the frontpage and widgetized pages are sortable, so you have 
 
 <br>
 
-
+#### 4 extra page templates for more customized one off pages
 #### Template settings include:  
 * Hero background image (select the default image if a "featured image" is not set)
 * Hero Size (slim, medium, big, and full page)
@@ -45,9 +45,8 @@ As mentioned, both the frontpage and widgetized pages are sortable, so you have 
 * a post can be marked as "featured" and displayed promptly in the feed page hero
 
 ### Custom post type support
-
 ### Co-authors Plus support
-
+### Sortable footer
 
 #### Template settings use a "fallback" system
 * Allows setting things once for all templates

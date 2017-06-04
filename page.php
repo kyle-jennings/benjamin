@@ -12,9 +12,10 @@ get_header();
 $template = uswds_template_settings('template');
 $sidebar_position = get_theme_mod($template . '_sidebar_position_setting');
 
-$main_width = ($sidebar_position == 'none' || !$sidebar_position)
-        ? USWDS_FULL_WIDTH : USWDS_MAIN_WIDTH;
+$main_width = uswds_get_main_width($sidebar_position);
 $main_width .= ' ' . uswds_get_width_visibility($template, $sidebar_position);
+
+if( !uswds_hide_layout_part('page-content', $template) ):
 ?>
 
 <section id="primary" class="usa-grid usa-section">
@@ -43,4 +44,6 @@ $main_width .= ' ' . uswds_get_width_visibility($template, $sidebar_position);
 </section>
 
 <?php
+endif;
+
 get_footer();

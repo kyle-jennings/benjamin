@@ -1,9 +1,10 @@
 <?php
 
 function uswds_footer() {
+    $template = uswds_template_settings('template');
 
     $sortables = get_theme_mod('footer_sortables_setting');
-    if(!$sortables){
+    if(!$sortables || uswds_hide_layout_part('footer', $template) ) {
         return;
     }
 

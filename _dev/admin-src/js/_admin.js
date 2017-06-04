@@ -10,6 +10,7 @@ jQuery(document).ready(function($) {
   require('./frontpage-sortables');
   require('./widgetized-sortables');
   require('./footer-sortables');
+  require('./checkbox-group');
 
 
   if($('body.widgets-php')){

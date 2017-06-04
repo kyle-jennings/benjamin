@@ -17,9 +17,7 @@ function uswds_hero_image($template = null) {
         )
         && has_post_thumbnail()
     ) {
-
-
-            $hero_image = get_the_post_thumbnail_url();
+        $hero_image = get_the_post_thumbnail_url();
     } elseif ( $template == 'frontpage' ) {
         $hero_image = get_theme_mod($template . '_image_setting');
     } else {
@@ -66,7 +64,7 @@ function uswds_get_hero_callout(){
     }
     ?>
     <div class="usa-hero-callout usa-section-dark">
-        <h2><?php echo $title; ?></h2>
+        <h1><?php echo $title; ?></h1>
         <?php
             if ( $description || is_customize_preview() ) : ?>
                 <p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
@@ -131,9 +129,9 @@ function uswds_get_feed_title() {
         } else {
             $title = '<h1> Home </h1>';
         }
-
-    }else {
-
+    } elseif(is_404() ) {
+        $title = '<h1>404: Page not found. </h1>';
+    } else {
         $post = get_queried_object();
         if( $post->post_title)
             $title = $post->post_title;

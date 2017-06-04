@@ -1,7 +1,7 @@
 <?php
 
 function uswds_get_navbar_brand() {
-    $logo_tag = is_front_page() ? 'h1' : 'em';
+    $logo_tag = 'em';
     $brand = get_theme_mod('navbar_brand_setting');
 
     $brand = $brand ? $brand : 'text';

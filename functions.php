@@ -87,10 +87,10 @@ require get_template_directory() . '/inc/admin/customizer.php';
 require get_template_directory() . '/inc/extras.php';
 require get_template_directory() . '/inc/jetpack.php';
 require get_template_directory() . '/inc/excerpts.php';
-
 // sidebars
 require get_template_directory() . '/inc/register-sidebars.php';
 require get_template_directory() . '/inc/widgets.php';
+
 
 
 /**
@@ -117,6 +117,7 @@ if (is_admin()) {
         require get_template_directory() . $file;
 }
 
+
 // only load these on the frontend
 if( !is_admin() ){
 
@@ -137,9 +138,9 @@ if( !is_admin() ){
         '/inc/frontend/nav-settings.php',
         '/inc/frontend/navs/default-menus.php',
         '/inc/frontend/navs/navbar-walker.php',
-        '/inc/frontend/navs/footer-nav-walker.php',
         '/inc/frontend/navs/sidenav-walker.php',
         '/inc/frontend/navs/navlist-walker.php',
+        '/inc/frontend/navs/footer-nav-walker.php',
     );
     foreach($files as $file)
         require get_template_directory() . $file;

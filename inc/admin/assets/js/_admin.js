@@ -11,6 +11,7 @@ jQuery(document).ready(function($) {
   require('./frontpage-sortables');
   require('./widgetized-sortables');
   require('./footer-sortables');
+  require('./checkbox-group');
 
 
   if($('body.widgets-php')){
@@ -21,7 +22,42 @@ jQuery(document).ready(function($) {
 
 window.$ = jQuery;
 
-},{"./footer-sortables":2,"./frontpage-sortables":3,"./hide-footer-menu":4,"./refresh-alert":5,"./sortable":6,"./toggle-template-settings":7,"./widgetized-sortables":8}],2:[function(require,module,exports){
+},{"./checkbox-group":2,"./footer-sortables":3,"./frontpage-sortables":4,"./hide-footer-menu":5,"./refresh-alert":6,"./sortable":7,"./toggle-template-settings":8,"./widgetized-sortables":9}],2:[function(require,module,exports){
+$('.js--checkbox-group input[type="checkbox"]').on('change', function(e){
+  var $this = $(this);
+  var $parent = $this.closest('.js--checkbox-group');
+  var targetID = $parent.attr('id');
+  var $targetField = $('.'+targetID.replace('js--', ''));
+  var settingID = $parent.data('setting');
+  var $siblings = $parent.find('input[type="checkbox"]:checked');
+  var thisVal = $this.val();
+  var checked = [];
+
+  $siblings.each(function(idx) {
+
+    var $thisComp = $(this);
+    var component = $thisComp.val();
+
+    checked.push(component);
+  });
+
+
+  save_checkbox_group_value(settingID, JSON.stringify(checked), $targetField );
+
+});
+
+
+function save_checkbox_group_value(key, componentsStr, $field){
+
+  wp.customize( key, function ( obj ) {
+
+    obj.set( componentsStr );
+  } );
+
+  $field.val( componentsStr );
+}
+
+},{}],3:[function(require,module,exports){
 jQuery(function($) {
 
   if($('.js--footer-sortables').length <= 0)
@@ -99,7 +135,7 @@ jQuery(function($) {
   }
 });
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 jQuery(function($) {
 
   if($('.js--frontpage-sortables').length <= 0)
@@ -176,7 +212,7 @@ jQuery(function($) {
   }
 });
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 
 function hideFooterMenuSetting($) {
   var val = $('input[name=_customize-radio-footer_top_content_control]:checked').val();
@@ -198,13 +234,13 @@ if($('body.wp-customizer')){
   hideFooterMenuSetting($);
 }
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 window.refreshAlert = function() {
 
   $('#save').addClass('alert alert--refresh').val('Save and Refresh');
 }
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 jQuery(function($) {
 
   if($('.js--sortables').length <= 0)
@@ -281,7 +317,7 @@ jQuery(function($) {
   }
 });
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 function toggleLayoutSettings($parent, thisVal) {
 
 
@@ -289,7 +325,7 @@ function toggleLayoutSettings($parent, thisVal) {
 
   id = id.split('-');
   id = id[id.length - 1];
-  target = id.replace('_section', '');
+  target = id.replace('_settings_section', '');
   var $targets = $("[id*='customize-control-"+target+"'");
 
   $.each($targets, function(k,v){
@@ -341,7 +377,7 @@ if($('body.wp-customizer')){
 
 }
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 jQuery(function($) {
 
   if($('.js--widgetized-sortables').length <= 0)

@@ -6,12 +6,14 @@ $files = array(
     'customizer-fields/activated-sortable.php',
     'customizer-fields/color-scheme.php',
     'customizer-fields/menu-dropdown.php',
+    'customizer-fields/checkbox-group.php',
     'customizer/identity.php',
     'customizer/header.php',
     'customizer/template-settings.php',
     'customizer/frontpage.php',
     'customizer/widgetized.php',
     'customizer/footer.php',
+    'customizer/404.php',
 );
 
 foreach($files as $file)

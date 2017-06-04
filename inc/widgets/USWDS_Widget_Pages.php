@@ -189,7 +189,7 @@ class USWDS_Widget_Pages extends WP_Widget {
 		 */
          $children = ! empty( $instance['children'] ) ? '1' : '0';
 
-		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Pages', 'uswds' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? null : $instance['title'], $instance, $this->id_base );
 		$sortby = empty( $instance['sortby'] ) ? 'menu_order' : $instance['sortby'];
 		$exclude = empty( $instance['exclude'] ) ? '' : $instance['exclude'];
 		if ( $sortby == 'menu_order' )
