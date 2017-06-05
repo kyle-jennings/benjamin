@@ -102,3 +102,5 @@ Mixed License (https://github.com/18F/web-design-standards/blob/develop/LICENSE.
 * added support for co-authors plus plugin
 * moved contact settings to Franklin as customizer settings
 * changed footer settings to sortable components
+* added options to hide parts of a given page
+* Choose your 404 page content

@@ -36,6 +36,7 @@ As mentioned, both the frontpage and widgetized pages are sortable, so you have 
 * Sidebar position (left or right)
 * Sidebar visibility (hide or show on different screen sizes)
 * Each template gets its own widget area
+* Parts of a page (such as the navbar or footer) can be hidden on each template
 
 ![template-settings](_dev/screenshots/template-settings.png#right)
 
