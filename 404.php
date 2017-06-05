@@ -15,6 +15,9 @@ $sidebar_position = get_theme_mod($template . '_sidebar_position_setting');
 $main_width = uswds_get_main_width($sidebar_position);
 $main_width .= ' ' . uswds_get_width_visibility($template, $sidebar_position);
 
+$content = get_theme_mod('404_page_content_setting', 'default');
+
+
 if( !uswds_hide_layout_part('page-content', $template) ):
 ?>
 
@@ -26,17 +29,23 @@ if( !uswds_hide_layout_part('page-content', $template) ):
     ?>
 
   <div class="<?php echo $main_width; ?>">
-		<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'uswds' ); ?></p>
+        <?php
 
-		<?php
-			get_search_form();
+            if($content == 'page' && $pid = get_theme_mod('404_page_select_setting') ):
 
-            echo '<br>';
-            echo '<br>';
-            echo '<br>';
+                $page = get_page($pid);
+                echo $page->post_content;
+            else :
+                echo '<p>' . esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'uswds' ) . '</p>';
 
-			the_widget( 'USWDS_Widget_Pages', array('title'=>'Pages') );
+                get_search_form();
 
+                echo '<br>';
+                echo '<br>';
+                echo '<br>';
+
+    			the_widget( 'USWDS_Widget_Pages', array('title'=>'Pages') );
+            endif;
 		?>
   </div>
 

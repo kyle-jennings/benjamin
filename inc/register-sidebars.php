@@ -8,26 +8,14 @@
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function uswds_widgets_init() {
-    $templates = array(
-        'frontpage' => 'Front Page',
-        'archive' => 'Feed',
-        'single' => 'Single Post',
-        'page' => 'Single Page',
-        'widgetized' => 'Widgetized Page',
-        'template-1' => 'Page Template 1',
-        'template-2' => 'Page Template 2',
-        'template-3' => 'Page Template 3',
-        'template-4' => 'Page Template 4',
-        'frontpage-widget-area-1' => 'Frontpage Widget Area 1',
-        'frontpage-widget-area-2' => 'Frontpage Widget Area 2',
-        'frontpage-widget-area-3' => 'Frontpage Widget Area 3',
-        'widgetized-widget-area-1' => 'Widgetized Page Area 1',
-        'widgetized-widget-area-2' => 'Widgetized Page Area 2',
-        'widgetized-widget-area-3' => 'Widgetized Page Area 3',
-        'footer-widgets-1' => 'Footer Widgets 1',
-        'footer-widgets-2' => 'Footer Widgets 2',
-        '404' => 'Page Not Found',
+    $templates = uswds_the_template_list(true);
+
+    $args = array(
+       'public'   => true,
+       'publicly_queryable' => true,
+       '_builtin' => false
     );
+    $cpts = get_post_types($args);
 
     $advanced_templates = array(
         'search' => 'Search Results',
@@ -56,7 +44,6 @@ function uswds_widgets_init() {
             'footer-widgets-2',
         );
 
-
         // $sidebar_size = uswds_determine_widget_width_rules($pos, $name);
         // determine whether or not to apply withs to the widgets
         if ( in_array($name, $horizontals) ){
@@ -70,7 +57,7 @@ function uswds_widgets_init() {
             $width = '';
 
         register_sidebar( array(
-    		'name'          => $label,
+    		'name'          => ucfirst($label),
     		'id'            => $name,
     		'description'   => esc_html__( 'Add widgets here.', 'uswds' ),
     		'before_widget' => '<div id="%1$s" class="widget '.$width.'">',
@@ -82,7 +69,7 @@ function uswds_widgets_init() {
 
 
 }
-add_action( 'widgets_init', 'uswds_widgets_init' );
+add_action( 'init', 'uswds_widgets_init' );
 
 
 function uswds_calculate_widget_width($count){

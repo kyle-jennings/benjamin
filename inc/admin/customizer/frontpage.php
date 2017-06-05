@@ -7,7 +7,7 @@ function uswds_frontpage_settings($wp_customize) {
     // Dropdown pages control
      $wp_customize->add_setting( 'frontpage_hero_callout_setting', array(
          'default'        => '1',
-         'sanitize_callback' => 'uswds_frontpage_hero_callout_sanitize',
+         'sanitize_callback' => 'absint',
      ) );
      $wp_customize->add_control( 'frontpage_hero_callout_control', array(
          'label'   => 'Callout Button',
@@ -43,7 +43,6 @@ function uswds_frontpage_settings($wp_customize) {
 add_action('customize_register', 'uswds_frontpage_settings');
 
 
-
 function uswds_frontpage_hero_callout_sanitize($val) {
     $pages = get_posts(array('post_type' => 'page', 'posts_per_page' => -1, 'fields' => 'ids'));
 
@@ -52,6 +51,7 @@ function uswds_frontpage_hero_callout_sanitize($val) {
 
     return $val;
 }
+
 
 function uswds_frontpage_sortable_sanitize($val) {
     $valids = array(

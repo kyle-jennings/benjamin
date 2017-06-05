@@ -79,9 +79,8 @@ function uswds_clean_string($string){
 
 
 
-/**
-* Assets
-*/
+
+require get_template_directory() . '/inc/template-list.php';
 require get_template_directory() . '/inc/theme-support.php';
 require get_template_directory() . '/inc/admin/customizer.php';
 require get_template_directory() . '/inc/extras.php';

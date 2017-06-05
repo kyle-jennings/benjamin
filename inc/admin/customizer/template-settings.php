@@ -12,35 +12,9 @@
  * @param  object $wp_customize
  */
 function uswds_template_layout_settings($wp_customize) {
-    $templates = array(
 
-        'archive' => 'Feed (default)',
-        'frontpage' => 'Front Page',
-        'single' => 'Single Post',
-        'page' => 'Single Page',
-        'widgetized' => 'Widgetized Page',
-        'template-1' => 'Page Template 1',
-        'template-2' => 'Page Template 2',
-        'template-3' => 'Page Template 3',
-        'template-4' => 'Page Template 4',
-        '404' => '404 Page',
-    );
+    $templates = uswds_the_template_list();
 
-    $args = array(
-       'public'   => true,
-       'publicly_queryable' => true,
-       '_builtin' => false
-    );
-    $cpts = get_post_types($args);
-    // $templates = array_merge($templates, $cpts);
-
-    // not used yet
-    // $advanced_templates = array(
-    //     'search' => 'Search Results',
-    //     'date' => 'Filtered by Date',
-    //     'category' => 'Filtered by Category',
-    //     'tag' => 'Filtered by Tag',
-    // );
 
 
     foreach($templates as $name => $label):
@@ -58,6 +32,7 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
 
     // activate the template settings
     if( $name !== 'archive'):
+
         $wp_customize->add_setting( $name . '_settings_active', array(
             'default' => 'no',
             'sanitize_callback' => 'uswds_template_settings_active_sanitize',
@@ -86,13 +61,26 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
     ) );
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize,
         $name . '_image_setting_control', array(
-            'label'   => 'Hero Image Setting',
+            'label'   => 'Hero Image',
             'section' => $name . '_settings_section',
             'settings'   => $name . '_image_setting',
             'priority' => 8
             )
         )
     );
+
+
+    // $wp_customize->add_setting($name . '_video_setting', array(
+    //     'sanitize_callback' => 'absint'
+    // ));
+    //
+    // $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize,
+    // $name . '_video_control', array(
+    //     'label'   => 'Hero Video',
+    //     'section' => $name . '_settings_section',
+    //     'settings' => $name . '_video_setting',
+    //     'mime_type' => 'video'
+    // )));
 
     // header size
     $wp_customize->add_setting( $name . '_hero_size_setting', array(
@@ -177,7 +165,9 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
                 )
             )
         );
+
     endif;
+
 }
 
 
@@ -261,5 +251,22 @@ function uswds_sidebar_visibility_sanitize($val) {
 
 
 function uswds_hide_layout_sanitize($val) {
+    $valids = array(
+        'banner',
+        'navbar',
+        'page-content',
+        'footer',
+    );
+
+    $valid = true;
+    $tmp_val = json_decode($val);
+    foreach($tmp_val as $v){
+        if( !in_array($v, $valids) )
+            $valid = false;
+    }
+
+    if(!$valid)
+        return null;
+
     return $val;
 }
