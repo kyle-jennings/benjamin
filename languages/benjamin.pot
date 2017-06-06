@@ -1,0 +1,345 @@
+# Copyright (C) 2017 Example project
+# This file is distributed under the same license as the Example project package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Example project\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../404.php:39
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgstr ""
+
+#: ../comments.php:31
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../comments.php:40, ../comments.php:61
+msgid "Comment navigation"
+msgstr ""
+
+#: ../comments.php:43, ../comments.php:64
+msgid "Older Comments"
+msgstr ""
+
+#: ../comments.php:44, ../comments.php:65
+msgid "Newer Comments"
+msgstr ""
+
+#: ../comments.php:78
+msgid "Comments are closed."
+msgstr ""
+
+#: ../header.php:19
+msgid "Skip to main content"
+msgstr ""
+
+#: ../searchform.php:13
+msgctxt "search lable"
+msgid "Search for:"
+msgstr ""
+
+#: ../searchform.php:15
+msgctxt "placeholder"
+msgid "Search ..."
+msgstr ""
+
+#: ../searchform.php:17
+msgctxt "title"
+msgid "Search for:"
+msgstr ""
+
+#: ../searchform.php:18
+msgctxt "submit button"
+msgid "Search"
+msgstr ""
+
+#: ../inc/register-sidebars.php:62
+msgid "Add widgets here."
+msgstr ""
+
+#: ../inc/theme-support.php:42
+msgid "Primary"
+msgstr ""
+
+#: ../inc/theme-support.php:43
+msgid "Footer"
+msgstr ""
+
+#: ../page-templates/sidenav.php:2
+msgid "Sidenav Page"
+msgstr ""
+
+#: ../page-templates/template-1.php:2
+msgid "Template Page 1"
+msgstr ""
+
+#: ../page-templates/template-2.php:2
+msgid "Template Page 2"
+msgstr ""
+
+#: ../page-templates/template-3.php:2
+msgid "Template Page 3"
+msgstr ""
+
+#: ../page-templates/template-4.php:2
+msgid "Template Page 4"
+msgstr ""
+
+#: ../page-templates/widgetized.php:2
+msgid "Widgetized Page"
+msgstr ""
+
+#: ../template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: ../template-parts/content-none.php:21
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: ../template-parts/content-none.php:25
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: ../template-parts/content-none.php:31
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""
+
+#: ../template-parts/content-page.php:20, ../template-parts/content.php:40, ../template-parts/content.php:51
+msgid "Pages:"
+msgstr ""
+
+#: ../template-parts/content-page.php:32, ../inc/frontend/template-tags.php:119
+msgid "Edit %s"
+msgstr ""
+
+#: ../template-parts/content.php:35, ../template-parts/content.php:46
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../inc/admin/widgets.php:10
+msgid "This sidebar can be replaced on certain pages"
+msgstr ""
+
+#: ../inc/admin/widgets.php:11
+msgid "This sidebar will always be same on all pages"
+msgstr ""
+
+#: ../inc/admin/widgets.php:20
+msgid "Allow this sidebar to be replaced"
+msgstr ""
+
+#: ../inc/frontend/class-FeaturedPost.php:114
+msgid "Posted in&nbsp;"
+msgstr ""
+
+#: ../inc/frontend/template-tags.php:97
+msgid "Posted in %1$s"
+msgstr ""
+
+#: ../inc/frontend/template-tags.php:101
+msgid ", "
+msgstr ""
+
+#: ../inc/frontend/template-tags.php:104
+msgid "Tagged %1$s"
+msgstr ""
+
+#. translators: %s: post title
+#: ../inc/frontend/template-tags.php:112
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Nav_Menu_Widget.php:138
+msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Nav_Menu_Widget.php:143, ../inc/widgets/Benjamin_Widget_Archives.php:200, ../inc/widgets/Benjamin_Widget_Categories.php:194, ../inc/widgets/Benjamin_Widget_Meta.php:179, ../inc/widgets/Benjamin_Widget_Pages.php:285, ../inc/widgets/Benjamin_Widget_Recent_Comments.php:253, ../inc/widgets/Benjamin_Widget_Recent_Posts.php:220
+msgid "Title:"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Nav_Menu_Widget.php:148
+msgid "Select Menu:"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Nav_Menu_Widget.php:151
+msgid "&mdash; Select &mdash;"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Nav_Menu_Widget.php:163, ../inc/widgets/Benjamin_Widget_Archives.php:209, ../inc/widgets/Benjamin_Widget_Categories.php:214, ../inc/widgets/Benjamin_Widget_Meta.php:188, ../inc/widgets/Benjamin_Widget_Pages.php:315, ../inc/widgets/Benjamin_Widget_Recent_Comments.php:267, ../inc/widgets/Benjamin_Widget_Recent_Posts.php:237
+msgid "Menu Style:"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Nav_Menu_Widget.php:181
+msgid "Edit Menu"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Archives.php:28
+msgid "A monthly archive of your site&#8217;s Posts."
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Archives.php:31, ../inc/widgets/Benjamin_Widget_Archives.php:144, ../inc/widgets/Benjamin_Widget_Archives.php:200
+msgid "Archives"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Archives.php:72
+msgid "Select Year"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Archives.php:75
+msgid "Select Month"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Archives.php:78
+msgid "Select Day"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Archives.php:81
+msgid "Select Week"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Archives.php:84
+msgid "Select Post"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Archives.php:226, ../inc/widgets/Benjamin_Widget_Categories.php:201
+msgid "Show post counts"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Categories.php:26
+msgid "A list or dropdown of categories."
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Categories.php:29, ../inc/widgets/Benjamin_Widget_Categories.php:128, ../inc/widgets/Benjamin_Widget_Categories.php:195
+msgid "Categories"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Categories.php:53
+msgid "Select Category"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Categories.php:198
+msgid "Display as dropdown"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Categories.php:204
+msgid "Show hierarchy"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Meta.php:30
+msgid "Login, RSS, &amp; WordPress.org links."
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Meta.php:33, ../inc/widgets/Benjamin_Widget_Meta.php:126, ../inc/widgets/Benjamin_Widget_Meta.php:179
+msgid "Meta"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Meta.php:89
+msgid "Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Meta.php:90
+msgid "Comments <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Meta.php:100
+msgid "https://wordpress.org/"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Meta.php:101
+msgid "Powered by WordPress, state-of-the-art semantic personal publishing platform."
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Meta.php:102
+msgctxt "meta widget link text"
+msgid "WordPress.org"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Pages.php:26
+msgid "A list of your site&#8217;s Pages."
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Pages.php:29, ../inc/widgets/Benjamin_Widget_Pages.php:286
+msgid "Pages"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Pages.php:289
+msgid "Sort by:"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Pages.php:291
+msgid "Page title"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Pages.php:292
+msgid "Page order"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Pages.php:293
+msgid "Page ID"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Pages.php:297
+msgid "Exclude:"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Pages.php:300
+msgid "Page IDs, separated by commas."
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Pages.php:304
+msgid "Show child pages"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Recent_Comments.php:26
+msgid "Your site&#8217;s most recent comments."
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Recent_Comments.php:29, ../inc/widgets/Benjamin_Widget_Recent_Comments.php:178, ../inc/widgets/Benjamin_Widget_Recent_Comments.php:254
+msgid "Recent Comments"
+msgstr ""
+
+#. translators: comments widget: 1: comment author, 2: post link
+#: ../inc/widgets/Benjamin_Widget_Recent_Comments.php:103, ../inc/widgets/Benjamin_Widget_Recent_Comments.php:147
+msgctxt "widgets"
+msgid "%1$s"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Recent_Comments.php:256
+msgid "Number of comments to show:"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Recent_Posts.php:26
+msgid "Your site&#8217;s most recent Posts."
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Recent_Posts.php:29, ../inc/widgets/Benjamin_Widget_Recent_Posts.php:140, ../inc/widgets/Benjamin_Widget_Recent_Posts.php:221
+msgid "Recent Posts"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Recent_Posts.php:223
+msgid "Number of posts to show:"
+msgstr ""
+
+#: ../inc/widgets/Benjamin_Widget_Recent_Posts.php:227
+msgid "Display post date?"
+msgstr ""
+
+#: ../inc/frontend/navs/default-menus.php:15
+msgid "Home"
+msgstr ""
+
+#: ../inc/frontend/navs/default-menus.php:22
+msgid "Login"
+msgstr ""

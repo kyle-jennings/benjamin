@@ -2,9 +2,12 @@
 
 Requires at least: 4.5
 Tested up to: 4.7
-Stable tag: 1.1.2
+Stable tag: 1.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Copyright 2017 Kyle Jennings
+Benjamin is distributed under the terms of the GNU GPL
+
 
 == Description ==
 
@@ -20,6 +23,12 @@ Theme Demo: https://uswds.sites.usa.gov
 1. In your admin panel, go to Appearance > Themes and click the Add New button.
 2. Click Upload and Choose File, then select the theme's .zip file. Click Install Now.
 3. Click Activate to use your new theme right away.
+
+== Customizer ==
+* The following default settings have been removed as they are not implemented in this theme
+** Colors - link and background colors are not configurable
+** Background - Background wallpapers are not visible in this theme
+** Custom Headers are not implemented.  Arguably a similar feature exists, but is implemented different and is also logically grouped in with the template settings sections.
 
 == Documentation for site identity  ==
 * The color scheme settings will change Benjamin's colors to a series of preset combinations.
@@ -93,7 +102,7 @@ Mixed License (https://github.com/18F/web-design-standards/blob/develop/LICENSE.
 
 == Changelog ==
 
-* 1.1.2
+* 1.2
 * namespaced all functions, classes, and constants
 * properly sanitized all customizer and settings API
 * replaced the screenshot
@@ -102,5 +111,8 @@ Mixed License (https://github.com/18F/web-design-standards/blob/develop/LICENSE.
 * added support for co-authors plus plugin
 * moved contact settings to Franklin as customizer settings
 * changed footer settings to sortable components
-* added options to hide parts of a given page
 * Choose your 404 page content
+
+* 1.3
+* re-namespaced everything to use theme slug, and not the uswds acronymn
+* added options to hide parts of a given page

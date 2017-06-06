@@ -14,10 +14,10 @@ function benjamin_scripts() {
         ? '' : '-'.$benjamin_color_scheme;
 
 
-	wp_enqueue_script( 'benjamin-scripts',
-        get_template_directory_uri() . '/assets/js/uswds.min.js' );
-    wp_enqueue_style( 'benjamin-style',
-        get_template_directory_uri() . '/assets/css/benjamin'.$benjamin_color_scheme.'.css' );
+	wp_enqueue_script( 'uswds',
+         get_stylesheet_directory_uri() . '/assets/js/uswds.min.js' );
+    wp_enqueue_style( 'uswds',
+         get_stylesheet_directory_uri() . '/assets/css/benjamin'.$benjamin_color_scheme.'.css' );
 
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
         wp_enqueue_script( 'comment-reply' );

@@ -14,13 +14,13 @@ function benjamin_create_default_nav() {
     wp_update_nav_menu_item($menu_id, 0, array(
         'menu-item-title' =>  __('Home', 'benjamin'),
         'menu-item-classes' => 'home',
-        'menu-item-url' => home_url( '/' ),
+        'menu-item-url' => esc_url( home_url( '/' ) ),
         'menu-item-status' => 'publish')
     );
 
     wp_update_nav_menu_item($menu_id, 0, array(
         'menu-item-title' =>  __('Login', 'benjamin'),
-        'menu-item-url' => wp_login_url(),
+        'menu-item-url' => admin_url(),
         'menu-item-status' => 'publish')
     );
 

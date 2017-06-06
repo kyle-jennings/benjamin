@@ -4,7 +4,7 @@
 
 function benjamin_get_benjamin_nav_title() {
     $output = '';
-    $link = '<a href="'.esc_url( home_url( '/' ) ).'"
+    $link = '<a href="' . esc_url( home_url( '/' ) ) . '"
         accesskey="1" title="Home" aria-label="Home"> '.get_bloginfo( 'name' ).'
     </a>';
     if ( is_front_page() ) :

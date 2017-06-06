@@ -70,7 +70,7 @@ class Benjamin_Widget_Categories extends WP_Widget {
         var dropdown = document.getElementById( "<?php echo esc_js( $dropdown_id ); ?>" );
         function onCatChange() {
             if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
-                location.href = "<?php echo home_url(); ?>/?cat=" + dropdown.options[ dropdown.selectedIndex ].value;
+                location.href = "<?php echo esc_url( home_url() ); ?>/?cat=" + dropdown.options[ dropdown.selectedIndex ].value;
             }
         }
         dropdown.onchange = onCatChange;

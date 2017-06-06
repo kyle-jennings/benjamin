@@ -26,9 +26,7 @@ foreach($files as $file)
  * Remove some default settings from the customizer
  * @param  object $wp_customize
  */
-function benjamin_remove_default($wp_customize){
-    $wp_customize->remove_section('colors');
-    $wp_customize->remove_section('header_image');
-    $wp_customize->remove_section('background_image');
+function benjamin_customizer_settings($wp_customize){
+    // placeholder for near future updates
 }
-add_action('customize_register', 'benjamin_remove_default');
+add_action('customize_register', 'benjamin_customizer_settings');

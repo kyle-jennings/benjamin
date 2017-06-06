@@ -85,8 +85,6 @@ require get_template_directory() . '/inc/theme-support.php';
 require get_template_directory() . '/inc/admin/customizer.php';
 require get_template_directory() . '/inc/extras.php';
 require get_template_directory() . '/inc/jetpack.php';
-require get_template_directory() . '/inc/excerpts.php';
-// sidebars
 require get_template_directory() . '/inc/register-sidebars.php';
 require get_template_directory() . '/inc/widgets.php';
 
@@ -124,6 +122,7 @@ if( !is_admin() ){
         '/inc/frontend/assets.php',
         '/inc/frontend/filters.php',
         '/inc/frontend/footer.php',
+        '/inc/frontend/excerpts.php',
         '/inc/frontend/template-tags.php',
         '/inc/frontend/class-FeaturedPost.php',
         '/inc/frontend/hero-settings.php',
