@@ -1,7 +1,7 @@
 <?php
 
 
-function uswds_frontpage_settings($wp_customize) {
+function benjamin_frontpage_settings($wp_customize) {
 
 
     // Dropdown pages control
@@ -20,10 +20,10 @@ function uswds_frontpage_settings($wp_customize) {
 
      $wp_customize->add_setting( 'frontpage_sortables_setting', array(
          'default'        => '',
-         'sanitize_callback' => 'uswds_frontpage_sortable_sanitize',
+         'sanitize_callback' => 'benjamin_frontpage_sortable_sanitize',
      ) );
 
-     $wp_customize->add_control( new USWDS_Activated_Sortable_Custom_Control( $wp_customize,
+     $wp_customize->add_control( new Benjamin_Activated_Sortable_Custom_Control( $wp_customize,
         'frontpage_sortables_control', array(
             'label'   => 'Sortable Sections',
             'section' => 'frontpage_settings_section',
@@ -40,10 +40,10 @@ function uswds_frontpage_settings($wp_customize) {
     );
 
 }
-add_action('customize_register', 'uswds_frontpage_settings');
+add_action('customize_register', 'benjamin_frontpage_settings');
 
 
-function uswds_frontpage_hero_callout_sanitize($val) {
+function benjamin_frontpage_hero_callout_sanitize($val) {
     $pages = get_posts(array('post_type' => 'page', 'posts_per_page' => -1, 'fields' => 'ids'));
 
     if( !in_array($val, $pages) && 'publish' == get_post_status( $val ) )
@@ -53,7 +53,7 @@ function uswds_frontpage_hero_callout_sanitize($val) {
 }
 
 
-function uswds_frontpage_sortable_sanitize($val) {
+function benjamin_frontpage_sortable_sanitize($val) {
     $valids = array(
         'widget-area-1',
         'widget-area-2',

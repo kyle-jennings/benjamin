@@ -13,7 +13,7 @@
  *
  * @see WP_Widget
  */
-class USWDS_Widget_Categories extends WP_Widget {
+class Benjamin_Widget_Categories extends WP_Widget {
 	/**
 	 * Sets up a new Categories widget instance.
 	 *
@@ -23,10 +23,10 @@ class USWDS_Widget_Categories extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'widget_categories',
-			'description' => __( 'A list or dropdown of categories.', 'uswds' ),
+			'description' => __( 'A list or dropdown of categories.', 'benjamin' ),
 			'customize_selective_refresh' => true,
 		);
-		parent::__construct( 'categories', __( 'Categories','uswds' ), $widget_ops );
+		parent::__construct( 'categories', __( 'Categories','benjamin' ), $widget_ops );
 	}
 
 
@@ -50,7 +50,7 @@ class USWDS_Widget_Categories extends WP_Widget {
         $first_dropdown = false;
 
         echo '<label class="screen-reader-text" for="' . esc_attr( $dropdown_id ) . '">' . $title . '</label>';
-        $cat_args['show_option_none'] = __( 'Select Category', 'uswds' );
+        $cat_args['show_option_none'] = __( 'Select Category', 'benjamin' );
         $cat_args['id'] = $dropdown_id;
         /**
          * Filters the arguments for the Categories widget drop-down.
@@ -125,7 +125,7 @@ class USWDS_Widget_Categories extends WP_Widget {
 	public function widget( $args, $instance ) {
 		static $first_dropdown = true;
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
-		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Categories', 'uswds' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Categories', 'benjamin' ) : $instance['title'], $instance, $this->id_base );
 		$c = ! empty( $instance['count'] ) ? '1' : '0';
 		$h = ! empty( $instance['hierarchical'] ) ? '1' : '0';
 		$d = ! empty( $instance['dropdown'] ) ? '1' : '0';
@@ -191,17 +191,17 @@ class USWDS_Widget_Categories extends WP_Widget {
         $saved_style = isset( $instance['menu_style'] ) ? $instance['menu_style'] : '';
 
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'uswds' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" placeholder="<?php esc_attr_e( 'Categories', 'uswds' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'benjamin' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" placeholder="<?php esc_attr_e( 'Categories', 'benjamin' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
 
 		<!-- <p><input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('dropdown'); ?>" name="<?php echo $this->get_field_name('dropdown'); ?>"<?php checked( $dropdown ); ?> />
-		<label for="<?php echo $this->get_field_id('dropdown'); ?>"><?php _e( 'Display as dropdown', 'uswds' ); ?></label><br /> -->
+		<label for="<?php echo $this->get_field_id('dropdown'); ?>"><?php _e( 'Display as dropdown', 'benjamin' ); ?></label><br /> -->
 
 		<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>"<?php checked( $count ); ?> />
-		<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e( 'Show post counts', 'uswds' ); ?></label><br />
+		<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e( 'Show post counts', 'benjamin' ); ?></label><br />
 
 		<!-- <input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('hierarchical'); ?>" name="<?php echo $this->get_field_name('hierarchical'); ?>"<?php checked( $hierarchical ); ?> />
-		<label for="<?php echo $this->get_field_id('hierarchical'); ?>"><?php _e( 'Show hierarchy', 'uswds' ); ?></label></p> -->
+		<label for="<?php echo $this->get_field_id('hierarchical'); ?>"><?php _e( 'Show hierarchy', 'benjamin' ); ?></label></p> -->
 
         <?php
         // styles
@@ -211,7 +211,7 @@ class USWDS_Widget_Categories extends WP_Widget {
         ?>
         <p>
             <label for="<?php echo $this->get_field_id( 'menu_style' ); ?>">
-                    <?php _e( 'Menu Style:', 'uswds' ); ?>
+                    <?php _e( 'Menu Style:', 'benjamin' ); ?>
             </label>
             <select id="<?php echo $this->get_field_id( 'menu_style' ); ?>"
                   name="<?php echo $this->get_field_name( 'menu_style' ); ?>">

@@ -1,6 +1,6 @@
 <?php
 
-function uswds_page_sortables($target = null) {
+function benjamin_page_sortables($target = null) {
 
     if($target == null)
         return false;
@@ -9,7 +9,7 @@ function uswds_page_sortables($target = null) {
 
     $sortables = get_theme_mod($target);
     if(!$sortables){
-        echo uswds_sortable_default($target_name);
+        echo benjamin_sortable_default($target_name);
         return;
     }
 
@@ -19,23 +19,23 @@ function uswds_page_sortables($target = null) {
         $name = $s->name;
         switch($name):
             case 'widget-area-1':
-                uswds_sortable_widget_area_content($target_name, 1);
+                benjamin_sortable_widget_area_content($target_name, 1);
                 break;
             case 'widget-area-2':
-                uswds_sortable_widget_area_content($target_name, 2);
+                benjamin_sortable_widget_area_content($target_name, 2);
                 break;
             case 'widget-area-3':
-                uswds_sortable_widget_area_content($target_name, 3);
+                benjamin_sortable_widget_area_content($target_name, 3);
                 break;
             case 'page-content':
-                uswds_page_content($target_name);
+                benjamin_page_content($target_name);
                 break;
         endswitch;
     }
 
 }
 
-function uswds_page_content($target = null) {
+function benjamin_page_content($target = null) {
     ?>
     <div class="sortable-row sortable-row--<?php echo $target; ?> cf">
     <?php
@@ -71,7 +71,7 @@ function uswds_page_content($target = null) {
 }
 
 
-function uswds_sortable_widget_area_content($target = null, $num) {
+function benjamin_sortable_widget_area_content($target = null, $num) {
     if(!$target || !$num)
         return false;
 
@@ -85,7 +85,7 @@ function uswds_sortable_widget_area_content($target = null, $num) {
 }
 
 
-function uswds_sortable_default($target_name){
+function benjamin_sortable_default($target_name){
 
     $url = admin_url( 'customize.php?autofocus[section]='.$target_name.'_section' );
 

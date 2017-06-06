@@ -1,6 +1,6 @@
 <?php
 
-class USWDS_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
+class Benjamin_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 
     private function menuStyleArgs($style = 'side_nav'){
         if($style == 'side_nav'):
@@ -135,20 +135,20 @@ class USWDS_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 				$url = admin_url( 'nav-menus.php' );
 			}
 			?>
-			<?php echo sprintf( __( 'No menus have been created yet. <a href="%s">Create some</a>.', 'uswds' ), esc_attr( $url ) ); ?>
+			<?php echo sprintf( __( 'No menus have been created yet. <a href="%s">Create some</a>.', 'benjamin' ), esc_attr( $url ) ); ?>
 		</p>
 		<div class="nav-menu-widget-form-controls"
             <?php if ( empty( $menus ) ) { echo ' style="display:none" '; } ?>>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'uswds' ) ?></label>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'benjamin' ) ?></label>
 				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>"/>
 			</p>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'nav_menu' ); ?>">
-                        <?php _e( 'Select Menu:', 'uswds' ); ?></label>
+                        <?php _e( 'Select Menu:', 'benjamin' ); ?></label>
 				<select id="<?php echo $this->get_field_id( 'nav_menu' ); ?>"
                     name="<?php echo $this->get_field_name( 'nav_menu' ); ?>">
-					<option value="0"><?php _e( '&mdash; Select &mdash;', 'uswds' ); ?></option>
+					<option value="0"><?php _e( '&mdash; Select &mdash;', 'benjamin' ); ?></option>
 					<?php foreach ( $menus as $menu ) : ?>
 						<option value="<?php echo esc_attr( $menu->term_id ); ?>"
                             <?php selected( $nav_menu, $menu->term_id ); ?>>
@@ -160,7 +160,7 @@ class USWDS_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 
             <p>
 				<label for="<?php echo $this->get_field_id( 'menu_style' ); ?>">
-                        <?php _e( 'Menu Style:', 'uswds' ); ?>
+                        <?php _e( 'Menu Style:', 'benjamin' ); ?>
                 </label>
 				<select id="<?php echo $this->get_field_id( 'menu_style' ); ?>"
                       name="<?php echo $this->get_field_name( 'menu_style' ); ?>">
@@ -178,7 +178,7 @@ class USWDS_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 
 			<?php if ( $wp_customize instanceof WP_Customize_Manager ) : ?>
 				<p class="edit-selected-nav-menu" style="<?php if ( ! $nav_menu ) { echo 'display: none;'; } ?>">
-					<button type="button" class="button"><?php _e( 'Edit Menu', 'uswds' ) ?></button>
+					<button type="button" class="button"><?php _e( 'Edit Menu', 'benjamin' ) ?></button>
 				</p>
 			<?php endif; ?>
 		</div>

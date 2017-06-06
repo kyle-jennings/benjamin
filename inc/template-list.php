@@ -1,7 +1,7 @@
 <?php
 
 
-function uswds_the_template_list($use_widget_areas = false) {
+function benjamin_the_template_list($use_widget_areas = false) {
 
 
     // not used yet

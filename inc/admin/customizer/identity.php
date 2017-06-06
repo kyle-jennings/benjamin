@@ -6,7 +6,7 @@
  * @param  [type] $wp_customize [description]
  * @return [type]               [description]
  */
-function uswds_site_identity($wp_customize) {
+function benjamin_site_identity($wp_customize) {
 
     $classic = array('#0c555d', '#399099', '#ff5049', '#ffffff', '#f5f5f5', '#000000');
     $standard = array('#112e51', '#02bfe7','#e31c3d', '#ffffff', '#f1f1f1', '#d6d7d9');
@@ -15,11 +15,11 @@ function uswds_site_identity($wp_customize) {
     // color scheme
     $wp_customize->add_setting( 'color_scheme_setting', array(
         'default' => 'standard',
-        'sanitize_callback' => 'uswds_color_scheme_sanitize',
+        'sanitize_callback' => 'benjamin_color_scheme_sanitize',
         )
     );
 
-    $wp_customize->add_control( new USWDS_Color_Scheme_Custom_Control(
+    $wp_customize->add_control( new Benjamin_Color_Scheme_Custom_Control(
         $wp_customize, 'color_scheme_control', array(
             'label'   => 'Color Scheme',
             'section' => 'title_tagline',
@@ -35,8 +35,8 @@ function uswds_site_identity($wp_customize) {
     );
 
     $wp_customize->add_setting( 'sidebar_size_setting', array(
-        'default' => 'USWDS_ONE_THIRD',
-        'sanitize_callback' => 'uswds_sidebar_width_sanitize',
+        'default' => 'BENJAMIN_ONE_THIRD',
+        'sanitize_callback' => 'benjamin_sidebar_width_sanitize',
         )
     );
 
@@ -46,30 +46,30 @@ function uswds_site_identity($wp_customize) {
             'settings' => 'sidebar_size_setting',
             'type' => 'select',
             'choices' => array(
-                        'USWDS_ONE_THIRD' => 'Wide',
-                        'USWDS_ONE_FOURTH' => 'Narrow',
+                        'BENJAMIN_ONE_THIRD' => 'Wide',
+                        'BENJAMIN_ONE_FOURTH' => 'Narrow',
                     ),
         )
     );
 
 }
-add_action('customize_register', 'uswds_site_identity');
+add_action('customize_register', 'benjamin_site_identity');
 
 
-function uswds_sidebar_width_sanitize($val) {
+function benjamin_sidebar_width_sanitize($val) {
     $valids = array(
-        'USWDS_ONE_THIRD',
-        'USWDS_ONE_FOURTH',
+        'BENJAMIN_ONE_THIRD',
+        'BENJAMIN_ONE_FOURTH',
     );
 
     if( !in_array($val, $valids) )
-        $val = 'USWDS_ONE_THIRD';
+        $val = 'BENJAMIN_ONE_THIRD';
 
     return $val;
 }
 
 
-function uswds_color_scheme_sanitize($val) {
+function benjamin_color_scheme_sanitize($val) {
     $valids = array(
         'standard',
         'classic',

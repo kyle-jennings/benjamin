@@ -1,27 +1,27 @@
 <?php
-function uswds_widget_sidebar_content() {
+function benjamin_widget_sidebar_content() {
 
     ?>
-    <div class="uswds-widget-area-options">
+    <div class="benjamin-widget-area-options">
 		<label
-			for="uswds-widget-area-options_visiblity"
+			for="benjamin-widget-area-options_visiblity"
 			class="cs-tool btn-replaceable"
 			data-action="replaceable"
-			data-on="<?php _e( 'This sidebar can be replaced on certain pages', 'uswds' ); ?>"
-			data-off="<?php _e( 'This sidebar will always be same on all pages', 'uswds' ); ?>"
+			data-on="<?php _e( 'This sidebar can be replaced on certain pages', 'benjamin' ); ?>"
+			data-off="<?php _e( 'This sidebar will always be same on all pages', 'benjamin' ); ?>"
 			>
 			<span class="icon"></span>
 			<input
 				type="checkbox"
-				id="uswds-widget-area-options_visiblity"
+				id="benjamin-widget-area-options_visiblity"
 				class=""
 				/>
 			<span class="is-label">
-				<?php _e( 'Allow this sidebar to be replaced', 'uswds' ); ?>
+				<?php _e( 'Allow this sidebar to be replaced', 'benjamin' ); ?>
 			</span>
 		</label>
     </div>
 
     <?php
 }
-// add_action( 'widgets_admin_page', 'uswds_widget_sidebar_content' );
+// add_action( 'widgets_admin_page', 'benjamin_widget_sidebar_content' );

@@ -3,7 +3,7 @@
 if ( ! class_exists( 'WP_Customize_Control' ) )
     return null;
 
-class USWDS_Checkbox_Group_Control extends WP_Customize_Control
+class Benjamin_Checkbox_Group_Control extends WP_Customize_Control
 {
     public $type = 'checkbox-group';
 

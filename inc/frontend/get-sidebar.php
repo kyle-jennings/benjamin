@@ -1,16 +1,16 @@
 <?php
 
 
-function uswds_get_sidebar($template, $sidebar_pos = 'none'){
+function benjamin_get_sidebar($template, $sidebar_pos = 'none'){
 
     $vertical = array('left', 'right');
     $horizontal = array('top', 'bottom');
 
     $class = '';
     if(in_array($sidebar_pos, $vertical)):
-        $class = USWDS_SIDEBAR_WIDTH;
+        $class = BENJAMIN_SIDEBAR_WIDTH;
     else:
-        $class = USWDS_FULL_WIDTH;
+        $class = BENJAMIN_FULL_WIDTH;
     endif;
     $visibility = get_theme_mod($template . '_sidebar_visibility_setting');
     $class .= ' '. $visibility;

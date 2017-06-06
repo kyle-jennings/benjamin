@@ -1,6 +1,6 @@
 <?php
 
-function uswds_create_default_nav() {
+function benjamin_create_default_nav() {
     $menu_name = 'default-menu';
     $menu_exists = wp_get_nav_menu_object( $menu_name );
 
@@ -12,18 +12,18 @@ function uswds_create_default_nav() {
 
     // Set up default menu items
     wp_update_nav_menu_item($menu_id, 0, array(
-        'menu-item-title' =>  __('Home', 'uswds'),
+        'menu-item-title' =>  __('Home', 'benjamin'),
         'menu-item-classes' => 'home',
         'menu-item-url' => home_url( '/' ),
         'menu-item-status' => 'publish')
     );
 
     wp_update_nav_menu_item($menu_id, 0, array(
-        'menu-item-title' =>  __('Login', 'uswds'),
+        'menu-item-title' =>  __('Login', 'benjamin'),
         'menu-item-url' => wp_login_url(),
         'menu-item-status' => 'publish')
     );
 
 
 }
-uswds_create_default_nav();
+benjamin_create_default_nav();

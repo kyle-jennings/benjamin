@@ -1,9 +1,9 @@
 <?php
-function uswds_get_sticky_sidenav($id = 0){
+function benjamin_get_sticky_sidenav($id = 0){
     if($id == 0)
         return false;
 
-    $anchors = uswds_sticky_sidenav_anchors($id);
+    $anchors = benjamin_sticky_sidenav_anchors($id);
 
     $output = '';
 
@@ -21,15 +21,15 @@ function uswds_get_sticky_sidenav($id = 0){
     return $output;
 }
 
-function uswds_sticky_sidenav($id = 0){
+function benjamin_sticky_sidenav($id = 0){
     if($id == 0)
         return false;
 
-    echo uswds_get_sticky_sidenav($id);
+    echo benjamin_get_sticky_sidenav($id);
 }
 
 
-function uswds_sticky_sidenav_anchors($id) {
+function benjamin_sticky_sidenav_anchors($id) {
     $post_content = get_post($id);
     $content = $post_content->post_content;
 

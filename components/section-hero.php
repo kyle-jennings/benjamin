@@ -8,28 +8,28 @@
  */
 
 
-$template = uswds_template_settings('template');
+$template = benjamin_template_settings('template');
 
 $style = '';
-if ( $hero_image = uswds_hero_image($template) ){
+if ( $hero_image = benjamin_hero_image($template) ){
     $style .= 'style="background-image: url(\''.$hero_image.'\')"';
 }
 ?>
 
- <section class="usa-hero <?php echo uswds_hero_size($template); ?>" <?php echo $style; ?> >
+ <section class="usa-hero <?php echo benjamin_hero_size($template); ?>" <?php echo $style; ?> >
      <div class="usa-grid">
          <?php
             // This is all gross, fix it
             // should be a class
             if( is_front_page() )
-                uswds_get_hero_callout();
+                benjamin_get_hero_callout();
             elseif( !is_page() && !is_single() && !is_singular() ) {
-                echo uswds_get_feed_title();
+                echo benjamin_get_feed_title();
             } else {
                 echo '<h1>'.get_the_title().'</h1>';
                 if ( 'page' !== get_post_type() ) :
         		echo '<div class="entry-meta">';
-        			echo uswds_get_hero_meta();
+        			echo benjamin_get_hero_meta();
         		echo '</div>';
         		endif;
             }

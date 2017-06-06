@@ -13,7 +13,7 @@
  *
  * @see WP_Widget
  */
-class USWDS_Widget_Pages extends WP_Widget {
+class Benjamin_Widget_Pages extends WP_Widget {
 	/**
 	 * Sets up a new Pages widget instance.
 	 *
@@ -23,10 +23,10 @@ class USWDS_Widget_Pages extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'widget_pages',
-			'description' => __( 'A list of your site&#8217;s Pages.', 'uswds' ),
+			'description' => __( 'A list of your site&#8217;s Pages.', 'benjamin' ),
 			'customize_selective_refresh' => true,
 		);
-		parent::__construct( 'pages', __( 'Pages', 'uswds' ), $widget_ops );
+		parent::__construct( 'pages', __( 'Pages', 'benjamin' ), $widget_ops );
 	}
 
     private function menuStyleArgs($style = 'side_nav'){
@@ -282,26 +282,26 @@ class USWDS_Widget_Pages extends WP_Widget {
 
 		?>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'uswds' ); ?></label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id('title') ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" placeholder="<?php esc_attr_e( 'Pages', 'uswds' ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'benjamin' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id('title') ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" placeholder="<?php esc_attr_e( 'Pages', 'benjamin' ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'sortby' ) ); ?>"><?php _e( 'Sort by:', 'uswds' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'sortby' ) ); ?>"><?php _e( 'Sort by:', 'benjamin' ); ?></label>
 			<select name="<?php echo esc_attr( $this->get_field_name( 'sortby' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'sortby' ) ); ?>" class="widefat">
-				<option value="post_title"<?php selected( $instance['sortby'], 'post_title' ); ?>><?php _e('Page title', 'uswds'); ?></option>
-				<option value="menu_order"<?php selected( $instance['sortby'], 'menu_order' ); ?>><?php _e('Page order', 'uswds'); ?></option>
-				<option value="ID"<?php selected( $instance['sortby'], 'ID' ); ?>><?php _e( 'Page ID', 'uswds' ); ?></option>
+				<option value="post_title"<?php selected( $instance['sortby'], 'post_title' ); ?>><?php _e('Page title', 'benjamin'); ?></option>
+				<option value="menu_order"<?php selected( $instance['sortby'], 'menu_order' ); ?>><?php _e('Page order', 'benjamin'); ?></option>
+				<option value="ID"<?php selected( $instance['sortby'], 'ID' ); ?>><?php _e( 'Page ID', 'benjamin' ); ?></option>
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'exclude' ) ); ?>"><?php _e( 'Exclude:', 'uswds' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'exclude' ) ); ?>"><?php _e( 'Exclude:', 'benjamin' ); ?></label>
 			<input type="text" value="<?php echo esc_attr( $instance['exclude'] ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'exclude' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'exclude' ) ); ?>" class="widefat" />
 			<br />
-			<small><?php _e( 'Page IDs, separated by commas.', 'uswds' ); ?></small>
+			<small><?php _e( 'Page IDs, separated by commas.', 'benjamin' ); ?></small>
 		</p>
 
         <input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('children'); ?>" name="<?php echo $this->get_field_name('children'); ?>"<?php checked( $children ); ?> />
-		<label for="<?php echo $this->get_field_id('children'); ?>"><?php _e( 'Show child pages', 'uswds' ); ?></label></p>
+		<label for="<?php echo $this->get_field_id('children'); ?>"><?php _e( 'Show child pages', 'benjamin' ); ?></label></p>
 
 
         <?php
@@ -312,7 +312,7 @@ class USWDS_Widget_Pages extends WP_Widget {
         ?>
         <p>
             <label for="<?php echo $this->get_field_id( 'menu_style' ); ?>">
-                    <?php _e( 'Menu Style:', 'uswds' ); ?>
+                    <?php _e( 'Menu Style:', 'benjamin' ); ?>
             </label>
             <select id="<?php echo $this->get_field_id( 'menu_style' ); ?>"
                   name="<?php echo $this->get_field_name( 'menu_style' ); ?>">

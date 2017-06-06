@@ -1,6 +1,6 @@
 <?php
 
-function uswds_get_navbar_brand() {
+function benjamin_get_navbar_brand() {
     $logo_tag = 'em';
     $brand = get_theme_mod('navbar_brand_setting');
 
@@ -15,7 +15,7 @@ function uswds_get_navbar_brand() {
         $output .= '</div>';
     else:
 
-        $url = uswds_get_custom_logo($logo_id);
+        $url = benjamin_get_custom_logo($logo_id);
         $output .= '<div class="usa-logo" id="logo">';
             $output .= '<'.$logo_tag.' class="usa-logo-text usa-logo-image">';
                 $output .= '<a href="'.get_site_url().'" >';
@@ -33,12 +33,12 @@ function uswds_get_navbar_brand() {
 }
 
 
-function uswds_navbar_brand() {
-    echo uswds_get_navbar_brand();
+function benjamin_navbar_brand() {
+    echo benjamin_get_navbar_brand();
 }
 
 
-function uswds_get_custom_logo($logo_id){
+function benjamin_get_custom_logo($logo_id){
     $logo_id = get_theme_mod('custom_logo');
     $thumb_id = get_post_thumbnail_id($logo_id);
     $thumb_url_array = wp_get_attachment_image_src($logo_id, 'full', true);

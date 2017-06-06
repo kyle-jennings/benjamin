@@ -14,7 +14,7 @@ jQuery(document).ready(function($) {
 
 
   if($('body.widgets-php')){
-    $('.uswds-widget-area-options').appendTo('.widgets-sortables');
+    $('.benjamin-widget-area-options').appendTo('.widgets-sortables');
   }
 
 });

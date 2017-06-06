@@ -1,6 +1,6 @@
 <?php
 
-function uswds_get_width_visibility($template, $sidebar_pos = 'none') {
+function benjamin_get_width_visibility($template, $sidebar_pos = 'none') {
     $sidebar_vis = get_theme_mod($template . '_sidebar_visibility_setting');
     $visibility = null;
     if($sidebar_vis == 'hidden-medium-up') {

@@ -11,20 +11,20 @@
  * layout settings
  * @param  object $wp_customize
  */
-function uswds_template_layout_settings($wp_customize) {
+function benjamin_template_layout_settings($wp_customize) {
 
-    $templates = uswds_the_template_list();
+    $templates = benjamin_the_template_list();
 
 
 
     foreach($templates as $name => $label):
-        uswds_template_settings_loop($wp_customize, $name, $label);
+        benjamin_template_settings_loop($wp_customize, $name, $label);
     endforeach;
 }
-add_action('customize_register', 'uswds_template_layout_settings');
+add_action('customize_register', 'benjamin_template_layout_settings');
 
 
-function uswds_template_settings_loop(&$wp_customize, $name, $label){
+function benjamin_template_settings_loop(&$wp_customize, $name, $label){
     $wp_customize->add_section( $name . '_settings_section', array(
         'title'          => ucfirst($label) . ' Settings',
         'priority'       => 36,
@@ -35,10 +35,10 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
 
         $wp_customize->add_setting( $name . '_settings_active', array(
             'default' => 'no',
-            'sanitize_callback' => 'uswds_template_settings_active_sanitize',
+            'sanitize_callback' => 'benjamin_template_settings_active_sanitize',
         ) );
 
-        $wp_customize->add_control(new USWDS_Activate_Layout_Custom_Control( $wp_customize,
+        $wp_customize->add_control(new Benjamin_Activate_Layout_Custom_Control( $wp_customize,
         $name . '_settings_active_control', array(
                 'label' => 'Settings Active',
                 'section' => $name . '_settings_section',
@@ -57,7 +57,7 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
     // WP_Customize_Image_Control
     $wp_customize->add_setting( $name . '_image_setting', array(
         'default'      => null,
-        'sanitize_callback' => 'uswds_hero_image_sanitization',
+        'sanitize_callback' => 'benjamin_hero_image_sanitization',
     ) );
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize,
         $name . '_image_setting_control', array(
@@ -85,7 +85,7 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
     // header size
     $wp_customize->add_setting( $name . '_hero_size_setting', array(
         'default' => 'slim',
-        'sanitize_callback' => 'uswds_hero_size_sanitize',
+        'sanitize_callback' => 'benjamin_hero_size_sanitize',
     ) );
     $wp_customize->add_control($name . '_hero_size_control', array(
             'label' => 'Hero Size',
@@ -104,7 +104,7 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
 
     $wp_customize->add_setting( $name . '_sidebar_position_setting', array(
         'default' => 'none',
-        'sanitize_callback' => 'uswds_sidebar_position_sanitize',
+        'sanitize_callback' => 'benjamin_sidebar_position_sanitize',
     ) );
 
 
@@ -125,7 +125,7 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
 
     $wp_customize->add_setting( $name . '_sidebar_visibility_setting', array(
         'default' => 'always-visible',
-        'sanitize_callback' => 'uswds_sidebar_visibility_sanitize',
+        'sanitize_callback' => 'benjamin_sidebar_visibility_sanitize',
     ) );
 
     $wp_customize->add_control($name . '_sidebar_visibility_control', array(
@@ -147,10 +147,10 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
 
         $wp_customize->add_setting( $name.'_page_layout_setting', array(
             'default'        => '',
-            'sanitize_callback' => 'uswds_hide_layout_sanitize',
+            'sanitize_callback' => 'benjamin_hide_layout_sanitize',
         ) );
 
-        $wp_customize->add_control( new USWDS_Checkbox_Group_Control( $wp_customize,
+        $wp_customize->add_control( new Benjamin_Checkbox_Group_Control( $wp_customize,
             $name.'_page_layout_control', array(
                 'label'   => 'Page Layout',
                 'section' => $name.'_settings_section',
@@ -173,7 +173,7 @@ function uswds_template_settings_loop(&$wp_customize, $name, $label){
 
 
 
-function uswds_hero_image_sanitization( $val ) {
+function benjamin_hero_image_sanitization( $val ) {
 	/*
 	 * Array of valid image file types.
 	 *
@@ -194,7 +194,7 @@ function uswds_hero_image_sanitization( $val ) {
 }
 
 
-function uswds_template_settings_active_sanitize($val) {
+function benjamin_template_settings_active_sanitize($val) {
     $valids = array(
         'no',
         'yes'
@@ -206,7 +206,7 @@ function uswds_template_settings_active_sanitize($val) {
     return $val;
 }
 
-function uswds_hero_size_sanitize($val) {
+function benjamin_hero_size_sanitize($val) {
     $valids = array(
         'slim',
         'medium',
@@ -221,7 +221,7 @@ function uswds_hero_size_sanitize($val) {
 }
 
 
-function uswds_sidebar_position_sanitize($val) {
+function benjamin_sidebar_position_sanitize($val) {
     $valids = array(
         'none',
         'left',
@@ -234,7 +234,7 @@ function uswds_sidebar_position_sanitize($val) {
     return $val;
 }
 
-function uswds_sidebar_visibility_sanitize($val) {
+function benjamin_sidebar_visibility_sanitize($val) {
     $valids = array(
         'always-visible',
         'hidden-medium-up',
@@ -250,7 +250,7 @@ function uswds_sidebar_visibility_sanitize($val) {
 }
 
 
-function uswds_hide_layout_sanitize($val) {
+function benjamin_hide_layout_sanitize($val) {
     $valids = array(
         'banner',
         'navbar',

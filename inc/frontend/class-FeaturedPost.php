@@ -1,6 +1,6 @@
 <?php
 
-class USWDSFeaturedPost {
+class BenjaminFeaturedPost {
     public $id;
     public $post_type;
     public $format;
@@ -110,8 +110,8 @@ class USWDSFeaturedPost {
         }
         $author .= '</span>';
 
-        if ( $categories_list = uswds_get_the_category_list($this->id) ) {
-			$cats = '<span class="cat-links">' . __('Posted in&nbsp;', 'uswds') . $categories_list . '</span>';
+        if ( $categories_list = benjamin_get_the_category_list($this->id) ) {
+			$cats = '<span class="cat-links">' . __('Posted in&nbsp;', 'benjamin') . $categories_list . '</span>';
 		}
 
         return '<span class="posted-on">' . $date . '</span>

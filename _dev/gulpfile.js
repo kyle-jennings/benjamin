@@ -48,8 +48,9 @@ paths.adminJSGlob = paths.adminSrcPath + '/js/**/*.js';
 //  The frontend assets
 // ---------------------------------------------------------------------------
 
-// JS
 gulp.task('front-js',['clean:front-js'], function(){
+  console.log(paths.assetsPath + '/js');
+  console.log(paths.npmPath + '/uswds/dist/js/uswds.js');
   return gulp.src( [
       paths.npmPath + '/uswds/dist/js/uswds.js',
       paths.npmPath + '/uswds/dist/js/uswds.min.js',
@@ -63,6 +64,8 @@ gulp.task('clean:front-js', function() {
     [ paths.assetsPath + '/js' ],
     {read:false, force: true});
 });
+
+
 // CSS
 /**
  * Minify and optimize style.css.
@@ -70,9 +73,9 @@ gulp.task('clean:front-js', function() {
 gulp.task('front-css', ['front-scss'], function() {
 
   return gulp.src([
-      paths.assetsPath + '/css/site.css',
-      paths.assetsPath + '/css/site-classic.css',
-      paths.assetsPath + '/css/site-red.css'
+      paths.assetsPath + '/css/benjamin.css',
+      paths.assetsPath + '/css/benjamin-classic.css',
+      paths.assetsPath + '/css/benjamin-red.css'
     ])
     .pipe(plumber({ errorHandler: handleErrors }))
     // .pipe(cssnano({ safe: true }))
@@ -87,9 +90,9 @@ gulp.task('front-css', ['front-scss'], function() {
 gulp.task('front-scss', ['clean:front-css'], function() {
 
   return gulp.src([
-      paths.srcPath+'/scss/site.scss',
-      paths.srcPath+'/scss/site-classic.scss',
-      paths.srcPath+'/scss/site-red.scss'
+      paths.srcPath+'/scss/benjamin.scss',
+      paths.srcPath+'/scss/benjamin-classic.scss',
+      paths.srcPath+'/scss/benjamin-red.scss'
 
     ])
     .pipe(plumber({ errorHandler: handleErrors }))
@@ -157,8 +160,8 @@ gulp.task('clean:img', function(){
  * Minify and optimize style.css.
  */
 gulp.task('admin-css', ['admin-sass'], function() {
-  console.log(paths.adminAssetsPath + '/css/admin.css');
-  return gulp.src( paths.adminAssetsPath + '/css/admin.css')
+  console.log(paths.adminAssetsPath + '/css/benjamin-admin.css');
+  return gulp.src( paths.adminAssetsPath + '/css/benjamin-admin.css')
     .pipe(plumber({ errorHandler: handleErrors }))
     .pipe(cssnano({ safe: true }))
     .pipe(gulp.dest( paths.adminAssetsPath + '/css'))
@@ -170,8 +173,8 @@ gulp.task('admin-css', ['admin-sass'], function() {
  * Compile Sass and run stylesheet through PostCSS.
  */
 gulp.task('admin-sass', ['clean:admin-css'], function() {
-  console.log(paths.adminSrcPath+'/scss/admin.scss');
-  return gulp.src(paths.adminSrcPath+'/scss/admin.scss')
+  console.log(paths.adminSrcPath+'/scss/benjamin-admin.scss');
+  return gulp.src(paths.adminSrcPath+'/scss/benjamin-admin.scss')
     .pipe(plumber({ errorHandler: handleErrors }))
     .pipe(sourcemaps.init())
     .pipe(sass({
@@ -205,7 +208,7 @@ gulp.task('admin-js',['clean:admin-js'], function () {
     return b.bundle();
   });
 
-  return gulp.src( paths.adminSrcPath + '/js/_admin.js' )
+  return gulp.src( paths.adminSrcPath + '/js/_benjamin-admin.js' )
   .pipe(plumber({ errorHandler: handleErrors }))
   .pipe(browserified)
   .pipe(minify())
@@ -229,10 +232,10 @@ gulp.task('pot', function () {
 
     return gulp.src('../**/*.php')
         .pipe(wpPot( {
-            domain: 'uswds',
+            domain: 'benjamin',
             package: 'Example project'
         } ))
-        .pipe(gulp.dest('../languages/uswds.pot'));
+        .pipe(gulp.dest('../languages/benjamin.pot'));
 });
 
 /**

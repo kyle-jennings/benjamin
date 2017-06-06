@@ -9,22 +9,22 @@
 
 get_header();
 
-$template = uswds_template_settings('template');
+$template = benjamin_template_settings('template');
 $sidebar_position = get_theme_mod($template . '_sidebar_position_setting');
 
-$main_width = uswds_get_main_width($sidebar_position);
-$main_width .= ' ' . uswds_get_width_visibility($template, $sidebar_position);
+$main_width = benjamin_get_main_width($sidebar_position);
+$main_width .= ' ' . benjamin_get_width_visibility($template, $sidebar_position);
 
 $content = get_theme_mod('404_page_content_setting', 'default');
 
 
-if( !uswds_hide_layout_part('page-content', $template) ):
+if( !benjamin_hide_layout_part('page-content', $template) ):
 ?>
 
 <section id="primary" class="usa-grid usa-section">
     <?php
     if($sidebar_position == 'left'):
-        uswds_get_sidebar($template, $sidebar_position);
+        benjamin_get_sidebar($template, $sidebar_position);
     endif;
     ?>
 
@@ -36,7 +36,7 @@ if( !uswds_hide_layout_part('page-content', $template) ):
                 $page = get_page($pid);
                 echo $page->post_content;
             else :
-                echo '<p>' . esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'uswds' ) . '</p>';
+                echo '<p>' . esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'benjamin' ) . '</p>';
 
                 get_search_form();
 
@@ -44,14 +44,14 @@ if( !uswds_hide_layout_part('page-content', $template) ):
                 echo '<br>';
                 echo '<br>';
 
-    			the_widget( 'USWDS_Widget_Pages', array('title'=>'Pages') );
+    			the_widget( 'Benjamin_Widget_Pages', array('title'=>'Pages') );
             endif;
 		?>
   </div>
 
   <?php
   if($sidebar_position == 'right'):
-      uswds_get_sidebar($template, $sidebar_position);
+      benjamin_get_sidebar($template, $sidebar_position);
   endif;
   ?>
 </section>

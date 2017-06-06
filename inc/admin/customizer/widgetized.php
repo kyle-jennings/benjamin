@@ -2,14 +2,14 @@
 
 
 
-function uswds_widgetized_settings($wp_customize) {
+function benjamin_widgetized_settings($wp_customize) {
 
     $wp_customize->add_setting( 'widgetized_sortables_setting', array(
         'default'        => '',
-        'sanitize_callback' => 'uswds_widgetized_sortable_sanitize',
+        'sanitize_callback' => 'benjamin_widgetized_sortable_sanitize',
     ) );
 
-    $wp_customize->add_control( new USWDS_Activated_Sortable_Custom_Control( $wp_customize,
+    $wp_customize->add_control( new Benjamin_Activated_Sortable_Custom_Control( $wp_customize,
        'widgetized_sortables_control', array(
            'label'   => 'Sortable Sections',
            'section' => 'widgetized_settings_section',
@@ -26,10 +26,10 @@ function uswds_widgetized_settings($wp_customize) {
    );
 
 }
-add_action('customize_register', 'uswds_widgetized_settings');
+add_action('customize_register', 'benjamin_widgetized_settings');
 
 
-function uswds_widgetized_sortable_sanitize($val) {
+function benjamin_widgetized_sortable_sanitize($val) {
     $valids = array(
         'widget-area-1',
         'widget-area-2',

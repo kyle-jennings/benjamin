@@ -1,8 +1,8 @@
 <?php
 
-function uswds_template_settings($ret = null) {
+function benjamin_template_settings($ret = null) {
 
-    $settings = uswds_set_template_settings();
+    $settings = benjamin_set_template_settings();
 
     // if an arg was passed in, return that single setting
     if($ret)
@@ -12,10 +12,10 @@ function uswds_template_settings($ret = null) {
 }
 
 
-function uswds_set_template_settings(){
+function benjamin_set_template_settings(){
 
-    $template = uswds_get_template();
-    $date_type = is_date() ? uswds_is_date() : null;
+    $template = benjamin_get_template();
+    $date_type = is_date() ? benjamin_is_date() : null;
 
     $array = array(
         'template' => $template,
@@ -28,30 +28,30 @@ function uswds_set_template_settings(){
 
 
 
-function uswds_get_template() {
+function benjamin_get_template() {
 
     //	if the page is a post type
-    if( is_front_page() && uswds_settings_active('frontpage') ) :
+    if( is_front_page() && benjamin_settings_active('frontpage') ) :
         return 'frontpage';
-    elseif ( is_single() && $single = uswds_is_single() ):
+    elseif ( is_single() && $single = benjamin_is_single() ):
         return $single;
-    elseif ( is_page() && $page = uswds_is_page()) :
+    elseif ( is_page() && $page = benjamin_is_page()) :
         return $page;
-    elseif (is_404() && uswds_settings_active('404') ) :
+    elseif (is_404() && benjamin_settings_active('404') ) :
         return '404';
     else :
-        return uswds_is_feed();
+        return benjamin_is_feed();
     endif;
 }
 
 
-function uswds_is_single(){
+function benjamin_is_single(){
 
-    if (is_embed() && uswds_settings_active('embed') ) :
+    if (is_embed() && benjamin_settings_active('embed') ) :
         return 'embed';
-    elseif (is_attachment() && uswds_settings_active('attachment') ) :
+    elseif (is_attachment() && benjamin_settings_active('attachment') ) :
         return 'attachment';
-    elseif (is_single() && uswds_settings_active('single') ) :
+    elseif (is_single() && benjamin_settings_active('single') ) :
         return 'single';
     else:
         return false;
@@ -60,20 +60,20 @@ function uswds_is_single(){
 
 
 
-function uswds_is_feed( ){
-    if( is_search() && uswds_settings_active('search'))
+function benjamin_is_feed( ){
+    if( is_search() && benjamin_settings_active('search'))
         return 'search';
-    elseif( is_home() && uswds_settings_active('home') ){
+    elseif( is_home() && benjamin_settings_active('home') ){
         return 'home';
-    }elseif( is_tax() && uswds_settings_active('taxonomy') ){
+    }elseif( is_tax() && benjamin_settings_active('taxonomy') ){
         return 'taxonomy';
-    }elseif( is_category() && uswds_settings_active('cetegory') ){
+    }elseif( is_category() && benjamin_settings_active('cetegory') ){
         return 'category';
-    }elseif( is_tag() && uswds_settings_active('tag') ){
+    }elseif( is_tag() && benjamin_settings_active('tag') ){
         return 'tag';
-    }elseif( is_author() && uswds_settings_active('author') ){
+    }elseif( is_author() && benjamin_settings_active('author') ){
         return 'author';
-    }elseif( is_date() && uswds_settings_active('date') ){
+    }elseif( is_date() && benjamin_settings_active('date') ){
         return 'date';
     }else{
         return 'archive';
@@ -81,7 +81,7 @@ function uswds_is_feed( ){
 }
 
 
-function uswds_is_date(){
+function benjamin_is_date(){
     if(is_day())
         return 'day';
     elseif( is_month())
@@ -90,10 +90,10 @@ function uswds_is_date(){
         return 'year';
 }
 
-function uswds_is_page(){
-    if ( is_page_template() && $p_template = uswds_is_page_template() ):
+function benjamin_is_page(){
+    if ( is_page_template() && $p_template = benjamin_is_page_template() ):
         return $p_template;
-    elseif (is_page() && uswds_settings_active('page') ):
+    elseif (is_page() && benjamin_settings_active('page') ):
         return 'page';
     else :
         return false;
@@ -101,31 +101,31 @@ function uswds_is_page(){
 }
 
 
-function uswds_is_page_template(){
+function benjamin_is_page_template(){
 
-    if ( is_page_template('page-templates/widgetized.php') && uswds_settings_active('widgetized') )
+    if ( is_page_template('page-templates/widgetized.php') && benjamin_settings_active('widgetized') )
         return 'widgetized';
-    if ( is_page_template('page-templates/template-1.php') && uswds_settings_active('template-1') )
+    if ( is_page_template('page-templates/template-1.php') && benjamin_settings_active('template-1') )
         return 'template-1';
-    if ( is_page_template('page-templates/template-2.php') && uswds_settings_active('template-2') )
+    if ( is_page_template('page-templates/template-2.php') && benjamin_settings_active('template-2') )
         return 'template-2';
-    if ( is_page_template('page-templates/template-3.php') && uswds_settings_active('template-3') )
+    if ( is_page_template('page-templates/template-3.php') && benjamin_settings_active('template-3') )
         return 'template-3';
-    if ( is_page_template('page-templates/template-4.php') && uswds_settings_active('template-4') )
+    if ( is_page_template('page-templates/template-4.php') && benjamin_settings_active('template-4') )
         return 'template-4';
     else
         return false;
 }
 
 
-function uswds_settings_active($template = null){
+function benjamin_settings_active($template = null){
     $mods = get_theme_mods();
     $active = $mods[$template . '_settings_active'];
     return ($active == 'yes') ? true : false;
 }
 
 
-function uswds_hide_layout_part( $needle, $template ) {
+function benjamin_hide_layout_part( $needle, $template ) {
 
     $layout_settings = get_theme_mod($template.'_page_layout_setting');
     $layout_settings = json_decode($layout_settings);
@@ -136,9 +136,9 @@ function uswds_hide_layout_part( $needle, $template ) {
 }
 
 
-function uswds_get_main_width($sidebar_position) {
+function benjamin_get_main_width($sidebar_position) {
     $width = ($sidebar_position == 'none' || !$sidebar_position)
-            ? USWDS_FULL_WIDTH : USWDS_MAIN_WIDTH;
+            ? BENJAMIN_FULL_WIDTH : BENJAMIN_MAIN_WIDTH;
 
     return $width;
 }

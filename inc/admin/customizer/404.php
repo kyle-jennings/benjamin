@@ -1,10 +1,10 @@
 <?php
 
-function uswds_404_settings($wp_customize) {
+function benjamin_404_settings($wp_customize) {
 
     $wp_customize->add_setting( '404_page_content_setting', array(
         'default'  => 'default',
-        'sanitize_callback' => 'uswds_404_content_sanitize',
+        'sanitize_callback' => 'benjamin_404_content_sanitize',
     ) );
 
     $wp_customize->add_control( '404_page_content_control', array(
@@ -36,10 +36,10 @@ function uswds_404_settings($wp_customize) {
 
 }
 
-add_action('customize_register', 'uswds_404_settings');
+add_action('customize_register', 'benjamin_404_settings');
 
 
-function uswds_404_page_select_sanitize($val) {
+function benjamin_404_page_select_sanitize($val) {
     $pages = get_posts(array('post_type' => 'page', 'posts_per_page' => -1, 'fields' => 'ids'));
 
     if( !in_array($val, $pages) && 'publish' == get_post_status( $val ) )
@@ -49,7 +49,7 @@ function uswds_404_page_select_sanitize($val) {
 }
 
 
-function uswds_404_content_sanitize($val) {
+function benjamin_404_content_sanitize($val) {
     $valids = array(
         'default',
         'page'

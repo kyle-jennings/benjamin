@@ -14,7 +14,7 @@
  *
  * @see WP_Widget
  */
-class USWDS_Widget_Archives extends WP_Widget {
+class Benjamin_Widget_Archives extends WP_Widget {
 
 	/**
 	 * Sets up a new Archives widget instance.
@@ -25,10 +25,10 @@ class USWDS_Widget_Archives extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'widget_archive',
-			'description' => __( 'A monthly archive of your site&#8217;s Posts.', 'uswds' ),
+			'description' => __( 'A monthly archive of your site&#8217;s Posts.', 'benjamin' ),
 			'customize_selective_refresh' => true,
 		);
-		parent::__construct('archives', __('Archives', 'uswds'), $widget_ops);
+		parent::__construct('archives', __('Archives', 'benjamin'), $widget_ops);
 	}
 
 
@@ -69,19 +69,19 @@ class USWDS_Widget_Archives extends WP_Widget {
 
         switch ( $dropdown_args['type'] ) {
             case 'yearly':
-                $label = __( 'Select Year', 'uswds' );
+                $label = __( 'Select Year', 'benjamin' );
                 break;
             case 'monthly':
-                $label = __( 'Select Month', 'uswds' );
+                $label = __( 'Select Month', 'benjamin' );
                 break;
             case 'daily':
-                $label = __( 'Select Day', 'uswds' );
+                $label = __( 'Select Day', 'benjamin' );
                 break;
             case 'weekly':
-                $label = __( 'Select Week', 'uswds' );
+                $label = __( 'Select Week', 'benjamin' );
                 break;
             default:
-                $label = __( 'Select Post', 'uswds' );
+                $label = __( 'Select Post', 'benjamin' );
                 break;
         }
         ?>
@@ -141,7 +141,7 @@ class USWDS_Widget_Archives extends WP_Widget {
 
 
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
-		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Archives', 'uswds' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Archives', 'benjamin' ) : $instance['title'], $instance, $this->id_base );
 
 		echo $args['before_widget'];
 		if ( $title ) {
@@ -197,7 +197,7 @@ class USWDS_Widget_Archives extends WP_Widget {
         $saved_style = isset( $instance['menu_style'] ) ? $instance['menu_style'] : '';
 
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'uswds'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" placeholder="<?php esc_attr_e( 'Archives', 'uswds' ); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'benjamin'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" placeholder="<?php esc_attr_e( 'Archives', 'benjamin' ); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
         <?php
         // styles
         $find = array('-', '_');
@@ -206,7 +206,7 @@ class USWDS_Widget_Archives extends WP_Widget {
         ?>
         <p>
             <label for="<?php echo $this->get_field_id( 'menu_style' ); ?>">
-                    <?php _e( 'Menu Style:', 'uswds' ); ?>
+                    <?php _e( 'Menu Style:', 'benjamin' ); ?>
             </label>
             <select id="<?php echo $this->get_field_id( 'menu_style' ); ?>"
                   name="<?php echo $this->get_field_name( 'menu_style' ); ?>">
@@ -223,7 +223,7 @@ class USWDS_Widget_Archives extends WP_Widget {
         </p>
 
 		<p>
-			<input class="checkbox" type="checkbox"<?php checked( $instance['count'] ); ?> id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" /> <label for="<?php echo $this->get_field_id('count'); ?>"><?php _e('Show post counts', 'uswds'); ?></label>
+			<input class="checkbox" type="checkbox"<?php checked( $instance['count'] ); ?> id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" /> <label for="<?php echo $this->get_field_id('count'); ?>"><?php _e('Show post counts', 'benjamin'); ?></label>
 		</p>
 		<?php
 	}

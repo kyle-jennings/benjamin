@@ -1,6 +1,6 @@
 <?php
 
-function uswds_default_header_order() {
+function benjamin_default_header_order() {
     $arr = array(
 
         (object) array (
@@ -18,7 +18,7 @@ function uswds_default_header_order() {
                 'label' => 'Banner'
             );
 
-    if(uswds_is_dot_gov())
+    if(benjamin_is_dot_gov())
         array_unshift($arr, $banner);
 
     return $arr;

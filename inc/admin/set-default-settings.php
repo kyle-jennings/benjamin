@@ -9,7 +9,7 @@
  * The archive page hero sanitize_bookmark
  * The archive header order
  */
-function uswds_set_defaults() {
+function benjamin_set_defaults() {
     if(!get_theme_mod('archive_sidebar_position_setting'))
         set_theme_mod('archive_sidebar_position_setting', 'right');
 
@@ -22,4 +22,4 @@ function uswds_set_defaults() {
     if(!get_theme_mod('footer_size_setting'))
         set_theme_mod('footer_size_setting', 'slim');
 }
-add_action('after_switch_theme', 'uswds_set_defaults');
+add_action('after_switch_theme', 'benjamin_set_defaults');

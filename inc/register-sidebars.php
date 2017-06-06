@@ -7,8 +7,8 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function uswds_widgets_init() {
-    $templates = uswds_the_template_list(true);
+function benjamin_widgets_init() {
+    $templates = benjamin_the_template_list(true);
 
     $args = array(
        'public'   => true,
@@ -44,7 +44,7 @@ function uswds_widgets_init() {
             'footer-widgets-2',
         );
 
-        // $sidebar_size = uswds_determine_widget_width_rules($pos, $name);
+        // $sidebar_size = benjamin_determine_widget_width_rules($pos, $name);
         // determine whether or not to apply withs to the widgets
         if ( in_array($name, $horizontals) ){
             $sidebar_size = 'full';
@@ -52,14 +52,14 @@ function uswds_widgets_init() {
 
         // figure out which width rules to use
         if($sidebar_size == 'full')
-            $width = uswds_calculate_widget_width($count);
+            $width = benjamin_calculate_widget_width($count);
         else
             $width = '';
 
         register_sidebar( array(
     		'name'          => ucfirst($label),
     		'id'            => $name,
-    		'description'   => esc_html__( 'Add widgets here.', 'uswds' ),
+    		'description'   => esc_html__( 'Add widgets here.', 'benjamin' ),
     		'before_widget' => '<div id="%1$s" class="widget '.$width.'">',
     		'after_widget'  => '</div>',
     		'before_title'  => '<h3 class="widget-title">',
@@ -69,10 +69,10 @@ function uswds_widgets_init() {
 
 
 }
-add_action( 'init', 'uswds_widgets_init' );
+add_action( 'init', 'benjamin_widgets_init' );
 
 
-function uswds_calculate_widget_width($count){
+function benjamin_calculate_widget_width($count){
 
 
     switch($count):

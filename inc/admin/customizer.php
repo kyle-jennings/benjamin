@@ -26,16 +26,16 @@ foreach($files as $file)
  * Remove some default settings from the customizer
  * @param  object $wp_customize
  */
-function uswds_remove_default($wp_customize){
+function benjamin_remove_default($wp_customize){
     $wp_customize->remove_section('colors');
     $wp_customize->remove_section('header_image');
     $wp_customize->remove_section('background_image');
     $wp_customize->remove_section('custom_css');
 
-    // $wp_customize->register_control_type( 'USWDS_Activate_Layout_Custom_Control' );
-    // $wp_customize->register_control_type( 'USWDS_Activated_Sortable_Custom_Control' );
-    // $wp_customize->register_control_type( 'USWDS_Checkbox_Group_Control' );
-    // $wp_customize->register_control_type( 'USWDS_Menu_Dropdown_Custom_Control' );
-    // $wp_customize->register_control_type( 'USWDS_Sortable_Custom_Control' );
+    // $wp_customize->register_control_type( 'Benjamin_Activate_Layout_Custom_Control' );
+    // $wp_customize->register_control_type( 'Benjamin_Activated_Sortable_Custom_Control' );
+    // $wp_customize->register_control_type( 'Benjamin_Checkbox_Group_Control' );
+    // $wp_customize->register_control_type( 'Benjamin_Menu_Dropdown_Custom_Control' );
+    // $wp_customize->register_control_type( 'Benjamin_Sortable_Custom_Control' );
 }
-add_action('customize_register', 'uswds_remove_default');
+add_action('customize_register', 'benjamin_remove_default');

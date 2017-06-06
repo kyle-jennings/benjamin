@@ -2,7 +2,7 @@
 
 
 
-function uswds_featured_post_metabox_markup($post) {
+function benjamin_featured_post_metabox_markup($post) {
     wp_nonce_field(basename(__FILE__), "meta-box-nonce");
     $featured_post = get_option('featured-post--'.$post->post_type, null);
     $checked = ($post->ID === $featured_post) ? 'checked' : '';
@@ -21,7 +21,7 @@ function uswds_featured_post_metabox_markup($post) {
 
 
 
-function uswds_featured_post_metabox() {
+function benjamin_featured_post_metabox() {
     $args = array(
        'public'   => true,
        'publicly_queryable' => true,
@@ -33,18 +33,18 @@ function uswds_featured_post_metabox() {
     add_meta_box(
         'featured_post',
         'Featured Post',
-        'uswds_featured_post_metabox_markup',
+        'benjamin_featured_post_metabox_markup',
         $cpts,
         'side',
         'high',
         null
     );
 }
-add_action( 'add_meta_boxes', 'uswds_featured_post_metabox' );
+add_action( 'add_meta_boxes', 'benjamin_featured_post_metabox' );
 
 
 
-function uswds_save_featured_post($post_id, $post, $update)
+function benjamin_save_featured_post($post_id, $post, $update)
 {
     if (!isset($_POST["meta-box-nonce"]) || !wp_verify_nonce($_POST["meta-box-nonce"], basename(__FILE__)))
         return $post_id;
@@ -69,4 +69,4 @@ function uswds_save_featured_post($post_id, $post, $update)
 
 }
 
-add_action("save_post", "uswds_save_featured_post", 10, 3);
+add_action("save_post", "benjamin_save_featured_post", 10, 3);

@@ -7,7 +7,7 @@
  * @package Benjamin
  */
 
- function uswds_get_hero_meta(){
+ function benjamin_get_hero_meta(){
 
      $post = get_queried_object();
      $id = $post->ID;
@@ -41,11 +41,11 @@
  }
 
 
-function uswds_posted_on() {
-    echo uswds_get_posted_on();
+function benjamin_posted_on() {
+    echo benjamin_get_posted_on();
 }
 
-function uswds_get_posted_on(){
+function benjamin_get_posted_on(){
     global $post;
 
     $id = get_the_ID();
@@ -83,25 +83,25 @@ function uswds_get_posted_on(){
 
 
 
-if ( ! function_exists( 'uswds_entry_footer' ) ) :
+if ( ! function_exists( 'benjamin_entry_footer' ) ) :
 /**
  * Prints HTML with meta information for the categories, tags and comments.
  */
-function uswds_entry_footer() {
+function benjamin_entry_footer() {
 	// Hide category and tag text for pages.
 	if ( 'page' !== get_post_type() ) {
 
 
 		/* translators: used between list items, there is a space after the comma */
-		if ( $categories_list = uswds_get_the_category_list() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'uswds' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+		if ( $categories_list = benjamin_get_the_category_list() ) {
+			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'benjamin' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 		}
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'uswds' ) );
+		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'benjamin' ) );
 		if ( $tags_list ) {
             echo "<br>";
-			printf( ' <span class="tags-links">' . esc_html__( 'Tagged %1$s', 'uswds' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			printf( ' <span class="tags-links">' . esc_html__( 'Tagged %1$s', 'benjamin' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 		}
 	}
 
@@ -109,14 +109,14 @@ function uswds_entry_footer() {
         echo "<br>";
 		echo ' <span class="comments-link">';
 		/* translators: %s: post title */
-		comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'uswds' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
+		comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'benjamin' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
 		echo '</span>';
 	}
 
 	edit_post_link(
 		sprintf(
 			/* translators: %s: Name of current post */
-			esc_html__( 'Edit %s', 'uswds' ),
+			esc_html__( 'Edit %s', 'benjamin' ),
 			the_title( '<span class="screen-reader-text">"', '"</span>', false )
 		),
 		'<br><span class="edit-link">',
@@ -126,8 +126,8 @@ function uswds_entry_footer() {
 endif;
 
 
-function uswds_get_the_category_list($id = null) {
-    // esc_html__( ', ', 'uswds' )
+function benjamin_get_the_category_list($id = null) {
+    // esc_html__( ', ', 'benjamin' )
     $cats = get_the_category($id);
     $output = '';
     $count = 0;

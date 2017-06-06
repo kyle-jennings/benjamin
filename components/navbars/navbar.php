@@ -3,12 +3,12 @@
 $sticky = get_theme_mod('navbar_sticky_setting') == 'yes' ? 'sticky' : '';
 ?>
 <header class="usa-header usa-header-basic
-    <?php echo uswds_navbar_header_class() . ' ' . $sticky ; ?>" role="banner">
+    <?php echo benjamin_navbar_header_class() . ' ' . $sticky ; ?>" role="banner">
     <div class="usa-nav-container">
 
         <div class="usa-navbar">
             <button class="usa-menu-btn">Menu</button>
-            <?php uswds_navbar_brand(); ?>
+            <?php benjamin_navbar_brand(); ?>
         </div>
 
         <nav role="navigation" class="usa-nav">

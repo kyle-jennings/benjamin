@@ -13,7 +13,7 @@
  *
  * @see WP_Widget
  */
-class USWDS_Widget_Recent_Comments extends WP_Widget {
+class Benjamin_Widget_Recent_Comments extends WP_Widget {
 	/**
 	 * Sets up a new Recent Comments widget instance.
 	 *
@@ -23,10 +23,10 @@ class USWDS_Widget_Recent_Comments extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'widget_recent_comments',
-			'description' => __( 'Your site&#8217;s most recent comments.', 'uswds' ),
+			'description' => __( 'Your site&#8217;s most recent comments.', 'benjamin' ),
 			'customize_selective_refresh' => true,
 		);
-		parent::__construct( 'recent-comments', __( 'Recent Comments', 'uswds' ), $widget_ops );
+		parent::__construct( 'recent-comments', __( 'Recent Comments', 'benjamin' ), $widget_ops );
 		$this->alt_option_name = 'widget_recent_comments';
 		if ( is_active_widget( false, false, $this->id_base ) || is_customize_preview() ) {
 			add_action( 'wp_head', array( $this, 'recent_comments_style' ) );
@@ -100,7 +100,7 @@ class USWDS_Widget_Recent_Comments extends WP_Widget {
             foreach ( (array) $comments as $comment ) {
                 $output .= '<option value="'.get_comment_link( $comment ) .'" >';
                 /* translators: comments widget: 1: comment author, 2: post link */
-                $output .= sprintf( _x( '%1$s', 'widgets', 'uswds' ),
+                $output .= sprintf( _x( '%1$s', 'widgets', 'benjamin' ),
                     get_comment_author_link( $comment ) . ' &#45; &nbsp;'
                     . get_the_title( $comment->comment_post_ID )
                 );
@@ -144,7 +144,7 @@ class USWDS_Widget_Recent_Comments extends WP_Widget {
             foreach ( (array) $comments as $comment ) {
                 $output .= '<li '.$li_class.'>';
                 /* translators: comments widget: 1: comment author, 2: post link */
-                $output .= sprintf( _x( '%1$s', 'widgets', 'uswds' ),
+                $output .= sprintf( _x( '%1$s', 'widgets', 'benjamin' ),
                     '<a href="' . esc_url( get_comment_link( $comment ) ) . '">' .
                     '<span class="comment-author-link">' . get_comment_author_link( $comment ) . ' &#45;  </span> &nbsp;'
                     . get_the_title( $comment->comment_post_ID ) . '</a>'
@@ -175,7 +175,7 @@ class USWDS_Widget_Recent_Comments extends WP_Widget {
 
 		static $first_dropdown = true;
 		$output = '';
-		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Comments', 'uswds' );
+		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Comments', 'benjamin' );
 
         /** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
@@ -250,10 +250,10 @@ class USWDS_Widget_Recent_Comments extends WP_Widget {
         $saved_style = isset( $instance['menu_style'] ) ? $instance['menu_style'] : '';
 
 		?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'uswds' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" placeholder="<?php esc_attr_e( 'Recent Comments', 'uswds' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'benjamin' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" placeholder="<?php esc_attr_e( 'Recent Comments', 'benjamin' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of comments to show:', 'uswds' ); ?></label>
+		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of comments to show:', 'benjamin' ); ?></label>
 		<input class="tiny-text" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="number" step="1" min="1" value="<?php echo $number; ?>" size="3" /></p>
 
         <?php
@@ -264,7 +264,7 @@ class USWDS_Widget_Recent_Comments extends WP_Widget {
         ?>
         <p>
             <label for="<?php echo $this->get_field_id( 'menu_style' ); ?>">
-                    <?php _e( 'Menu Style:', 'uswds' ); ?>
+                    <?php _e( 'Menu Style:', 'benjamin' ); ?>
             </label>
             <select id="<?php echo $this->get_field_id( 'menu_style' ); ?>"
                   name="<?php echo $this->get_field_name( 'menu_style' ); ?>">

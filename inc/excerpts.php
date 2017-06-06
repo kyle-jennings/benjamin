@@ -3,7 +3,7 @@
 /**
  * Custom Excerpt Length
  */
-function uswds_continue_reading_link() {
+function benjamin_continue_reading_link() {
     global $summary_settings;
     $value = $summary_settings['read_more'] ? $summary_settings['read_more'] : '...';
 
@@ -11,20 +11,20 @@ function uswds_continue_reading_link() {
 }
 
 
-function uswds_excerpt_length() {
+function benjamin_excerpt_length() {
     global $summary_settings;
     $value = $summary_settings['length'] ? $summary_settings['length'] : 55;
 
     return $value;
 }
 
-function uswds_auto_excerpt_more( $more ) {
-    return uswds_continue_reading_link();
+function benjamin_auto_excerpt_more( $more ) {
+    return benjamin_continue_reading_link();
 }
 
-function uswds_custom_excerpt_more( $output ) {
+function benjamin_custom_excerpt_more( $output ) {
     if ( has_excerpt() && !is_attachment() ) {
-        $output .= uswds_continue_reading_link();
+        $output .= benjamin_continue_reading_link();
     }
     return $output;
 }
@@ -33,7 +33,7 @@ function uswds_custom_excerpt_more( $output ) {
 if(get_option('rss_use_excerpt', true) == true) {
     $summary_settings = get_option('summary_settings', true);
 
-    add_filter( 'excerpt_length', 'uswds_excerpt_length' );
-    add_filter( 'excerpt_more', 'uswds_auto_excerpt_more' );
-    add_filter( 'get_the_excerpt', 'uswds_custom_excerpt_more' );
+    add_filter( 'excerpt_length', 'benjamin_excerpt_length' );
+    add_filter( 'excerpt_more', 'benjamin_auto_excerpt_more' );
+    add_filter( 'get_the_excerpt', 'benjamin_custom_excerpt_more' );
 }

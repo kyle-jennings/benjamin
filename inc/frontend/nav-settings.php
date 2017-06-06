@@ -2,7 +2,7 @@
 
 
 
-function uswds_get_uswds_nav_title() {
+function benjamin_get_benjamin_nav_title() {
     $output = '';
     $link = '<a href="'.esc_url( home_url( '/' ) ).'"
         accesskey="1" title="Home" aria-label="Home"> '.get_bloginfo( 'name' ).'
@@ -17,13 +17,13 @@ function uswds_get_uswds_nav_title() {
 }
 
 
-function uswds_nav_title() {
-    echo uswds_get_uswds_nav_title();
+function benjamin_nav_title() {
+    echo benjamin_get_benjamin_nav_title();
 }
 
 
 // because why not?
-function uswds_navbar_header_class() {
+function benjamin_navbar_header_class() {
     $color = get_theme_mod('navbar_color_setting');
     $color = $color ? 'usa-header--'.$color : 'usa-header--light';
 
@@ -31,7 +31,7 @@ function uswds_navbar_header_class() {
 }
 
 
-function uswds_navbar_class() {
+function benjamin_navbar_class() {
 
     $size = get_theme_mod('navbar_size_setting');
     $size = $size ? 'usa-nav-container--'.$size : 'usa-nav-container--slim';

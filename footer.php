@@ -13,7 +13,7 @@
 
 </main><!-- #main-content -->
 <footer class="usa-footer usa-footer-medium" role="contentinfo">
-    <?php uswds_footer(); ?>
+    <?php benjamin_footer(); ?>
 </footer>
 <?php wp_footer(); ?>
 

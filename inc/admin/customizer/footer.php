@@ -12,7 +12,7 @@
  * @param  object $wp_customize
  */
 
-function uswds_footer_settings($wp_customize) {
+function benjamin_footer_settings($wp_customize) {
     $choices = array(
             'return-to-top' => 'Return to Top',
             'footer-menu' => 'Footer Menu',
@@ -27,10 +27,10 @@ function uswds_footer_settings($wp_customize) {
 
     $wp_customize->add_setting( 'footer_sortables_setting', array(
         'default'        => '',
-        'sanitize_callback' => 'uswds_footer_sortable_sanitize',
+        'sanitize_callback' => 'benjamin_footer_sortable_sanitize',
     ) );
 
-    $wp_customize->add_control( new USWDS_Activated_Sortable_Custom_Control( $wp_customize,
+    $wp_customize->add_control( new Benjamin_Activated_Sortable_Custom_Control( $wp_customize,
        'footer_sortables_control', array(
            'label'   => 'Sortable Sections',
            'section' => 'footer_settings_section',
@@ -43,12 +43,12 @@ function uswds_footer_settings($wp_customize) {
 
 
 }
-add_action('customize_register', 'uswds_footer_settings');
+add_action('customize_register', 'benjamin_footer_settings');
 
 
 
 
-function uswds_footer_sortable_sanitize($val) {
+function benjamin_footer_sortable_sanitize($val) {
 
     $valids = array(
             'return-to-top',

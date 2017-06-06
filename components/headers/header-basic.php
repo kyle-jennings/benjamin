@@ -1,7 +1,7 @@
 <?php
 $logo_tag = is_front_page() ? 'h1' : 'em';
 ?>
-<header class="usa-header usa-header-basic <?php echo uswds_navbar_header_class(); ?>" role="banner">
+<header class="usa-header usa-header-basic <?php echo benjamin_navbar_header_class(); ?>" role="banner">
     <div class="usa-nav-container">
 
         <div class="usa-navbar">

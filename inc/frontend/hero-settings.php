@@ -7,7 +7,7 @@
  * @param  [type] $template [description]
  * @return [type]           [description]
  */
-function uswds_hero_image($template = null) {
+function benjamin_hero_image($template = null) {
 
     $hero_image = null;
 
@@ -25,7 +25,7 @@ function uswds_hero_image($template = null) {
         $post_type = is_a($post, 'WP_Post_Type') && !is_home() ? $post->name : 'post';
 
         $f_id = get_option('featured-post--'.$post_type, false);
-        $featuredPost = new USWDSFeaturedPost($f_id, $post_type);
+        $featuredPost = new BenjaminFeaturedPost($f_id, $post_type);
 
         $hero_image = ($featuredPost && $featuredPost->image )
             ? $featuredPost->image : get_theme_mod($template . '_image_setting');
@@ -40,7 +40,7 @@ function uswds_hero_image($template = null) {
  * @param  [type] $template [description]
  * @return [type]           [description]
  */
-function uswds_hero_size($template = null){
+function benjamin_hero_size($template = null){
 
     $setting = get_theme_mod($template . '_hero_size_setting');
     $hero_size = $setting ? 'usa-hero--'.$setting : 'usa-hero--slim';
@@ -53,7 +53,7 @@ function uswds_hero_size($template = null){
  * The front page displays a "callout", here is the markup
  * @return [type] [description]
  */
-function uswds_get_hero_callout(){
+function benjamin_get_hero_callout(){
     $page = ($id = get_theme_mod('frontpage_hero_callout_setting')) ? $id : null;
     $description = get_bloginfo( 'description', 'display' );
     $title = get_bloginfo( 'name', 'display' );
@@ -85,7 +85,7 @@ function uswds_get_hero_callout(){
  * The date (month / year), search results, or the post type's featured post
  * @return [type] [description]
  */
-function uswds_get_feed_title() {
+function benjamin_get_feed_title() {
 
     if( is_author() ) {
         $auth = get_user_by('slug', get_query_var('author_name'));
@@ -120,7 +120,7 @@ function uswds_get_feed_title() {
 
         $fid = get_option('featured-post--'.$post_type, false);
         if($fid) {
-            $featuredPost = new USWDSFeaturedPost($fid, 'post');
+            $featuredPost = new BenjaminFeaturedPost($fid, 'post');
             $title = $featuredPost->output;
         } elseif( $post->post_title )  {
                 $title = '<h1>' . $post->post_title . '</h1>';
