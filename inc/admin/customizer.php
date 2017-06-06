@@ -27,15 +27,6 @@ foreach($files as $file)
  * @param  object $wp_customize
  */
 function benjamin_remove_default($wp_customize){
-    $wp_customize->remove_section('colors');
-    $wp_customize->remove_section('header_image');
-    $wp_customize->remove_section('background_image');
     $wp_customize->remove_section('custom_css');
-
-    // $wp_customize->register_control_type( 'Benjamin_Activate_Layout_Custom_Control' );
-    // $wp_customize->register_control_type( 'Benjamin_Activated_Sortable_Custom_Control' );
-    // $wp_customize->register_control_type( 'Benjamin_Checkbox_Group_Control' );
-    // $wp_customize->register_control_type( 'Benjamin_Menu_Dropdown_Custom_Control' );
-    // $wp_customize->register_control_type( 'Benjamin_Sortable_Custom_Control' );
 }
 add_action('customize_register', 'benjamin_remove_default');
