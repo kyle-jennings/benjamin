@@ -10,7 +10,7 @@ function uswds_site_identity($wp_customize) {
 
     $classic = array('#0c555d', '#399099', '#ff5049', '#ffffff', '#f5f5f5', '#000000');
     $standard = array('#112e51', '#02bfe7','#e31c3d', '#ffffff', '#f1f1f1', '#d6d7d9');
-    $red = array('#912b27', '#ba1b16','#02bfe7', '#ffffff', '#f1f1f1', '#d6d7d9');
+    $red = array('#912b27', '#ba1b16','#046b99', '#ffffff', '#f1f1f1', '#d6d7d9');
 
     // color scheme
     $wp_customize->add_setting( 'color_scheme_setting', array(
