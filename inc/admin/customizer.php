@@ -27,6 +27,8 @@ foreach($files as $file)
  * @param  object $wp_customize
  */
 function benjamin_remove_default($wp_customize){
-    $wp_customize->remove_section('custom_css');
+    $wp_customize->remove_section('colors');
+    $wp_customize->remove_section('header_image');
+    $wp_customize->remove_section('background_image');
 }
 add_action('customize_register', 'benjamin_remove_default');
