@@ -12,7 +12,7 @@ function toggleLayoutSettings($parent, thisVal) {
 
     if(v.id.indexOf('settings_active') > -1
     || v.id.indexOf('hero_callout') > -1
-    || v.id.indexOf('section') > -1
+    || v.id.indexOf('sortable') > -1
     )
       return;
 

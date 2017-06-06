@@ -3,8 +3,8 @@
 
 jQuery(document).ready(function($) {
 
-  require('./refresh-alert');
   // require('./save-refresh');
+  require('./refresh-alert');
   require('./toggle-template-settings');
   require('./hide-footer-menu');
   require('./sortable');
@@ -332,7 +332,7 @@ function toggleLayoutSettings($parent, thisVal) {
 
     if(v.id.indexOf('settings_active') > -1
     || v.id.indexOf('hero_callout') > -1
-    || v.id.indexOf('section') > -1
+    || v.id.indexOf('sortable') > -1
     )
       return;
 

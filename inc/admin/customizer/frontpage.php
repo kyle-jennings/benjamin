@@ -6,7 +6,7 @@ function benjamin_frontpage_settings($wp_customize) {
 
     // Dropdown pages control
      $wp_customize->add_setting( 'frontpage_hero_callout_setting', array(
-         'default'        => '1',
+         'default'        => '',
          'sanitize_callback' => 'absint',
      ) );
      $wp_customize->add_control( 'frontpage_hero_callout_control', array(
@@ -28,7 +28,7 @@ function benjamin_frontpage_settings($wp_customize) {
             'label'   => 'Sortable Sections',
             'section' => 'frontpage_settings_section',
             'settings'=> 'frontpage_sortables_setting',
-            'priority' => 2,
+            'priority' => 1,
             'choices' => array(
                     'widget-area-1' => 'Widget Area 1',
                     'widget-area-2' => 'Widget Area 2',

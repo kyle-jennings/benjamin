@@ -2,8 +2,8 @@
 
 jQuery(document).ready(function($) {
 
-  require('./refresh-alert');
   // require('./save-refresh');
+  require('./refresh-alert');
   require('./toggle-template-settings');
   require('./hide-footer-menu');
   require('./sortable');

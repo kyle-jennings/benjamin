@@ -78,7 +78,8 @@ gulp.task('front-css', ['front-scss'], function() {
       paths.assetsPath + '/css/benjamin-red.css'
     ])
     .pipe(plumber({ errorHandler: handleErrors }))
-    // .pipe(cssnano({ safe: true }))
+    .pipe(cssnano({ safe: true }))
+    .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest( paths.assetsPath + '/css'))
     .pipe(notify({message: 'CSS complete'}));
 });
