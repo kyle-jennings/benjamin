@@ -5,7 +5,8 @@ if ( ! class_exists( 'WP_Customize_Control' ) )
 
 class USWDS_Color_Scheme_Custom_Control extends WP_Customize_Control
 {
-
+    public $type = 'color-scheme';
+    
     public function __construct($manager, $id, $args = array(), $options = array())
     {
 

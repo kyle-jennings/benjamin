@@ -6,6 +6,8 @@ if ( ! class_exists( 'WP_Customize_Control' ) )
 class USWDS_Sortable_Custom_Control extends WP_Customize_Control
 {
 
+    public $type = 'sortable';
+
     public function __construct($manager, $id, $args = array(), $options = array())
     {
         $this->visibility_settings = $args['visibility_settings'] ? $args['visibility_settings'] : false;

@@ -32,10 +32,10 @@ function uswds_remove_default($wp_customize){
     $wp_customize->remove_section('background_image');
     $wp_customize->remove_section('custom_css');
 
-    $wp_customize->register_control_type( 'USWDS_Activate_Layout_Custom_Control' );
-    $wp_customize->register_control_type( 'USWDS_Activated_Sortable_Custom_Control' );
-    $wp_customize->register_control_type( 'USWDS_Checkbox_Group_Control' );
-    $wp_customize->register_control_type( 'USWDS_Menu_Dropdown_Custom_Control' );
-    $wp_customize->register_control_type( 'USWDS_Sortable_Custom_Control' );
+    // $wp_customize->register_control_type( 'USWDS_Activate_Layout_Custom_Control' );
+    // $wp_customize->register_control_type( 'USWDS_Activated_Sortable_Custom_Control' );
+    // $wp_customize->register_control_type( 'USWDS_Checkbox_Group_Control' );
+    // $wp_customize->register_control_type( 'USWDS_Menu_Dropdown_Custom_Control' );
+    // $wp_customize->register_control_type( 'USWDS_Sortable_Custom_Control' );
 }
 add_action('customize_register', 'uswds_remove_default');

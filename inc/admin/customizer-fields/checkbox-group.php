@@ -7,6 +7,12 @@ class USWDS_Checkbox_Group_Control extends WP_Customize_Control
 {
     public $type = 'checkbox-group';
 
+    public function __construct($manager, $id, $args = array(), $options = array())
+    {
+        $this->visibility_settings = $args['visibility_settings'] ? $args['visibility_settings'] : false;
+        parent::__construct( $manager, $id, $args );
+    }
+
     public function render_content()
     {
         if ( empty( $this->choices ) )

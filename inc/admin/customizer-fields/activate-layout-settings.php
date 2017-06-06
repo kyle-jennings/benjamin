@@ -5,6 +5,7 @@ if ( ! class_exists( 'WP_Customize_Control' ) )
 
 class USWDS_Activate_Layout_Custom_Control extends WP_Customize_Control
 {
+    public $type = 'layout-toggle';
 
     public function __construct($manager, $id, $args = array(), $options = array())
     {

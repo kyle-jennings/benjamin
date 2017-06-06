@@ -9,7 +9,8 @@ if ( ! class_exists( 'WP_Customize_Control' ) )
 class USWDS_Menu_Dropdown_Custom_Control extends WP_Customize_Control
 {
     private $menus = false;
-
+    public $type = 'menu-dropdown';
+    
     public function __construct($manager, $id, $args = array(), $options = array())
     {
         $this->menus = wp_get_nav_menus($options);
