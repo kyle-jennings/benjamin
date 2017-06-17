@@ -2,6 +2,7 @@
 @import '_utilities/width-visibility';
 @import '_utilities/clearfix';
 
+@import '_mixins/sidebar';
 
 // Elements -------------- //
 // Styles basic HTML elements
@@ -53,6 +54,8 @@
 @import '_modules/post-navigation';
 @import '_modules/contact-block';
 @import '_modules/media-block';
+@import '_modules/sidebar';
+@import '_modules/sections';
 
 
 // custom grid for content area

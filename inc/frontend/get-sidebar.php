@@ -16,7 +16,7 @@ function benjamin_get_sidebar($template, $sidebar_pos = 'none'){
     $class .= ' '. $visibility;
 ?>
 
-    <div class="<?php echo $class; ?> widgetarea--<?php echo $template; ?>">
+    <div class="sidebar <?php echo $class; ?> widgetarea--<?php echo $template; ?>">
         <?php dynamic_sidebar($template); ?>
     </div>
 
