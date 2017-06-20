@@ -52,3 +52,25 @@
 .usa-hero > .usa-grid{
     position: relative;
 }
+
+
+.usa-hero > .usa-hero__video-bg {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    > video,
+    > iframe {
+        bottom: 0;
+        height: auto;
+        position: absolute;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+    }
+}
