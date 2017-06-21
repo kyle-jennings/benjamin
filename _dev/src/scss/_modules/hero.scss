@@ -22,15 +22,15 @@
 
 // Full hgiht hero
 .usa-hero--full {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 // trim hero a little more if the admin bar is showing
 .admin-bar .usa-hero--full {
-    height: calc( 100vh - 46px);
+    min-height: calc( 100vh - 46px);
 
     @media(min-width: 782px) {
-        height: calc( 100vh - 32px);
+        min-height: calc( 100vh - 32px);
 
     }
 }
@@ -39,7 +39,7 @@
 
 // the image BG overlay
 .usa-hero::before {
-    background-color:rgba(0, 0, 0, .4);
+    background-color:rgba(0, 0, 0, .6);
     content: '';
     display: block;
     position: absolute;

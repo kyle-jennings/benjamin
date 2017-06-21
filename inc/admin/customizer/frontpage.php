@@ -43,6 +43,13 @@ function benjamin_frontpage_settings($wp_customize) {
 add_action('customize_register', 'benjamin_frontpage_settings');
 
 
+/**
+ * ----------------------------------------------------------------------------
+ * Sanitization settings
+ * ----------------------------------------------------------------------------
+ */
+
+
 function benjamin_frontpage_hero_callout_sanitize($val) {
     $pages = get_posts(array('post_type' => 'page', 'posts_per_page' => -1, 'fields' => 'ids'));
 

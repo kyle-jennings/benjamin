@@ -29,6 +29,13 @@ function benjamin_widgetized_settings($wp_customize) {
 add_action('customize_register', 'benjamin_widgetized_settings');
 
 
+/**
+ * ----------------------------------------------------------------------------
+ * Sanitization settings
+ * ----------------------------------------------------------------------------
+ */
+
+
 function benjamin_widgetized_sortable_sanitize($val) {
     $valids = array(
         'widget-area-1',

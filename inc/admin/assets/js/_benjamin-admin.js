@@ -5,7 +5,7 @@ jQuery(document).ready(function($) {
 
   // require('./save-refresh');
   require('./refresh-alert');
-  require('./toggle-template-settings');
+  // require('./toggle-template-settings');
   require('./hide-footer-menu');
   require('./sortable');
   require('./frontpage-sortables');
@@ -22,7 +22,7 @@ jQuery(document).ready(function($) {
 
 window.$ = jQuery;
 
-},{"./checkbox-group":2,"./footer-sortables":3,"./frontpage-sortables":4,"./hide-footer-menu":5,"./refresh-alert":6,"./sortable":7,"./toggle-template-settings":8,"./widgetized-sortables":9}],2:[function(require,module,exports){
+},{"./checkbox-group":2,"./footer-sortables":3,"./frontpage-sortables":4,"./hide-footer-menu":5,"./refresh-alert":6,"./sortable":7,"./widgetized-sortables":8}],2:[function(require,module,exports){
 $('.js--checkbox-group input[type="checkbox"]').on('change', function(e){
   var $this = $(this);
   var $parent = $this.closest('.js--checkbox-group');
@@ -318,66 +318,6 @@ jQuery(function($) {
 });
 
 },{}],8:[function(require,module,exports){
-function toggleLayoutSettings($parent, thisVal) {
-
-
-  var id = $parent.attr('id');
-
-  id = id.split('-');
-  id = id[id.length - 1];
-  target = id.replace('_settings_section', '');
-  var $targets = $("[id*='customize-control-"+target+"'");
-
-  $.each($targets, function(k,v){
-
-    if(v.id.indexOf('settings_active') > -1
-    || v.id.indexOf('hero_callout') > -1
-    || v.id.indexOf('sortable') > -1
-    )
-      return;
-
-    if(thisVal == 'yes'){
-      $(v).fadeIn();
-    }else{
-      $(v).fadeOut();
-
-    }
-
-  });
-
-}
-
-// toggle the layout settings
-if($('body.wp-customizer')){
-
-  // when the setting is changed
-  $('.js--toggle-layout-options input[type="radio"]').live('change', function(e){
-    var $this = $(this);
-    var $parent = $this.closest('.control-section');
-    var thisVal = $this.val();
-
-    toggleLayoutSettings($parent, thisVal);
-    refreshAlert();
-
-  });
-
-  // when the page loads
-  var $activeToggles = $('.js--toggle-layout-options');
-
-  $activeToggles.each(function(k, v){
-    var $this = $(this);
-    var $parent = $this.closest('.control-section');
-    var $radio = $this.find('input[type="radio"]:checked');
-    var thisVal = $radio.val();
-    toggleLayoutSettings($parent, thisVal);
-
-
-
-  });
-
-}
-
-},{}],9:[function(require,module,exports){
 jQuery(function($) {
 
   if($('.js--widgetized-sortables').length <= 0)

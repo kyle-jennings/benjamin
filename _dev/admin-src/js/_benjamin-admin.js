@@ -4,7 +4,7 @@ jQuery(document).ready(function($) {
 
   // require('./save-refresh');
   require('./refresh-alert');
-  require('./toggle-template-settings');
+  // require('./toggle-template-settings');
   require('./hide-footer-menu');
   require('./sortable');
   require('./frontpage-sortables');

@@ -56,6 +56,13 @@ function benjamin_site_identity($wp_customize) {
 add_action('customize_register', 'benjamin_site_identity');
 
 
+/**
+ * ----------------------------------------------------------------------------
+ * Sanitization settings
+ * ----------------------------------------------------------------------------
+ */
+
+
 function benjamin_sidebar_width_sanitize($val) {
     $valids = array(
         'BENJAMIN_ONE_THIRD',

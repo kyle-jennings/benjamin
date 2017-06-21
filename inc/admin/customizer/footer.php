@@ -46,6 +46,11 @@ function benjamin_footer_settings($wp_customize) {
 add_action('customize_register', 'benjamin_footer_settings');
 
 
+/**
+ * ----------------------------------------------------------------------------
+ * Sanitization settings
+ * ----------------------------------------------------------------------------
+ */
 
 
 function benjamin_footer_sortable_sanitize($val) {

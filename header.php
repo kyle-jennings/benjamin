@@ -1,6 +1,7 @@
 <?php
 
 benjamin_template_settings();
+
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>

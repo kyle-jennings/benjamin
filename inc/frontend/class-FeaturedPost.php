@@ -15,9 +15,9 @@ class BenjaminFeaturedPost {
         $this->id = $id;
         $this->$post_type = $post_type;
         $this->format = $format;
-        $this->post_information();
-        $this->post_image();
-        $this->set_content();
+        $this->postInformation();
+        $this->postImage();
+        $this->setContent();
     }
 
 
@@ -26,7 +26,7 @@ class BenjaminFeaturedPost {
     }
 
 
-    public function set_content() {
+    public function setContent() {
         $post = get_queried_object();
         if( $post->post_title)
             $pre_title = $post->post_title;
@@ -34,29 +34,31 @@ class BenjaminFeaturedPost {
             $pre_title = $post->name;
 
         $output = '';
+        $output .= '<div class="usa-featured-post-hero">';
+            $output .= '<span class="post-title">';
+                $output .= 'Featured Post';
+            $output .= '</span>';
 
-        $output .= '<span class="post-title">';
-            $output .= 'Featured Post';
-        $output .= '</span>';
+            $output .= '<h1>';
+                $output .= '<a href="'.$this->url.'">' . $this->title . '</a>';
+            $output .= '</h1>';
+            $output .= '<div class="entry-meta">';
+                $output .= $this->getMeta();
+            $output .= '</div>';
 
-        $output .= '<h1>';
-            $output .= $this->title;
-        $output .= '</h1>';
-        $output .= '<div class="entry-meta">';
-            $output .= $this->getMeta();
+            if($this->format == 'use-excerpt' && $this->excerpt ){
+                $output .= '<p class="header-content__description">';
+                    $output .= $this->excerpt;
+                $output .= '</p>';
+            }
+
+            // $output .= '<a class="usa-button usa-button-outline-inverse" href="'.$this->url.'"> Read More </a>';
         $output .= '</div>';
-
-        if($this->format == 'use-excerpt' && $this->excerpt ){
-            $output .= '<p class="header-content__description">';
-                $output .= $this->excerpt;
-            $output .= '</p>';
-        }
-
         $this->output = $output;
     }
 
 
-    private function post_information() {
+    private function postInformation() {
         $id = $this->id;
         $post = get_post($id);
         $this->title = get_the_title($id);
@@ -69,7 +71,7 @@ class BenjaminFeaturedPost {
     }
 
 
-    private function post_image() {
+    private function postImage() {
         $sizes = get_intermediate_image_sizes();
         $thumb_id = get_post_thumbnail_id($this->id);
         $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'full', true);

@@ -37,8 +37,8 @@ function benjamin_get_template() {
         return $single;
     elseif ( is_page() && $page = benjamin_is_page()) :
         return $page;
-    elseif (is_404() && benjamin_settings_active('404') ) :
-        return '404';
+    elseif (is_404() && benjamin_settings_active('_404') ) :
+        return '_404';
     else :
         return benjamin_is_feed();
     endif;

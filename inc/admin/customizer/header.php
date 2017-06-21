@@ -122,6 +122,14 @@ function benjamin_header_settings($wp_customize){
 }
 add_action('customize_register', 'benjamin_header_settings');
 
+
+/**
+ * ----------------------------------------------------------------------------
+ * Sanitization settings
+ * ----------------------------------------------------------------------------
+ */
+
+
 function benjamin_header_sortable_sanitize($val) {
     $valids = array(
         'navbar',

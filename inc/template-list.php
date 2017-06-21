@@ -22,8 +22,9 @@ function benjamin_the_template_list($use_widget_areas = false) {
         'template-2' => 'Page Template 2',
         'template-3' => 'Page Template 3',
         'template-4' => 'Page Template 4',
-        '404' => '404 Page',
+        '_404' => '404 Page',
     );
+
     $args = array(
        'public'   => true,
        'publicly_queryable' => true,
@@ -32,7 +33,6 @@ function benjamin_the_template_list($use_widget_areas = false) {
     $cpts = get_post_types($args);
 
     $templates = $templates + $cpts;
-
 
     $widget_areas = array(
         'frontpage-widget-area-1' => 'Frontpage Widget Area 1',

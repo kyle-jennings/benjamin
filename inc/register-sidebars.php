@@ -10,19 +10,6 @@
 function benjamin_widgets_init() {
     $templates = benjamin_the_template_list(true);
 
-    $args = array(
-       'public'   => true,
-       'publicly_queryable' => true,
-       '_builtin' => false
-    );
-    $cpts = get_post_types($args);
-
-    $advanced_templates = array(
-        'search' => 'Search Results',
-        'date' => 'Filtered by Date',
-        'category' => 'Filtered by Category',
-        'tag' => 'Filtered by Tag',
-    );
 
     foreach($templates as $name => $label){
         $sidebar_size = '';
@@ -31,9 +18,6 @@ function benjamin_widgets_init() {
         $count = count($widgets);
         $pos = get_theme_mod($name . '_sidebar_position_setting');
         $horizontals = array(
-            'footer',
-            'header',
-            'footer-below',
             'widgetized-widget-area-1',
             'widgetized-widget-area-2',
             'widgetized-widget-area-3',
@@ -58,7 +42,7 @@ function benjamin_widgets_init() {
 
         register_sidebar( array(
     		'name'          => ucfirst($label),
-    		'id'            => $name,
+    		'id'            => (string)$name,
     		'description'   => esc_html__( 'Add widgets here.', 'benjamin' ),
     		'before_widget' => '<div id="%1$s" class="widget '.$width.'">',
     		'after_widget'  => '</div>',
