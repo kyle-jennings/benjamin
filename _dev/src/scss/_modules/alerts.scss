@@ -1,0 +1,17 @@
+div.wpcf7-response-output {
+    margin: 0 0 2em;
+    max-width: 46rem;
+    padding: 1.2em 3em 1.2em 4em;
+
+    &.wpcf7-validation-errors {
+        background-color: #f9dede;
+        background-image: url(../img/alerts/error.svg);
+        border-width: 0;
+    }
+
+    &.wpcf7-mail-sent-ok {
+        background-color: $color-green-lightest;
+        background-image: url(../img/alerts/success.svg);
+        border-width: 0;
+    }
+}

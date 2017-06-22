@@ -2,7 +2,6 @@
 
 $files = array(
     'customizer-fields/sortable.php',
-    'customizer-fields/activate-layout-settings.php',
     'customizer-fields/activated-sortable.php',
     'customizer-fields/color-scheme.php',
     'customizer-fields/menu-dropdown.php',

@@ -7,6 +7,40 @@
  * @param  [type] $template [description]
  * @return [type]           [description]
  */
+function benjamin_video_image($template = null) {
+
+    $hero_image = null;
+
+    // this is gross, clean me up
+    if( (   in_array( $template, array('single','page') )
+            || ( is_single() || is_page() )
+        )
+        && has_post_thumbnail()
+    ) {
+        $hero_image = get_the_post_thumbnail_url();
+    } elseif ( $template == 'frontpage' ) {
+        $hero_image = get_theme_mod($template . '_image_setting');
+    } else {
+        $post = get_queried_object();
+        $post_type = is_a($post, 'WP_Post_Type') && !is_home() ? $post->name : 'post';
+
+        $f_id = get_option('featured-post--'.$post_type, false);
+        $featuredPost = new BenjaminFeaturedPost($f_id, $post_type);
+
+        $hero_image = ($featuredPost && $featuredPost->image )
+            ? $featuredPost->image : get_theme_mod($template . '_image_setting');
+    }
+
+    return $hero_image;
+}
+
+
+/**
+ * The hero image can change depending on whether or not we are on a feed, or a
+ * single page / post (in which case the default image can be overridden )
+ * @param  [type] $template [description]
+ * @return [type]           [description]
+ */
 function benjamin_hero_image($template = null) {
 
     $hero_image = null;
@@ -48,36 +82,6 @@ function benjamin_hero_size($template = null){
     return $hero_size;
 }
 
-
-/**
- * The front page displays a "callout", here is the markup
- * @return [type] [description]
- */
-function benjamin_get_hero_callout(){
-    $page = ($id = get_theme_mod('frontpage_hero_callout_setting')) ? $id : null;
-    $description = get_bloginfo( 'description', 'display' );
-    $title = get_bloginfo( 'name', 'display' );
-
-    if(!$title || !$description){
-        echo '<h1>' . $title .'</h1>';
-        return false;
-    }
-    ?>
-    <div class="usa-hero-callout usa-section-dark">
-        <h1><?php echo $title; ?></h1>
-        <?php
-            if ( $description || is_customize_preview() ) : ?>
-                <p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-            <?php
-            endif;
-        ?>
-        <?php if( !is_null($id) && $id != 0 ): ?>
-            <a class="usa-button usa-button-big usa-button-secondary"
-            href="<?php echo the_permalink($id) ; ?>">Learn More</a>
-        <?php endif; ?>
-    </div>
-    <?php
-}
 
 
 /**
@@ -143,4 +147,69 @@ function benjamin_get_feed_title() {
     }
 
     return $title;
+}
+
+
+
+/**
+ * The front page displays a "callout", here is the markup
+ * @return [type] [description]
+ */
+function benjamin_get_hero_callout(){
+    $page = ($id = get_theme_mod('frontpage_hero_callout_setting')) ? $id : null;
+    $description = get_bloginfo( 'description', 'display' );
+    $title = get_bloginfo( 'name', 'display' );
+
+    if(!$title || !$description)
+        return '<h1>' . $title .'</h1>';
+
+
+    $output = '';
+
+    $output .= '<div class="usa-hero-callout usa-section-dark">';
+        $output .= '<h1>'.$title.'</h1>';
+
+            if ( $description || is_customize_preview() )
+                $output .= '<p class="site-description">'.$description.'</p>';
+
+            if( !is_null($id) && $id != 0 )
+                $output .= '<a class="usa-button usa-button-big usa-button-secondary"
+                    href='.the_permalink($id).'">Learn More</a>';
+
+    $output .= '</div>';
+
+    return $output;
+}
+
+
+
+function benjamin_get_the_hero_content() {
+    $content = get_theme_mod('_404_page_content_setting', 'default');
+    $pid = get_theme_mod('_404_page_select_setting', null);
+    $move_content = get_theme_mod('_404_move_page_content_setting', null);
+
+    $output = '';
+
+    if( is_front_page() ){
+        $output .= benjamin_get_hero_callout();
+    } elseif(is_404() && $content !== 'default' && $pid && $move_content == 'yes' ) {
+        $page = get_page($pid);
+        $output .= apply_filters('the_content', $page->post_content);
+    } elseif( !is_page() && !is_single() && !is_singular() ) {
+        $output .= benjamin_get_feed_title();
+    } else {
+        $output .= '<h1>'.get_the_title().'</h1>';
+        if ( 'page' !== get_post_type() ) :
+            $output .= '<div class="entry-meta">';
+                $output .= benjamin_get_hero_meta();
+            $output .= '</div>';
+        endif;
+    }
+
+    return $output;
+}
+
+function benjamin_the_hero_content() {
+
+    echo benjamin_get_the_hero_content();
 }

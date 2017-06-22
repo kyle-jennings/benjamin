@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Get the template, or its settings
+ * @param  [type] $ret [description]
+ * @return [type]      [description]
+ */
 function benjamin_template_settings($ret = null) {
 
     $settings = benjamin_set_template_settings();
@@ -12,6 +17,9 @@ function benjamin_template_settings($ret = null) {
 }
 
 
+/**
+ * [benjamin_set_template_settings description]
+ */
 function benjamin_set_template_settings(){
 
     $template = benjamin_get_template();
@@ -26,8 +34,12 @@ function benjamin_set_template_settings(){
 }
 
 
-
-
+/**
+ * Gets the template type, there are 5 main types. Frontpage, a single post,
+ * a single page, the 404 page, or a feed
+ *
+ * @return str template name
+ */
 function benjamin_get_template() {
 
     //	if the page is a post type
@@ -45,6 +57,10 @@ function benjamin_get_template() {
 }
 
 
+/**
+ * If the template is a single post type...
+ * @return str|boolean the template name or false
+ */
 function benjamin_is_single(){
 
     if (is_embed() && benjamin_settings_active('embed') ) :
@@ -59,7 +75,10 @@ function benjamin_is_single(){
 }
 
 
-
+/**
+ * If the tempalte is a "feed" type, determine the type
+ * @return string tempalte name
+ */
 function benjamin_is_feed( ){
     if( is_search() && benjamin_settings_active('search'))
         return 'search';
@@ -81,6 +100,10 @@ function benjamin_is_feed( ){
 }
 
 
+/**
+ * If the archive type is a "date", determine the date type
+ * @return str|boolean the template name or false
+ */
 function benjamin_is_date(){
     if(is_day())
         return 'day';
@@ -90,6 +113,12 @@ function benjamin_is_date(){
         return 'year';
 }
 
+
+
+/**
+ * If the template is a single page, determine whether or not its a custom template
+ * @return str|boolean the template name or false
+ */
 function benjamin_is_page(){
     if ( is_page_template() && $p_template = benjamin_is_page_template() ):
         return $p_template;
@@ -101,6 +130,10 @@ function benjamin_is_page(){
 }
 
 
+/**
+ * If we are on a page template, lets ensure it's a valid one
+ * @return str|boolean the template name or false
+ */
 function benjamin_is_page_template(){
 
     if ( is_page_template('page-templates/widgetized.php') && benjamin_settings_active('widgetized') )
@@ -118,6 +151,11 @@ function benjamin_is_page_template(){
 }
 
 
+/**
+ * Have the settings been activated?
+ * @param  [type] $template [description]
+ * @return [type]           [description]
+ */
 function benjamin_settings_active($template = null){
     $mods = get_theme_mods();
     $active = $mods[$template . '_settings_active'];
@@ -125,6 +163,12 @@ function benjamin_settings_active($template = null){
 }
 
 
+/**
+ * Hides a part of the template layout
+ * @param  str $needle   page part (navbar, footer, ect)
+ * @param  str  $template the "current" templat
+ * @return boolean
+ */
 function benjamin_hide_layout_part( $needle, $template ) {
 
     $layout_settings = get_theme_mod($template.'_page_layout_setting');
@@ -133,12 +177,4 @@ function benjamin_hide_layout_part( $needle, $template ) {
     $result = in_array($needle, $layout_settings);
 
     return $result;
-}
-
-
-function benjamin_get_main_width($sidebar_position) {
-    $width = ($sidebar_position == 'none' || !$sidebar_position)
-            ? BENJAMIN_FULL_WIDTH : BENJAMIN_MAIN_WIDTH;
-
-    return $width;
 }
