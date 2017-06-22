@@ -118,60 +118,6 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
     $wp_customize->add_control( $name . '_hero_position_control', $hero_position_args );
 
 
-
-    // // This will come in version 2
-    // /**
-    //  * Hero video
-    //  * @var array
-    //  */
-    // $wp_customize->add_setting( $name . '_video_setting', array(
-    //     'default'      => null,
-    //     'sanitize_callback' => 'absint',
-    //     'validate_callback'=> 'benjamin_validate_header_video',
-    // ) );
-    //
-    // $hero_video_args = array(
-    //     'label'   => 'Hero Video',
-    //     'section' => $name . '_settings_section',
-    //     'settings'   => $name . '_video_setting',
-    //     'mime_type' => 'video',
-    //
-    // );
-    // if( $name !== 'archive')
-    //     $hero_video_args['active_callback'] = $active_callback;
-    //
-    // $wp_customize->add_control(
-    //     new WP_Customize_Media_Control(
-    //         $wp_customize,
-    //         $name . '_video_setting_control',
-    //         $hero_video_args
-    //     )
-    // );
-    //
-    //
-    // /**
-    //  * Youtube Video
-    //  * @var array
-    //  */
-    // $wp_customize->add_setting( $name.'_youtube_hero_video_setting', array(
-    //     'sanitize_callback' => 'benjamin_sanitize_external_header_video',
-    //     'validate_callback' => 'benjamin_validate_external_header_video',
-    // ) );
-    //
-    // $youtube_args = array(
-    //     'type'           => 'url',
-    //     'description'    => __( 'Or, enter a YouTube URL:' ),
-    //     'section' => $name . '_settings_section',
-    //     'settings'   => $name.'_youtube_hero_video_setting',
-    // );
-    // if( $name !== 'archive')
-    //     $hero_video_args['active_callback'] = $active_callback;
-    //
-    // $wp_customize->add_control( $name.'_youtube_hero_video_control', $youtube_args);
-
-
-
-
     /**
      * Hero Size
      */
