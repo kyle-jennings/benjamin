@@ -165,6 +165,7 @@ gulp.task('admin-css', ['admin-sass'], function() {
   return gulp.src( paths.adminAssetsPath + '/css/benjamin-admin.css')
     .pipe(plumber({ errorHandler: handleErrors }))
     .pipe(cssnano({ safe: true }))
+    .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest( paths.adminAssetsPath + '/css'))
     .pipe(notify({message: 'CSS complete'}));
 });

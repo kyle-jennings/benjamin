@@ -2,7 +2,7 @@
 
 Requires at least: 4.5
 Tested up to: 4.7
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Copyright 2017 Kyle Jennings
@@ -116,3 +116,13 @@ Mixed License (https://github.com/18F/web-design-standards/blob/develop/LICENSE.
 * 1.3
 * re-namespaced everything to use theme slug, and not the uswds acronymn
 * added options to hide parts of a given page
+
+* 1.4
+* added some additional settings to the 404 page
+* added permalink to the hero area featured post title
+* fixed a JS bug in the customizer caused by using 404 as an array index
+* fixed the preview for changing the sidebar width
+* used built in customizer settings for my layout activate setting
+* added some toggles to the various customizer fields
+* added styles for CF7 validations
+* prepped settings for the eventual hero area video BGs
