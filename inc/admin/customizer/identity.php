@@ -19,12 +19,13 @@ function benjamin_site_identity($wp_customize) {
         )
     );
 
+    $description = 'Benjamin currently comes with 3 premade color schemes, like color swatches.';
     $wp_customize->add_control( new Benjamin_Color_Scheme_Custom_Control(
         $wp_customize, 'color_scheme_control', array(
+            'description' => $description,
             'label'   => 'Color Scheme',
             'section' => 'title_tagline',
             'settings' => 'color_scheme_setting',
-            'type' => 'radio',
             'choices' => array(
                         'standard' => $standard,
                         'classic' => $classic,

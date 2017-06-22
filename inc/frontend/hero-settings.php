@@ -19,8 +19,11 @@ function benjamin_video_image($template = null) {
     ) {
         $hero_image = get_the_post_thumbnail_url();
     } elseif ( $template == 'frontpage' ) {
+
         $hero_image = get_theme_mod($template . '_image_setting');
+
     } else {
+
         $post = get_queried_object();
         $post_type = is_a($post, 'WP_Post_Type') && !is_home() ? $post->name : 'post';
 
@@ -51,10 +54,15 @@ function benjamin_hero_image($template = null) {
         )
         && has_post_thumbnail()
     ) {
+
         $hero_image = get_the_post_thumbnail_url();
+
     } elseif ( $template == 'frontpage' ) {
+
         $hero_image = get_theme_mod($template . '_image_setting');
+
     } else {
+
         $post = get_queried_object();
         $post_type = is_a($post, 'WP_Post_Type') && !is_home() ? $post->name : 'post';
 
@@ -63,6 +71,7 @@ function benjamin_hero_image($template = null) {
 
         $hero_image = ($featuredPost && $featuredPost->image )
             ? $featuredPost->image : get_theme_mod($template . '_image_setting');
+
     }
 
     return $hero_image;
@@ -133,6 +142,7 @@ function benjamin_get_feed_title() {
         } else {
             $title = '<h1> Home </h1>';
         }
+
     } elseif(is_404() ) {
         $title = '<h1>404: Page not found. </h1>';
     } else {
@@ -150,13 +160,34 @@ function benjamin_get_feed_title() {
 }
 
 
+function benjamin_get_frontpage_hero_content() {
+
+    $output = '';
+    $content = get_theme_mod('frontpage_hero_content_setting');
+
+    if($content == 'page') {
+        $page = get_theme_mod('frontpage_hero_page_setting');
+        if( !is_null($page) && $page != 0 ) {
+            $page = get_page($page);
+            $output .= apply_filters('the_content', $page->post_content);
+        }
+    } elseif($content == 'callout') {
+        $output .= benjamin_get_hero_callout();
+    } else {
+        $output = '';
+    }
+
+    return $output;
+}
+
 
 /**
  * The front page displays a "callout", here is the markup
  * @return [type] [description]
  */
 function benjamin_get_hero_callout(){
-    $page = ($id = get_theme_mod('frontpage_hero_callout_setting')) ? $id : null;
+    $id = get_theme_mod('frontpage_hero_callout_setting', 0);
+
     $description = get_bloginfo( 'description', 'display' );
     $title = get_bloginfo( 'name', 'display' );
 
@@ -174,7 +205,7 @@ function benjamin_get_hero_callout(){
 
             if( !is_null($id) && $id != 0 )
                 $output .= '<a class="usa-button usa-button-big usa-button-secondary"
-                    href='.the_permalink($id).'">Learn More</a>';
+                    href="'.get_the_permalink($id).'">Learn More</a>';
 
     $output .= '</div>';
 
@@ -182,33 +213,59 @@ function benjamin_get_hero_callout(){
 }
 
 
+/**
+ * returns the appropriate content for the hero.
+ *
+ * This might be the front page callout, the 404 page content (if specificied),
+ * the single page/post title, or the feed title
 
+ * @return str the content as a string to be echoed elsehwere
+ */
 function benjamin_get_the_hero_content() {
-    $content = get_theme_mod('_404_page_content_setting', 'default');
-    $pid = get_theme_mod('_404_page_select_setting', null);
-    $move_content = get_theme_mod('_404_move_page_content_setting', null);
+
+    /**
+     * the 404 settings
+     *
+     * returns:
+     * $content
+     * $pid
+     * $header_page
+     *
+     */
+    extract(benjamin_get_404_settings());
 
     $output = '';
 
     if( is_front_page() ){
-        $output .= benjamin_get_hero_callout();
-    } elseif(is_404() && $content !== 'default' && $pid && $move_content == 'yes' ) {
-        $page = get_page($pid);
+
+        $output .= benjamin_get_frontpage_hero_content();
+
+    } elseif(is_404() && $header_page  ) {
+        $page = get_page($header_page);
         $output .= apply_filters('the_content', $page->post_content);
+
     } elseif( !is_page() && !is_single() && !is_singular() ) {
+
         $output .= benjamin_get_feed_title();
+
     } else {
+
         $output .= '<h1>'.get_the_title().'</h1>';
         if ( 'page' !== get_post_type() ) :
             $output .= '<div class="entry-meta">';
                 $output .= benjamin_get_hero_meta();
             $output .= '</div>';
         endif;
+
     }
 
     return $output;
 }
 
+
+/**
+ * displays the hero content
+ */
 function benjamin_the_hero_content() {
 
     echo benjamin_get_the_hero_content();

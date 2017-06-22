@@ -8,13 +8,19 @@ This template is used to display a sidenav for l o n g content
 
 get_header();
 
-$template = benjamin_template_settings('template');
-$sidebar_position = get_theme_mod($template . '_sidebar_position_setting');
+/**
+ * get all the settings needed for the the template layout
+ *
+ * returns:
+ * $template
+ * $main_width
+ * $hide_content
+ * $sidebar_position
+ *
+ */
+extract( benjamin_template_settings() );
 
-$main_width = benjamin_get_main_width($sidebar_position);
-$main_width .= ' ' . benjamin_get_width_visibility($template, $sidebar_position);
-
-if( !benjamin_hide_layout_part('page-content', $template) ):
+if( !$hide_content ):
 ?>
 
 

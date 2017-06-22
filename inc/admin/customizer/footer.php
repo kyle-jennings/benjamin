@@ -21,7 +21,7 @@ function benjamin_footer_settings($wp_customize) {
     );
 
     $wp_customize->add_section( 'footer_settings_section', array(
-        'title'          => 'Footer Settings',
+        'title'          => __('Footer Settings', 'benjamin'),
         'priority'       => 38,
     ) );
 
@@ -30,9 +30,15 @@ function benjamin_footer_settings($wp_customize) {
         'sanitize_callback' => 'benjamin_footer_sortable_sanitize',
     ) );
 
+
+    $description = __('The page content is sortable, and optional.  Simply drag the
+    available components from the "available" box over to active.  This setting
+    does not depend on the "Settings Active" setting above.', 'benjamin');
+
     $wp_customize->add_control( new Benjamin_Activated_Sortable_Custom_Control( $wp_customize,
        'footer_sortables_control', array(
-           'label'   => 'Sortable Sections',
+           'description' => $description,
+           'label'   => __('Sortable Footer Parts', 'benjamin'),
            'section' => 'footer_settings_section',
            'settings'=> 'footer_sortables_setting',
            'priority' => 1,

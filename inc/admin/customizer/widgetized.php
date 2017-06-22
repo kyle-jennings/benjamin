@@ -4,17 +4,22 @@
 
 function benjamin_widgetized_settings($wp_customize) {
 
+
     $wp_customize->add_setting( 'widgetized_sortables_setting', array(
         'default'        => '',
         'sanitize_callback' => 'benjamin_widgetized_sortable_sanitize',
     ) );
 
+    $description = __('The page content is sortable, and optional.  Simply drag the
+    available components from the "available" box over to active.  This setting
+    does not depend on the "Settings Active" setting above.', 'benjamin');
+
     $wp_customize->add_control( new Benjamin_Activated_Sortable_Custom_Control( $wp_customize,
        'widgetized_sortables_control', array(
-           'label'   => 'Sortable Sections',
+           'label'   => __('Sortable Page Content', 'benjamin'),
+           'description' => $description,
            'section' => 'widgetized_settings_section',
            'settings'=> 'widgetized_sortables_setting',
-           'priority' => 1,
            'choices' => array(
                    'widget-area-1' => 'Widget Area 1',
                    'widget-area-2' => 'Widget Area 2',

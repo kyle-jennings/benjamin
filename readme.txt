@@ -8,6 +8,12 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Copyright 2017 Kyle Jennings
 Benjamin is distributed under the terms of the GNU GPL
 
+== !! JS console error note !! ==
+When navigating to the 404 section in the customizer, there is an intentional JS error:
+"Failed to load resource: the server responded with a status of 404 (Not Found)"
+
+This occurs because the customizer previewer is loading a non-existent page so the 404 page
+can be previewed while be customized!
 
 == Description ==
 

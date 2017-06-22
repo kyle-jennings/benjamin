@@ -8,7 +8,7 @@
  */
 
 
-$template = benjamin_template_settings('template');
+$template = benjamin_template();
 
 $style = '';
 if ( $hero_image = benjamin_hero_image($template) ){

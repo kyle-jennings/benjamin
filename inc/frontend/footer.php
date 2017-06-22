@@ -1,7 +1,7 @@
 <?php
 
 function benjamin_footer() {
-    $template = benjamin_template_settings('template');
+    $template = benjamin_template();
 
     $sortables = get_theme_mod('footer_sortables_setting');
     if(!$sortables || benjamin_hide_layout_part('footer', $template) ) {

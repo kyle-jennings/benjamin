@@ -2,15 +2,13 @@
 
 jQuery(document).ready(function($) {
 
-  // require('./save-refresh');
-  require('./refresh-alert');
-  // require('./toggle-template-settings');
-  require('./hide-footer-menu');
-  require('./sortable');
-  require('./frontpage-sortables');
-  require('./widgetized-sortables');
-  require('./footer-sortables');
   require('./checkbox-group');
+  require('./footer-sortables');
+  require('./frontpage-sortables');
+  require('./load-preview-url');
+  require('./refresh-alert');
+  require('./sortable');
+  require('./widgetized-sortables');
 
 
   if($('body.widgets-php')){

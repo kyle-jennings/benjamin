@@ -8,7 +8,8 @@ function benjamin_404_settings($wp_customize) {
     ) );
 
     $wp_customize->add_control( '_404_page_content_control', array(
-            'label'   => 'Page Content',
+            'description' => __('Display some default content provided by the theme or select a page to display.','benjamin'),
+            'label'   => __('Page Content', 'benjamin'),
             'section' => '_404_settings_section',
             'settings'=> '_404_page_content_setting',
             'priority' => 1,
@@ -26,7 +27,7 @@ function benjamin_404_settings($wp_customize) {
     ) );
 
     $wp_customize->add_control( '_404_page_select_control', array(
-            'label'   => 'Select a Page',
+            'label'   => __('Select a Page', 'benjamin'),
             'section' => '_404_settings_section',
             'settings'=> '_404_page_select_setting',
             'type'    => 'dropdown-pages',
@@ -39,25 +40,20 @@ function benjamin_404_settings($wp_customize) {
 
 
 
-    $wp_customize->add_setting( '_404_move_page_content_setting', array(
+    $wp_customize->add_setting( '_404_header_page_content_setting', array(
         'default'        => 'no',
-        'sanitize_callback' => 'benjamin_move_page_content_sanitize',
+        'sanitize_callback' => 'absint',
     ) );
 
-    $wp_customize->add_control( '_404_move_page_content_control', array(
-            'label'   => 'Move Page Content to Hero',
+    $wp_customize->add_control( '_404_header_page_content_control', array(
+            'description' => __('Select page content to the header, this is great when the header size is set to full and the other page parts are hidden.','benjamin'),
+            'label'   => __('Use page content in header', 'benjamin'),
             'section' => '_404_settings_section',
-            'settings'=> '_404_move_page_content_setting',
+            'settings'=> '_404_header_page_content_setting',
             'type' => 'select',
-            'choices' => array(
-                'no' => 'No',
-                'yes' => 'Yes',
-            ),
+            'type'    => 'dropdown-pages',
             'priority' => 1,
-            'active_callback' => function() use ( $wp_customize ) {
 
-                return 'page' === $wp_customize->get_setting( '_404_page_content_setting' )->value();
-             },
          )
     );
 }

@@ -1,38 +1,37 @@
 <?php
 
 /**
- * Get the template, or its settings
- * @param  [type] $ret [description]
- * @return [type]      [description]
+ * Get all the settings needed for the template layout
+ * @return array keyed array with the settings
  */
-function benjamin_template_settings($ret = null) {
+function benjamin_template_settings() {
+    $template = benjamin_template();
+    $sidebar_position = get_theme_mod($template . '_sidebar_position_setting');
 
-    $settings = benjamin_set_template_settings();
+    $main_width = benjamin_get_main_width($sidebar_position);
+    $main_width .= ' ' . benjamin_get_width_visibility($template, $sidebar_position);
 
-    // if an arg was passed in, return that single setting
-    if($ret)
-        return $settings[$ret];
-    else
-        return $settings;
+    $hide_content = benjamin_hide_layout_part('page-content', $template);
+
+    return array(
+        'template' => $template,
+        'main_width' => $main_width,
+        'hide_content' => $hide_content,
+        'sidebar_position' => $sidebar_position,
+    );
 }
 
 
 /**
- * [benjamin_set_template_settings description]
+ * Get the "current" page template
+ *
+ * I saw "current" because unless the current page's template settings are
+ * activated, then we will fall back onto the "feed" settings
+ * @return str the template name
  */
-function benjamin_set_template_settings(){
-
-    $template = benjamin_get_template();
-    $date_type = is_date() ? benjamin_is_date() : null;
-
-    $array = array(
-        'template' => $template,
-        'date_type' => $archive_type,
-    );
-
-    return $array;
+function benjamin_template() {
+    return benjamin_get_template();
 }
-
 
 /**
  * Gets the template type, there are 5 main types. Frontpage, a single post,
@@ -45,12 +44,16 @@ function benjamin_get_template() {
     //	if the page is a post type
     if( is_front_page() && benjamin_settings_active('frontpage') ) :
         return 'frontpage';
-    elseif ( is_single() && $single = benjamin_is_single() ):
+    elseif( is_single() && $cpt = benjamin_which_cpt() ) :
+        return $cpt;
+    elseif ( is_single() && $single = benjamin_is_single() ) :
         return $single;
     elseif ( is_page() && $page = benjamin_is_page()) :
         return $page;
     elseif (is_404() && benjamin_settings_active('_404') ) :
         return '_404';
+    elseif( is_post_type_archive( benjamin_get_cpts()) && $cpt = benjamin_which_cpt('feed') ) :
+        return $cpt;
     else :
         return benjamin_is_feed();
     endif;
@@ -79,7 +82,8 @@ function benjamin_is_single(){
  * If the tempalte is a "feed" type, determine the type
  * @return string tempalte name
  */
-function benjamin_is_feed( ){
+function benjamin_is_feed(){
+
     if( is_search() && benjamin_settings_active('search'))
         return 'search';
     elseif( is_home() && benjamin_settings_active('home') ){
@@ -99,6 +103,22 @@ function benjamin_is_feed( ){
     }
 }
 
+
+function benjamin_which_cpt($feed = null) {
+    $cpts = benjamin_get_cpts();
+    $name = get_queried_object()->name;
+
+    if(!$feed)
+        $name = get_queried_object()->post_type;
+
+    if($feed == 'feed')
+        $feed = '-feed';
+
+    if(in_array( $name, $cpts))
+        return $name . $feed;
+
+    return false;
+}
 
 /**
  * If the archive type is a "date", determine the date type
@@ -160,21 +180,4 @@ function benjamin_settings_active($template = null){
     $mods = get_theme_mods();
     $active = $mods[$template . '_settings_active'];
     return ($active == 'yes') ? true : false;
-}
-
-
-/**
- * Hides a part of the template layout
- * @param  str $needle   page part (navbar, footer, ect)
- * @param  str  $template the "current" templat
- * @return boolean
- */
-function benjamin_hide_layout_part( $needle, $template ) {
-
-    $layout_settings = get_theme_mod($template.'_page_layout_setting');
-    $layout_settings = json_decode($layout_settings);
-    $layout_settings = $layout_settings ? $layout_settings : array();
-    $result = in_array($needle, $layout_settings);
-
-    return $result;
 }

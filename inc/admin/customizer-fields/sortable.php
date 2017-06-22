@@ -91,7 +91,10 @@ class Benjamin_Sortable_Custom_Control extends WP_Customize_Control
             </span>
         </label>
 
-
+        <p class="description customize-control-description">
+            <?php echo $this->description; ?>
+        </p>
+        
         <div class="sortables">
 
             <div>

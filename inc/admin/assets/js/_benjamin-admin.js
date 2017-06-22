@@ -3,15 +3,13 @@
 
 jQuery(document).ready(function($) {
 
-  // require('./save-refresh');
-  require('./refresh-alert');
-  // require('./toggle-template-settings');
-  require('./hide-footer-menu');
-  require('./sortable');
-  require('./frontpage-sortables');
-  require('./widgetized-sortables');
-  require('./footer-sortables');
   require('./checkbox-group');
+  require('./footer-sortables');
+  require('./frontpage-sortables');
+  require('./load-preview-url');
+  require('./refresh-alert');
+  require('./sortable');
+  require('./widgetized-sortables');
 
 
   if($('body.widgets-php')){
@@ -22,7 +20,7 @@ jQuery(document).ready(function($) {
 
 window.$ = jQuery;
 
-},{"./checkbox-group":2,"./footer-sortables":3,"./frontpage-sortables":4,"./hide-footer-menu":5,"./refresh-alert":6,"./sortable":7,"./widgetized-sortables":8}],2:[function(require,module,exports){
+},{"./checkbox-group":2,"./footer-sortables":3,"./frontpage-sortables":4,"./load-preview-url":5,"./refresh-alert":6,"./sortable":7,"./widgetized-sortables":8}],2:[function(require,module,exports){
 $('.js--checkbox-group input[type="checkbox"]').on('change', function(e){
   var $this = $(this);
   var $parent = $this.closest('.js--checkbox-group');
@@ -213,26 +211,26 @@ jQuery(function($) {
 });
 
 },{}],5:[function(require,module,exports){
-
-function hideFooterMenuSetting($) {
-  var val = $('input[name=_customize-radio-footer_top_content_control]:checked').val();
-
-  if(val !== 'menu') {
-    $('#customize-control-footer_menu_control').fadeOut();
-  }else{
-    $('#customize-control-footer_menu_control').fadeIn();
-  }
+function randomString(length, chars) {
+    var result = '';
+    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+    return result;
 }
 
 
-// customizer JS
-if($('body.wp-customizer')){
-  $('#customize-control-footer_top_content_control input').live('click', function(){
-    hideFooterMenuSetting($);
-  });
 
-  hideFooterMenuSetting($);
-}
+(function ( api ) {
+    api.section( '_404_settings_section', function( section ) {
+        section.expanded.bind( function( isExpanded ) {
+            var rand = randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+            var url = api.settings.url.home + '/' + rand;
+            var previousUrl = api.previewer.previewUrl.get();
+            if ( isExpanded ) {
+                api.previewer.previewUrl.set( url );
+            }
+        } );
+    } );
+} ( wp.customize ) );
 
 },{}],6:[function(require,module,exports){
 window.refreshAlert = function() {

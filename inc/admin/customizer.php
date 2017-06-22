@@ -1,6 +1,7 @@
 <?php
 
 $files = array(
+    'customizer-fields/label.php',
     'customizer-fields/sortable.php',
     'customizer-fields/activated-sortable.php',
     'customizer-fields/color-scheme.php',
@@ -29,3 +30,16 @@ function benjamin_customizer_settings($wp_customize){
     // placeholder for near future updates
 }
 add_action('customize_register', 'benjamin_customizer_settings');
+
+
+function benjamin_customizer_enqueue() {
+
+	wp_enqueue_script(
+        'custom-customize',
+        get_stylesheet_directory_uri() . '/inc/admin/assets/js/_benjamin-admin-min.js',
+        null,
+        '20170215',
+        true
+    );
+}
+add_action( 'customize_controls_enqueue_scripts', 'benjamin_customizer_enqueue' );

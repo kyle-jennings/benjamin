@@ -9,17 +9,30 @@
 
 get_header();
 
-$template = benjamin_template_settings('template');
-$sidebar_position = get_theme_mod($template . '_sidebar_position_setting');
+/**
+ * get all the settings needed for the the template layout
+ *
+ * returns:
+ * $template
+ * $main_width
+ * $hide_content
+ * $sidebar_position
+ *
+ */
+extract( benjamin_template_settings() );
 
-$main_width = benjamin_get_main_width($sidebar_position);
-$main_width .= ' ' . benjamin_get_width_visibility($template, $sidebar_position);
+/**
+ * the 404 settings
+ *
+ * returns:
+ * $content
+ * $pid
+ * $header_page
+ *
+ */
+extract( benjamin_get_404_settings() );
 
-$content = get_theme_mod('_404_page_content_setting', 'default');
-$pid = get_theme_mod('_404_page_select_setting', null);
-$move_content = get_theme_mod('_404_move_page_content_setting');
-
-if( !benjamin_hide_layout_part('page-content', $template) ):
+if( !$hide_content ):
 ?>
 
 <section id="primary" class="usa-grid usa-section">
@@ -32,7 +45,7 @@ if( !benjamin_hide_layout_part('page-content', $template) ):
   <div class="<?php echo $main_width; ?>">
         <?php
 
-            if($content == 'page' && $pid && $move_content != 'yes'):
+            if($content == 'page' && $pid):
 
                 $page = get_page($pid);
                 echo $page->post_content;

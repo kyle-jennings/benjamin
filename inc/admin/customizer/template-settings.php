@@ -15,8 +15,6 @@ function benjamin_template_layout_settings($wp_customize) {
 
     $templates = benjamin_the_template_list();
 
-
-
     foreach($templates as $name => $label):
         benjamin_template_settings_loop($wp_customize, $name, $label);
     endforeach;
@@ -26,7 +24,7 @@ add_action('customize_register', 'benjamin_template_layout_settings');
 
 function benjamin_template_settings_loop(&$wp_customize, $name, $label){
     $wp_customize->add_section( $name . '_settings_section', array(
-        'title'          => ucfirst($label) . ' Settings',
+        'title'          => sprintf( __('%s Settings', 'benjamin'), ucfirst($label) ),
         'priority'       => 36,
     ) );
 
@@ -39,7 +37,8 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
         ) );
 
         $activate_args = array(
-            'label' => 'Settings Active',
+            'description' => __('Overrides the default template settings to give this template a unique look and feel.', 'benjamin'),
+            'label' => __('Use Template Settings', 'benjamin'),
             'section' => $name . '_settings_section',
             'settings' => $name . '_settings_active',
             'type' => 'radio',
@@ -61,6 +60,29 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
         };
     }
 
+    /**
+     * Label
+     */
+    $wp_customize->add_setting(
+        $name . '_header_label', array(
+            'default' => 'none',
+            'sanitize_callback' => 'wp_filter_nohtml_kses',
+        )
+    );
+    $wp_customize->add_control(
+        new Benjamin_Label_Custom_Control(
+            $wp_customize,
+            $name . '_header_label_control',
+            array(
+                'description' => __('','benjamin'),
+                'label' => __('Header Settings', 'benjamin'),
+                'type' => 'label',
+                'section' => $name . '_settings_section',
+                'settings' => $name . '_header_label',
+            )
+        )
+    );
+
 
     /**
      * Hero Image
@@ -71,7 +93,8 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
     ) );
 
     $hero_image_args = array(
-        'label'   => 'Hero Image',
+        'description' => __('Change the header iamge', 'benjamin'),
+        'label'   => __('Header Image', 'benjamin'),
         'section' => $name . '_settings_section',
         'settings'   => $name . '_image_setting',
         'priority' => 8,
@@ -105,7 +128,8 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
     );
 
     $hero_position_args = array(
-        'label' => 'Hero Image Position',
+        'description' => __('Because the header image size can be changed, this option will give you some more control with how the image is displayed.','benjamin'),
+        'label' => __('Header Image Position', 'benjamin'),
         'section' => $name . '_settings_section',
         'settings' => $name . '_hero_position_setting',
         'type' => 'select',
@@ -181,7 +205,8 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
     ) );
 
     $hero_size_args = array(
-        'label' => 'Hero Size',
+        'description' => __('Changes the height of the hero banner', 'benjamin'),
+        'label' => __('Header Size', 'benjamin'),
         'section' => $name . '_settings_section',
         'settings' => $name . '_hero_size_setting',
         'type' => 'select',
@@ -200,6 +225,30 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
 
 
     /**
+     * Label
+     */
+    $wp_customize->add_setting(
+        $name . '_sidebar_label', array(
+            'default' => 'none',
+            'sanitize_callback' => 'wp_filter_nohtml_kses',
+        )
+    );
+    $wp_customize->add_control(
+        new Benjamin_Label_Custom_Control(
+            $wp_customize,
+            $name . '_sidebar_label_control',
+            array(
+                'description' => __('','benjamin'),
+                'label' => __('Sidebar Settings', 'benjamin'),
+                'type' => 'label',
+                'section' => $name . '_settings_section',
+                'settings' => $name . '_sidebar_label',
+            )
+        )
+    );
+
+
+    /**
      * Sidebar position
      */
     $wp_customize->add_setting( $name . '_sidebar_position_setting', array(
@@ -208,7 +257,8 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
     ) );
 
     $sidebar_pos_args = array(
-        'label' => 'Sidebar Position',
+        'description' => __('Hide or move your sidebar to change the layout of the content area.','benjamin'),
+        'label' => __('Sidebar Position', 'benjamin'),
         'section' => $name . '_settings_section',
         'settings' => $name . '_sidebar_position_setting',
         'type' => 'select',
@@ -233,7 +283,8 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
         'sanitize_callback' => 'benjamin_sidebar_visibility_sanitize',
     ) );
     $sidebar_visibility_args = array(
-        'label' => 'Sidebar Visibility',
+        'description' => __('Hide or show the sidebar on different screen size (ie: hide on phones)', 'benjamin'),
+        'label' => __('Sidebar Visibility', 'benjamin'),
         'section' => $name . '_settings_section',
         'settings' => $name . '_sidebar_visibility_setting',
         'type' => 'select',
@@ -254,6 +305,32 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
 
     // If we are not in the archive, display the layout settings
     if( $name !== 'archive'):
+        /**
+         * Label
+         */
+        $wp_customize->add_setting(
+            $name . '_other_settings_label', array(
+                'default' => 'none',
+                'sanitize_callback' => 'wp_filter_nohtml_kses',
+            )
+        );
+        $wp_customize->add_control(
+            new Benjamin_Label_Custom_Control(
+                $wp_customize,
+                $name . '_other_settings_label_control',
+                array(
+                    'description' => __('','benjamin'),
+                    'label' => __('Other Settings', 'benjamin'),
+                    'type' => 'label',
+                    'section' => $name . '_settings_section',
+                    'settings' => $name . '_other_settings_label',
+                )
+            )
+        );
+    endif;
+
+    // If we are not in the archive, display the layout settings
+    if( $name !== 'archive'):
 
         $wp_customize->add_setting( $name.'_page_layout_setting', array(
             'default'        => '',
@@ -261,10 +338,10 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
         ) );
 
         $layout_args = array(
-            'label'   => 'Page Layout',
+            'description' => __('Hide parts of a page, great for making landing pages.' ,'benjamin'),
+            'label'   => __('Page Layout', 'benjamin'),
             'section' => $name.'_settings_section',
             'settings'=> $name.'_page_layout_setting',
-            'priority' => 6,
             'choices' => array(
                 'banner' => 'Hide Banner',
                 'navbar' => 'Hide Navbar',

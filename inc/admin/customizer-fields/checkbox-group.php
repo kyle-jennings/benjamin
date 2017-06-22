@@ -23,6 +23,10 @@ class Benjamin_Checkbox_Group_Control extends WP_Customize_Control
 
         $output .= '<span class="customize-control-title">'.$this->label.'</span>';
 
+        $output .= '<p class="description customize-control-description">';
+            $output .= $this->description;
+        $output .= '</p>';
+
         $output .= '<ul id="js--'.$this->id.'"
             class="checkbox-group js--checkbox-group"
             data-setting="'.$this->setting->id.'"
