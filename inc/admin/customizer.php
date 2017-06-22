@@ -36,7 +36,7 @@ function benjamin_customizer_enqueue() {
 
 	wp_enqueue_script(
         'custom-customize',
-        get_stylesheet_directory_uri() . '/inc/admin/assets/js/_benjamin-admin-min.js',
+        get_stylesheet_directory_uri() . '/inc/admin/assets/js/_benjamin-customizer-min.js',
         null,
         '20170215',
         true

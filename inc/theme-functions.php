@@ -56,10 +56,12 @@ add_action( 'after_setup_theme', 'benjamin_content_width', 0 );
 // only load these in the admin section
 if (is_admin()) {
     $files = array(
+        '/inc/admin/ajax.php',
         '/inc/admin/assets.php',
         '/inc/admin/widgets.php',
         '/inc/admin/metabox-featured-post.php',
         '/inc/admin/set-default-settings.php',
+        // '/inc/admin/metabox-featured-video.php',
     );
     foreach($files as $file)
         require get_template_directory() . $file;

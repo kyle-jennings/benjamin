@@ -161,7 +161,7 @@ gulp.task('clean:img', function(){
  * Minify and optimize style.css.
  */
 gulp.task('admin-css', ['admin-sass'], function() {
-  console.log(paths.adminAssetsPath + '/css/benjamin-admin.css');
+
   return gulp.src( paths.adminAssetsPath + '/css/benjamin-admin.css')
     .pipe(plumber({ errorHandler: handleErrors }))
     .pipe(cssnano({ safe: true }))
@@ -210,7 +210,10 @@ gulp.task('admin-js',['clean:admin-js'], function () {
     return b.bundle();
   });
 
-  return gulp.src( paths.adminSrcPath + '/js/_benjamin-admin.js' )
+  return gulp.src([
+    paths.adminSrcPath + '/js/_benjamin-admin.js',
+    paths.adminSrcPath + '/js/_benjamin-customizer.js'
+  ] )
   .pipe(plumber({ errorHandler: handleErrors }))
   .pipe(browserified)
   .pipe(minify())

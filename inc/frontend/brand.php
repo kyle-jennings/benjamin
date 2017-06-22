@@ -38,7 +38,7 @@ function benjamin_navbar_brand() {
 }
 
 
-function benjamin_get_custom_logo($logo_id){
+function benjamin_get_custom_logo($logo_id = null){
     $logo_id = get_theme_mod('custom_logo');
     $thumb_id = get_post_thumbnail_id($logo_id);
     $thumb_url_array = wp_get_attachment_image_src($logo_id, 'full', true);

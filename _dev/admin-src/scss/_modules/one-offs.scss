@@ -1,0 +1,15 @@
+.use-url {
+    clear: both;
+    display: block;
+    margin: 4px 0;
+    text-align: center;
+}
+
+.placeholder {
+    margin-bottom: 5px;
+
+    > .wp-video,
+    iframe {
+        max-width: 100% !important;
+    }
+}
