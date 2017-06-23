@@ -1,5 +1,19 @@
 <?php
+function benjamin_has_post_video() {
+    global $post;
 
+    $url = get_post_meta($post->ID, 'featured-video', true);
+    if($url)
+        return true;
+
+    return false;
+}
+function benjamin_get_the_post_video_url() {
+    global $post;
+    $url = get_post_meta($post->ID, 'featured-video', true);
+
+    return $url;
+}
 
 /**
  * The hero image can change depending on whether or not we are on a feed, or a
@@ -7,20 +21,21 @@
  * @param  [type] $template [description]
  * @return [type]           [description]
  */
-function benjamin_video_image($template = null) {
+function benjamin_hero_video($template = null) {
 
-    $hero_image = null;
+    $hero_video = null;
 
     // this is gross, clean me up
-    if( (   in_array( $template, array('single','page') )
-            || ( is_single() || is_page() )
-        )
-        && has_post_thumbnail()
+    if( (in_array( $template, array('single','page') )
+        || ( is_single() || is_page() ) )
+        && benjamin_has_post_video()
     ) {
-        $hero_image = get_the_post_thumbnail_url();
+
+        $hero_video = benjamin_get_the_post_video_url();
+
     } elseif ( $template == 'frontpage' ) {
 
-        $hero_image = get_theme_mod($template . '_image_setting');
+        $hero_video = get_theme_mod($template . '_video_setting');
 
     } else {
 
@@ -30,11 +45,11 @@ function benjamin_video_image($template = null) {
         $f_id = get_option('featured-post--'.$post_type, false);
         $featuredPost = new BenjaminFeaturedPost($f_id, $post_type);
 
-        $hero_image = ($featuredPost && $featuredPost->image )
-            ? $featuredPost->image : get_theme_mod($template . '_image_setting');
+        $hero_video = ($featuredPost && $featuredPost->video )
+            ? $featuredPost->video : get_theme_mod($template . '_video_setting');
     }
 
-    return $hero_image;
+    return $hero_video;
 }
 
 

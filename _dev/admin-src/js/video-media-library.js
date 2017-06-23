@@ -3,14 +3,15 @@ var file_frame;
 var wp_media_post_id = wp.media.model.settings.post.id; // Store the old id
 var set_to_post_id = 0; // Set this
 
-$('.js--media-library').on('click', function( event ){
+$('body').on('click','.js--media-library', function( event ){
 
   var $this = $(this);
 
-  var $thisParent = $this.closest('.js--uswds-media-wrap');
+  var $thisParent = $this.closest('.js--media-wrapper');
   var $thisField = $thisParent.find('.js--video-url');
-  var $preview = $thisParent.find('.placeholder');
+  var $preview = $thisParent.find('.js--placeholder');
   var filter = $this.data('filter');
+  var settingKey = $thisField.data('is-customizer') ? $thisField.data('customize-setting-link') : null;
 
 	event.preventDefault($thisParent);
 
@@ -48,13 +49,13 @@ $('.js--media-library').on('click', function( event ){
     var id = attachment.id;
 
 
+
+    $thisField.val(url);
+
     var data = {
       "action": "benjamin_video_shortcode",
       "data": url
     };
-    $thisField.val(url);
-
-
     $.ajax({
       type: 'post',
       url: ajaxurl,
@@ -63,6 +64,12 @@ $('.js--media-library').on('click', function( event ){
         $preview.html( response.responseText );
       }
     });
+
+    if(settingKey && url) {
+      wp.customize( settingKey, function ( obj ) {
+        obj.set( url );
+      } );
+    }
 
 
 		// Restore the main post ID

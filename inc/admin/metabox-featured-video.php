@@ -5,20 +5,30 @@ function benjamin_featured_video_metabox_markup($post) {
     $url = get_post_meta($post->ID, 'featured-video', true);
     $video = null;
     if($url) {
-        $video = do_shortcode('[video height="auto" src="'.$url.'"]');
+        $video = benjamin_get_the_video_markup($url);
     }
 ?>
-    <div class="js--uswds-media-wrap">
-        <div class="placeholder">
+    <div class="js--media-wrapper">
+        <div class="js--placeholder">
             <?php echo $video ?>
         </div>
         <label for="featured-video">
-            <a class="button js--media-library" data-filter="video">Set featured video</a>
+            <a class="button js--media-library" data-filter="video">
+                <span class="dashicons dashicons-video-alt3"></span>
+                Set featured video
+            </a>
+
+            <a class="button js--clear-video">
+                <span class="dashicons dashicons-no-alt"></span>
+            </a>
         </label>
         <span class="use-url"> - or use YouTube -</span>
         <input class="js--video-url" name="featured-video"
             type="text" value="<?php echo $url; ?>">
+
     </div>
+
+    <input name="save" type="submit" class="button button-primary button-large" id="publish" value="Update">
 <?php
 }
 
@@ -69,7 +79,7 @@ function benjamin_save_featured_video($post_id, $post, $update)
         // get attachment id
 
 
-        // if local -             // Check for .mp4 or .mov format, which
+        // if local - Check for .mp4 or .mov format, which
         // (assuming h.264 encoding) are the only cross-browser-supported formats.
         if( strpos($url, home_url()) !== false  && benjamin_validate_local_video($url) ) {
             update_post_meta($post_id, 'featured-video', $url);
