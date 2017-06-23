@@ -21,9 +21,9 @@ if ( $hero_image = benjamin_hero_image($template) ){
 }
 
 $video = null;
-$vurl = benjamin_hero_video($template);;
-if($vurl)
-    $video = benjamin_get_the_video_markup($vurl, 'background');
+// $vurl = benjamin_hero_video($template);;
+// if($vurl)
+//     $video = benjamin_get_the_video_markup($vurl, 'background');
 ?>
 
  <section class="usa-hero <?php echo benjamin_hero_size($template); ?>" <?php echo $style; ?> >
