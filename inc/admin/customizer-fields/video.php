@@ -16,13 +16,13 @@ class Benjamin_Video_Control extends WP_Customize_Control
         parent::__construct( $manager, $id, $args );
 
         $this->button_labels = wp_parse_args( $this->button_labels, array(
-            'select'       => __( 'Select File' ),
-            'change'       => __( 'Change File' ),
-            'default'      => __( 'Default' ),
-            'remove'       => __( 'Remove' ),
-            'placeholder'  => __( 'No file selected' ),
-            'frame_title'  => __( 'Select File' ),
-            'frame_button' => __( 'Choose File' ),
+            'select'       => __( 'Select File', 'benjamin' ),
+            'change'       => __( 'Change File', 'benjamin' ),
+            'default'      => __( 'Default', 'benjamin' ),
+            'remove'       => __( 'Remove', 'benjamin' ),
+            'placeholder'  => __( 'No file selected', 'benjamin' ),
+            'frame_title'  => __( 'Select File', 'benjamin' ),
+            'frame_button' => __( 'Choose File', 'benjamin' ),
         ) );
 
     }
