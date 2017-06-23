@@ -3,6 +3,8 @@
 class BenjaminFeaturedPost {
     public $id;
     public $post_type;
+    public $video = null;
+    public $image = null;
     public $format;
     public $date_format = 'n/j/Y';
     public $output = '';
@@ -68,6 +70,12 @@ class BenjaminFeaturedPost {
         $this->excerpt = get_the_excerpt($id);
 
         $this->author = $post->post_author;
+    }
+
+    private function postVideo() {
+        if( benjamin_has_post_video() )
+            $this->video = benjamin_get_the_post_video_url();
+
     }
 
 

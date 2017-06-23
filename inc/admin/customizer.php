@@ -2,6 +2,7 @@
 
 $files = array(
     'customizer-fields/label.php',
+    'customizer-fields/video.php',
     'customizer-fields/sortable.php',
     'customizer-fields/activated-sortable.php',
     'customizer-fields/color-scheme.php',
@@ -28,6 +29,7 @@ foreach($files as $file)
  */
 function benjamin_customizer_settings($wp_customize){
     // placeholder for near future updates
+    $wp_customize->register_control_type( 'Benjamin_Video_Control' );
 }
 add_action('customize_register', 'benjamin_customizer_settings');
 

@@ -12,7 +12,6 @@ jQuery(document).ready(function($) {
   require('./widgetized-sortables');
 
 
-
 });
 
 window.$ = jQuery;

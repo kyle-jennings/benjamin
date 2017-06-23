@@ -3,8 +3,9 @@
 
 jQuery(document).ready(function($) {
 
-  require('./media-library');
-
+  require('./video-media-library');
+  require('./video-field-updated');
+  require('./video-clear');
 
   if($('body.widgets-php')){
     $('.benjamin-widget-area-options').appendTo('.widgets-sortables');
@@ -14,20 +15,78 @@ jQuery(document).ready(function($) {
 
 window.$ = jQuery;
 
-},{"./media-library":2}],2:[function(require,module,exports){
+},{"./video-clear":2,"./video-field-updated":3,"./video-media-library":4}],2:[function(require,module,exports){
+$('body').on('click', '.js--clear-video', function(e){
+  var $this = $(this);
+
+  var $thisParent = $this.closest('.js--media-wrapper');
+  var $thisField = $thisParent.find('.js--video-url');
+  var $preview = $thisParent.find('.js--placeholder');
+  var settingKey = $thisField.data('is-customizer') ? $thisField.data('customize-setting-link') : null;
+
+
+  $thisField.val('');
+  $preview.empty();
+
+
+    if(settingKey ) {
+
+      wp.customize( settingKey, function ( obj ) {
+        obj.set('');
+      } );
+    }
+});
+
+},{}],3:[function(require,module,exports){
+$('body').on('change','.js--video-url', function(e){
+
+  var $this = $(this);
+  var url = $this.val();
+  var $thisParent = $this.closest('.js--media-wrapper');
+  var $preview = $thisParent.find('.js--placeholder');
+  var settingKey = $this.data('is-customizer') ? $this.data('customize-setting-link') : null;
+
+
+  var data = {
+    "action": "benjamin_video_shortcode",
+    "data": url
+  };
+  $.ajax({
+    type: 'post',
+    url: ajaxurl,
+    data: data,
+    complete: function(response){
+      var output = response.responseText;
+      // console.log(output);
+      $preview.html( output );
+    }
+  });
+
+
+  if(settingKey && url ) {
+
+    wp.customize( settingKey, function ( obj ) {
+      obj.set( url );
+    } );
+  }
+
+});
+
+},{}],4:[function(require,module,exports){
 
 var file_frame;
 var wp_media_post_id = wp.media.model.settings.post.id; // Store the old id
 var set_to_post_id = 0; // Set this
 
-$('.js--media-library').on('click', function( event ){
+$('body').on('click','.js--media-library', function( event ){
 
   var $this = $(this);
 
-  var $thisParent = $this.closest('.js--uswds-media-wrap');
+  var $thisParent = $this.closest('.js--media-wrapper');
   var $thisField = $thisParent.find('.js--video-url');
-  var $preview = $thisParent.find('.placeholder');
+  var $preview = $thisParent.find('.js--placeholder');
   var filter = $this.data('filter');
+  var settingKey = $thisField.data('is-customizer') ? $thisField.data('customize-setting-link') : null;
 
 	event.preventDefault($thisParent);
 
@@ -65,13 +124,13 @@ $('.js--media-library').on('click', function( event ){
     var id = attachment.id;
 
 
+
+    $thisField.val(url);
+
     var data = {
       "action": "benjamin_video_shortcode",
       "data": url
     };
-    $thisField.val(url);
-
-
     $.ajax({
       type: 'post',
       url: ajaxurl,
@@ -80,6 +139,12 @@ $('.js--media-library').on('click', function( event ){
         $preview.html( response.responseText );
       }
     });
+
+    if(settingKey && url) {
+      wp.customize( settingKey, function ( obj ) {
+        obj.set( url );
+      } );
+    }
 
 
 		// Restore the main post ID
