@@ -38,7 +38,7 @@ require get_template_directory() . '/inc/extras.php';
 require get_template_directory() . '/inc/jetpack.php';
 require get_template_directory() . '/inc/register-sidebars.php';
 require get_template_directory() . '/inc/widgets.php';
-// require get_template_directory() . '/inc/video-markup.php';
+require get_template_directory() . '/inc/video-markup.php';
 
 
 
@@ -62,7 +62,7 @@ if (is_admin()) {
         '/inc/admin/widgets.php',
         '/inc/admin/metabox-featured-post.php',
         '/inc/admin/set-default-settings.php',
-        // '/inc/admin/metabox-featured-video.php',
+        '/inc/admin/metabox-featured-video.php',
     );
     foreach($files as $file)
         require get_template_directory() . $file;

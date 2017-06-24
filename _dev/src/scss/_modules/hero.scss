@@ -6,6 +6,7 @@
 }
 
 .usa-hero {
+    background-color: $color-primary-alt-darkest;
     position: relative;
 }
 
@@ -39,7 +40,7 @@
 
 // the image BG overlay
 .usa-hero::before {
-    background-color:rgba(0, 0, 0, .6);
+    background-color: $black-overlay;
     content: '';
     display: block;
     position: absolute;
@@ -51,42 +52,4 @@
 
 .usa-hero > .usa-grid{
     position: relative;
-}
-
-
-.usa-hero > .wp-media-wrapper {
-    display: block;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    > video{
-        bottom: 0;
-        height: auto;
-        min-height: 100%;
-        min-width: 100%;
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: auto;
-    }
-
-    > iframe {
-        width: 100vw;
-        height: calc(100vw/1.77)
-    }
-
-    &.youtube::after {
-        background-color:rgba(0, 0, 0, .6);
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-    }
 }

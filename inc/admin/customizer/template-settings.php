@@ -111,34 +111,34 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
     );
 
 
-    // /**
-    //  * Hero video
-    //  * @var array
-    //  */
-    // $wp_customize->add_setting( $name . '_video_setting', array(
-    //     'default'      => null,
-    //     'sanitize_callback' => 'esc_url_raw',
-    // ) );
-    //
-    // $description = __('Use an uploaded video, or a video from youtube to display
-    // in the header. Uploaded videos should be 8M and should be a .mp4, .mov, or .webm format.', 'benjamin');
-    //
-    // $hero_video_args = array(
-    //     'description' => $description,
-    //     'label'   => __('Header Video', 'benjamin'),
-    //     'section' => $name . '_settings_section',
-    //     'settings'   => $name . '_video_setting',
-    // );
-    // if( $name !== 'archive')
-    //     $hero_video_args['active_callback'] = $active_callback;
-    //
-    // $wp_customize->add_control(
-    //     new Benjamin_Video_Control(
-    //         $wp_customize,
-    //         $name . '_video_setting_control',
-    //         $hero_video_args
-    //     )
-    // );
+    /**
+     * Hero video
+     * @var array
+     */
+    $wp_customize->add_setting( $name . '_video_setting', array(
+        'default'      => null,
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+
+    $description = __('Use an uploaded video, or a video from youtube to display
+    in the header. Uploaded videos should be 8M and should be a .mp4, .mov, or .webm format.', 'benjamin');
+
+    $hero_video_args = array(
+        'description' => $description,
+        'label'   => __('Header Video', 'benjamin'),
+        'section' => $name . '_settings_section',
+        'settings'   => $name . '_video_setting',
+    );
+    if( $name !== 'archive')
+        $hero_video_args['active_callback'] = $active_callback;
+
+    $wp_customize->add_control(
+        new Benjamin_Video_Control(
+            $wp_customize,
+            $name . '_video_setting_control',
+            $hero_video_args
+        )
+    );
 
 
 
@@ -486,17 +486,14 @@ function benjamin_validate_header_video( $validity, $value ) {
 }
 
 
-function benjamin_hero_position_sanitize($val) {
 
-    $valids = array(
-        'top',
-        'center',
-        'bottom',
-    );
+function benjamin_sanitize_color( $color ) {
+    if ( 'blank' === $color )
+        return 'blank';
 
+    $color = sanitize_hex_color_no_hash( $color );
+    if ( empty( $color ) )
+        $color = '#02bfe7'; //#112e51
 
-    if( !in_array($val, $valids) )
-        return null;
-
-    return $val;
+    return $color;
 }

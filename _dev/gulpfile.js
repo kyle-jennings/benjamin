@@ -39,6 +39,7 @@ var paths = {
   vendorPath: './js/vendor'
 };
 paths.scssGlob = paths.srcPath + '/scss/**/*.scss';
+paths.jsGlob = paths.srcPath + '/js/**/*.js';
 paths.adminScssGlob = paths.adminSrcPath + '/scss/**/*.scss';
 paths.adminJSGlob = paths.adminSrcPath + '/js/**/*.js';
 
@@ -48,16 +49,34 @@ paths.adminJSGlob = paths.adminSrcPath + '/js/**/*.js';
 //  The frontend assets
 // ---------------------------------------------------------------------------
 
+// gulp.task('front-js',['clean:front-js'], function(){
+//
+//   return gulp.src( [
+//       paths.npmPath + '/uswds/dist/js/uswds.js',
+//       paths.npmPath + '/uswds/dist/js/uswds.min.js',
+//       paths.npmPath + '/uswds/dist/js/uswds.min.js.map'
+//     ])
+//     .pipe( gulp.dest(paths.assetsPath + '/js') );
+// });
+
 gulp.task('front-js',['clean:front-js'], function(){
-  console.log(paths.assetsPath + '/js');
-  console.log(paths.npmPath + '/uswds/dist/js/uswds.js');
-  return gulp.src( [
-      paths.npmPath + '/uswds/dist/js/uswds.js',
-      paths.npmPath + '/uswds/dist/js/uswds.min.js',
-      paths.npmPath + '/uswds/dist/js/uswds.min.js.map'
-    ])
-    .pipe( gulp.dest(paths.assetsPath + '/js') );
+
+  var browserified = transform(function(filename) {
+    var b = browserify(filename);
+    return b.bundle();
+  });
+
+  return gulp.src([
+    paths.srcPath + '/js/uswds.js',
+  ] )
+  .pipe(plumber({ errorHandler: handleErrors }))
+  .pipe(browserified)
+  .pipe(minify())
+  .pipe(gulp.dest( paths.assetsPath + '/js' ))
+  .pipe(notify({message: 'JS complete'}));
+
 });
+
 
 gulp.task('clean:front-js', function() {
   return del(
@@ -295,5 +314,6 @@ gulp.task('watch', function() {
   gulp.start('build');
   gulp.watch(paths.adminJSGlob,['admin-js']);
   gulp.watch(paths.scssGlob, ['front-css']);
+  gulp.watch(paths.jsGlob, ['front-js']);
   gulp.watch(paths.adminScssGlob, ['admin-css']);
 });

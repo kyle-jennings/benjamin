@@ -1,4 +1,6 @@
 <?php
+
+
 function benjamin_has_post_video() {
     global $post;
 
@@ -8,6 +10,8 @@ function benjamin_has_post_video() {
 
     return false;
 }
+
+
 function benjamin_get_the_post_video_url() {
     global $post;
     $url = get_post_meta($post->ID, 'featured-video', true);

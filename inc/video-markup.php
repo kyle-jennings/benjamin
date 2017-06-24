@@ -5,6 +5,7 @@ function benjamin_get_the_video_markup($url = null, $background = null) {
     if(!$url)
         return;
 
+    $src = ($background == 'background') ? 'data-src' : 'src';
     $type = benjamin_get_video_type($url);
 
     $output = '';
@@ -15,20 +16,19 @@ function benjamin_get_the_video_markup($url = null, $background = null) {
         if($background == 'background')
             $atts = 'autoplay loop muted';
 
-        $output .= '<div class="wp-media-wrapper wp-video">';
-            $output .= '<video class="wp-video-shortcode" '.$atts.'>';
-                $output .= '<source src="'.$url.'" type="video/'.$type.'"/>';
+        $output .= '<div class="video-bg">';
+            $output .= '<video class="video" '.$atts.' '.$src.'="'.$url.'" type="video/'.$type.'">';
             $output .= '</video>';
         $output .= '</div>';
     }else {
 
         $id = benjamin_get_youtube_id($url);
         $poster = 'style="background: url(http://img.youtube.com/vi/'.$id.'/0.jpg) no-repeat cover;"';
-
         $settings ='autoplay=1&loop=1&autohide=1&modestbranding=0&rel=0&showinfo=0&controls=0&disablekb=1&enablejsapi=0&iv_load_policy=3&playlist='.$id;
         $url = 'https://www.youtube.com/embed/'.$id.'?'.$settings;
-        $output .= '<div class="wp-media-wrapper wp-video youtube">';
-            $output .= '<iframe src="'.$url.'" frameborder="0" height="100%" width="100%" allowfullscreen ></iframe>';
+
+        $output .= '<div class="video-bg video-bg--youtube">';
+            $output .= '<iframe class="video" '.$src.'="'.$url.'" frameborder="0" height="100%" width="100%" allowfullscreen ></iframe>';
         $output .= '</div>';
     }
 
