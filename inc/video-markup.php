@@ -28,6 +28,7 @@ function benjamin_get_the_video_markup($url = null, $background = null) {
     if(!$url)
         return;
 
+    $settings = '';
     $src = ($background == 'background') ? 'data-src' : 'src';
     $type = benjamin_get_video_type($url);
 
@@ -38,7 +39,9 @@ function benjamin_get_the_video_markup($url = null, $background = null) {
     if($type !== 'youtube' && $type !== 'vimeo'){
         if($background == 'background')
             $atts = 'autoplay loop muted';
-
+        else
+            $atts = 'controls';
+            
         $output .= '<div class="video-bg">';
             $output .= '<video class="video" '.$atts.' '.$src.'="'.$url.'" type="video/'.$type.'">';
             $output .= '</video>';
@@ -47,7 +50,12 @@ function benjamin_get_the_video_markup($url = null, $background = null) {
 
         $id = benjamin_get_youtube_id($url);
         $poster = 'style="background: url(http://img.youtube.com/vi/'.$id.'/0.jpg) no-repeat cover;"';
-        $settings ='autoplay=1&loop=1&autohide=1&modestbranding=0&rel=0&showinfo=0&controls=0&disablekb=1&enablejsapi=0&iv_load_policy=3&playlist='.$id;
+
+        if($background == 'background')
+            $settings ='autoplay=1&loop=1&autohide=1&modestbranding=0&rel=0&showinfo=0&controls=0&disablekb=1&enablejsapi=0&iv_load_policy=3&playlist='.$id;
+        else
+            $settings = 'controls=1';
+
         $url = 'https://www.youtube.com/embed/'.$id.'?'.$settings;
 
         $output .= '<div class="video-bg video-bg--youtube">';

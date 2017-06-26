@@ -2,7 +2,7 @@
 
 Requires at least: 4.5
 Tested up to: 4.7
-Stable tag: 1.4
+Stable tag: 1.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Copyright 2017 Kyle Jennings
@@ -132,3 +132,11 @@ Mixed License (https://github.com/18F/web-design-standards/blob/develop/LICENSE.
 * added some toggles to the various customizer fields
 * added styles for CF7 validations
 * prepped settings for the eventual hero area video BGs
+
+* 1.5
+* Video hero (header) backgrounds now work
+* refactored hero functions into a class
+* cleaned up files
+* fixed some bugs
+* customizer 404 section opens a non-existent page for styling
+* added labels to customizer section groups
