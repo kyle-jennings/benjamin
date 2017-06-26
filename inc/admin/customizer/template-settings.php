@@ -69,17 +69,21 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
             'sanitize_callback' => 'wp_filter_nohtml_kses',
         )
     );
+    $args = array(
+        'description' => __('','benjamin'),
+        'label' => __('Header Settings', 'benjamin'),
+        'type' => 'label',
+        'section' => $name . '_settings_section',
+        'settings' => $name . '_header_label',
+    );
+    if($name != 'archive')
+        $args['active_callback'] = $active_callback;
+
     $wp_customize->add_control(
         new Benjamin_Label_Custom_Control(
             $wp_customize,
             $name . '_header_label_control',
-            array(
-                'description' => __('','benjamin'),
-                'label' => __('Header Settings', 'benjamin'),
-                'type' => 'label',
-                'section' => $name . '_settings_section',
-                'settings' => $name . '_header_label',
-            )
+            $args
         )
     );
 
@@ -208,17 +212,20 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
             'sanitize_callback' => 'wp_filter_nohtml_kses',
         )
     );
+    $args = array(
+        'description' => __('','benjamin'),
+        'label' => __('Sidebar Settings', 'benjamin'),
+        'type' => 'label',
+        'section' => $name . '_settings_section',
+        'settings' => $name . '_sidebar_label',
+    );
+    if($name != 'archive')
+        $args['active_callback'] = $active_callback;
     $wp_customize->add_control(
         new Benjamin_Label_Custom_Control(
             $wp_customize,
             $name . '_sidebar_label_control',
-            array(
-                'description' => __('','benjamin'),
-                'label' => __('Sidebar Settings', 'benjamin'),
-                'type' => 'label',
-                'section' => $name . '_settings_section',
-                'settings' => $name . '_sidebar_label',
-            )
+            $args
         )
     );
 
@@ -289,17 +296,21 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
                 'sanitize_callback' => 'wp_filter_nohtml_kses',
             )
         );
+        $args = array(
+            'description' => __('','benjamin'),
+            'label' => __('Other Settings', 'benjamin'),
+            'type' => 'label',
+            'section' => $name . '_settings_section',
+            'settings' => $name . '_other_settings_label',
+        );
+
+        if($name != 'archive')
+            $args['active_callback'] = $active_callback;
         $wp_customize->add_control(
             new Benjamin_Label_Custom_Control(
                 $wp_customize,
                 $name . '_other_settings_label_control',
-                array(
-                    'description' => __('','benjamin'),
-                    'label' => __('Other Settings', 'benjamin'),
-                    'type' => 'label',
-                    'section' => $name . '_settings_section',
-                    'settings' => $name . '_other_settings_label',
-                )
+                $args
             )
         );
     endif;
@@ -398,6 +409,19 @@ function benjamin_hero_size_sanitize($val) {
 }
 
 
+function benjamin_hero_position_sanitize($val) {
+    $valids = array(
+        'top',
+        'center',
+        'bottom'
+    );
+
+    if( !in_array($val, $valids) )
+        return null;
+
+    return $val;
+}
+
 function benjamin_sidebar_position_sanitize($val) {
     $valids = array(
         'none',
@@ -447,6 +471,8 @@ function benjamin_hide_layout_sanitize($val) {
 
     return $val;
 }
+
+
 
 
 function benjamin_sanitize_external_header_video( $value ) {

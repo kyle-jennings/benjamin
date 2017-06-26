@@ -1,12 +1,11 @@
 <?php
-
-
-
 /**
- * Register widget area.
+ * Register widget areas programitically
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
+
+
 function benjamin_widgets_init() {
     $templates = benjamin_the_template_list(true);
 

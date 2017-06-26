@@ -3,7 +3,7 @@
 
 
 function benjamin_featured_post_metabox_markup($post) {
-    wp_nonce_field(basename(__FILE__), "meta-box-nonce");
+
     $featured_post = get_option('featured-post--'.$post->post_type, null);
     $checked = ($post->ID === $featured_post) ? 'checked' : '';
 
@@ -44,10 +44,7 @@ add_action( 'add_meta_boxes', 'benjamin_featured_post_metabox' );
 
 
 
-function benjamin_save_featured_post($post_id, $post, $update)
-{
-    if (!isset($_POST["meta-box-nonce"]) || !wp_verify_nonce($_POST["meta-box-nonce"], basename(__FILE__)))
-        return $post_id;
+function benjamin_save_featured_post($post_id, $post, $update) {
 
     if(!current_user_can("edit_post", $post_id))
         return $post_id;
@@ -58,14 +55,16 @@ function benjamin_save_featured_post($post_id, $post, $update)
     if($post->post_type == 'revision')
         return $post_id;
 
-    $meta_box_text_value = "";
-    $meta_box_dropdown_value = "";
-    $meta_box_checkbox_value = "";
 
-    if(isset($_POST['featured-post--'.$post->post_type]))
+    if( isset($_POST['featured-post--'.$post->post_type]) ) {
         update_option('featured-post--'.$post->post_type, $post_id);
-    elseif(!isset($_POST['featured-post--'.$post->post_type]) && $post_id == get_option('featured-post--'.$post->post_type, true))
+
+    } elseif( !isset($_POST['featured-post--'.$post->post_type])
+        && $post_id == get_option('featured-post--'.$post->post_type, true)
+    ) {
+
         delete_option('featured-post--'.$post->post_type);
+    }
 
 }
 

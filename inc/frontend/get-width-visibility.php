@@ -22,8 +22,5 @@ function benjamin_get_main_width($sidebar_position) {
     $sidebar_width = $sidebar_width ? constant($sidebar_width) : BENJAMIN_ONE_THIRD;
     $width = ($sidebar_width == BENJAMIN_ONE_THIRD) ? BENJAMIN_TWO_THIRDS : BENJAMIN_THREE_FOURTHS;
 
-    // $width = ($sidebar_position == 'none' || !$sidebar_position)
-    //         ? BENJAMIN_FULL_WIDTH : BENJAMIN_MAIN_WIDTH;
-
     return $width;
 }

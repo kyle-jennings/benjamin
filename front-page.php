@@ -36,7 +36,10 @@ if( !$hide_content ):
     ?>
 
     <div class="<?php echo $main_width; ?>">
-    	<?php benjamin_page_sortables('frontpage_sortables_setting') ;?>
+    	<?php
+            // inc/frontend/page-sortables.php
+            benjamin_page_sortables('frontpage_sortables_setting');
+        ?>
     </div>
 
     <?php

@@ -1,7 +1,7 @@
 <?php
 
 function benjamin_featured_video_metabox_markup($post) {
-    wp_nonce_field(basename(__FILE__), "meta-box-nonce");
+
     $url = get_post_meta($post->ID, 'featured-video', true);
     $video = null;
     if($url) {
@@ -58,10 +58,7 @@ add_action( 'add_meta_boxes', 'benjamin_featured_video_metabox' );
 
 
 
-function benjamin_save_featured_video($post_id, $post, $update)
-{
-    if (!isset($_POST["meta-box-nonce"]) || !wp_verify_nonce($_POST["meta-box-nonce"], basename(__FILE__)))
-        return $post_id;
+function benjamin_save_featured_video($post_id, $post, $update) {
 
     if(!current_user_can("edit_post", $post_id))
         return $post_id;

@@ -15,16 +15,16 @@ function benjamin_footer() {
 
         switch($name):
             case 'return-to-top':
-                get_template_part('components/footers/footer', 'return');
+                get_template_part('template-parts/footers/footer', 'return');
                 break;
             case 'footer-menu':
-                get_template_part('components/footers/footer', 'menu');
+                get_template_part('template-parts/footers/footer', 'menu');
                 break;
             case 'widget-area-1':
-                get_template_part('components/footers/footer', 'widgets-1');
+                get_template_part('template-parts/footers/footer', 'widgets-1');
                 break;
             case 'widget-area-2':
-                get_template_part('components/footers/footer', 'widgets-2');
+                get_template_part('template-parts/footers/footer', 'widgets-2');
                 break;
 
         endswitch;

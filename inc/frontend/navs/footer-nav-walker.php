@@ -15,7 +15,7 @@ class FooterNavbarWalker extends Walker_Nav_Menu {
 
         $is_current = false;
         foreach($item->classes as $key=>$class){
-            if(strpos($class, 'current') !== false)
+            if(strpos($class, 'current-menu-item') !== false )
                 $is_current = true;
         }
 

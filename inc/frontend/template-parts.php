@@ -41,13 +41,13 @@ function benjamin_the_header() {
             continue;
         switch($component->name):
             case 'banner':
-                get_template_part('components/section', 'banner');
+                get_template_part('template-parts/section', 'banner');
                 break;
             case 'navbar':
-                get_template_part('components/navbars/navbar');
+                get_template_part('template-parts/navbars/navbar');
                 break;
             case 'hero':
-                 get_template_part( 'components/section', 'hero' );
+                echo new BenjaminHero($template);
                 break;
         endswitch;
     endforeach;

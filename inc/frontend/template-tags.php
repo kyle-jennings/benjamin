@@ -29,7 +29,7 @@
          $author .= coauthors_posts_links(null, null, null, null, false);
      } else {
          $author .= '<a class="url fn n"
-             href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">';
+             href="' . get_author_posts_url( $aid ) . '">';
              $author .= get_the_author_meta('display_name', $aid);
          $author .= '</a>';
      }
@@ -68,7 +68,7 @@ function benjamin_get_posted_on(){
     } else {
         $author .= '<a class="url fn n"
             href="' . get_author_posts_url( get_the_author_meta( 'ID', $post->post_author ) ) . '">';
-            $author .= ' - ' .get_the_author();
+            $author .= get_the_author();
         $author .= '</a>';
     }
     $author .= '</span>';
@@ -83,17 +83,17 @@ function benjamin_get_posted_on(){
 
 
 
-if ( ! function_exists( 'benjamin_entry_footer' ) ) :
 /**
  * Prints HTML with meta information for the categories, tags and comments.
  */
 function benjamin_entry_footer() {
+    global $post;
 	// Hide category and tag text for pages.
 	if ( 'page' !== get_post_type() ) {
 
 
 		/* translators: used between list items, there is a space after the comma */
-		if ( $categories_list = benjamin_get_the_category_list() ) {
+		if ( $categories_list = benjamin_get_the_category_list($post->ID) ) {
 			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'benjamin' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 		}
 
@@ -123,23 +123,56 @@ function benjamin_entry_footer() {
 		'</span>'
 	);
 }
-endif;
+
 
 
 function benjamin_get_the_category_list($id = null) {
-    // esc_html__( ', ', 'benjamin' )
-    $cats = get_the_category($id);
+    $post = get_post($id);
+    $post_type = $post->post_type;
+
+    $is_cat = ($post_type =='post') ? true : false;
+
+    $terms = $is_cat ? get_the_category($id) : benjamin_get_custom_tax_terms($id, $post_type);
     $output = '';
     $count = 0;
-    foreach($cats as $cat):
-        if($cat->term_id == 1 && ($cat->slug == 'uncategorized') || ($cat->name == 'Uncategorized'))
+
+    foreach($terms as $term):
+        if($term->term_id == 1 && ($term->slug == 'uncategorized') || ($term->name == 'Uncategorized'))
             continue;
-        $output .= '<a href="'.get_category_link($cat->term_id).'">'.$cat->name.'</a>, ';
+
+        $url = $is_cat ? get_category_link($term->term_id) : get_term_link($term->term_id);
+        $output .= '<a href="'.$url.'">'.$term->name.'</a>, ';
         $count ++;
     endforeach;
+
     if($count == 0)
         return false;
     $output = rtrim($output, ', ');
 
     return $output;
+}
+
+
+
+function benjamin_get_custom_tax_terms($id = null, $post_type = null) {
+    if(!$id)
+        return;
+
+    if(!$post_type){
+        $post = get_post($id);
+        $post_type = $post->post_type;
+    }
+
+    if( !$post_type)
+        return;
+
+
+    $terms = array();
+    $taxonomy_names = get_object_taxonomies( $post_type );
+    foreach($taxonomy_names as $tax)
+        $terms += wp_get_post_terms($id, $tax);
+
+
+    // examine(wp_get_post_terms($id, 'topics'));
+    return $terms;
 }

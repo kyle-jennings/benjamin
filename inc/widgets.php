@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Our Modified widgets, these replace the default widgets with near identical ones.
+ *
+ * The only real differences are that these widgets have additonal options.
+ * @package Benjamin
+ */
+
+
 $benjamin_widgets = array(
     'WP_Nav_Menu_Widget' => 'Benjamin_Nav_Menu_Widget',
     'WP_Widget_Archives' => 'Benjamin_Widget_Archives',

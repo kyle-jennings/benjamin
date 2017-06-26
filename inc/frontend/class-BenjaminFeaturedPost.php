@@ -15,7 +15,7 @@ class BenjaminFeaturedPost {
             return false;
 
         $this->id = $id;
-        $this->$post_type = $post_type;
+        $this->post_type = $post_type;
         $this->format = $format;
         $this->postInformation();
         $this->postImage();
@@ -29,6 +29,9 @@ class BenjaminFeaturedPost {
 
 
     public function setContent() {
+
+        $label = get_post_type_object($this->post_type)->labels->singular_name;
+
         $post = get_queried_object();
         if( $post->post_title)
             $pre_title = $post->post_title;
@@ -38,7 +41,7 @@ class BenjaminFeaturedPost {
         $output = '';
         $output .= '<div class="usa-featured-post-hero">';
             $output .= '<span class="post-title">';
-                $output .= 'Featured Post';
+                $output .= 'Featured '.ucfirst($label);
             $output .= '</span>';
 
             $output .= '<h1>';
@@ -114,12 +117,13 @@ class BenjaminFeaturedPost {
             $author .= coauthors_posts_links(null, null, null, null, false);
         } else {
             $author .= '<a class="url fn n"
-                href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">';
+                href="' . get_author_posts_url( $aid ) . '">';
                 $author .= get_the_author_meta('display_name', $aid);
             $author .= '</a>';
         }
         $author .= '</span>';
 
+        // benjamin_get_cpt_custom_tax_terms($this->id);
         if ( $categories_list = benjamin_get_the_category_list($this->id) ) {
 			$cats = '<span class="cat-links">' . __('Posted in&nbsp;', 'benjamin') . $categories_list . '</span>';
 		}

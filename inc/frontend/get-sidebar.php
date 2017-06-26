@@ -16,13 +16,14 @@ function benjamin_get_sidebar($template, $position = 'none'){
 
     $visibility = get_theme_mod($template . '_sidebar_visibility_setting');
     $class .= ' '. $visibility;
-?>
+
+    ?>
 
     <div class="sidebar <?php echo $class; ?> widgetarea--<?php echo $template; ?>">
         <?php dynamic_sidebar($template); ?>
     </div>
 
-<?php
+    <?php
 
 
 }

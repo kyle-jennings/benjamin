@@ -1,4 +1,27 @@
 <?php
+/**
+ * This file contains the function which produce html videos, and also has some
+ * helper functions
+ */
+
+
+function benjamin_get_the_post_video_url() {
+    global $post;
+    $url = get_post_meta($post->ID, 'featured-video', true);
+
+    return $url;
+}
+
+
+function benjamin_has_post_video() {
+    global $post;
+
+    $url = get_post_meta($post->ID, 'featured-video', true);
+    if($url)
+        return true;
+
+    return false;
+}
 
 
 function benjamin_get_the_video_markup($url = null, $background = null) {

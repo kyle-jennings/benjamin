@@ -1,8 +1,5 @@
 <?php
 
-
-if ( !function_exists( 'benjamin_setup' ) ):
-
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -66,5 +63,4 @@ function benjamin_setup() {
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
 }
-endif;
 add_action( 'after_setup_theme', 'benjamin_setup' );

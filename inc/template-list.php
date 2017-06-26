@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * The file contains the functions which gather all available templates.
+ *
+ * This tempalte list is used to populate the customizer settings and widgets ares
+ *
+ * @package Benjamin
+ */
 
 function benjamin_the_template_list($use_widget_areas = false) {
 

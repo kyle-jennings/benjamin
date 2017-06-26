@@ -14,9 +14,9 @@ function benjamin_default_header_order() {
     );
 
     $banner = (object) array(
-                'name' => 'banner',
-                'label' => 'Banner'
-            );
+        'name' => 'banner',
+        'label' => 'Banner'
+    );
 
     if(benjamin_is_dot_gov())
         array_unshift($arr, $banner);
