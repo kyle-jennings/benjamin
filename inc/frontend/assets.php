@@ -13,17 +13,15 @@ function benjamin_scripts() {
     $benjamin_color_scheme = $benjamin_color_scheme == 'standard'
         ? '' : '-'.$benjamin_color_scheme;
 
-
+    wp_deregister_script( 'jquery' );
 	wp_enqueue_script(
-        'uswds',
-         get_stylesheet_directory_uri() . '/assets/js/uswds-min.js',
-         null,
-         null,
-         true
+        'uswds', get_stylesheet_directory_uri() . '/assets/js/uswds-min.js',
+         null, null, true
     );
     wp_enqueue_style( 'uswds',
          get_stylesheet_directory_uri() . '/assets/css/benjamin'.$benjamin_color_scheme.'.min.css' );
 
+     // comment script
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
         wp_enqueue_script( 'comment-reply' );
 }
