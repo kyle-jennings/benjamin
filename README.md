@@ -24,7 +24,7 @@ Be sure to install the companion plugin, [Franklin](https://github.com/kyle-jenn
 * 4 extra page templates
 * Custom post type single pages, and feeds
 
-##### Sortable Pages
+#### Sortable Pages
 As mentioned, both the frontpage and widgetized pages are sortable, so you have control over 3 widgetized areas and page content.
 
 
@@ -32,15 +32,14 @@ As mentioned, both the frontpage and widgetized pages are sortable, so you have 
 
 <br>
 
-#### 4 extra page templates for more customized one off pages
 #### Template settings include:  
-* Hero background image (select the default image if a "featured image" is not set)
-* Hero background video
-* Hero Size (slim, medium, big, and full page)
+* Header background image (select the default image if a "featured image" is not set)
+* Header background video
+* Header Size (slim, medium, big, and full page)
 * Sidebar position (left or right)
 * Sidebar visibility (hide or show on different screen sizes)
-* Each template gets its own widget area
-* Parts of a page (such as the navbar or footer) can be hidden on each template
+* Template specific widget ares
+* Hide parts of a page (such as the navbar or footer)
 
 ![template-settings](_dev/screenshots/template-settings.png#right)
 
@@ -100,7 +99,7 @@ As mentioned, both the frontpage and widgetized pages are sortable, so you have 
 
 
 
-#### Shortcodes and Components
+## Shortcodes and Components
 These shortcodes are NOT included in the theme by default, but are available in the companion plugin, [Franklin](https://github.com/kyle-jennings/Franklin).
 
 

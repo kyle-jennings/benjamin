@@ -90,7 +90,8 @@ function benjamin_frontpage_settings($wp_customize) {
                     'widget-area-2' => 'Widget Area 2',
                     'widget-area-3' => 'Widget Area 3',
                     'page-content' => 'Page Content'
-                )
+                ),
+            'priority' => 1,
             )
         )
     );

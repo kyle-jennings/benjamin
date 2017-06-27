@@ -1,5 +1,4 @@
 <?php
-
 $sticky = get_theme_mod('navbar_sticky_setting', 'no') == 'yes' ? 'sticky' : '';
 ?>
 <header class="usa-header usa-header-basic
@@ -22,9 +21,11 @@ $sticky = get_theme_mod('navbar_sticky_setting', 'no') == 'yes' ? 'sticky' : '';
                 );
 
              if( has_nav_menu('primary') )
-                 $args['theme_location'] = 'primary';
+                $args['theme_location'] = 'primary';
+             elseif(wp_get_nav_menu_object( 'default-menu' ))
+                $args['menu'] = 'default-menu';
              else
-                 $args['menu'] = 'default-menu';
+                benjamin_set_default_menu();
 
              wp_nav_menu( $args );
             ?>
