@@ -79,8 +79,8 @@ class BenjaminHero {
 
     // set the media BGs set in teh customizer
     public function setMediaFromCustSetting($template){
-        $this->image = get_theme_mod($template . '_image_setting');
-        $this->video = get_theme_mod($template . '_video_setting');
+        $this->image = get_theme_mod($template . '_image_setting', null);
+        $this->video = get_theme_mod($template . '_video_setting', null);
     }
 
 
@@ -114,7 +114,7 @@ class BenjaminHero {
         if( has_post_thumbnail() )
             return get_the_post_thumbnail_url();
         else
-            return get_theme_mod($template . '_image_setting');
+            return get_theme_mod($template . '_image_setting', null);
 
     }
 
@@ -124,7 +124,7 @@ class BenjaminHero {
         if( $this->hasFeaturedVideo() )
             return benjamin_get_the_post_video_url();
         else
-            return get_theme_mod($template . '_video_setting');
+            return get_theme_mod($template . '_video_setting', null);
     }
 
 
@@ -134,7 +134,7 @@ class BenjaminHero {
         if($this->featuredPost && $this->featuredPost->$media )
             $media = $this->featuredPost->$media;
         else
-            $media = get_theme_mod($this->template . '_'.$media.'_setting');
+            $media = get_theme_mod($this->template . '_'.$media.'_setting', null);
 
 
         return $media;
@@ -165,21 +165,21 @@ class BenjaminHero {
         return $size;
     }
 
-    public function benjamin_get_frontpage_hero_content() {
+    public function frontpageContent() {
 
         $output = '';
-        $content = get_theme_mod('frontpage_hero_content_setting');
+        $content = get_theme_mod('frontpage_hero_content_setting', 'callout');
 
         if($content == 'page') {
-            $page = get_theme_mod('frontpage_hero_page_setting');
+            $page = get_theme_mod('frontpage_hero_page_setting', 0);
             if( !is_null($page) && $page != 0 ) {
                 $page = get_page($page);
                 $output .= apply_filters('the_content', $page->post_content);
             }
         } elseif($content == 'callout') {
-            $output .= $this->benjamin_get_hero_callout();
+            $output .= $this->heroCallout();
         } else {
-            $output = '';
+            $output = '<h1>' . get_bloginfo( 'name' ) . '</h1>';
         }
 
         return $output;
@@ -190,7 +190,7 @@ class BenjaminHero {
      * The front page displays a "callout", here is the markup
      * @return [type] [description]
      */
-    public function benjamin_get_hero_callout(){
+    public function heroCallout(){
         $id = get_theme_mod('frontpage_hero_callout_setting', 0);
 
         $description = get_bloginfo( 'description', 'display' );
@@ -226,7 +226,7 @@ class BenjaminHero {
     function getContent() {
 
         if( is_front_page() )
-            return $this->benjamin_get_frontpage_hero_content();
+            return $this->frontpageContent();
         elseif( is_404() )
             return $this->the404title();
         elseif( is_page() || is_single() || is_singular() )

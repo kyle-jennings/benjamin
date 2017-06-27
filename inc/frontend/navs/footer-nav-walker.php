@@ -14,10 +14,13 @@ class FooterNavbarWalker extends Walker_Nav_Menu {
         $permalink = $item->url;
 
         $is_current = false;
-        foreach($item->classes as $key=>$class){
-            if(strpos($class, 'current-menu-item') !== false )
-                $is_current = true;
+        if($item->classes){
+            foreach($item->classes as $key=>$class){
+                if(strpos($class, 'current-menu-item') !== false )
+                    $is_current = true;
+            }
         }
+
 
 		$classes = ($is_current && $depth == 0) ? ' usa-current': '';
 

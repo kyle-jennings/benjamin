@@ -17,9 +17,10 @@ function benjamin_set_defaults() {
         set_theme_mod('archive_hero_size_setting', 'slim');
 
     if(!get_theme_mod('header_order_setting'))
-        set_theme_mod('header_order_setting', 'banner-navbar-hero');
+        set_theme_mod('header_order_setting', '[{"name":"banner","label":"Banner"},{"name":"navbar","label":"Navbar"},{"name":"hero","label":"Hero"}]');
 
-    if(!get_theme_mod('footer_size_setting'))
-        set_theme_mod('footer_size_setting', 'slim');
+    if(!get_theme_mod('footer_sortables_setting'))
+        set_theme_mod('footer_sortables_setting', '[{"name":"return-to-top","label":"Return to Top"},{"name":"footer-menu","label":"Footer Menu"}]');
+
 }
 add_action('after_switch_theme', 'benjamin_set_defaults');

@@ -6,7 +6,7 @@
  */
 function benjamin_template_settings() {
     $template = benjamin_template();
-    $sidebar_position = get_theme_mod($template . '_sidebar_position_setting');
+    $sidebar_position = get_theme_mod($template . '_sidebar_position_setting', 'none');
 
     $main_width = benjamin_get_main_width($sidebar_position);
     $main_width .= ' ' . benjamin_get_width_visibility($template, $sidebar_position);

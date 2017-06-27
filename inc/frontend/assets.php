@@ -8,9 +8,9 @@ function benjamin_scripts() {
     if(is_admin())
         return;
 
-    $benjamin_color_scheme = get_theme_mod('color_scheme_setting');
+    $benjamin_color_scheme = get_theme_mod('color_scheme_setting', 'standard');
 
-    $benjamin_color_scheme = (!$benjamin_color_scheme || $benjamin_color_scheme == 'standard')
+    $benjamin_color_scheme = $benjamin_color_scheme == 'standard'
         ? '' : '-'.$benjamin_color_scheme;
 
 

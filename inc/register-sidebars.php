@@ -15,7 +15,7 @@ function benjamin_widgets_init() {
         $sidebars = wp_get_sidebars_widgets();
         $widgets = $sidebars[$name];
         $count = count($widgets);
-        $pos = get_theme_mod($name . '_sidebar_position_setting');
+        $pos = get_theme_mod($name . '_sidebar_position_setting', 'none');
         $horizontals = array(
             'widgetized-widget-area-1',
             'widgetized-widget-area-2',

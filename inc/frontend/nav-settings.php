@@ -24,17 +24,8 @@ function benjamin_nav_title() {
 
 // because why not?
 function benjamin_navbar_header_class() {
-    $color = get_theme_mod('navbar_color_setting');
-    $color = $color ? 'usa-header--'.$color : 'usa-header--light';
+    $color = get_theme_mod('navbar_color_setting', 'light');
+    $color = 'usa-header--'.$color;
 
     return $color;
-}
-
-
-function benjamin_navbar_class() {
-
-    $size = get_theme_mod('navbar_size_setting');
-    $size = $size ? 'usa-nav-container--'.$size : 'usa-nav-container--slim';
-
-    return $size;
 }
