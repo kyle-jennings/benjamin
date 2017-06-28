@@ -35,13 +35,14 @@ function benjamin_footer_settings($wp_customize) {
     available components from the "available" box over to active.  This setting
     does not depend on the "Settings Active" setting above.', 'benjamin');
 
-    $wp_customize->add_control( new Benjamin_Activated_Sortable_Custom_Control( $wp_customize,
+    $wp_customize->add_control( new Benjamin_Sortable_Control( $wp_customize,
        'footer_sortables_control', array(
            'description' => $description,
            'label'   => __('Sortable Footer Parts', 'benjamin'),
            'section' => 'footer_settings_section',
            'settings'=> 'footer_sortables_setting',
            'priority' => 1,
+           'optional' => true,
            'choices' => $choices
            )
        )

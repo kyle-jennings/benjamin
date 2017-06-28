@@ -271,6 +271,7 @@ class BenjaminHero {
          *
          */
         extract(benjamin_get_404_settings());
+
         if($header_page) {
             $page = get_page($header_page);
             return apply_filters('the_content', $page->post_content);

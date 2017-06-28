@@ -4,7 +4,6 @@ $files = array(
     'customizer-fields/label.php',
     'customizer-fields/video.php',
     'customizer-fields/sortable.php',
-    'customizer-fields/activated-sortable.php',
     'customizer-fields/color-scheme.php',
     'customizer-fields/menu-dropdown.php',
     'customizer-fields/checkbox-group.php',
@@ -38,7 +37,7 @@ function benjamin_customizer_enqueue() {
 
 	wp_enqueue_script(
         'custom-customize',
-        get_stylesheet_directory_uri() . '/inc/admin/assets/js/_benjamin-customizer-min.js',
+        get_stylesheet_directory_uri() . '/inc/admin/assets/js/_benjamin-customizer.js',
         null,
         '20170215',
         true

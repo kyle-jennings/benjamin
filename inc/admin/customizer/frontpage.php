@@ -79,19 +79,20 @@ function benjamin_frontpage_settings($wp_customize) {
      available components from the "available" box over to active.  This setting
      does not depend on the "Settings Active" setting above.';
 
-     $wp_customize->add_control( new Benjamin_Activated_Sortable_Custom_Control( $wp_customize,
+     $wp_customize->add_control( new Benjamin_Sortable_Control( $wp_customize,
         'frontpage_sortables_control', array(
             'description' => $description,
             'label'   => __('Sortable Page Content', 'benjamin'),
             'section' => 'frontpage_settings_section',
             'settings'=> 'frontpage_sortables_setting',
+            'priority' => 1,
+            'optional' => true,
             'choices' => array(
                     'widget-area-1' => 'Widget Area 1',
                     'widget-area-2' => 'Widget Area 2',
                     'widget-area-3' => 'Widget Area 3',
                     'page-content' => 'Page Content'
                 ),
-            'priority' => 1,
             )
         )
     );

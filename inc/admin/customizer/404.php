@@ -2,6 +2,25 @@
 
 function benjamin_404_settings($wp_customize) {
 
+    // Should we display a page in the header?
+    $wp_customize->add_setting( '_404_header_page_content_setting', array(
+        'default'        => 0,
+        'sanitize_callback' => 'absint',
+    ) );
+
+    $wp_customize->add_control( '_404_header_page_content_control', array(
+            'description' => __('Select page content to the header, this is great when the header size is set to full and the other page parts are hidden.','benjamin'),
+            'label'   => __('Use page content in header', 'benjamin'),
+            'section' => '_404_settings_section',
+            'settings'=> '_404_header_page_content_setting',
+            'type' => 'select',
+            'type'    => 'dropdown-pages',
+            'priority' => 1,
+         )
+    );
+
+
+    // What is the page content? The premade default, or a user created page?
     $wp_customize->add_setting( '_404_page_content_setting', array(
         'default'  => 'default',
         'sanitize_callback' => 'benjamin_404_content_sanitize',
@@ -21,8 +40,9 @@ function benjamin_404_settings($wp_customize) {
         )
     );
 
+    // if it is a user created page, then select the page
     $wp_customize->add_setting( '_404_page_select_setting', array(
-        'default'        => '',
+        'default'        => 0,
         'sanitize_callback' => 'absint',
     ) );
 
@@ -33,29 +53,11 @@ function benjamin_404_settings($wp_customize) {
             'type'    => 'dropdown-pages',
             'priority' => 1,
             'active_callback' => function() use ( $wp_customize ) {
-                  return 'page' === $wp_customize->get_setting( '_404_page_content_setting' )->value();
-             },
+                  return 'page' == $wp_customize->get_setting( '_404_page_content_setting' )->value();
+            },
          )
     );
 
-
-
-    $wp_customize->add_setting( '_404_header_page_content_setting', array(
-        'default'        => 'no',
-        'sanitize_callback' => 'absint',
-    ) );
-
-    $wp_customize->add_control( '_404_header_page_content_control', array(
-            'description' => __('Select page content to the header, this is great when the header size is set to full and the other page parts are hidden.','benjamin'),
-            'label'   => __('Use page content in header', 'benjamin'),
-            'section' => '_404_settings_section',
-            'settings'=> '_404_header_page_content_setting',
-            'type' => 'select',
-            'type'    => 'dropdown-pages',
-            'priority' => 1,
-
-         )
-    );
 }
 
 add_action('customize_register', 'benjamin_404_settings');
@@ -82,19 +84,6 @@ function benjamin_404_content_sanitize($val) {
     $valids = array(
         'default',
         'page'
-    );
-
-    if( !in_array($val, $valids) )
-        return null;
-
-    return $val;
-}
-
-
-function benjamin_move_page_content_sanitize($val) {
-    $valids = array(
-        'no',
-        'yes'
     );
 
     if( !in_array($val, $valids) )

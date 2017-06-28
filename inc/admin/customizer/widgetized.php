@@ -14,12 +14,13 @@ function benjamin_widgetized_settings($wp_customize) {
     available components from the "available" box over to active.  This setting
     does not depend on the "Settings Active" setting above.', 'benjamin');
 
-    $wp_customize->add_control( new Benjamin_Activated_Sortable_Custom_Control( $wp_customize,
+    $wp_customize->add_control( new Benjamin_Sortable_Control( $wp_customize,
        'widgetized_sortables_control', array(
            'label'   => __('Sortable Page Content', 'benjamin'),
            'description' => $description,
            'section' => 'widgetized_settings_section',
            'settings'=> 'widgetized_sortables_setting',
+           'optional' => true,
            'choices' => array(
                    'widget-area-1' => 'Widget Area 1',
                    'widget-area-2' => 'Widget Area 2',

@@ -33,7 +33,7 @@ function benjamin_the_header() {
     $layout_settings = get_theme_mod($template.'_page_layout_setting', '[]');
     $layout_settings = json_decode($layout_settings);
 
-    $order = json_decode(get_theme_mod('header_order_setting', '[{"name":"banner","label":"Banner"},{"name":"navbar","label":"Navbar"},{"name":"hero","label":"Hero"}]'));
+    $order = json_decode(get_theme_mod('header_sortables_setting', '[{"name":"banner","label":"Banner"},{"name":"navbar","label":"Navbar"},{"name":"hero","label":"Hero"}]'));
 
     $order = $order ? $order : benjamin_default_header_order();
 
@@ -64,13 +64,15 @@ function benjamin_get_404_settings() {
 
     $content = get_theme_mod('_404_page_content_setting', 'default');
     $pid = get_theme_mod('_404_page_select_setting', null);
-    $header_page = get_theme_mod('_404_header_page_content_setting', 'no');
+    $header_page = get_theme_mod('_404_header_page_content_setting', null);
 
-    return array(
+    $args = array(
+        'header_page' => $header_page,
         'content' => $content,
         'pid' => $pid,
-        'header_page' => $header_page,
     );
+
+    return $args;
 }
 
 
