@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../404.php:39
+#: ../404.php:53
 msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
 msgstr ""
 
@@ -40,7 +40,7 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: ../header.php:19
+#: ../header.php:15
 msgid "Skip to main content"
 msgstr ""
 
@@ -62,18 +62,6 @@ msgstr ""
 #: ../searchform.php:18
 msgctxt "submit button"
 msgid "Search"
-msgstr ""
-
-#: ../inc/register-sidebars.php:62
-msgid "Add widgets here."
-msgstr ""
-
-#: ../inc/theme-support.php:42
-msgid "Primary"
-msgstr ""
-
-#: ../inc/theme-support.php:43
-msgid "Footer"
 msgstr ""
 
 #: ../page-templates/sidenav.php:2
@@ -128,19 +116,7 @@ msgstr ""
 msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: ../inc/admin/widgets.php:10
-msgid "This sidebar can be replaced on certain pages"
-msgstr ""
-
-#: ../inc/admin/widgets.php:11
-msgid "This sidebar will always be same on all pages"
-msgstr ""
-
-#: ../inc/admin/widgets.php:20
-msgid "Allow this sidebar to be replaced"
-msgstr ""
-
-#: ../inc/frontend/class-FeaturedPost.php:114
+#: ../inc/frontend/class-BenjaminFeaturedPost.php:128
 msgid "Posted in&nbsp;"
 msgstr ""
 
@@ -159,6 +135,26 @@ msgstr ""
 #. translators: %s: post title
 #: ../inc/frontend/template-tags.php:112
 msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr ""
+
+#: ../inc/shared/register-sidebars.php:45
+msgid "Add widgets here."
+msgstr ""
+
+#: ../inc/shared/set-default-settings.php:43
+msgid "Home"
+msgstr ""
+
+#: ../inc/shared/set-default-settings.php:50
+msgid "Login"
+msgstr ""
+
+#: ../inc/shared/theme-support.php:39
+msgid "Primary"
+msgstr ""
+
+#: ../inc/shared/theme-support.php:40
+msgid "Footer"
 msgstr ""
 
 #: ../inc/widgets/Benjamin_Nav_Menu_Widget.php:138
@@ -336,10 +332,114 @@ msgstr ""
 msgid "Display post date?"
 msgstr ""
 
-#: ../inc/frontend/navs/default-menus.php:15
-msgid "Home"
+#: ../inc/admin/customizer/footer.php:34, ../inc/admin/customizer/widgetized.php:13
+msgid ""
+"The page content is sortable, and optional.  Simply drag the\n"
+"    available components from the \"available\" box over to active.  This setting\n"
+"    does not depend on the \"Settings Active\" setting above."
 msgstr ""
 
-#: ../inc/frontend/navs/default-menus.php:22
-msgid "Login"
+#: ../inc/admin/customizer/template-settings.php:40
+msgid "Overrides the default template settings to give this template a unique look and feel."
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:41
+msgid "Use Template Settings"
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:73, ../inc/admin/customizer/template-settings.php:216, ../inc/admin/customizer/template-settings.php:300
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:74
+msgid "Header Settings"
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:100
+msgid "Change the header image, for best results use an image that is at least 1080px wide by 720px tall."
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:101
+msgid "Header Image"
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:127
+msgid ""
+"Use an uploaded video, or a video from youtube to display\n"
+"    in the header. Uploaded videos should be 8M and should be a .mp4, .mov, or .webm format."
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:132
+msgid "Header Video"
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:164
+msgid "Because the header image size can be changed, this option will give you some more control with how the image is displayed."
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:165
+msgid "Header Image Position"
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:187
+msgid "Changes the height of the hero banner"
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:188
+msgid "Header Size"
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:217
+msgid "Sidebar Settings"
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:242
+msgid "Hide or move your sidebar to change the layout of the content area."
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:243
+msgid "Sidebar Position"
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:268
+msgid "Hide or show the sidebar on different screen size (ie: hide on phones)"
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:269
+msgid "Sidebar Visibility"
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:301
+msgid "Other Settings"
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:327
+msgid "Hide parts of a page, great for making landing pages."
+msgstr ""
+
+#: ../inc/admin/customizer/template-settings.php:328
+msgid "Page Layout"
+msgstr ""
+
+#: ../inc/admin/customizer-fields/video.php:19, ../inc/admin/customizer-fields/video.php:24
+msgid "Select File"
+msgstr ""
+
+#: ../inc/admin/customizer-fields/video.php:20
+msgid "Change File"
+msgstr ""
+
+#: ../inc/admin/customizer-fields/video.php:21
+msgid "Default"
+msgstr ""
+
+#: ../inc/admin/customizer-fields/video.php:22
+msgid "Remove"
+msgstr ""
+
+#: ../inc/admin/customizer-fields/video.php:23
+msgid "No file selected"
+msgstr ""
+
+#: ../inc/admin/customizer-fields/video.php:25
+msgid "Choose File"
 msgstr ""
