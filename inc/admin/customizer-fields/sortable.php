@@ -90,20 +90,23 @@ class Benjamin_Sortable_Control extends WP_Customize_Control
 
 
     private function sortable_list_markup($title = null, $target = null) {
-        ?>
-        <div>
-            <h4 class="sortables__list-title"><?php echo ucfirst($title); ?></h4>
-            <ol class="sortables__list js--<?php echo $target; ?>-sortables sortables__active-list js--sortables-active <?php echo $this->id; ?>"
-                data-sortable-group="<?php echo $this->id; ?>"
-                data-setting="<?php echo $this->setting->id; ?>"
-                >
-                <?php
-                    $method = 'get_'.$title;
-                    echo call_user_func(array($this, $method));
-                ?>
-            </ol>
-        </div>
-        <?php
+        $method = 'get_'.$title;
+        $output = '';
+
+        $output .= '<div>';
+            $output .= '<h4 class="sortables__list-title">';
+                $output .= ucfirst($title);
+            $output .= '</h4>';
+            $output .= '<ol class="sortables__list js--'.$target.'-sortables ';
+                $output .= 'sortables__active-list js--sortables-'.$title.' '.$this->id.'" '; // end class
+                $output .= 'data-sortable-group="'.$this->id.'" ';
+                $output .= 'data-setting="'.$this->setting->id.'"';
+            $output .= '>';
+                $output .= call_user_func(array($this, $method));
+            $output .= '</ol>';
+        $output .= '</div>';
+
+        return $output;
     }
 
     /**
@@ -125,29 +128,14 @@ class Benjamin_Sortable_Control extends WP_Customize_Control
         </p>
         <div class="sortables">
 
-            <div>
-                <h4 class="sortables__list-title">Active</h4>
-                <ol class="sortables__list js--<?php echo $target; ?>-sortables sortables__active-list
-                    js--sortables-active <?php echo $this->id; ?>"
-                    data-sortable-group="<?php echo $this->id; ?>"
-                    data-setting="<?php echo $this->setting->id; ?>"
-                    >
-                    <?php echo $this->get_active(); ?>
-                </ol>
-            </div>
+            <?php echo $this->sortable_list_markup('active', $target); ?>
 
-            <?php if($this->optional): ?>
-            <div>
-                <h4 class="sortables__list-title">Available</h4>
-                <ol class="sortables__list js--<?php echo $target; ?>-sortables js--sortables-available
-                <?php echo $this->id ?>"
-                data-sortable-group="<?php echo $this->id ?>"
-                data-setting="<?php echo $this->setting->id; ?>"
-                >
-                    <?php echo $this->get_available(); ?>
-                </ol>
-            </div>
-            <?php endif; ?>
+
+            <?php
+            if($this->optional):
+                echo $this->sortable_list_markup('available', $target);
+            endif;
+            ?>
 
             <input type="hidden"
                 id="<?php echo $this->id; ?>"
