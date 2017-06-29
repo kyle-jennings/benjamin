@@ -1,21 +1,6 @@
 <?php
 
 
-/**
- * Hides a part of the template layout
- * @param  str $needle   page part (navbar, footer, ect)
- * @param  str  $template the "current" templat
- * @return boolean
- */
-function benjamin_hide_layout_part( $needle, $template ) {
-
-    $layout_settings = get_theme_mod($template.'_page_layout_setting', '[]');
-    $layout_settings = json_decode($layout_settings);
-    $layout_settings = $layout_settings ? $layout_settings : array();
-    $result = in_array($needle, $layout_settings);
-
-    return $result;
-}
 
 
 /**
@@ -28,7 +13,7 @@ function benjamin_hide_layout_part( $needle, $template ) {
  * @return markup the echo mark up
  */
 function benjamin_the_header() {
-    $template = benjamin_template();
+    $template = benjamin_get_template();
 
     $layout_settings = get_theme_mod($template.'_page_layout_setting', '[]');
     $layout_settings = json_decode($layout_settings);
@@ -80,7 +65,7 @@ function benjamin_get_404_settings() {
  * The footer conditional
  */
 function benjamin_footer() {
-    $template = benjamin_template();
+    $template = benjamin_get_template();
 
     $sortables = get_theme_mod('footer_sortables_setting', '[]');
 

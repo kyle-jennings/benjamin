@@ -4,16 +4,31 @@
  * Get all the settings needed for the template layout
  * @return array keyed array with the settings
  */
-function benjamin_template_settings() {
-    $template = benjamin_template();
+function benjamin_template_settings($log = null) {
+
+    // if the settings have already been gathered, return them
+    if( !empty($GLOBALS['benjamin-settings']) ){
+        return $GLOBALS['benjamin-settings'];
+    }
+    // otherwise we have to gather and set them
+
+    $template = benjamin_get_template();
     $sidebar_position = get_theme_mod($template . '_sidebar_position_setting', 'none');
 
-    $main_width = benjamin_get_main_width($sidebar_position);
-    $main_width .= ' ' . benjamin_get_width_visibility($template, $sidebar_position);
+    $main_width = '';
+    // if the sidebar is not displayed, the main area is full width
+    // otherwise calculate the main area's width and visibility
+    if($sidebar_position == 'none') {
+        $main_width = BENJAMIN_FULL_WIDTH;
+    } else {
+        $main_width = benjamin_get_main_width($sidebar_position);
+        $main_width .= ' ' . benjamin_get_main_visibility($template, $sidebar_position);
+    }
 
     $hide_content = benjamin_hide_layout_part('page-content', $template);
 
-    return array(
+    // set the settings to the global variable, and return them to the caller
+    return $GLOBALS['benjamin-settings'] = array(
         'template' => $template,
         'main_width' => $main_width,
         'hide_content' => $hide_content,
@@ -27,14 +42,7 @@ function benjamin_template_settings() {
  *
  * I saw "current" because unless the current page's template settings are
  * activated, then we will fall back onto the "feed" settings
- * @return str the template name
- */
-function benjamin_template() {
-    return benjamin_get_template();
-}
-
-/**
- * Gets the template type, there are 5 main types. Frontpage, a single post,
+ * there are 5 main types. Frontpage, a single post,
  * a single page, the 404 page, or a feed
  *
  * @return str template name
@@ -171,13 +179,33 @@ function benjamin_is_page_template(){
 }
 
 
+
+/**
+ * Hides a part of the template layout
+ * @param  str $needle   page part (navbar, footer, ect)
+ * @param  str  $template the "current" templat
+ * @return boolean
+ */
+function benjamin_hide_layout_part( $needle, $template ) {
+
+    $layout_settings = get_theme_mod($template.'_page_layout_setting', '[]');
+    $layout_settings = json_decode($layout_settings);
+    $layout_settings = $layout_settings ? $layout_settings : array();
+    $result = in_array($needle, $layout_settings);
+
+    return $result;
+}
+
+
+
 /**
  * Have the settings been activated?
  * @param  [type] $template [description]
  * @return [type]           [description]
  */
 function benjamin_settings_active($template = null){
-    $mods = get_theme_mods();
-    $active = $mods[$template . '_settings_active'];
+    // error_log($template . ': ' . get_theme_mod($template . '_settings_active', 'no'));
+
+    $active = get_theme_mod($template . '_settings_active', 'no');
     return ($active == 'yes') ? true : false;
 }
