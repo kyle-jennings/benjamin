@@ -1,7 +1,7 @@
 <?php
 
 
-class SideNavWalker extends Walker_Nav_Menu {
+class BenjaminSideNavWalker extends Walker_Nav_Menu {
 
 
     function start_lvl( &$output, $depth = 0, $args = array() ) {

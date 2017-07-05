@@ -166,6 +166,11 @@ class Benjamin_Video_Control extends WP_Customize_Control
                             <span class="dashicons dashicons-video-alt3"></span>
                             {{ data.button_labels.select }}
                         </a>
+
+                        <a class="button js--clear-video">
+                            <span class="dashicons dashicons-no-alt"></span>
+                            {{ data.button_labels.remove }}
+                        </a>
                         <?php $this->url_field(); ?>
                         <# } #>
 

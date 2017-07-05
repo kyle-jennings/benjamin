@@ -17,7 +17,7 @@ $sticky = get_theme_mod('navbar_sticky_setting', 'no') == 'yes' ? 'sticky' : '';
                 $args =  array(
                     'container' => '',
                     'menu_class'     => 'usa-nav-primary usa-accordion',
-                    'walker' => new NavbarWalker()
+                    'walker' => new BenjaminNavbarWalker()
                 );
 
              if( has_nav_menu('primary') )

@@ -8,7 +8,7 @@
             'depth'=> 0,
             'menu_class' => 'usa-unstyled-list',
             'theme_location' => 'footer',
-            'walker' => new FooterNavbarWalker()
+            'walker' => new BenjaminFooterNavbarWalker()
         );
 
         if( has_nav_menu('footer') )

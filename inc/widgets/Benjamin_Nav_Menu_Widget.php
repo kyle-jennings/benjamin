@@ -5,10 +5,10 @@ class Benjamin_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
     private function menuStyleArgs($style = 'side_nav'){
         if($style == 'side_nav'):
             $class = 'usa-sidenav-list';
-            $walker = new SideNavWalker();
+            $walker = new BenjaminSideNavWalker();
         elseif($style == 'nav_list'):
             $class = 'usa-unstyled-list';
-            $walker = new NavListWalker();
+            $walker = new BenjaminNavListWalker();
         else:
             $class = '';
             $walker = null;

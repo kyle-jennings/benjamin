@@ -1,7 +1,7 @@
 <?php
 
 
-class NavbarWalker extends Walker_Nav_Menu {
+class BenjaminNavbarWalker extends Walker_Nav_Menu {
 
 
     function start_lvl( &$output, $depth = 0, $args = array() ) {

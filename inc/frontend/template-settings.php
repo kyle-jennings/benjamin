@@ -204,7 +204,6 @@ function benjamin_hide_layout_part( $needle, $template ) {
  * @return [type]           [description]
  */
 function benjamin_settings_active($template = null){
-    // error_log($template . ': ' . get_theme_mod($template . '_settings_active', 'no'));
 
     $active = get_theme_mod($template . '_settings_active', 'no');
     return ($active == 'yes') ? true : false;

@@ -30,7 +30,7 @@ function benjamin_customizer_settings($wp_customize){
     // placeholder for near future updates
     $wp_customize->register_control_type( 'Benjamin_Video_Control' );
 }
-add_action('customize_register', 'benjamin_customizer_settings');
+add_action('customize_register', 'benjamin_customizer_settings', 50);
 
 
 function benjamin_customizer_enqueue() {
