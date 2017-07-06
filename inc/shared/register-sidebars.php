@@ -8,12 +8,11 @@
 
 function benjamin_widgets_init() {
     $templates = benjamin_the_template_list(true);
-
-
+    $sidebars = wp_get_sidebars_widgets();
     foreach($templates as $name => $label){
         $sidebar_size = '';
-        $sidebars = wp_get_sidebars_widgets();
-        $widgets = $sidebars[$name];
+
+        $widgets = isset($sidebars[$name]) ? $sidebars[$name] : array();
         $count = count($widgets);
         $pos = get_theme_mod($name . '_sidebar_position_setting', 'none');
         $horizontals = array(

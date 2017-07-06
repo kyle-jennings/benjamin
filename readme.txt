@@ -2,7 +2,7 @@
 
 Requires at least: 4.5
 Tested up to: 4.7
-Stable tag: 1.5
+Stable tag: 1.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Copyright 2017 Kyle Jennings
@@ -140,3 +140,6 @@ Mixed License (https://github.com/18F/web-design-standards/blob/develop/LICENSE.
 * fixed some bugs
 * customizer 404 section opens a non-existent page for styling
 * added labels to customizer section groups
+
+* 1.6
+* fixed some debug warnings

@@ -47,8 +47,6 @@ class BenjaminSideNavWalker extends Walker_Nav_Menu {
             $output .= '</span>';
         }
 
-
-        $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
 
 

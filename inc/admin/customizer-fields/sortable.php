@@ -10,7 +10,6 @@ class Benjamin_Sortable_Control extends WP_Customize_Control
 
     public function __construct($manager, $id, $args = array(), $options = array())
     {
-        $this->visibility_settings = $args['visibility_settings'] ? $args['visibility_settings'] : false;
         parent::__construct( $manager, $id, $args );
     }
 

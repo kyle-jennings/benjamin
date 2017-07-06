@@ -341,11 +341,11 @@ class BenjaminHero {
         $post = get_queried_object();
         $post_type = is_a($post, 'WP_Post_Type') ? $post->name : 'post';
 
-        if($this->hasFeaturedPost) {
+        if( $this->hasFeaturedPost ) {
             $output = $this->featuredPost->output;
-        } elseif( $post->post_title )  {
+        } elseif( isset($post->post_title) )  {
             $output = '<h1>' . $post->post_title . '</h1>';
-        } elseif($post->name) {
+        } elseif( isset($post->name) ) {
             $output = '<h1>' . $post->name . '</h1>';
         } else {
             $output = '<h1> Home </h1>';

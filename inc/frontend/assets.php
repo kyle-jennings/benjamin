@@ -14,10 +14,6 @@ function benjamin_scripts() {
         ? '' : '-'.$benjamin_color_scheme;
 
 
-    if ( !class_exists( 'WP_Customize_Control' ) ){
-        wp_deregister_script( 'jquery' );
-    }
-
 	wp_enqueue_script(
         'benjamin', get_stylesheet_directory_uri() . '/assets/js/uswds-min.js',
          null, null, true
