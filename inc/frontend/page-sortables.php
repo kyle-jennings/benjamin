@@ -88,7 +88,7 @@ function benjamin_sortable_widget_area_content($target = null, $num) {
 
 function benjamin_sortable_default($target_name){
 
-    $url = admin_url( 'customize.php?autofocus[section]='.$target_name.'_section' );
+    $url = admin_url( 'customize.php?autofocus[section]='.$target_name.'_settings_section' );
 
     $output = '';
     $output .= '<h2>Page not configured</h2>';

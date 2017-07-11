@@ -45,7 +45,7 @@ class Benjamin_Widget_Archives extends WP_Widget {
     }
 
 
-    public function dropdown($c)
+    public function dropdown($c, $title)
     {
         $dropdown_id = "{$this->id_base}-dropdown-{$this->number}";
     ?>
@@ -149,7 +149,7 @@ class Benjamin_Widget_Archives extends WP_Widget {
 		}
 
 		if ( $style == 'dropdown' ) {
-            $this->dropdown($c);
+            $this->dropdown($c, $title);
         } else {
 
             $this->menu($c, $style_args);

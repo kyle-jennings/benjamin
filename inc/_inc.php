@@ -3,7 +3,7 @@
 
 // these files contain functions used by both the admin section and frontend
 $shared_files = array(
-    '/inc/admin/customizer.php',
+    '/inc/shared/customizer.php',
     '/inc/shared/functions.php',
     '/inc/shared/template-list.php',
     '/inc/shared/theme-support.php',
