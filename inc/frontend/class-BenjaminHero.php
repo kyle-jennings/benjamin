@@ -88,7 +88,7 @@ class BenjaminHero {
     public function getStyle($template) {
         if(!$this->image)
             return;
-
+            
         $pos = get_theme_mod($template.'_hero_position_setting', 'top-left');
         $pos = str_replace('-',' ', $pos);
         $output = 'style="';

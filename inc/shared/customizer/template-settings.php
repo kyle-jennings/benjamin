@@ -70,7 +70,6 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
         )
     );
     $args = array(
-        'description' => __('','benjamin'),
         'label' => __('Header Settings', 'benjamin'),
         'type' => 'label',
         'section' => $name . '_settings_section',
@@ -213,7 +212,7 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
         )
     );
     $args = array(
-        'description' => __('','benjamin'),
+
         'label' => __('Sidebar Settings', 'benjamin'),
         'type' => 'label',
         'section' => $name . '_settings_section',
@@ -297,7 +296,7 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
             )
         );
         $args = array(
-            'description' => __('','benjamin'),
+    
             'label' => __('Other Settings', 'benjamin'),
             'type' => 'label',
             'section' => $name . '_settings_section',

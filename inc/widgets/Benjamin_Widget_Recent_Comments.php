@@ -100,10 +100,11 @@ class Benjamin_Widget_Recent_Comments extends WP_Widget {
             foreach ( (array) $comments as $comment ) {
                 $output .= '<option value="'.get_comment_link( $comment ) .'" >';
                 /* translators: comments widget: 1: comment author, 2: post link */
-                $output .= sprintf( _x( '%1$s', 'widgets', 'benjamin' ),
-                    get_comment_author_link( $comment ) . ' &#45; &nbsp;'
-                    . get_the_title( $comment->comment_post_ID )
+                $output .= sprintf( __( '%1$s', 'widgets', 'benjamin' ),
+                    get_comment_author_link( $comment ) . ' &#45; &nbsp;' . get_the_title( $comment->comment_post_ID )
                 );
+
+
                 $output .= '</option>';
             }
         }
@@ -144,7 +145,7 @@ class Benjamin_Widget_Recent_Comments extends WP_Widget {
             foreach ( (array) $comments as $comment ) {
                 $output .= '<li '.$li_class.'>';
                 /* translators: comments widget: 1: comment author, 2: post link */
-                $output .= sprintf( _x( '%1$s', 'widgets', 'benjamin' ),
+                $output .= sprintf( __( '%1$s', 'widgets', 'benjamin' ),
                     '<a href="' . esc_url( get_comment_link( $comment ) ) . '">' .
                     '<span class="comment-author-link">' . get_comment_author_link( $comment ) . ' &#45;  </span> &nbsp;'
                     . get_the_title( $comment->comment_post_ID ) . '</a>'

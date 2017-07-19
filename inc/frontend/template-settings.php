@@ -164,6 +164,8 @@ function benjamin_is_page(){
  */
 function benjamin_is_page_template(){
 
+    if ( is_page_template('page-templates/sidenav.php') && benjamin_settings_active('sidenav') )
+        return 'sidenav';
     if ( is_page_template('page-templates/widgetized.php') && benjamin_settings_active('widgetized') )
         return 'widgetized';
     if ( is_page_template('page-templates/template-1.php') && benjamin_settings_active('template-1') )

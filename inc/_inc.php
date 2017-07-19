@@ -17,6 +17,7 @@ $shared_files = array(
 
 foreach($shared_files as $file)
     require get_template_directory() . $file;
+    
 // only load these in the admin section
 if (is_admin()) {
     $files = array(
