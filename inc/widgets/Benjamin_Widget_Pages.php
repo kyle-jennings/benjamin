@@ -231,7 +231,7 @@ class Benjamin_Widget_Pages extends WP_Widget {
             $this->menu($sortby, $exclude, $style, $children);
         } else {
             echo '<ul>';
-                echo $out;
+                echo $out; //WPCS: xss ok.
             echo '</ul>';
         }
 

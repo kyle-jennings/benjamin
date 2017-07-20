@@ -103,7 +103,7 @@ class Benjamin_Widget_Archives extends WP_Widget {
         $class = $style_args ? 'class="'.esc_attr($style_args).'"' : '';
 
     ?>
-		<ul <?php echo $class; ?>>
+		<ul <?php echo $class; //WPCS: xss ok. ?>>
 	<?php
 		/**
 		 * Filters the arguments for the Archives widget.
