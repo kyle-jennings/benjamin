@@ -3,7 +3,7 @@
 // determines whether or not the site is a dot gov or dot mill
 function benjamin_is_dot_gov() {
     $domain = isset($_SERVER['SERVER_NAME']) ? esc_url_raw(wp_unslash($_SERVER['SERVER_NAME'])) : null;
-
+    examine('boom');
     if(!$domain)
         return false;
 
