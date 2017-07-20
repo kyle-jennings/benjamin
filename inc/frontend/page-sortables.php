@@ -9,13 +9,14 @@ function benjamin_page_sortables($target = null) {
 
     $sortables = get_theme_mod($target, '[{"name":"page-content","label":"Page Content"}]');
 
-    if(!$sortables || $sortables == '[]'){
+    if(!$sortables){
+        $sortables = '[{"name":"page-content","label":"Page Content"}]';
+    } else if( $sortables == '[]'){
         echo benjamin_sortable_default($target_name); //WPCS: xss ok.
         return;
     }
 
     $sortables = json_decode($sortables);
-
     foreach($sortables as $s){
         $name = $s->name;
         switch($name):
