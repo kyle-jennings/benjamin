@@ -35,6 +35,8 @@ add_action('customize_register', 'benjamin_customizer_settings', 50);
 
 function benjamin_customizer_enqueue() {
 
+    // this script is minified, however a non minified version is included with the
+    // theme
 	wp_enqueue_script(
         'custom-customize',
         get_stylesheet_directory_uri() . '/inc/admin/assets/js/_benjamin-customizer-min.js',

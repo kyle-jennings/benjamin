@@ -10,7 +10,7 @@ function benjamin_featured_video_metabox_markup($post) {
 ?>
     <div class="js--media-wrapper">
         <div class="js--placeholder">
-            <?php echo $video ?>
+            <?php echo $video; // WPCS: xss ok. ?>
         </div>
         <label for="featured-video">
             <a class="button js--media-library" data-filter="video">
@@ -24,7 +24,7 @@ function benjamin_featured_video_metabox_markup($post) {
         </label>
         <span class="use-url"> - or use YouTube -</span>
         <input class="js--video-url" name="featured-video"
-            type="text" value="<?php echo $url; ?>">
+            type="text" value="<?php echo esc_url($url); ?>">
 
     </div>
 
@@ -70,7 +70,7 @@ function benjamin_save_featured_video($post_id, $post, $update) {
         return $post_id;
 
 
-    $url = isset($_POST['featured-video']) ? esc_url_raw($_POST['featured-video']) : null;
+    $url = isset($_POST['featured-video']) ? esc_url_raw( wp_unslash($_POST['featured-video']) ) : null;
     if( filter_var($url, FILTER_VALIDATE_URL) ) {
 
         // get attachment id

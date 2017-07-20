@@ -13,6 +13,8 @@ function benjamin_scripts() {
     $benjamin_color_scheme = $benjamin_color_scheme == 'standard'
         ? '' : '-'.$benjamin_color_scheme;
 
+    // the following scripts and styles are minified, however unminified version
+    // are included with this theme.
 
 	wp_enqueue_script(
         'benjamin', get_stylesheet_directory_uri() . '/assets/js/uswds-min.js',

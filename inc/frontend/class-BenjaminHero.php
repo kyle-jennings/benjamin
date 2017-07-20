@@ -88,7 +88,7 @@ class BenjaminHero {
     public function getStyle($template) {
         if(!$this->image)
             return;
-            
+
         $pos = get_theme_mod($template.'_hero_position_setting', 'top-left');
         $pos = str_replace('-',' ', $pos);
         $output = 'style="';
@@ -179,7 +179,7 @@ class BenjaminHero {
         } elseif($content == 'callout') {
             $output .= $this->heroCallout();
         } else {
-            $output = '<h1>' . get_bloginfo( 'name' ) . '</h1>';
+            $output = '<h1>' . get_bloginfo( 'name', 'display' ) . '</h1>';
         }
 
         return $output;
@@ -327,7 +327,7 @@ class BenjaminHero {
     public function searchTitle() {
         global $wp_query;
         $total_results = $wp_query->found_posts;
-        $title = $total_results ? 'Search Results for: '.get_search_query() : 'No results found' ;
+        $title = $total_results ? 'Search Results for: ' . get_search_query() : 'No results found' ;
 
         return '<h1>' . $title . '</h1>';
 

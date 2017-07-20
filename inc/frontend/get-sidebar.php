@@ -19,7 +19,7 @@ function benjamin_get_sidebar($template, $position = 'none'){
 
     ?>
 
-    <div class="sidebar <?php echo $class; ?> widgetarea--<?php echo $template; ?>">
+    <div class="sidebar <?php echo esc_attr($class); ?> widgetarea--<?php echo esc_attr($template); ?>">
         <?php dynamic_sidebar($template); ?>
     </div>
 

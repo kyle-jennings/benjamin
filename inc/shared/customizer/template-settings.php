@@ -24,6 +24,7 @@ add_action('customize_register', 'benjamin_template_layout_settings');
 
 function benjamin_template_settings_loop(&$wp_customize, $name, $label){
     $wp_customize->add_section( $name . '_settings_section', array(
+		 /* translators: Displays the dynamically set label */
         'title'          => sprintf( __('%s Settings', 'benjamin'), ucfirst($label) ),
         'priority'       => 36,
     ) );
@@ -296,7 +297,7 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
             )
         );
         $args = array(
-    
+
             'label' => __('Other Settings', 'benjamin'),
             'type' => 'label',
             'section' => $name . '_settings_section',

@@ -27,7 +27,7 @@ class Benjamin_Label_Custom_Control extends WP_Customize_Control
             </h2>
         </label>
         <p class="description customize-control-description">
-            <?php echo $this->description; ?>
+            <?php echo esc_html($this->description); ?>
         </p>
     <?php
     }

@@ -37,7 +37,7 @@ if( !$hide_content ):
     endif;
     ?>
 
-  <div class="<?php echo esc_html($main_width); ?>">
+  <div class="<?php echo esc_attr($main_width); ?>">
 		<?php
 		if ( have_posts() ) :
 

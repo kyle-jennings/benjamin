@@ -16,8 +16,8 @@ $shared_files = array(
 );
 
 foreach($shared_files as $file)
-    require get_template_directory() . $file;
-    
+    require get_template_directory() . $file; // WPCS: xss ok.
+
 // only load these in the admin section
 if (is_admin()) {
     $files = array(
@@ -27,7 +27,7 @@ if (is_admin()) {
         '/inc/admin/metabox-featured-video.php',
     );
     foreach($files as $file)
-        require get_template_directory() . $file;
+        require get_template_directory() . $file; // WPCS: xss ok.
 }
 
 
@@ -55,5 +55,5 @@ if( !is_admin() ){
         '/inc/frontend/navs/footer-nav-walker.php',
     );
     foreach($files as $file)
-        require get_template_directory() . $file;
+        require get_template_directory() . $file; // WPCS: xss ok.
 }

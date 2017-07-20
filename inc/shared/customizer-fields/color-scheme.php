@@ -28,25 +28,25 @@ class Benjamin_Color_Scheme_Custom_Control extends WP_Customize_Control
             </span>
         </label>
         <p class="description customize-control-description">
-            <?php echo $this->description; ?>
+            <?php echo esc_html($this->description); ?>
         </p>
         <ul>
             <?php
                 foreach($schemes as $name=>$colors):
             ?>
             <li class="cf">
-                <input type="radio" name="<?php echo $this->id; ?>"
+                <input type="radio" name="<?php echo esc_attr($this->id); ?>"
                     <?php $this->link(); ?>
-                    data-customize-setting-link="<?php echo $this->id; ?>"
-                    value="<?php echo $name; ?>"
+                    data-customize-setting-link="<?php echo esc_attr($this->id); ?>"
+                    value="<?php echo esc_attr($name); ?>"
                     <?php selected($this->value(), $name) ?>
                     />
-                    <?php echo ucfirst($name); ?>
+                    <?php echo esc_html(ucfirst($name)); ?>
 
                 <ul class="swatches">
                     <?php foreach($colors as $color): ?>
                         <li class="swatch"
-                        style="background-color:<?php echo $color; ?>;"></li>
+                        style="background-color:<?php echo esc_attr($color); ?>;"></li>
                     <?php endforeach; ?>
                 </ul>
 
