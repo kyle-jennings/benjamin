@@ -48,9 +48,9 @@ class Benjamin_Sortable_Control extends WP_Customize_Control
 
         $output = '';
 
-        $output .= '<li id="'.$name.'" class="sortable">';
+        $output .= '<li id="'.esc_attr($name).'" class="sortable">';
             $output .=  '<h6 class="sortable__title">';
-                $output .= $label;
+                $output .= esc_html($label);
             $output .= '</h6>';
 
         $output .= '</li>';
@@ -123,25 +123,25 @@ class Benjamin_Sortable_Control extends WP_Customize_Control
         </label>
 
         <p class="description customize-control-description">
-            <?php echo $this->description; ?>
+            <?php echo esc_html($this->description); ?>
         </p>
         <div class="sortables">
 
-            <?php echo $this->sortable_list_markup('active', $target); ?>
+            <?php echo $this->sortable_list_markup('active', $target); //WPCS: xss ok. ?>
 
 
             <?php
             if($this->optional):
-                echo $this->sortable_list_markup('available', $target);
+                echo $this->sortable_list_markup('available', $target); //WPCS: xss ok.
             endif;
             ?>
 
             <input type="hidden"
-                id="<?php echo $this->id; ?>"
-                name="<?php echo $this->id; ?>"
+                id="<?php echo esc_attr($this->id); ?>"
+                name="<?php echo esc_attr($this->id); ?>"
                 <?php $this->link(); ?>
-                data-customize-setting-link="<?php echo $this->id; ?>"
-                value='<?php echo $this->value();?>'
+                data-customize-setting-link="<?php echo esc_attr($this->id); ?>"
+                value='<?php echo esc_attr($this->value());?>'
             />
         </div>
 

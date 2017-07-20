@@ -1,6 +1,9 @@
 <?php
-    $width = ($_SERVER['REQUEST_SCHEME'] == 'https') ? 'usa-width-one-half' : 'usa-width-one-whole'
 
+    $width = (isset($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] == 'https') ? 'usa-width-one-half' : 'usa-width-one-whole';
+    $favicon = get_template_directory_uri() . '/assets/img/favicons/favicon-57.png';
+    $dot_gov_icon = get_template_directory_uri() . '/assets/img/icon-dot-gov.svg';
+    $ssl_icon = get_template_directory_uri() . '/assets/img/icon-https.svg';
 ?>
 <!-- Gov banner BEGIN -->
 <div class="usa-banner">
@@ -8,7 +11,7 @@
     <div class="usa-accordion">
         <header class="usa-banner-header">
             <div class="usa-grid usa-banner-inner">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/favicons/favicon-57.png" alt="U.S. flag">
+                <img src="<?php echo esc_url($favicon); ?>" alt="U.S. flag">
                 <p>An official website of the United States government</p>
                 <button class="usa-accordion-button usa-banner-button"
                 aria-expanded="false" aria-controls="gov-banner">
@@ -18,9 +21,9 @@
         </header>  <!-- end accordion header -->
 
         <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner">
-            <div class="usa-banner-guidance-gov <?php echo $width; ?>">
+            <div class="usa-banner-guidance-gov <?php echo esc_attr($width); ?>">
                 <img class="usa-banner-icon usa-media_block-img"
-                src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-dot-gov.svg"
+                src="<?php echo esc_url($dot_gov_icon)?>"
                 alt="Dot gov">
                 <div class="usa-media_block-body">
                     <p>
@@ -34,10 +37,10 @@
                 </div>
             </div>  <!-- end accordion first half-->
 
-            <?php if($_SERVER['REQUEST_SCHEME'] == 'https'): ?>
+            <?php if(isset($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] == 'https'): ?>
             <div class="usa-banner-guidance-ssl usa-width-one-half">
                 <img class="usa-banner-icon usa-media_block-img"
-                src="<?php echo get_template_directory_uri(); ?>/assets/img/icon-https.svg" alt="SSL">
+                src="<?php echo esc_url($ssl_icon); ?>" alt="SSL">
                 <div class="usa-media_block-body">
                     <p>This site is also protected by an SSL (Secure Sockets Layer)
                         certificate that's been signed by the U.S. government.

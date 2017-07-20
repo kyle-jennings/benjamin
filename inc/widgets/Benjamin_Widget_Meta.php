@@ -78,16 +78,16 @@ class Benjamin_Widget_Meta extends WP_Widget {
     public function menu( $style )
     {
         $style_args = $this->menuStyleArgs($style);
-        $class = $style_args ? 'class="'.$style_args.'"' : '';
+        $class = $style_args ? 'class="'.esc_attr($style_args).'"' : '';
 
 
-        echo '<ul '.$class.'>';
+        echo '<ul '.$class.'>'; // WPCS: xss ok.
 
         wp_register();
         ?>
         <li><?php wp_loginout(); ?></li>
-        <li><a href="<?php echo esc_url( get_bloginfo( 'rss2_url' ) ); ?>"><?php _e('Entries <abbr title="Really Simple Syndication">RSS</abbr>', 'benjamin'); ?></a></li>
-        <li><a href="<?php echo esc_url( get_bloginfo( 'comments_rss2_url' ) ); ?>"><?php _e('Comments <abbr title="Really Simple Syndication">RSS</abbr>', 'benjamin'); ?></a></li>
+        <li><a href="<?php echo esc_url( get_bloginfo( 'rss2_url' ) ); ?>"><?php _e('Entries <abbr title="Really Simple Syndication">RSS</abbr>', 'benjamin'); // WPCS: xss ok. ?></a></li>
+        <li><a href="<?php echo esc_url( get_bloginfo( 'comments_rss2_url' ) ); ?>"><?php _e('Comments <abbr title="Really Simple Syndication">RSS</abbr>', 'benjamin'); // WPCS: xss ok. ?></a></li>
         <?php
         /**
          * Filters the "Powered by WordPress" text in the Meta widget.
@@ -96,7 +96,7 @@ class Benjamin_Widget_Meta extends WP_Widget {
          *
          * @param string $title_text Default title text for the WordPress.org link.
          */
-        echo apply_filters( 'widget_meta_poweredby', sprintf( '<li><a href="%s" title="%s">%s</a></li>',
+        echo apply_filters( 'widget_meta_poweredby', sprintf( '<li><a href="%s" title="%s">%s</a></li>', // WPCS: xss ok.
             esc_url( __( 'https://wordpress.org/', 'benjamin' ) ),
             esc_attr__( 'Powered by WordPress, state-of-the-art semantic personal publishing platform.', 'benjamin' ),
             _x( 'WordPress.org', 'meta widget link text', 'benjamin' )
@@ -127,9 +127,9 @@ class Benjamin_Widget_Meta extends WP_Widget {
         $style = ! empty( $instance['menu_style'] ) ? $instance['menu_style'] : 'side_nav';
 
 
-		echo $args['before_widget'];
+		echo $args['before_widget']; // WPCS: xss ok.
 		if ( $title ) {
-			echo $args['before_title'] . $title . $args['after_title'];
+			echo $args['before_title'] . esc_html($title) . $args['after_title']; // WPCS: xss ok.
 		}
 
         if($style == 'dropdown') {
@@ -138,7 +138,7 @@ class Benjamin_Widget_Meta extends WP_Widget {
             $this->menu($style );
         }
 
-		echo $args['after_widget'];
+		echo $args['after_widget']; // WPCS: xss ok.
 	}
 
 	/**
@@ -176,7 +176,12 @@ class Benjamin_Widget_Meta extends WP_Widget {
         $saved_style = isset( $instance['menu_style'] ) ? $instance['menu_style'] : '';
 
 ?>
-			<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'benjamin'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" placeholder="<?php esc_attr_e( 'Meta', 'benjamin' ); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+			<p><label for="<?php echo esc_attr($this->get_field_id('title')); ?>">
+                <?php esc_html_e('Title:', 'benjamin'); ?></label>
+                <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>"
+                name="<?php echo esc_attr($this->get_field_name('title')); ?>"
+                placeholder="<?php esc_attr_e( 'Meta', 'benjamin' ); ?>"
+                type="text" value="<?php echo esc_attr($title); ?>" /></p>
 <?php
         // styles
         $find = array('-', '_');
@@ -184,11 +189,11 @@ class Benjamin_Widget_Meta extends WP_Widget {
 
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id( 'menu_style' ); ?>">
-                    <?php _e( 'Menu Style:', 'benjamin' ); ?>
+            <label for="<?php echo esc_attr($this->get_field_id( 'menu_style' )); ?>">
+                    <?php esc_html_e( 'Menu Style:', 'benjamin' ); ?>
             </label>
-            <select id="<?php echo $this->get_field_id( 'menu_style' ); ?>"
-                  name="<?php echo $this->get_field_name( 'menu_style' ); ?>">
+            <select id="<?php echo esc_attr($this->get_field_id( 'menu_style' )); ?>"
+                  name="<?php echo esc_attr($this->get_field_name( 'menu_style' )); ?>">
                 <?php
                     foreach ( $menu_styles as $style ) :
                         $label = ucwords(str_replace($find, ' ', $style ));

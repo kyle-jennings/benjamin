@@ -12,7 +12,7 @@ function benjamin_get_sticky_sidenav($id = 0){
         foreach($anchors as $anchor):
             $label = str_replace(array('-','_'),' ', $anchor);
             $output .= '<li>';
-                $output .= '<a href="#'.$anchor.'">'.$label.'</a>';
+                $output .= '<a href="#'.esc_attr($anchor).'">'.$label.'</a>';
             $output .= '</li>';
         endforeach;
         $output .= '</ul>';
@@ -25,7 +25,7 @@ function benjamin_sticky_sidenav($id = 0){
     if($id == 0)
         return false;
 
-    echo benjamin_get_sticky_sidenav($id);
+    echo benjamin_get_sticky_sidenav($id); // WPCS: xss ok.
 }
 
 

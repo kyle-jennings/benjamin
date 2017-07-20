@@ -42,7 +42,7 @@
 
 
 function benjamin_posted_on() {
-    echo benjamin_get_posted_on();
+    echo benjamin_get_posted_on(); //WPCS: xss ok.
 }
 
 function benjamin_get_posted_on(){
@@ -56,11 +56,10 @@ function benjamin_get_posted_on(){
 
     $month_url = get_month_link($y, $m);
     $year_url = get_year_link($y);
+
     $date = '';
-    $date .= '<a class="entry-date published" href="'.$month_url.'">'.$d.'</a>, ';
-    $date .= '<a class="entry-date published" href="'.$year_url.'">'.$y.'</a>';
-
-
+    $date .= '<a class="entry-date published" href="' . esc_url($month_url) . '">'.$d.'</a>, ';
+    $date .= '<a class="entry-date published" href="' . esc_url($year_url) . '">'.$y.'</a>';
 
     $author = '<span class="author vcard">';
     if ( function_exists( 'coauthors_posts_links' ) ) {
@@ -91,16 +90,15 @@ function benjamin_entry_footer() {
 	// Hide category and tag text for pages.
 	if ( 'page' !== get_post_type() ) {
 
-
-		/* translators: used between list items, there is a space after the comma */
 		if ( $categories_list = benjamin_get_the_category_list($post->ID) ) {
+            /* translators: 1: list of categories. */
 			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'benjamin' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 		}
 
-		/* translators: used between list items, there is a space after the comma */
 		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'benjamin' ) );
 		if ( $tags_list ) {
             echo "<br>";
+            /* translators: used between list items, there is a space after the comma */
 			printf( ' <span class="tags-links">' . esc_html__( 'Tagged %1$s', 'benjamin' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 		}
 	}

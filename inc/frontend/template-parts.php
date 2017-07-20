@@ -33,7 +33,8 @@ function benjamin_the_header() {
                 get_template_part('template-parts/navbars/navbar');
                 break;
             case 'hero':
-                echo new BenjaminHero($template);
+                $hero = new BenjaminHero($template);
+                echo $hero; //WPCS: xss ok.
                 break;
         endswitch;
     endforeach;

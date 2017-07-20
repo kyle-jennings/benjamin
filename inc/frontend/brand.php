@@ -3,25 +3,25 @@
 function benjamin_get_navbar_brand() {
     $logo_tag = 'em';
     $brand = get_theme_mod('navbar_brand_setting', 'text');
-    
+
     $output = '';
     if( $brand == 'text' ):
 
         $output .= '<div class="usa-logo" id="logo">';
             $output .= '<'.$logo_tag.' class="usa-logo-text">';
-                $output .= '<a href="'.get_site_url().'" >'.get_bloginfo( 'name' ).'</a>';
+                $output .= '<a href="'.get_site_url().'" >'.get_bloginfo( 'name', 'display' ).'</a>';
             $output .= '</'.$logo_tag.'>';
         $output .= '</div>';
     else:
 
-        $url = benjamin_get_custom_logo($logo_id);
+        $url = esc_url(benjamin_get_custom_logo());
         $output .= '<div class="usa-logo" id="logo">';
             $output .= '<'.$logo_tag.' class="usa-logo-text usa-logo-image">';
                 $output .= '<a href="'.get_site_url().'" >';
 
                     $output .= $url
-                        ? '<img src="'.$url.'" alt="'.get_bloginfo( 'name' ).'">'
-                        : get_bloginfo( 'name' );
+                        ? '<img src="'.$url.'" alt="'.get_bloginfo( 'name', 'display' ).'">'
+                        : get_bloginfo( 'name', 'display' );
 
                 $output .= '</a>';
             $output .= '</'.$logo_tag.'>';
@@ -33,7 +33,7 @@ function benjamin_get_navbar_brand() {
 
 
 function benjamin_navbar_brand() {
-    echo benjamin_get_navbar_brand();
+    echo benjamin_get_navbar_brand(); // WPCS: xss ok.
 }
 
 

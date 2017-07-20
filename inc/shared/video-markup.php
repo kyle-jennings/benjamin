@@ -41,9 +41,9 @@ function benjamin_get_the_video_markup($url = null, $background = null) {
             $atts = 'autoplay loop muted';
         else
             $atts = 'controls';
-            
+
         $output .= '<div class="video-bg">';
-            $output .= '<video class="video" '.$atts.' '.$src.'="'.$url.'" type="video/'.$type.'">';
+            $output .= '<video class="video" '.esc_attr($atts).' '.$src.'="'.esc_attr($url).'" type="video/'.esc_attr($type).'">';
             $output .= '</video>';
         $output .= '</div>';
     }else {
@@ -59,7 +59,7 @@ function benjamin_get_the_video_markup($url = null, $background = null) {
         $url = 'https://www.youtube.com/embed/'.$id.'?'.$settings;
 
         $output .= '<div class="video-bg video-bg--youtube">';
-            $output .= '<iframe class="video" '.$src.'="'.$url.'" frameborder="0" height="100%" width="100%" allowfullscreen ></iframe>';
+            $output .= '<iframe class="video" '.$src.'="'.esc_attr($url).'" frameborder="0" height="100%" width="100%" allowfullscreen ></iframe>';
         $output .= '</div>';
     }
 
@@ -70,7 +70,7 @@ function benjamin_get_the_video_markup($url = null, $background = null) {
 
 
 function benjamin_the_video_markup($url, $background = null) {
-    echo benjamin_get_the_video_markup($url, $background);
+    echo benjamin_get_the_video_markup($url, $background); //WPCS: xss ok.
 }
 
 

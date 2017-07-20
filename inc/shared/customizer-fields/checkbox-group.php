@@ -20,15 +20,15 @@ class Benjamin_Checkbox_Group_Control extends WP_Customize_Control
         $output = '';
         $saved = json_decode($this->value());
 
-        $output .= '<span class="customize-control-title">'.$this->label.'</span>';
+        $output .= '<span class="customize-control-title">'.esc_html($this->label).'</span>';
 
         $output .= '<p class="description customize-control-description">';
-            $output .= $this->description;
+            $output .= esc_html($this->description);
         $output .= '</p>';
 
-        $output .= '<ul id="js--'.$this->id.'"
+        $output .= '<ul id="js--'.esc_attr($this->id).'"
             class="checkbox-group js--checkbox-group"
-            data-setting="'.$this->setting->id.'"
+            data-setting="'.esc_attr($this->setting->id).'"
             >';
             foreach($this->choices as $k=>$v){
                 $checked = null;
@@ -39,7 +39,7 @@ class Benjamin_Checkbox_Group_Control extends WP_Customize_Control
                 $output .= '<li>';
 
                     $output .= '<label>';
-                        $output .= '<input name="'.$this->id.'" type="checkbox" value="'.$k.'" '.$checked.'>';
+                        $output .= '<input name="'.esc_attr($this->id).'" type="checkbox" value="'.$k.'" '.$checked.'>';
                         $output .= $v;
                     $output .= '</label>';
 
@@ -48,11 +48,11 @@ class Benjamin_Checkbox_Group_Control extends WP_Customize_Control
 
         $output .= '</ul>';
 
-        $output .= '<input type="hidden" id="'.$this->id.'" ';
-            $output .= 'name="'.$this->id.'" data-customize-setting-link="'.$this->setting->id.'" ';
+        $output .= '<input type="hidden" id="'.esc_attr($this->id).'" ';
+            $output .= 'name="'.esc_attr($this->id).'" data-customize-setting-link="'.esc_attr($this->setting->id).'" ';
             $output .= 'value=\''.$this->value().'\' ';
         $output .= ' />';
 
-        echo $output;
+        echo $output; //WPCS: xss ok.
     }
 }

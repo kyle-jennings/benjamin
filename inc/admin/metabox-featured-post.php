@@ -11,10 +11,10 @@ function benjamin_featured_post_metabox_markup($post) {
 
     <p>
         Marks this post as the "featured post" in the
-        <b><?php echo $post->post_type; ?></b> feed.
+        <b><?php echo esc_html($post->post_type); ?></b> feed.
     </p>
-    <label for="featured-post--<?php echo $post->post_type; ?>">Feature this post?</label>
-    <input name="featured-post--<?php echo $post->post_type; ?>" type="checkbox" value="true" <?php echo $checked; ?>>
+    <label for="featured-post--<?php echo esc_html($post->post_type); ?>">Feature this post?</label>
+    <input name="featured-post--<?php echo esc_html($post->post_type); ?>" type="checkbox" value="true" <?php echo esc_html($checked); ?>>
 
 <?php
 }
