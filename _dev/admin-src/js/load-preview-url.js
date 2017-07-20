@@ -7,6 +7,7 @@ function randomString(length, chars) {
 
 
 (function ( api ) {
+
     api.section( '_404_settings_section', function( section ) {
         section.expanded.bind( function( isExpanded ) {
             var rand = randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
@@ -17,4 +18,16 @@ function randomString(length, chars) {
             }
         } );
     } );
+
+    api.section( 'frontpage_settings_section', function( section ) {
+        section.expanded.bind( function( isExpanded ) {
+            var url = api.settings.url.home ;
+
+            var previousUrl = api.previewer.previewUrl.get();
+            if ( isExpanded ) {
+                api.previewer.previewUrl.set( url );
+            }
+        } );
+    } );
+
 } ( wp.customize ) );
