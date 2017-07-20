@@ -27,7 +27,8 @@ function benjamin_the_header() {
             continue;
         switch($component->name):
             case 'banner':
-                get_template_part('template-parts/section', 'banner');
+                if(benjamin_is_dot_gov())
+                    get_template_part('template-parts/section', 'banner');
                 break;
             case 'navbar':
                 get_template_part('template-parts/navbars/navbar');
