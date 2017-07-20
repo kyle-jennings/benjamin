@@ -6,7 +6,7 @@ function benjamin_widgetized_settings($wp_customize) {
 
 
     $wp_customize->add_setting( 'widgetized_sortables_setting', array(
-        'default'        => '',
+        'default'        => '[{"name":"page-content","label":"Page Content"}]',
         'sanitize_callback' => 'benjamin_widgetized_sortable_sanitize',
     ) );
 

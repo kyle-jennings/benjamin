@@ -71,7 +71,7 @@ function benjamin_frontpage_settings($wp_customize) {
       * @var string
       */
      $wp_customize->add_setting( 'frontpage_sortables_setting', array(
-         'default'        => '',
+         'default'        => '[{"name":"page-content","label":"Page Content"}]',
          'sanitize_callback' => 'benjamin_frontpage_sortable_sanitize',
      ) );
 

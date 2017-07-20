@@ -7,9 +7,9 @@ function benjamin_page_sortables($target = null) {
 
     $target_name = strtok($target, '_');
 
-    $sortables = get_theme_mod($target, []);
+    $sortables = get_theme_mod($target, '[{"name":"page-content","label":"Page Content"}]');
 
-    if(!$sortables || $sortables == []){
+    if(!$sortables || $sortables == '[]'){
         echo benjamin_sortable_default($target_name); //WPCS: xss ok.
         return;
     }

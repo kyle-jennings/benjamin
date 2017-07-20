@@ -91,7 +91,7 @@ class Benjamin_Widget_Pages extends WP_Widget {
                 ? '&nbsp;&nbsp; - ' : '' ;
 
             $output .= '<option value="'.get_permalink($page->ID).'">';
-                $output .= esc_html($indent . $page->post_title);
+                $output .= $indent . $page->post_title; // WPCS: xss ok.
             $output .= '</option>';
         }
         $output .= '</select>';
@@ -151,7 +151,7 @@ class Benjamin_Widget_Pages extends WP_Widget {
 
             $output .= '<li>';
                 $output .= '<a href="'.get_permalink($page->ID).'">';
-                    $output .= esc_html($page->post_title);
+                    $output .= $page->post_title;
                 $output .= '</a>';
 
                 if(!empty($children[$page->ID]))
@@ -231,7 +231,7 @@ class Benjamin_Widget_Pages extends WP_Widget {
             $this->menu($sortby, $exclude, $style, $children);
         } else {
             echo '<ul>';
-                echo esc_html($out);
+                echo $out;
             echo '</ul>';
         }
 

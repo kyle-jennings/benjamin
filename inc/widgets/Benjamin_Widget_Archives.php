@@ -33,6 +33,7 @@ class Benjamin_Widget_Archives extends WP_Widget {
 
 
     private function menuStyleArgs($style = 'side_nav'){
+
         if($style == 'side_nav'):
             $class = 'usa-sidenav-list';
         elseif($style == 'nav_list'):
@@ -99,10 +100,10 @@ class Benjamin_Widget_Archives extends WP_Widget {
     public function menu($c, $style_args) {
 
         // $c = ($style_args == 'usa-sidenav-list') ? null : $c ; // untill i figure out how to add the count to the anchor tags
-        $class = $style_args ? 'class="'.$style_args.'"' : '';
+        $class = $style_args ? 'class="'.esc_attr($style_args).'"' : '';
 
     ?>
-		<ul <?php echo esc_html($class); ?>>
+		<ul <?php echo $class; ?>>
 	<?php
 		/**
 		 * Filters the arguments for the Archives widget.
