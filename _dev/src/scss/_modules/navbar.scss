@@ -50,3 +50,16 @@
     background-repeat: no-repeat;
     background-size: 13px;
 }
+
+@media screen and (max-width: 782px) {
+    .admin-bar .usa-nav {
+        top: 46px;
+    }
+}
+
+
+@media screen and (max-width: 950px) {
+    .admin-bar .usa-nav {
+        top: 32px;
+    }
+}
