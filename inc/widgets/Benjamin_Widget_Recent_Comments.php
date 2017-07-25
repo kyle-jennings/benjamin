@@ -144,7 +144,7 @@ class Benjamin_Widget_Recent_Comments extends WP_Widget {
             foreach ( (array) $comments as $comment ) {
                 $output .= '<li '.$li_class.'>';
                 $output .= '<a href="' . esc_url( get_comment_link( $comment ) ) . '">' .
-                    '<span class="comment-author-link">' . get_comment_author_link( $comment ) . ' &#45;  </span> &nbsp;'
+                    '<span class="comment-author-link">' . get_comment_author( $comment ) . ' &#45;  </span> &nbsp;'
                     . get_the_title( $comment->comment_post_ID ) . '</a>'; // WPCS: xss ok.
                 $output .= '</li>';
             }

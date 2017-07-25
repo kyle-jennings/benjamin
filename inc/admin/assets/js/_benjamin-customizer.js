@@ -130,16 +130,16 @@ function benjaminSortable(elm) {
 
 
   // when the visibility changes
-  $('.sortable__visibility select').on('change', function(e){
-    var $this = $(this);
-    var thisVal = $this.val();
-    $this.closest('.sortable').addClass('save-warning');
-    $('#submit').parent('.submit').addClass('save-warning');
-
-    var activeComponentsStr = get_active_sortables($active);
-    save_values(id, activeComponentsStr, $field);
-
-  });
+  // $('.sortable__visibility select').on('change', function(e){
+  //   var $this = $(this);
+  //   var thisVal = $this.val();
+  //   $this.closest('.sortable').addClass('save-warning');
+  //   $('#submit').parent('.submit').addClass('save-warning');
+  //
+  //   var activeComponentsStr = get_active_sortables($active);
+  //   save_values(id, activeComponentsStr, $field);
+  //
+  // });
 
 
   // gets the active sortables and sets their settings/positions to a string to be saved
@@ -158,6 +158,7 @@ function benjaminSortable(elm) {
           label: label
         });
     });
+
     // stringify the array into a string and return
     return JSON.stringify(activeComponents);
   }

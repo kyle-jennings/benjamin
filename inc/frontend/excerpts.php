@@ -5,17 +5,15 @@
  */
 function benjamin_continue_reading_link() {
     global $summary_settings;
-    $value = $summary_settings['read_more'] ? $summary_settings['read_more'] : '...';
 
-    return ' <a href="'. esc_url( get_permalink() ) . '">' . $value . '</a>';
+    return ' <a href="'. esc_url( get_permalink() ) . '">' . __('Read More', 'benjamin') .'</a>';
 }
 
 
 function benjamin_excerpt_length() {
     global $summary_settings;
-    $value = $summary_settings['length'] ? $summary_settings['length'] : 55;
 
-    return $value;
+    return 55;
 }
 
 function benjamin_auto_excerpt_more( $more ) {
@@ -30,10 +28,10 @@ function benjamin_custom_excerpt_more( $output ) {
 }
 
 
-if(get_option('rss_use_excerpt', true) == true) {
-    $summary_settings = get_option('summary_settings', true);
+// if(get_option('rss_use_excerpt', true) == true) {
+    // $summary_settings = get_option('summary_settings', true);
 
     add_filter( 'excerpt_length', 'benjamin_excerpt_length' );
     add_filter( 'excerpt_more', 'benjamin_auto_excerpt_more' );
     add_filter( 'get_the_excerpt', 'benjamin_custom_excerpt_more' );
-}
+// }

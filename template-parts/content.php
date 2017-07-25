@@ -29,29 +29,20 @@
 	<div class="entry-content">
 		<?php
 
-            if( !is_single() && get_option('rss_use_excerpt', true)  ):
-                the_excerpt( sprintf(
-    				/* translators: %s: Name of current post. */
-    				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'benjamin' ), array( 'span' => array( 'class' => array() ) ) ),
-    				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-    			) );
-
-    			wp_link_pages( array(
-    				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'benjamin' ),
-    				'after'  => '</div>',
-    			) );
-            else:
-                the_content( sprintf(
+            the_content( sprintf(
+                wp_kses(
                     /* translators: %s: Name of current post. */
-                    wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'benjamin' ), array( 'span' => array( 'class' => array() ) ) ),
-                    the_title( '<span class="screen-reader-text">"', '"</span>', false )
-                ) );
+                    __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'benjamin' ),
+                    array( 'span' => array( 'class' => array() ) )
+                ),
+                the_title( '<span class="screen-reader-text">"', '"</span>', false )
+                )
+            );
 
-                wp_link_pages( array(
-                    'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'benjamin' ),
-                    'after'  => '</div>',
-                ) );
-            endif;
+			wp_link_pages( array(
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'benjamin' ),
+				'after'  => '</div>',
+			) );
 		?>
 	</div><!-- .entry-content -->
 

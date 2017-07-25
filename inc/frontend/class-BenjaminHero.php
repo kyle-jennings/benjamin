@@ -88,7 +88,7 @@ class BenjaminHero {
     public function getStyle($template) {
         if(!$this->image)
             return;
-            
+
         $pos = get_theme_mod($template.'_hero_position_setting', 'top-left');
         $pos = str_replace('-',' ', $pos);
         $output = 'style="';
@@ -298,7 +298,7 @@ class BenjaminHero {
     // author feed title
     public function authorFeedTitle(){
         $auth = get_user_by('slug', get_query_var('author_name'));
-        return '<h1>' . 'Posts by: '.$auth->nickname . '</h1>';
+        return '<h1>' . 'Posts by: '.$auth->display_name . '</h1>';
     }
 
     // date title

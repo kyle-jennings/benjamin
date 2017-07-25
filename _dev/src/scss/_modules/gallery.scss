@@ -1,0 +1,37 @@
+.gallery::before,
+.gallery::after {
+    content: " ";
+    display: table;
+}
+
+.gallery::after {
+    clear: both;
+}
+
+.gallery-item {
+    float: left;
+    margin:0 1em 1em 0;
+
+    a {
+        display: block;
+    }
+
+    @for $i from 1 through 12 {
+        .gallery-columns-#{$i} & {
+            width:  calc( ( 100% / #{$i} ) - 1em);
+        }
+    }
+
+    .gallery-columns-1 & {
+        float: none;
+
+        a {
+            text-align: center;
+        }
+    }
+
+    img {
+        height: auto;
+    }
+
+}

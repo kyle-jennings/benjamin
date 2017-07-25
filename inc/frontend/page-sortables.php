@@ -10,8 +10,7 @@ function benjamin_page_sortables($target = null) {
     $sortables = get_theme_mod($target, '[{"name":"page-content","label":"Page Content"}]');
 
     if(!$sortables || $sortables == '[]'){
-        echo benjamin_sortable_default($target_name); //WPCS: xss ok.
-        return;
+        $sortables = '[{"name":"page-content","label":"Page Content"}]';
     }
 
     $sortables = json_decode($sortables);

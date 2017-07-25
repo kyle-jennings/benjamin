@@ -97,7 +97,7 @@ class Benjamin_Sortable_Control extends WP_Customize_Control
                 $output .= ucfirst($title);
             $output .= '</h4>';
             $output .= '<ol class="sortables__list js--'.$target.'-sortables ';
-                $output .= 'sortables__active-list js--sortables-'.$title.' '.$this->id.'" '; // end class
+                $output .= 'sortables__'.$title.'-list js--sortables-'.$title.' '.$this->id.'" '; // end class
                 $output .= 'data-sortable-group="'.$this->id.'" ';
                 $output .= 'data-setting="'.$this->setting->id.'"';
             $output .= '>';

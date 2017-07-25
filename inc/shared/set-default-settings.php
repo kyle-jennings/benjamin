@@ -27,33 +27,54 @@ add_action('after_switch_theme', 'benjamin_set_default_settings');
 
 
 
-function benjamin_set_default_menu() {
-
-    $menu_name = 'default-menu';
-    $menu = wp_get_nav_menu_object($menu_name);
+function benjamin_set_default_menu($args) {
 
 
-    if( $menu )
-        return $menu->term_id;
+    // see wp-includes/nav-menu-template.php for available arguments
+    extract( $args );
 
-    $id = wp_create_nav_menu($menu_name);
-
-    // Set up default menu items
-    wp_update_nav_menu_item($id, 0, array(
-        'menu-item-title' =>  __('Home', 'benjamin'),
-        'menu-item-classes' => 'home',
-        'menu-item-url' => esc_url( home_url( '/' ) ),
-        'menu-item-status' => 'publish')
+    $link_arr = array(
+        home_url() => 'Home',
+        wp_login_url() => 'Login'
     );
 
-    wp_update_nav_menu_item($id, 0, array(
-        'menu-item-title' =>  __('Login', 'benjamin'),
-        'menu-item-url' => admin_url(),
-        'menu-item-status' => 'publish')
-    );
+    if( is_user_logged_in() ) {
+
+        $link_arr = array(
+            home_url() => 'Home',
+            admin_url() => 'Admin',
+            admin_url( 'nav-menus.php' ) => 'Add a Menu',
+            admin_url( 'customize.php' ) => 'Customize your Site',
+            wp_logout_url( home_url() ) => 'Logout'
+        );
+
+    }
+
+    $links = array();
+    foreach($link_arr as $url => $label)
+        $links[] = $link_before . '<a href="' . $url . '">' . $before . $label . $after . '</a>' . $link_after;
+
+    // We have a list
+    if ( FALSE !== stripos( $items_wrap, '<ul' )
+        || FALSE !== stripos( $items_wrap, '<ol' )
+    ){
+        foreach($links as &$link)
+            $link = "<li>$link</li>";
+    }
+
+    $output = sprintf( $items_wrap, $menu_id, $menu_class, implode('', $links) );
+    if ( ! empty ( $container ) ) {
+        $output  = "<$container class='$container_class' id='$container_id'>$output</$container>";
+    }
+
+    if ( $echo ) {
+        echo $output;
+    }
+
+    return $output;
 
 }
-add_action('after_switch_theme', 'benjamin_set_default_menu');
+
 
 
 function benjamin_default_header_order() {
