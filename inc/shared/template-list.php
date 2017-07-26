@@ -18,34 +18,108 @@ function benjamin_the_template_list($use_widget_areas = false) {
     //     'category' => 'Filtered by Category',
     //     'tag' => 'Filtered by Tag',
     // );
+    $desc_warning = 'These widgets and settings are only used if activated
+    in the customizer';
 
     $templates = array(
-        'archive' => 'Feed (default)',
-        'frontpage' => 'Front Page',
-        'single' => 'Single Post',
-        'page' => 'Single Page',
-        'widgetized' => 'Widgetized Page',
-        'template-1' => 'Page Template 1',
-        'template-2' => 'Page Template 2',
-        'template-3' => 'Page Template 3',
-        'template-4' => 'Page Template 4',
-        '_404' => '404 Page',
+        'archive' => array(
+            'label' => 'Feed (default)',
+            'description' => __('This is your default page, and the page where your
+            blog post feed is located.  If other template\'s settings
+            have not been activated then this is whats used.', 'benjamin')
+        ),
+
+        'frontpage' => array(
+            'label' => 'Front Page',
+            'description' => __('The frontpage is the located at '.site_url().' '. $desc_warning, 'benjamin')
+        ),
+
+        'single' => array(
+            'label' => 'Single Post',
+            'description' => __('The "single post" is what you see when viewing
+            a single blog post, or single custom post type.'.' '. $desc_warning, 'benjamin')
+        ),
+
+        'page' => array(
+            'label' => 'Single Page',
+            'description' => __('The "single page" is what you see when viewing
+            a page.'.' '. $desc_warning, 'benjamin')
+        ),
+
+        'widgetized' => array(
+            'label' => 'Widgetized Page',
+            'description' =>  __('This is a special page template, the
+            Widgetized page is sortable and contains 3 horizontal widget areas
+            along with the sidebar.'.' '. $desc_warning, 'benjamin')
+        ),
+        'template-1' => array(
+            'label' => 'Page Template 1',
+            'description' => __('This is just an extra page template, use this
+            if you want to style an individul page differently then your
+            standard pages.'.' '. $desc_warning, 'benjamin')
+        ),
+        'template-2' => array(
+            'label' => 'Page Template 2',
+            'description' => __('This is just an extra page template, use this
+            if you want to style an individul page differently then your
+            standard pages.'.' '. $desc_warning, 'benjamin')
+        ),
+        'template-3' => array(
+            'label' => 'Page Template 3',
+            'description' => __('This is just an extra page template,
+            use this if you want to style an individul page differently then
+            your standard pages.'.' '. $desc_warning, 'benjamin')
+        ),
+        'template-4' => array(
+            'label' => 'Page Template 4',
+            'description' => __('This is just an extra page template, use this
+            if you want to style an individul page differently then your
+            standard pages.'.' '. $desc_warning, 'benjamin')
+        ),
+        '_404' => array(
+            'label' => '404 Page',
+            'description' => __('This page is what user\'s see when they attempt
+            to view an invalid page URL.'.' '. $desc_warning, 'benjamin')
+        ),
     );
 
     $cpts = benjamin_get_cpts();
-    $cpts = benjamin_get_cpt_template_types($cpts);
 
     $templates = $templates + $cpts;
 
     $widget_areas = array(
-        'frontpage-widget-area-1' => 'Frontpage Widget Area 1',
-        'frontpage-widget-area-2' => 'Frontpage Widget Area 2',
-        'frontpage-widget-area-3' => 'Frontpage Widget Area 3',
-        'widgetized-widget-area-1' => 'Widgetized Page Area 1',
-        'widgetized-widget-area-2' => 'Widgetized Page Area 2',
-        'widgetized-widget-area-3' => 'Widgetized Page Area 3',
-        'footer-widgets-1' => 'Footer Widgets 1',
-        'footer-widgets-2' => 'Footer Widgets 2',
+        'frontpage-widget-area-1' => array(
+            'label' => 'Frontpage Widget Area 1',
+            'description' => __('The frontpage content is made up of sortable, horizontal widget areas.  This is one of those areas and is optionally used.', 'benjamin')
+        ),
+        'frontpage-widget-area-2' => array(
+            'label' => 'Frontpage Widget Area 2',
+            'description' => __('The frontpage content is made up of sortable, horizontal widget areas.  This is one of those areas and is optionally used.', 'benjamin')
+        ),
+        'frontpage-widget-area-3' => array(
+            'label' => 'Frontpage Widget Area 3',
+            'description' => __('The frontpage content is made up of sortable, horizontal widget areas.  This is one of those areas and is optionally used.', 'benjamin')
+        ),
+        'widgetized-widget-area-1' => array(
+            'label' => 'Widgetized Page Area 1',
+            'description' => __('The Widgetized page content is made up of sortable, horizontal widget areas.  This is one of those areas and is optionally used.', 'benjamin')
+        ),
+        'widgetized-widget-area-2' => array(
+            'label' => 'Widgetized Page Area 2',
+            'description' => __('The Widgetized page content is made up of sortable, horizontal widget areas.  This is one of those areas and is optionally used.', 'benjamin')
+        ),
+        'widgetized-widget-area-3' => array(
+            'label' => 'Widgetized Page Area 3',
+            'description' => __('The Widgetized page is full sortable, horizontal widget areas.  This is one of those areas and is optionally used.', 'benjamin')
+        ),
+        'footer-widget-area-1' => array(
+            'label' => 'Footer Widget Area 1',
+            'description' => __('The footer area is sortable and contains two optional widget areas.  To use these widgets, remember to setup the footer in the customizer.', 'benjamin')
+        ),
+        'footer-widget-area-2' => array(
+            'label' => 'Footer Widget Area 2',
+            'description' => __('The footer area is sortable and contains two optional widget areas.  To use these widgets, remember to setup the footer in the customizer.', 'benjamin')
+        ),
     );
 
     if( $use_widget_areas == true )
@@ -60,17 +134,24 @@ function benjamin_get_cpts() {
        'publicly_queryable' => true,
        '_builtin' => false
     );
-    return get_post_types($args);
+    return benjamin_get_cpt_template_types( get_post_types($args) );
 }
 
 function benjamin_get_cpt_template_types($cpts) {
     $new = array();
     foreach($cpts as $cpt){
         $obj = get_post_type_object($cpt);
+        $new[$cpt] = array(
+            'label' => $obj->label,
+            'description' => __('A single instance of a '.$obj->label, 'benjamin')
+        );
+        if($obj->has_archive){
 
-        $new[$cpt] = $obj->label;
-        if($obj->has_archive)
-            $new[$cpt.'-feed'] = $obj->label . ' Feed';
+            $new[$cpt.'-feed'] = array(
+                'label' => $obj->label . ' Feed',
+                'description' => __('The feed for your '.$obj->label, 'benjamin')
+            );
+        }
     }
 
 

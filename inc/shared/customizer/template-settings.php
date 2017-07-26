@@ -15,8 +15,8 @@ function benjamin_template_layout_settings($wp_customize) {
 
     $templates = benjamin_the_template_list();
 
-    foreach($templates as $name => $label):
-        benjamin_template_settings_loop($wp_customize, $name, $label);
+    foreach($templates as $name => $args):
+        benjamin_template_settings_loop($wp_customize, $name, $args['label']);
     endforeach;
 }
 add_action('customize_register', 'benjamin_template_layout_settings');
@@ -38,7 +38,9 @@ function benjamin_template_settings_loop(&$wp_customize, $name, $label){
         ) );
 
         $activate_args = array(
-            'description' => __('Overrides the default template settings to give this template a unique look and feel.', 'benjamin'),
+            'description' => __('Overrides the default template settings to give
+            this template a unique look and feel.  <br /><br /><b>If you do not activate these
+            settings then the default (Feed) settings and widgets will be used.</b>', 'benjamin'),
             'label' => __('Use Template Settings', 'benjamin'),
             'section' => $name . '_settings_section',
             'settings' => $name . '_settings_active',

@@ -9,7 +9,7 @@
 function benjamin_widgets_init() {
     $templates = benjamin_the_template_list(true);
     $sidebars = wp_get_sidebars_widgets();
-    foreach($templates as $name => $label){
+    foreach($templates as $name => $args){
         $sidebar_size = '';
 
         $widgets = isset($sidebars[$name]) ? $sidebars[$name] : array();
@@ -22,8 +22,8 @@ function benjamin_widgets_init() {
             'frontpage-widget-area-1',
             'frontpage-widget-area-2',
             'frontpage-widget-area-3',
-            'footer-widgets-1',
-            'footer-widgets-2',
+            'footer-widget-area-1',
+            'footer-widget-area-2',
         );
 
         // $sidebar_size = benjamin_determine_widget_width_rules($pos, $name);
@@ -39,9 +39,9 @@ function benjamin_widgets_init() {
             $width = '';
 
         register_sidebar( array(
-    		'name'          => ucfirst($label),
-    		'id'            => (string)$name,
-    		'description'   => esc_html__( 'Add widgets here.', 'benjamin' ),
+    		'name'          => ucfirst($args['label']),
+    		'id'            => (string) $name,
+    		'description'   => esc_html__( $args['description'], 'benjamin' ),
     		'before_widget' => '<div id="%1$s" class="widget '.$width.'">',
     		'after_widget'  => '</div>',
     		'before_title'  => '<h3 class="widget-title">',
@@ -82,3 +82,46 @@ function benjamin_calculate_widget_width($count){
     endswitch;
 
 }
+function benjamin_hide_inactive_templates_on_widget_screen(){
+    $screen = get_current_screen();
+
+    if($screen->id !== 'widgets')
+        return;
+
+    $horizontals = array(
+        'widgetized-widget-area-1',
+        'widgetized-widget-area-2',
+        'widgetized-widget-area-3',
+        'frontpage-widget-area-1',
+        'frontpage-widget-area-2',
+        'frontpage-widget-area-3',
+        'footer-widget-area-1',
+        'footer-widget-area-2',
+    );
+
+    $templates = benjamin_the_template_list(true);
+
+    foreach($templates as $name => $args){
+        if( $name == 'archive' || get_theme_mod($name.'_settings_active') == 'yes' )
+            continue;
+
+        $skip_horz = array();
+        foreach($horizontals as $area){
+
+            $setting = strtok($area, '-');
+            $sortables = get_theme_mod($setting . '_sortables_setting', null);
+
+            $target = ltrim(ltrim($area, $setting), '-');
+            if(strpos($sortables, $target) )
+                $skip_horz[] = $area;
+
+        }
+
+        if(in_array($name, $skip_horz ))
+            continue;
+
+        unregister_sidebar((string) $name);
+    }
+
+}
+add_action('sidebar_admin_setup', 'benjamin_hide_inactive_templates_on_widget_screen');
