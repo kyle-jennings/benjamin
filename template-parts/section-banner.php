@@ -1,8 +1,8 @@
 <?php
 
 
-    $banner_text = get_theme_mod('banner_text_setting', null);
-    $banner_read_more = get_theme_mod('banner_read_more_setting', null);
+    $banner_text = stripslashes(esc_html(get_theme_mod('banner_text_setting', null)));
+    $banner_read_more = stripslashes(get_theme_mod('banner_read_more_setting', null));
 
     $sidebars = wp_get_sidebars_widgets();
 
