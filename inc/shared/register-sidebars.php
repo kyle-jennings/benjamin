@@ -16,6 +16,8 @@ function benjamin_widgets_init() {
         $count = count($widgets);
         $pos = get_theme_mod($name . '_sidebar_position_setting', 'none');
         $horizontals = array(
+            'banner-widget-area-1',
+            'banner-widget-area-2',
             'widgetized-widget-area-1',
             'widgetized-widget-area-2',
             'widgetized-widget-area-3',
@@ -105,7 +107,7 @@ function benjamin_hide_inactive_templates_on_widget_screen(){
         if( $name == 'archive' || get_theme_mod($name.'_settings_active') == 'yes' )
             continue;
 
-        $skip_horz = array();
+        $skip_horz = array('banner-widget-area-1','banner-widget-area-2');
         foreach($horizontals as $area){
 
             $setting = strtok($area, '-');

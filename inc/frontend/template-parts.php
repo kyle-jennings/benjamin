@@ -27,7 +27,7 @@ function benjamin_the_header() {
             continue;
         switch($component->name):
             case 'banner':
-                if(benjamin_is_dot_gov())
+                if( get_theme_mod('banner_visibility_setting', 'hide') !== 'hide')
                     get_template_part('template-parts/section', 'banner');
                 break;
             case 'navbar':

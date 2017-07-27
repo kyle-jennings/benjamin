@@ -88,6 +88,14 @@ function benjamin_the_template_list($use_widget_areas = false) {
     $templates = $templates + $cpts;
 
     $widget_areas = array(
+        'banner-widget-area-1' => array(
+            'label' => 'Banner Widget Area 1',
+            'description' => __('The banner is made up widget areas and are optionally used.  The banner is expandable only if widgets have been set', 'benjamin')
+        ),
+        'banner-widget-area-2' => array(
+            'label' => 'Banner Widget Area 2',
+            'description' => __('The banner is made up widget areas and are optionally used.  The banner is expandable only if widgets have been set', 'benjamin')
+        ),
         'frontpage-widget-area-1' => array(
             'label' => 'Frontpage Widget Area 1',
             'description' => __('The frontpage content is made up of sortable, horizontal widget areas.  This is one of those areas and is optionally used.', 'benjamin')

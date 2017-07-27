@@ -47,6 +47,31 @@ function benjamin_header_settings($wp_customize){
     );
 
 
+    /**
+     * Label
+     */
+    $wp_customize->add_setting(
+        'navbar_label', array(
+            'default' => 'none',
+            'sanitize_callback' => 'wp_filter_nohtml_kses',
+        )
+    );
+
+
+    $wp_customize->add_control(
+        new Benjamin_Label_Custom_Control(
+            $wp_customize,
+            'navbar_label_control',
+            array(
+                'label' => __('Navbar Settings', 'benjamin'),
+                'type' => 'label',
+                'section' => 'header_settings_section',
+                'settings' => 'navbar_label',
+            )
+        )
+    );
+
+
     $wp_customize->add_setting( 'navbar_search_setting', array(
         'default' => 'none',
         'sanitize_callback' => 'benjamin_navbar_search_setting_sanitize',
@@ -120,8 +145,86 @@ function benjamin_header_settings($wp_customize){
             )
         )
     );
+
+
+
+    /**
+     * Label
+     */
+    $wp_customize->add_setting(
+        'banner_label', array(
+            'default' => 'none',
+            'sanitize_callback' => 'wp_filter_nohtml_kses',
+        )
+    );
+
+
+    $wp_customize->add_control(
+        new Benjamin_Label_Custom_Control(
+            $wp_customize,
+            'banner_label_control',
+            array(
+                'label' => __('Banner Settings', 'benjamin'),
+                'type' => 'label',
+                'section' => 'header_settings_section',
+                'settings' => 'banner_label',
+            )
+        )
+    );
+
+
+    $wp_customize->add_setting( 'banner_visibility_setting', array(
+        'default' => 'hide',
+        'sanitize_callback' => 'benjamin_banner_visibility_sanitize',
+    ) );
+
+    $wp_customize->add_control('banner_visibility_control', array(
+            'description' => 'Display your site banner',
+            'label' => __('Banner Visibility', 'benjamin'),
+            'section' => 'header_settings_section',
+            'settings' => 'banner_visibility_setting',
+            'type' => 'select',
+            'choices' => array(
+                'hide' => 'Hide',
+                'display' => 'Display',
+            )
+        )
+    );
+
+
+    $wp_customize->add_setting( 'banner_text_setting', array(
+        'default' => '',
+        'sanitize_callback' => 'wp_filter_nohtml_kses',
+    ) );
+
+    $wp_customize->add_control('banner_text_control', array(
+            'label' => __('Banner Text', 'benjamin'),
+            'section' => 'header_settings_section',
+            'settings' => 'banner_text_setting',
+            'type' => 'text',
+        )
+    );
+
+
+    $wp_customize->add_setting( 'banner_read_more_setting', array(
+        'default' => '',
+        'sanitize_callback' => 'wp_filter_nohtml_kses',
+    ) );
+
+    $wp_customize->add_control('banner_read_more_control', array(
+            'label' => __('Banner Read More', 'benjamin'),
+            'section' => 'header_settings_section',
+            'settings' => 'banner_read_more_setting',
+            'type' => 'text',
+        )
+    );
+
+
 }
 add_action('customize_register', 'benjamin_header_settings');
+
+
+
 
 
 /**
@@ -196,6 +299,19 @@ function benjamin_navbar_search_setting_sanitize($val) {
     $valids = array(
         'none',
         'navbar'
+    );
+
+    if( !in_array($val, $valids) )
+        return null;
+
+    return $val;
+}
+
+
+function benjamin_banner_visibility_sanitize($val) {
+    $valids = array(
+        'hide',
+        'display'
     );
 
     if( !in_array($val, $valids) )
