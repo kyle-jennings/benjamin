@@ -40,10 +40,12 @@ function benjamin_widgets_init() {
         else
             $width = '';
 
+        $description = isset($args['description']) ? $args['description'] : '';
         register_sidebar( array(
     		'name'          => ucfirst($args['label']),
     		'id'            => (string) $name,
-    		'description'   => esc_html__( $args['description'], 'benjamin' ),
+            /* translators: sidebar description. */
+    		'description'   => sprintf(  '%s', $description ),
     		'before_widget' => '<div id="%1$s" class="widget '.$width.'">',
     		'after_widget'  => '</div>',
     		'before_title'  => '<h3 class="widget-title">',

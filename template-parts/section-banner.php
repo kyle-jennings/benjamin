@@ -1,8 +1,8 @@
 <?php
 
 
-    $banner_text = stripslashes(esc_html(get_theme_mod('banner_text_setting', null)));
-    $banner_read_more = stripslashes(get_theme_mod('banner_read_more_setting', null));
+    $banner_text = stripslashes( esc_html(get_theme_mod('banner_text_setting', null) ));
+    $banner_read_more = stripslashes( esc_html(get_theme_mod('banner_read_more_setting', null) ));
 
     $sidebars = wp_get_sidebars_widgets();
 
@@ -19,11 +19,11 @@
         <header class="usa-banner-header">
             <div class="usa-grid usa-banner-inner">
 
-                <p><?php echo $banner_text; ?></p>
+                <p><?php echo $banner_text;  //WPCS: xss ok. ?></p>
                 <?php if($count > 0): ?>
                     <button class="usa-accordion-button usa-banner-button"
                     aria-expanded="false" aria-controls="gov-banner">
-                        <span class="usa-banner-button-text"><?php echo $banner_read_more; ?></span>
+                        <span class="usa-banner-button-text"><?php echo $banner_read_more; //WPCS: xss ok. ?></span>
                     </button>
                 <?php endif; ?>
             </div>

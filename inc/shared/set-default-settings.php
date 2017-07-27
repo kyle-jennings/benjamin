@@ -68,7 +68,7 @@ function benjamin_set_default_menu($args) {
     }
 
     if ( $echo ) {
-        echo $output;
+        echo $output; // WPCS: xss ok;
     }
 
     return $output;

@@ -31,55 +31,65 @@ function benjamin_the_template_list($use_widget_areas = false) {
 
         'frontpage' => array(
             'label' => 'Front Page',
-            'description' => __('The frontpage is the located at '.site_url().' '. $desc_warning, 'benjamin')
+            /* translators: 1: site url. */
+            /* translators: 2: warning about activating the widget areas. */
+            'description' => sprintf( __('The frontpage is the located at %1$s %2$s', 'benjamin'), site_url(), $desc_warning)
         ),
 
         'single' => array(
             'label' => 'Single Post',
-            'description' => __('The "single post" is what you see when viewing
-            a single blog post, or single custom post type.'.' '. $desc_warning, 'benjamin')
+            /* translators:  warning about activating the widget areas. */
+            'description' => sprintf( __('The "single post" is what you see when viewing
+            a single blog post, or single custom post type. %s', 'benjamin'), $desc_warning)
         ),
 
         'page' => array(
             'label' => 'Single Page',
-            'description' => __('The "single page" is what you see when viewing
-            a page.'.' '. $desc_warning, 'benjamin')
+            /* translators:  warning about activating the widget areas. */
+            'description' => sprintf( __('The "single page" is what you see when viewing
+            a page. %s', 'benjamin'), $desc_warning)
         ),
 
         'widgetized' => array(
             'label' => 'Widgetized Page',
-            'description' =>  __('This is a special page template, the
+            /* translators:  warning about activating the widget areas. */
+            'description' =>  sprintf(__('This is a special page template, the
             Widgetized page is sortable and contains 3 horizontal widget areas
-            along with the sidebar.'.' '. $desc_warning, 'benjamin')
+            along with the sidebar. %s', 'benjamin'), $desc_warning)
         ),
         'template-1' => array(
             'label' => 'Page Template 1',
-            'description' => __('This is just an extra page template, use this
+            /* translators:  warning about activating the widget areas. */
+            'description' => sprintf(__('This is just an extra page template, use this
             if you want to style an individul page differently then your
-            standard pages.'.' '. $desc_warning, 'benjamin')
+            standard pages.', 'benjamin'), $desc_warning)
         ),
         'template-2' => array(
             'label' => 'Page Template 2',
-            'description' => __('This is just an extra page template, use this
+            /* translators:  warning about activating the widget areas. */
+            'description' => sprintf(__('This is just an extra page template, use this
             if you want to style an individul page differently then your
-            standard pages.'.' '. $desc_warning, 'benjamin')
+            standard pages.', 'benjamin'), $desc_warning)
         ),
         'template-3' => array(
             'label' => 'Page Template 3',
-            'description' => __('This is just an extra page template,
-            use this if you want to style an individul page differently then
-            your standard pages.'.' '. $desc_warning, 'benjamin')
+            /* translators:  warning about activating the widget areas. */
+            'description' => sprintf(__('This is just an extra page template, use this
+            if you want to style an individul page differently then your
+            standard pages.', 'benjamin'), $desc_warning)
         ),
         'template-4' => array(
             'label' => 'Page Template 4',
-            'description' => __('This is just an extra page template, use this
+            /* translators:  warning about activating the widget areas. */
+            'description' => sprintf(__('This is just an extra page template, use this
             if you want to style an individul page differently then your
-            standard pages.'.' '. $desc_warning, 'benjamin')
+            standard pages.', 'benjamin'), $desc_warning)
         ),
         '_404' => array(
             'label' => '404 Page',
-            'description' => __('This page is what user\'s see when they attempt
-            to view an invalid page URL.'.' '. $desc_warning, 'benjamin')
+            /* translators:  warning about activating the widget areas. */
+            'description' => sprintf(__('This page is what user\'s see when they attempt
+            to view an invalid page URL. %s', 'benjamin'), $desc_warning)
         ),
     );
 
@@ -151,13 +161,15 @@ function benjamin_get_cpt_template_types($cpts) {
         $obj = get_post_type_object($cpt);
         $new[$cpt] = array(
             'label' => $obj->label,
-            'description' => __('A single instance of a '.$obj->label, 'benjamin')
+            /* translators: custom post type label. */
+            'description' => sprintf( __('A single instance of a %s', 'benjamin'), $obj->label)
         );
         if($obj->has_archive){
 
             $new[$cpt.'-feed'] = array(
                 'label' => $obj->label . ' Feed',
-                'description' => __('The feed for your '.$obj->label, 'benjamin')
+                /* translators: custom post type label. */
+                'description' => sprintf( __('The feed for your %s', 'benjamin'), $obj->label)
             );
         }
     }
