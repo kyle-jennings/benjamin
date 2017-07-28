@@ -31,7 +31,7 @@ if( !$hide_content ):
         benjamin_sticky_sidenav($post->ID);
     endif;
     ?>
-    <div class="usa-width-two-thirds">
+    <div class="main-content usa-width-two-thirds">
     	<?php
     	while ( have_posts() ) : the_post();
 

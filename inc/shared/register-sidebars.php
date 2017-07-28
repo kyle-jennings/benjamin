@@ -40,7 +40,7 @@ function benjamin_widgets_init() {
         else
             $width = '';
 
-        $description = isset($args['description']) ? $args['description'] : '';
+        $description = isset($args['widget_description']) ? $args['widget_description'] : '';
         register_sidebar( array(
     		'name'          => ucfirst($args['label']),
     		'id'            => (string) $name,

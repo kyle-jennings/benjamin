@@ -2,7 +2,7 @@
 
 Requires at least: 4.5
 Tested up to: 4.7
-Stable tag: 1.6
+Stable tag: 1.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Copyright 2017 Kyle Jennings
@@ -143,3 +143,8 @@ Mixed License (https://github.com/18F/web-design-standards/blob/develop/LICENSE.
 
 * 1.6
 * fixed some debug warnings
+
+* 1.7
+* Addressed all concerns in https://themes.trac.wordpress.org/ticket/43531#comment:7
+* added additional widget areas in the banner
+* translated, and escaped all the things
