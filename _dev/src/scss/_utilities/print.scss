@@ -1,0 +1,18 @@
+@media print{
+
+    .sidebar,
+    .comment-respond,
+    .nav-links,
+    .edit-link,
+    .usa-header,
+    .usa-banner,
+    .usa-footer {
+        display: none
+    }
+
+    .usa-hero {
+        background-color: white;
+        background-image: none;
+        color: black;
+    }
+}

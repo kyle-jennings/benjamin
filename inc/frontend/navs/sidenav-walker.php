@@ -1,7 +1,7 @@
 <?php
 
 
-class SideNavWalker extends Walker_Nav_Menu {
+class BenjaminSideNavWalker extends Walker_Nav_Menu {
 
 
     function start_lvl( &$output, $depth = 0, $args = array() ) {
@@ -22,11 +22,13 @@ class SideNavWalker extends Walker_Nav_Menu {
         $permalink = $item->url;
 
         $is_current = false;
-        foreach($item->classes as $key=>$class){
-            if(strpos($class, 'current') !== false)
-                $is_current = true;
-        }
 
+        if($item->classes){
+            foreach($item->classes as $key=>$class){
+                if(strpos($class, 'current-menu-item') !== false )
+                $is_current = true;
+            }
+        }
 
 		$classes = $is_current ? 'usa-current': '';
 
@@ -45,8 +47,6 @@ class SideNavWalker extends Walker_Nav_Menu {
             $output .= '</span>';
         }
 
-
-        $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
 
 

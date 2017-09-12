@@ -75,7 +75,7 @@ class Benjamin_Widget_Pages extends WP_Widget {
         $dropdown_id = "{$this->id_base}-dropdown-{$this->number}";
 
         $output = '';
-		$output .= '<select id="'.$dropdown_id.'">';
+		$output .= '<select id="'.esc_attr($dropdown_id).'">';
         $output .= '<option>-- Select Page --</option>';
         $pages = get_pages(array(
             'sort_column' => $sortby,
@@ -91,13 +91,13 @@ class Benjamin_Widget_Pages extends WP_Widget {
                 ? '&nbsp;&nbsp; - ' : '' ;
 
             $output .= '<option value="'.get_permalink($page->ID).'">';
-                $output .= $indent . $page->post_title;
+                $output .= $indent . $page->post_title; // WPCS: xss ok.
             $output .= '</option>';
         }
         $output .= '</select>';
         $output .= $this->dropdown_js($dropdown_id);
 
-        echo $output;
+        echo $output;// WPCS: xss ok.
     }
 
 
@@ -164,7 +164,7 @@ class Benjamin_Widget_Pages extends WP_Widget {
 
         $output .= '</ul>';
 
-        echo $output;
+        echo $output; //WPCS: xss ok.
     }
 
 	/**
@@ -220,9 +220,9 @@ class Benjamin_Widget_Pages extends WP_Widget {
 		if ( empty( $out ) )
             return false;
 
-		echo $args['before_widget'];
+		echo $args['before_widget']; // WPCS: xss ok.
 		if ( $title ) {
-			echo $args['before_title'] . $title . $args['after_title'];
+			echo $args['before_title'] . esc_html($title) . $args['after_title']; // WPCS: xss ok.
 		}
 
         if($style == 'dropdown') {
@@ -231,11 +231,11 @@ class Benjamin_Widget_Pages extends WP_Widget {
             $this->menu($sortby, $exclude, $style, $children);
         } else {
             echo '<ul>';
-                echo $out;
+                echo $out; //WPCS: xss ok.
             echo '</ul>';
         }
 
-		echo $args['after_widget'];
+		echo $args['after_widget']; // WPCS: xss ok.
 
 	}
 	/**
@@ -282,26 +282,26 @@ class Benjamin_Widget_Pages extends WP_Widget {
 
 		?>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'benjamin' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'benjamin' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id('title') ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" placeholder="<?php esc_attr_e( 'Pages', 'benjamin' ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'sortby' ) ); ?>"><?php _e( 'Sort by:', 'benjamin' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'sortby' ) ); ?>"><?php esc_html_e( 'Sort by:', 'benjamin' ); ?></label>
 			<select name="<?php echo esc_attr( $this->get_field_name( 'sortby' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'sortby' ) ); ?>" class="widefat">
-				<option value="post_title"<?php selected( $instance['sortby'], 'post_title' ); ?>><?php _e('Page title', 'benjamin'); ?></option>
-				<option value="menu_order"<?php selected( $instance['sortby'], 'menu_order' ); ?>><?php _e('Page order', 'benjamin'); ?></option>
-				<option value="ID"<?php selected( $instance['sortby'], 'ID' ); ?>><?php _e( 'Page ID', 'benjamin' ); ?></option>
+				<option value="post_title"<?php selected( $instance['sortby'], 'post_title' ); ?>><?php esc_html_e('Page title', 'benjamin'); ?></option>
+				<option value="menu_order"<?php selected( $instance['sortby'], 'menu_order' ); ?>><?php esc_html_e('Page order', 'benjamin'); ?></option>
+				<option value="ID"<?php selected( $instance['sortby'], 'ID' ); ?>><?php esc_html_e( 'Page ID', 'benjamin' ); ?></option>
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'exclude' ) ); ?>"><?php _e( 'Exclude:', 'benjamin' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'exclude' ) ); ?>"><?php esc_html_e( 'Exclude:', 'benjamin' ); ?></label>
 			<input type="text" value="<?php echo esc_attr( $instance['exclude'] ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'exclude' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'exclude' ) ); ?>" class="widefat" />
 			<br />
-			<small><?php _e( 'Page IDs, separated by commas.', 'benjamin' ); ?></small>
+			<small><?php esc_html_e( 'Page IDs, separated by commas.', 'benjamin' ); ?></small>
 		</p>
 
-        <input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('children'); ?>" name="<?php echo $this->get_field_name('children'); ?>"<?php checked( $children ); ?> />
-		<label for="<?php echo $this->get_field_id('children'); ?>"><?php _e( 'Show child pages', 'benjamin' ); ?></label></p>
+        <input type="checkbox" class="checkbox" id="<?php echo esc_attr($this->get_field_id('children')); ?>" name="<?php echo esc_attr($this->get_field_name('children')); ?>"<?php checked( $children ); ?> />
+		<label for="<?php echo esc_attr($this->get_field_id('children')); ?>"><?php esc_html_e( 'Show child pages', 'benjamin' ); ?></label></p>
 
 
         <?php
@@ -311,11 +311,11 @@ class Benjamin_Widget_Pages extends WP_Widget {
 
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id( 'menu_style' ); ?>">
-                    <?php _e( 'Menu Style:', 'benjamin' ); ?>
+            <label for="<?php echo esc_attr($this->get_field_id( 'menu_style' )); ?>">
+                    <?php esc_html_e( 'Menu Style:', 'benjamin' ); ?>
             </label>
-            <select id="<?php echo $this->get_field_id( 'menu_style' ); ?>"
-                  name="<?php echo $this->get_field_name( 'menu_style' ); ?>">
+            <select id="<?php echo esc_attr($this->get_field_id( 'menu_style' )); ?>"
+                  name="<?php echo esc_attr($this->get_field_name( 'menu_style' )); ?>">
                 <?php
                     foreach ( $menu_styles as $style ) :
                         $label = ucwords(str_replace($find, ' ', $style ));

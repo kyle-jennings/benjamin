@@ -33,6 +33,7 @@ class Benjamin_Widget_Archives extends WP_Widget {
 
 
     private function menuStyleArgs($style = 'side_nav'){
+
         if($style == 'side_nav'):
             $class = 'usa-sidenav-list';
         elseif($style == 'nav_list'):
@@ -45,11 +46,13 @@ class Benjamin_Widget_Archives extends WP_Widget {
     }
 
 
-    public function dropdown($c)
+    public function dropdown($c, $title)
     {
         $dropdown_id = "{$this->id_base}-dropdown-{$this->number}";
     ?>
-    <label class="screen-reader-text" for="<?php echo esc_attr( $dropdown_id ); ?>"><?php echo $title; ?></label>
+    <label class="screen-reader-text" for="<?php echo esc_attr( $dropdown_id ); ?>">
+        <?php echo esc_html($title); ?>
+    </label>
     <select id="<?php echo esc_attr( $dropdown_id ); ?>" name="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'>
         <?php
         /**
@@ -97,10 +100,10 @@ class Benjamin_Widget_Archives extends WP_Widget {
     public function menu($c, $style_args) {
 
         // $c = ($style_args == 'usa-sidenav-list') ? null : $c ; // untill i figure out how to add the count to the anchor tags
-        $class = $style_args ? 'class="'.$style_args.'"' : '';
+        $class = $style_args ? 'class="'.esc_attr($style_args).'"' : '';
 
     ?>
-		<ul <?php echo $class; ?>>
+		<ul <?php echo $class; //WPCS: xss ok. ?>>
 	<?php
 		/**
 		 * Filters the arguments for the Archives widget.
@@ -143,19 +146,19 @@ class Benjamin_Widget_Archives extends WP_Widget {
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Archives', 'benjamin' ) : $instance['title'], $instance, $this->id_base );
 
-		echo $args['before_widget'];
+		echo $args['before_widget']; // WPCS: xss ok.
 		if ( $title ) {
-			echo $args['before_title'] . $title . $args['after_title'];
+			echo $args['before_title'] . $title . $args['after_title']; // WPCS: xss ok.
 		}
 
 		if ( $style == 'dropdown' ) {
-            $this->dropdown($c);
+            $this->dropdown($c, $title);
         } else {
 
             $this->menu($c, $style_args);
 		}
 
-		echo $args['after_widget'];
+		echo $args['after_widget']; // WPCS: xss ok.
 	}
 
 	/**
@@ -197,7 +200,14 @@ class Benjamin_Widget_Archives extends WP_Widget {
         $saved_style = isset( $instance['menu_style'] ) ? $instance['menu_style'] : '';
 
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'benjamin'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" placeholder="<?php esc_attr_e( 'Archives', 'benjamin' ); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+		<p>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>">
+                <?php esc_html_e('Title:', 'benjamin'); ?>
+            </label>
+            <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>"
+            name="<?php echo esc_attr($this->get_field_name('title')); ?>"
+            placeholder="<?php esc_attr_e( 'Archives', 'benjamin' ); ?>"
+            type="text" value="<?php echo esc_attr($title); ?>" /></p>
         <?php
         // styles
         $find = array('-', '_');
@@ -205,11 +215,11 @@ class Benjamin_Widget_Archives extends WP_Widget {
 
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id( 'menu_style' ); ?>">
-                    <?php _e( 'Menu Style:', 'benjamin' ); ?>
+            <label for="<?php echo esc_attr($this->get_field_id( 'menu_style' )); ?>">
+                    <?php esc_html_e( 'Menu Style:', 'benjamin' ); ?>
             </label>
-            <select id="<?php echo $this->get_field_id( 'menu_style' ); ?>"
-                  name="<?php echo $this->get_field_name( 'menu_style' ); ?>">
+            <select id="<?php echo esc_attr($this->get_field_id( 'menu_style' )); ?>"
+                  name="<?php echo esc_attr($this->get_field_name( 'menu_style' )); ?>">
                 <?php
                     foreach ( $menu_styles as $style ) :
                         $label = ucwords(str_replace($find, ' ', $style ));
@@ -223,7 +233,12 @@ class Benjamin_Widget_Archives extends WP_Widget {
         </p>
 
 		<p>
-			<input class="checkbox" type="checkbox"<?php checked( $instance['count'] ); ?> id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" /> <label for="<?php echo $this->get_field_id('count'); ?>"><?php _e('Show post counts', 'benjamin'); ?></label>
+			<input class="checkbox" type="checkbox"<?php checked( $instance['count'] ); ?>
+            id="<?php echo esc_attr($this->get_field_id('count')); ?>"
+            name="<?php echo esc_attr($this->get_field_name('count')); ?>" />
+            <label for="<?php echo esc_attr($this->get_field_id('count')); ?>">
+                <?php esc_html_e('Show post counts', 'benjamin'); ?>
+            </label>
 		</p>
 		<?php
 	}

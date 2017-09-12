@@ -5,6 +5,8 @@
  */
 function benjamin_admin_assets() {
 
+    // the following style and script files are minified, however non minified
+    // versions are incuded with this theme
     wp_enqueue_style( 'admin-style',
         get_stylesheet_directory_uri() . '/inc/admin/assets/css/benjamin-admin.min.css' );
 

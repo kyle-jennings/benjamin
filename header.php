@@ -1,3 +1,4 @@
+<?php benjamin_template_settings(); ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -21,4 +22,5 @@
 <main id="main-content" role="main">
 
 <?php
+
     benjamin_the_header();

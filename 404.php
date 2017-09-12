@@ -42,13 +42,15 @@ if( !$hide_content ):
     endif;
     ?>
 
-  <div class="<?php echo $main_width; ?>">
+  <div class="main-content <?php echo esc_attr($main_width); ?>">
         <?php
 
             if($content == 'page' && $pid):
 
                 $page = get_page($pid);
-                echo $page->post_content;
+                $content = apply_filters('the_content', $page->post_content);
+                echo $content; // WPCS: xss ok.
+
             else :
                 echo '<p>' . esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'benjamin' ) . '</p>';
 

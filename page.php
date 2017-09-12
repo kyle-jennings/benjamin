@@ -31,7 +31,7 @@ if( !$hide_content ):
         benjamin_get_sidebar($template, $sidebar_position);
     endif;
     ?>
-    <div class="<?php echo $main_width; ?>">
+    <div class="main-content <?php echo esc_attr($main_width); ?>">
     	<?php
     	while ( have_posts() ) : the_post();
 

@@ -74,12 +74,13 @@ $('body').on('change','.js--video-url', function(e){
 
 },{}],4:[function(require,module,exports){
 
-var file_frame;
-var wp_media_post_id = wp.media.model.settings.post.id; // Store the old id
-var set_to_post_id = 0; // Set this
+
 
 $('body').on('click','.js--media-library', function( event ){
-
+  var file_frame;
+  var wp_media_post_id = wp.media.model.settings.post.id; // Store the old id
+  var set_to_post_id = 0; // Set this
+  
   var $this = $(this);
 
   var $thisParent = $this.closest('.js--media-wrapper');

@@ -12,7 +12,7 @@ Be sure to install the companion plugin, [Franklin](https://github.com/kyle-jenn
 
 ## Features
 
-#### Configurable settings for 4 template types:
+#### Configurable settings for many template types:
 * Feeds (archive)
 * Frontpage - a flexible page with sortable rows of widget areas
 * Single Posts
@@ -20,8 +20,11 @@ Be sure to install the companion plugin, [Franklin](https://github.com/kyle-jenn
 * Widgetized Page - a flexible page template with sortable rows of widget areas
 * SideNav Page - a page template which automagically looks for ID'd anchor tags
     and displays a sticky sidenav linking to said tags
+* 404 pages
+* 4 extra page templates
+* Custom post type single pages, and feeds
 
-##### Sortable Pages
+#### Sortable Pages
 As mentioned, both the frontpage and widgetized pages are sortable, so you have control over 3 widgetized areas and page content.
 
 
@@ -29,14 +32,14 @@ As mentioned, both the frontpage and widgetized pages are sortable, so you have 
 
 <br>
 
-#### 4 extra page templates for more customized one off pages
 #### Template settings include:  
-* Hero background image (select the default image if a "featured image" is not set)
-* Hero Size (slim, medium, big, and full page)
+* Header background image (select the default image if a "featured image" is not set)
+* Header background video
+* Header Size (slim, medium, big, and full page)
 * Sidebar position (left or right)
 * Sidebar visibility (hide or show on different screen sizes)
-* Each template gets its own widget area
-* Parts of a page (such as the navbar or footer) can be hidden on each template
+* Template specific widget ares
+* Hide parts of a page (such as the navbar or footer)
 
 ![template-settings](_dev/screenshots/template-settings.png#right)
 
@@ -45,30 +48,11 @@ As mentioned, both the frontpage and widgetized pages are sortable, so you have 
 #### Feed Featured Posts
 * a post can be marked as "featured" and displayed promptly in the feed page hero
 
-### Custom post type support
-### Co-authors Plus support
-### Sortable footer
 
 #### Template settings use a "fallback" system
 * Allows setting things once for all templates
 * Or lets you override settings on specific templates
 * The "Feed" settings are used by default, all other templates must be activated
-
-#### Shortcodes and Components
-These shortcodes are NOT included in the theme by default, but are available in the companion plugin, [Franklin](https://github.com/kyle-jennings/Franklin).
-
-
-Here are a list of the currently available shortcodes in [Franklin](https://github.com/kyle-jennings/Franklin):
-* Labels
-* Buttons
-* Alerts
-* Accordions
-* Contact Block
-* Brand
-* Media Block
-* Callout
-* Navlist
-
 
 
 #### 3 Color schemes
@@ -84,7 +68,6 @@ Here are a list of the currently available shortcodes in [Franklin](https://gith
 
 <br>
 
-
 ##### Red - A WIP
 
 ![color scheme red](_dev/screenshots/red-scheme.png#right)
@@ -98,12 +81,36 @@ Here are a list of the currently available shortcodes in [Franklin](https://gith
 * A dark navbar color scheme
 
 
+
 ![header-settings](_dev/screenshots/navbar-color-style.png#right)
 
 <br>
 
 #### Footer Settings
-* Choose your footer size (slim, medium, big)
-* Choose what's displayed in the "top" footer (available in the medium and big sizes)
+* The footer is made up of optional, sortable components like:
+* return to top link
+* footer menu area
+* and 2 widget areas
 
-#### Contact Form 7 checkbox/radio support
+## 3rd party plugin support
+### Contact Form 7 checkbox/radio, and form validation support
+### Custom post type support
+### Co-authors Plus support
+
+
+
+## Shortcodes and Components
+These shortcodes are NOT included in the theme by default, but are available in the companion plugin, [Franklin](https://github.com/kyle-jennings/Franklin).
+
+
+Here are a list of the currently available shortcodes in [Franklin](https://github.com/kyle-jennings/Franklin):
+* Labels
+* Buttons
+* Alerts
+* Accordions
+* Accordion Groups
+* Contact Block
+* Brand
+* Media Block
+* Callout
+* Navlist

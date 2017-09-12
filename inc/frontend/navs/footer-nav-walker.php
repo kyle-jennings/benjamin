@@ -1,7 +1,7 @@
 <?php
 
 
-class FooterNavbarWalker extends Walker_Nav_Menu {
+class BenjaminFooterNavbarWalker extends Walker_Nav_Menu {
 
 
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
@@ -14,10 +14,13 @@ class FooterNavbarWalker extends Walker_Nav_Menu {
         $permalink = $item->url;
 
         $is_current = false;
-        foreach($item->classes as $key=>$class){
-            if(strpos($class, 'current') !== false)
-                $is_current = true;
+        if($item->classes){
+            foreach($item->classes as $key=>$class){
+                if(strpos($class, 'current-menu-item') !== false )
+                    $is_current = true;
+            }
         }
+
 
 		$classes = ($is_current && $depth == 0) ? ' usa-current': '';
 
@@ -35,8 +38,6 @@ class FooterNavbarWalker extends Walker_Nav_Menu {
             $output .= '</span>';
         }
 
-
-        $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
 
 

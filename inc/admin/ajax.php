@@ -2,10 +2,12 @@
 
 
 function benjamin_ajax_video() {
-    $url = $_POST['data'];
+    if(isset($_POST['data'])) {
+        $url = esc_url_raw( wp_unslash( $_POST['data'] ) );
+    }
+    else
+        wp_die();
 
-    // $video = do_shortcode('[video src="'.$url.'"]');
-    // echo preg_replace('/height="([0-9]+)"/i', 'auto', $video);
     benjamin_the_video_markup($url);
     wp_die();
 }

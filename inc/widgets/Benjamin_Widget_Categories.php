@@ -43,13 +43,13 @@ class Benjamin_Widget_Categories extends WP_Widget {
     }
 
 
-    public function dropdown($c, $cat_args, $first_dropdown)
+    public function dropdown($c, $cat_args, $first_dropdown, $title)
     {
 
         $dropdown_id = "{$this->id_base}-dropdown-{$this->number}";
         $first_dropdown = false;
 
-        echo '<label class="screen-reader-text" for="' . esc_attr( $dropdown_id ) . '">' . $title . '</label>';
+        echo '<label class="screen-reader-text" for="' . esc_attr( $dropdown_id ) . '">' . esc_html($title) . '</label>';
         $cat_args['show_option_none'] = __( 'Select Category', 'benjamin' );
         $cat_args['id'] = $dropdown_id;
         /**
@@ -85,10 +85,10 @@ class Benjamin_Widget_Categories extends WP_Widget {
     public function menu($c, $style, $cat_args)
     {
         $style_args = $this->menuStyleArgs($style);
-        $class = $style_args ? 'class="'.$style_args.'"' : '';
+        $class = $style_args ? 'class="'.esc_attr($style_args).'"' : '';
 
         ?>
-        		<ul <?php echo $class; ?>>
+        		<ul <?php echo $class; // WPCS: xss ok. ?>>
         <?php
         		$cat_args['title_li'] = '';
         		/**
@@ -101,9 +101,9 @@ class Benjamin_Widget_Categories extends WP_Widget {
         		$cats = get_categories( apply_filters( 'widget_categories_args', $cat_args ) );
                 foreach($cats as $cat){
                     echo '<li>';
-                        echo '<a href="'.get_category_link($cat->term_id).'">';
-                            echo  $cat->name;
-                            echo '&nbsp;('.$cat->count.')';
+                        echo '<a href="'.esc_url(get_category_link($cat->term_id)).'">';
+                            echo  esc_html($cat->name);
+                            echo esc_html('&nbsp;('.$cat->count.')');
                         echo '</a>';
                     echo '</li>';
                 }
@@ -131,9 +131,9 @@ class Benjamin_Widget_Categories extends WP_Widget {
 		$d = ! empty( $instance['dropdown'] ) ? '1' : '0';
         $style = ! empty( $instance['menu_style'] ) ? $instance['menu_style'] : 'side_nav';
 
-		echo $args['before_widget'];
+		echo $args['before_widget']; // WPCS: xss ok.
 		if ( $title ) {
-			echo $args['before_title'] . $title . $args['after_title'];
+			echo $args['before_title'] . esc_html($title) . $args['after_title']; // WPCS: xss ok.
 		}
 		$cat_args = array(
 			'orderby'      => 'name',
@@ -142,11 +142,11 @@ class Benjamin_Widget_Categories extends WP_Widget {
 		);
 
 		if ( $style == 'dropdown' ) {
-			$this->dropdown($c, $cat_args, $first_dropdown);
+			$this->dropdown($c, $cat_args, $first_dropdown, $title);
 		} else {
             $this->menu($c, $style, $cat_args);
 		}
-		echo $args['after_widget'];
+		echo $args['after_widget']; // WPCS: xss ok.
 	}
 	/**
 	 * Handles updating settings for the current Categories widget instance.
@@ -191,17 +191,19 @@ class Benjamin_Widget_Categories extends WP_Widget {
         $saved_style = isset( $instance['menu_style'] ) ? $instance['menu_style'] : '';
 
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'benjamin' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" placeholder="<?php esc_attr_e( 'Categories', 'benjamin' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
+		<p>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>">
+                <?php esc_html_e( 'Title:', 'benjamin' ); ?>
+            </label>
+		    <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>"
+            name="<?php echo esc_attr($this->get_field_name('title')); ?>"
+            placeholder="<?php esc_attr_e( 'Categories', 'benjamin' ); ?>"
+            type="text" value="<?php echo esc_attr( $title ); ?>" />
+        </p>
 
-		<!-- <p><input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('dropdown'); ?>" name="<?php echo $this->get_field_name('dropdown'); ?>"<?php checked( $dropdown ); ?> />
-		<label for="<?php echo $this->get_field_id('dropdown'); ?>"><?php _e( 'Display as dropdown', 'benjamin' ); ?></label><br /> -->
+		<input type="checkbox" class="checkbox" id="<?php echo esc_attr($this->get_field_id('count')); ?>" name="<?php echo esc_attr($this->get_field_name('count')); ?>"<?php checked( $count ); ?> />
+		<label for="<?php echo esc_attr($this->get_field_id('count')); ?>"><?php esc_html_e( 'Show post counts', 'benjamin' ); ?></label><br />
 
-		<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>"<?php checked( $count ); ?> />
-		<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e( 'Show post counts', 'benjamin' ); ?></label><br />
-
-		<!-- <input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('hierarchical'); ?>" name="<?php echo $this->get_field_name('hierarchical'); ?>"<?php checked( $hierarchical ); ?> />
-		<label for="<?php echo $this->get_field_id('hierarchical'); ?>"><?php _e( 'Show hierarchy', 'benjamin' ); ?></label></p> -->
 
         <?php
         // styles
@@ -210,11 +212,11 @@ class Benjamin_Widget_Categories extends WP_Widget {
 
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id( 'menu_style' ); ?>">
-                    <?php _e( 'Menu Style:', 'benjamin' ); ?>
+            <label for="<?php echo esc_attr($this->get_field_id( 'menu_style' )); ?>">
+                    <?php esc_html_e( 'Menu Style:', 'benjamin' ); ?>
             </label>
-            <select id="<?php echo $this->get_field_id( 'menu_style' ); ?>"
-                  name="<?php echo $this->get_field_name( 'menu_style' ); ?>">
+            <select id="<?php echo esc_attr($this->get_field_id( 'menu_style' )); ?>"
+                  name="<?php echo esc_attr($this->get_field_name( 'menu_style' )); ?>">
                 <?php
                     foreach ( $menu_styles as $style ) :
                         $label = ucwords(str_replace($find, ' ', $style ));

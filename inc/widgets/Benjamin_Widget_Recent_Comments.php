@@ -99,11 +99,11 @@ class Benjamin_Widget_Recent_Comments extends WP_Widget {
             _prime_post_caches( $post_ids, strpos( get_option( 'permalink_structure' ), '%category%' ), false );
             foreach ( (array) $comments as $comment ) {
                 $output .= '<option value="'.get_comment_link( $comment ) .'" >';
-                /* translators: comments widget: 1: comment author, 2: post link */
-                $output .= sprintf( _x( '%1$s', 'widgets', 'benjamin' ),
-                    get_comment_author_link( $comment ) . ' &#45; &nbsp;'
-                    . get_the_title( $comment->comment_post_ID )
-                );
+
+            /* translators: comments widget: 1 - comment author -  post link */
+            $output .= esc_html(  get_comment_author_link( $comment ) . ' &#45; &nbsp;' . get_the_title( $comment->comment_post_ID ) );
+
+
                 $output .= '</option>';
             }
         }
@@ -143,12 +143,9 @@ class Benjamin_Widget_Recent_Comments extends WP_Widget {
             _prime_post_caches( $post_ids, strpos( get_option( 'permalink_structure' ), '%category%' ), false );
             foreach ( (array) $comments as $comment ) {
                 $output .= '<li '.$li_class.'>';
-                /* translators: comments widget: 1: comment author, 2: post link */
-                $output .= sprintf( _x( '%1$s', 'widgets', 'benjamin' ),
-                    '<a href="' . esc_url( get_comment_link( $comment ) ) . '">' .
-                    '<span class="comment-author-link">' . get_comment_author_link( $comment ) . ' &#45;  </span> &nbsp;'
-                    . get_the_title( $comment->comment_post_ID ) . '</a>'
-                );
+                $output .= '<a href="' . esc_url( get_comment_link( $comment ) ) . '">' .
+                    '<span class="comment-author-link">' . get_comment_author( $comment ) . ' &#45;  </span> &nbsp;'
+                    . get_the_title( $comment->comment_post_ID ) . '</a>'; // WPCS: xss ok.
                 $output .= '</li>';
             }
         }
@@ -213,7 +210,7 @@ class Benjamin_Widget_Recent_Comments extends WP_Widget {
 
 
 		$output .= $args['after_widget'];
-		echo $output;
+		echo $output; // WPCS: xss ok.
 	}
 	/**
 	 * Handles updating settings for the current Recent Comments widget instance.
@@ -250,11 +247,11 @@ class Benjamin_Widget_Recent_Comments extends WP_Widget {
         $saved_style = isset( $instance['menu_style'] ) ? $instance['menu_style'] : '';
 
 		?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'benjamin' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" placeholder="<?php esc_attr_e( 'Recent Comments', 'benjamin' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
+		<p><label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php esc_html_e( 'Title:', 'benjamin' ); ?></label>
+		<input class="widefat" id="<?php echo esc_attr($this->get_field_id( 'title' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'title' )); ?>" placeholder="<?php esc_attr_e( 'Recent Comments', 'benjamin' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of comments to show:', 'benjamin' ); ?></label>
-		<input class="tiny-text" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="number" step="1" min="1" value="<?php echo $number; ?>" size="3" /></p>
+		<p><label for="<?php echo esc_attr($this->get_field_id( 'number' )); ?>"><?php esc_html_e( 'Number of comments to show:', 'benjamin' ); ?></label>
+		<input class="tiny-text" id="<?php echo esc_attr($this->get_field_id( 'number' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'number' )); ?>" type="number" step="1" min="1" value="<?php echo esc_attr($number); ?>" size="3" /></p>
 
         <?php
         // styles
@@ -263,11 +260,11 @@ class Benjamin_Widget_Recent_Comments extends WP_Widget {
 
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id( 'menu_style' ); ?>">
-                    <?php _e( 'Menu Style:', 'benjamin' ); ?>
+            <label for="<?php echo esc_attr($this->get_field_id( 'menu_style' )); ?>">
+                    <?php esc_html_e( 'Menu Style:', 'benjamin' ); ?>
             </label>
-            <select id="<?php echo $this->get_field_id( 'menu_style' ); ?>"
-                  name="<?php echo $this->get_field_name( 'menu_style' ); ?>">
+            <select id="<?php echo esc_attr($this->get_field_id( 'menu_style' ) ); ?>"
+                  name="<?php echo esc_attr($this->get_field_name( 'menu_style' ) ); ?>">
                 <?php
                     foreach ( $menu_styles as $style ) :
                         $label = ucwords(str_replace($find, ' ', $style ));

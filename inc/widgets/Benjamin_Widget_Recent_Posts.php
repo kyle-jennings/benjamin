@@ -77,7 +77,7 @@ class Benjamin_Widget_Recent_Posts extends WP_Widget {
     {
         $dropdown_id = "{$this->id_base}-dropdown-{$this->number}";
 
-		echo '<select id="'.$dropdown_id.'">';
+		echo '<select id="'.esc_attr($dropdown_id).'">';
         echo '<option>-- Select Post --</option>';
 
         while ( $r->have_posts() ) : $r->the_post(); ?>
@@ -89,7 +89,7 @@ class Benjamin_Widget_Recent_Posts extends WP_Widget {
 			</option>
 		<?php endwhile;
         echo '</select>';
-        echo $this->dropdown_js($dropdown_id);
+        echo $this->dropdown_js($dropdown_id); // WPCS: xss ok.
 
     }
 
@@ -98,9 +98,9 @@ class Benjamin_Widget_Recent_Posts extends WP_Widget {
     public function menu($r, $style, $show_date)
     {
         $style_args = $this->menuStyleArgs($style);
-        $class = $style_args ? 'class="'.$style_args.'"' : '';
+        $class = $style_args ? 'class="'.esc_attr($style_args).'"' : '';
 
-		echo '<ul '.$class.'>';
+		echo '<ul '.$class.'>';// WPCS: xss ok.
         ?>
 		<?php while ( $r->have_posts() ) : $r->the_post(); ?>
 			<li>
@@ -115,8 +115,6 @@ class Benjamin_Widget_Recent_Posts extends WP_Widget {
 
 
         echo '</ul>';
-
-        echo $output;
     }
 
 
@@ -162,9 +160,9 @@ class Benjamin_Widget_Recent_Posts extends WP_Widget {
 		) ) );
 		if ($r->have_posts()) :
 		?>
-		<?php echo $args['before_widget']; ?>
+		<?php echo $args['before_widget']; //WPCS: xss ok. ?>
 		<?php if ( $title ) {
-			echo $args['before_title'] . $title . $args['after_title'];
+			echo $args['before_title'] . esc_html($title) . $args['after_title']; //WPCS: xss ok.
 		}
 
         if($style == 'dropdown') {
@@ -173,7 +171,7 @@ class Benjamin_Widget_Recent_Posts extends WP_Widget {
             $this->menu($r, $style, $show_date);
         }
 
-        echo $args['after_widget']; ?>
+        echo $args['after_widget']; //WPCS: xss ok. ?>
 		<?php
 		// Reset the global $the_post as this query will have stomped on it
 		wp_reset_postdata();
@@ -217,14 +215,14 @@ class Benjamin_Widget_Recent_Posts extends WP_Widget {
 		$show_date = isset( $instance['show_date'] ) ? (bool) $instance['show_date'] : false;
         $saved_style = isset( $instance['menu_style'] ) ? $instance['menu_style'] : '';
 ?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'benjamin' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" placeholder="<?php esc_attr_e( 'Recent Posts', 'benjamin' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
+		<p><label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php esc_html_e( 'Title:', 'benjamin' ); ?></label>
+		<input class="widefat" id="<?php echo esc_attr($this->get_field_id( 'title' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'title' )); ?>" placeholder="<?php esc_attr_e( 'Recent Posts', 'benjamin' ); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of posts to show:', 'benjamin' ); ?></label>
-		<input class="tiny-text" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="number" step="1" min="1" value="<?php echo $number; ?>" size="3" /></p>
+		<p><label for="<?php echo esc_attr($this->get_field_id( 'number' )); ?>"><?php esc_html_e( 'Number of posts to show:', 'benjamin' ); ?></label>
+		<input class="tiny-text" id="<?php echo esc_attr($this->get_field_id( 'number' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'number' )); ?>" type="number" step="1" min="1" value="<?php echo esc_attr($number); ?>" size="3" /></p>
 
-		<p><input class="checkbox" type="checkbox"<?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?', 'benjamin' ); ?></label></p>
+		<p><input class="checkbox" type="checkbox"<?php checked( $show_date ); ?> id="<?php echo esc_attr($this->get_field_id( 'show_date' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'show_date' )); ?>" />
+		<label for="<?php echo esc_attr($this->get_field_id( 'show_date' )); ?>"><?php esc_html_e( 'Display post date?', 'benjamin' ); ?></label></p>
 
         <?php
         // styles
@@ -233,11 +231,11 @@ class Benjamin_Widget_Recent_Posts extends WP_Widget {
 
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id( 'menu_style' ); ?>">
-                    <?php _e( 'Menu Style:', 'benjamin' ); ?>
+            <label for="<?php echo esc_attr($this->get_field_id( 'menu_style' )); ?>">
+                    <?php esc_html_e( 'Menu Style:', 'benjamin' ); ?>
             </label>
-            <select id="<?php echo $this->get_field_id( 'menu_style' ); ?>"
-                  name="<?php echo $this->get_field_name( 'menu_style' ); ?>">
+            <select id="<?php echo esc_attr($this->get_field_id( 'menu_style' )); ?>"
+                  name="<?php echo esc_attr($this->get_field_name( 'menu_style' )); ?>">
                 <?php
                     foreach ( $menu_styles as $style ) :
                         $label = ucwords(str_replace($find, ' ', $style ));

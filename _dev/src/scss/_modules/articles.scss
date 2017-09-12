@@ -1,0 +1,16 @@
+article,
+.post,
+.page {
+
+    margin-bottom: 2.5em;
+
+    &::after,
+    &::before, {
+        content: " ";
+        display: table;
+    }
+
+    &::after {
+        clear: both;
+    }
+}

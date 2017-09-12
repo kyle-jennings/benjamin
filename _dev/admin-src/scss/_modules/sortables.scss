@@ -21,7 +21,16 @@
 
     .sortables__list {
         margin-left: 0;
+        min-height: 30px;
         list-style-type: none;
+
+        &:empty {
+            &::before {
+                display: block;
+                content: 'Empty - using page content';
+            }
+        }
+
     }
 
     .sortables__list-title {
@@ -52,11 +61,6 @@
         .sortables__active-list & {
             background-color: lighten($blue, 40%);
         }
-    }
-
-
-    .sortables__list {
-        min-height: 30px;
     }
 
 

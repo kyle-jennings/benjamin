@@ -32,15 +32,16 @@ $font-normal:         400 !default;
 $font-bold:           700 !default;
 
 // Color
-$color-primary:              #ff5049 !default;
-$color-primary-darker:       #c13b36 !default;
-$color-primary-darkest:      #912b27 !default;
+$black-overlay:   rgba(0,0,0, .6);
+$color-primary:              #ff5049 !default;// 1.5
+$color-primary-darker:       #cb3d38 !default;// 1.8
+$color-primary-darkest:      #882421 !default;
 
-$color-primary-alt:          #d67e6c !default;
-$color-primary-alt-dark:     #cd3631 !default;
-$color-primary-alt-darkest:  #991d19 !default;
-$color-primary-alt-light:    #f48a86 !default; // lighten($color-primary-alt, 60%)
-$color-primary-alt-lightest: #f4c8c6 !default; // lighten($color-primary-alt, 90%)
+$color-primary-alt:          #fa3c34 !default;// 1.3
+$color-primary-alt-dark:     #9d1b17 !default;// 2.1
+$color-primary-alt-darkest:  #5e0906 !default;// +3.8
+$color-primary-alt-light:    #f48a86 !default;// 1.3
+$color-primary-alt-lightest: #f4c8c6 !default;
 
 $color-secondary:          #046b99 !default;
 $color-secondary-dark:     #045478 !default;

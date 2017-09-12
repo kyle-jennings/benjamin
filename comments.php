@@ -27,11 +27,28 @@ if ( post_password_required() ) {
 	if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php
-				printf( // WPCS: XSS OK.
-					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'benjamin' ) ),
-					number_format_i18n( get_comments_number() ),
-					'<span>' . get_the_title() . '</span>'
-				);
+                $comment_count = get_comments_number();
+				if ( 1 === $comment_count ) {
+                    /* translators: 1: title. */
+                    printf(
+						/* translators: 1: title. */
+						esc_html_e( 'One thought on &ldquo;%1$s&rdquo;', 'benjamin' ),
+						'<span>' . get_the_title() . '</span>'
+					);
+                } else {
+                    printf( // WPCS: XSS OK.
+						/* translators: 1: comment count number, 2: title. */
+                        esc_html( _nx(
+                            '%1$s thought on &ldquo;%2$s&rdquo;',
+                            '%1$s thoughts on &ldquo;%2$s&rdquo;',
+                            $comment_count,
+                            'comments title',
+                            'benjamin' ) ),
+						number_format_i18n( $comment_count ),
+						'<span>' . get_the_title() . '</span>'
+    				);
+                }
+
 			?>
 		</h2><!-- .comments-title -->
 
@@ -47,14 +64,14 @@ if ( post_password_required() ) {
 		</nav><!-- #comment-nav-above -->
 		<?php endif; // Check for comment navigation. ?>
 
-		<ol class="comment-list">
+		<ul class="comment-list">
 			<?php
 				wp_list_comments( array(
-					'style'      => 'ol',
+					'style'      => 'ul',
 					'short_ping' => true,
 				) );
 			?>
-		</ol><!-- .comment-list -->
+		</ul><!-- .comment-list -->
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 		<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">

@@ -38,6 +38,7 @@
 @import '_modules/navbar';
 @import '_modules/navbar-secondary';
 @import '_modules/navbar--dark';
+@import '_modules/articles';
 @import '_modules/post';
 @import '_modules/sortables';
 @import '_modules/table';
@@ -59,10 +60,17 @@
 @import '_modules/featured-post';
 @import '_modules/form';
 @import '_modules/alerts';
-
+@import '_modules/video-bg';
+@import '_modules/comments';
+@import '_modules/gallery';
+@import '_modules/images';
 
 // custom grid for content area
 @import '_utilities/content-span-columns';
 @import '_utilities/content-media';
 @import '_modules/grid-bugfixes';
 @import '_modules/grid';
+
+
+// print
+@import '_utilities/print';

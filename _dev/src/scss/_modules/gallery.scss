@@ -1,0 +1,51 @@
+.gallery::before,
+.gallery::after {
+    content: " ";
+    display: table;
+}
+
+.gallery::after {
+    clear: both;
+}
+
+.gallery-item {
+    float: left;
+    margin:0 1em 1em 0;
+
+    a {
+        display: block;
+    }
+
+    // on phone sized screens, images are all stacked
+    @media(max-width: $small-screen) {
+        float: none;
+        text-align: center;
+        max-width: 100%;
+        width: auto;
+    }
+    // on medium size screens and up, galleries have variable image sizes
+    @media(min-width: $small-screen) {
+        @for $i from 1 through 12 {
+            .gallery-columns-#{$i} & {
+                width:  calc( ( 100% / #{$i} ) - 1em);
+            }
+        }
+
+    }
+
+
+    // 1 column
+    .gallery-columns-1 & {
+        float: none;
+
+        a {
+            text-align: center;
+        }
+    }
+
+    // set the image height ot auto so they do no stretch
+    img {
+        height: auto;
+    }
+
+}

@@ -2,7 +2,7 @@
 .visible-medium-up {
     display: none;
 
-    @media(min-width: $medium-screen){
+    @media screen and (min-width: $medium-screen){
         display: block;
     }
 }
@@ -10,19 +10,19 @@
 .visible-large-up {
     display: none;
 
-    @media(min-width: $large-screen){
+    @media screen and (min-width: $large-screen){
         display: block;
     }
 }
 
 .hidden-medium-up {
-    @media(min-width: $medium-screen){
-        display: none;
+    @media screen and (min-width: $medium-screen){
+        display: none !important;
     }
 }
 
 .hidden-large-up {
-    @media(min-width: $large-screen){
-        display: none;
+    @media screen and (min-width: $large-screen){
+        display: none !important;
     }
 }
