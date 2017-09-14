@@ -19,8 +19,17 @@
 
 /* navbar */
 .usa-navbar {
-    // height: auto;
     width: auto ;
+
+    @media screen and (min-width: 951px){
+      width: auto;
+    }
+}
+
+.usa-header-basic .usa-navbar {
+    @media screen and (min-width: 951px){
+      width: auto;
+    }
 }
 
 .usa-logo {
