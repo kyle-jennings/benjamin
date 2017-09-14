@@ -13,15 +13,15 @@ if( $name !== 'archive'):
         )
     );
     $args = array(
-
         'label' => __('Other Settings', 'benjamin'),
         'type' => 'label',
         'section' => $name . '_settings_section',
         'settings' => $name . '_other_settings_label',
+        'input_attrs' => array(
+          'data-toggled-by' => $name . '_settings_active',
+        )
     );
 
-    if($name != 'archive')
-        $args['active_callback'] = $active_callback;
     $wp_customize->add_control(
         new Benjamin_Label_Custom_Control(
             $wp_customize,
@@ -51,9 +51,6 @@ if( $name !== 'archive'):
             'footer' => 'Hide Footer'
         ),
     );
-
-    if( $name !== 'archive')
-        $layout_args['active_callback'] = $active_callback;
 
     $wp_customize->add_control(
         new Benjamin_Checkbox_Group_Control(

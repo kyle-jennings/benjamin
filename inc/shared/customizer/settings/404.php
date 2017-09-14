@@ -52,9 +52,6 @@ function benjamin_404_settings($wp_customize) {
             'settings'=> '_404_page_select_setting',
             'type'    => 'dropdown-pages',
             'priority' => 1,
-            'active_callback' => function() use ( $wp_customize ) {
-                  return 'page' == $wp_customize->get_setting( '_404_page_content_setting' )->value();
-            },
          )
     );
 

@@ -83,14 +83,6 @@ function benjamin_template_settings_loop(&$wp_customize, $name){
 
     endif;
 
-    // the active callback will provide the toggle functionality for us
-    if( $name !== 'archive') {
-        $active_callback = function() use ( $wp_customize, $name ) {
-            return 'yes' === $wp_customize->get_setting( $name . '_settings_active' )->value();
-        };
-    }
-
-
     require('template-settings/header.php');
     require('template-settings/sidebar.php');
     require('template-settings/layout.php');
@@ -98,8 +90,6 @@ function benjamin_template_settings_loop(&$wp_customize, $name){
 
 
 }
-
-
 
 
 /**
