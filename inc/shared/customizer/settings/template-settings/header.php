@@ -15,9 +15,10 @@ $args = array(
     'type' => 'label',
     'section' => $name . '_settings_section',
     'settings' => $name . '_header_label',
+    'input_attrs' => array(
+      'data-toggled-by' => $name . '_settings_active',
+    )
 );
-if($name != 'archive')
-    $args['active_callback'] = $active_callback;
 
 $wp_customize->add_control(
     new Benjamin_Label_Custom_Control(
@@ -42,9 +43,6 @@ $hero_image_args = array(
     'section' => $name . '_settings_section',
     'settings'   => $name . '_image_setting',
 );
-
-if( $name !== 'archive')
-    $hero_image_args['active_callback'] = $active_callback;
 
 $wp_customize->add_control(
     new WP_Customize_Image_Control(
@@ -73,8 +71,6 @@ $hero_video_args = array(
     'section' => $name . '_settings_section',
     'settings'   => $name . '_video_setting',
 );
-if( $name !== 'archive')
-    $hero_video_args['active_callback'] = $active_callback;
 
 $wp_customize->add_control(
     new Benjamin_Video_Control(
@@ -109,9 +105,6 @@ $hero_position_args = array(
     'choices' => $choices,
 );
 
-if( $name !== 'archive')
-    $hero_position_args['active_callback'] = $active_callback;
-
 $wp_customize->add_control( $name . '_hero_position_control', $hero_position_args );
 
 
@@ -137,7 +130,5 @@ $hero_size_args = array(
     ),
 );
 
-if( $name !== 'archive')
-    $hero_size_args['active_callback'] = $active_callback;
 
 $wp_customize->add_control( $name . '_hero_size_control', $hero_size_args );
