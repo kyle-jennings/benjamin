@@ -42,6 +42,9 @@ $hero_image_args = array(
     'label'   => __('Header Image', 'benjamin'),
     'section' => $name . '_settings_section',
     'settings'   => $name . '_image_setting',
+    'input_attrs' => array(
+      'data-toggled-by' => $name . '_settings_active',
+    )
 );
 
 $wp_customize->add_control(
@@ -70,6 +73,9 @@ $hero_video_args = array(
     'label'   => __('Header Video', 'benjamin'),
     'section' => $name . '_settings_section',
     'settings'   => $name . '_video_setting',
+    'input_attrs' => array(
+      'data-toggled-by' => $name . '_settings_active',
+    )
 );
 
 $wp_customize->add_control(
@@ -83,7 +89,7 @@ $wp_customize->add_control(
 
 
 /**
- * Hero Size
+ * background position
  */
 $wp_customize->add_setting( $name . '_hero_position_setting', array(
     'default' => 'top',
@@ -103,6 +109,9 @@ $hero_position_args = array(
     'settings' => $name . '_hero_position_setting',
     'type' => 'select',
     'choices' => $choices,
+    'input_attrs' => array(
+      'data-toggled-by' => $name . '_settings_active',
+    )
 );
 
 $wp_customize->add_control( $name . '_hero_position_control', $hero_position_args );
@@ -112,7 +121,7 @@ $wp_customize->add_control( $name . '_hero_position_control', $hero_position_arg
  * Hero Size
  */
 $wp_customize->add_setting( $name . '_hero_size_setting', array(
-    'default' => 'slim',
+    'default' => 'medium',
     'sanitize_callback' => 'benjamin_hero_size_sanitize',
 ) );
 
@@ -126,8 +135,12 @@ $hero_size_args = array(
         'slim' => 'Slim',
         'medium' => 'Medium',
         'big' => 'Big',
+        'xtra-big' => 'Extra Big',
         'full' => 'Full Screen'
     ),
+    'input_attrs' => array(
+      'data-toggled-by' => $name . '_settings_active',
+    )
 );
 
 

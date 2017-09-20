@@ -7,6 +7,7 @@ $files = array(
     'custom-controls/color-scheme.php',
     'custom-controls/menu-dropdown.php',
     'custom-controls/checkbox-group.php',
+    'settings/_sanitizations.php',
     'settings/identity.php',
     'settings/header.php',
     'settings/template-settings.php',

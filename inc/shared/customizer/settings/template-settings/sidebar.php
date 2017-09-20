@@ -49,6 +49,9 @@ $sidebar_pos_args = array(
         'left' => 'Left',
         'right' => 'Right'
     ),
+    'input_attrs' => array(
+      'data-toggled-by' => $name . '_settings_active',
+    )
 );
 
 $wp_customize->add_control($name . '_sidebar_position_control', $sidebar_pos_args);
@@ -74,6 +77,9 @@ $sidebar_visibility_args = array(
         'visible-medium-up' => 'Visible on medium screens and larger',
         'visible-large-up' => 'Visible on desktop',
     ),
+    'input_attrs' => array(
+      'data-toggled-by' => $name . '_settings_active',
+    )
 );
 
 $wp_customize->add_control($name . '_sidebar_visibility_control', $sidebar_visibility_args);

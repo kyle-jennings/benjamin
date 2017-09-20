@@ -57,7 +57,7 @@ $('body').on('change','.js--video-url', function(e){
     data: data,
     complete: function(response){
       var output = response.responseText;
-      // console.log(output);
+
       $preview.html( output );
     }
   });

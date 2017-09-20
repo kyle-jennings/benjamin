@@ -29,10 +29,7 @@ if( $name !== 'archive'):
             $args
         )
     );
-endif;
 
-// If we are not in the archive, display the layout settings
-if( $name !== 'archive'):
 
     $wp_customize->add_setting( $name.'_page_layout_setting', array(
         'default'        => '',
@@ -50,6 +47,9 @@ if( $name !== 'archive'):
             'page-content' => 'Hide Page Content and Sidebar',
             'footer' => 'Hide Footer'
         ),
+        'input_attrs' => array(
+          'data-toggled-by' => $name . '_settings_active',
+        )
     );
 
     $wp_customize->add_control(

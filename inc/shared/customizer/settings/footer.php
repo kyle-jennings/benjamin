@@ -51,35 +51,3 @@ function benjamin_footer_settings($wp_customize) {
 
 }
 add_action('customize_register', 'benjamin_footer_settings');
-
-
-/**
- * ----------------------------------------------------------------------------
- * Sanitization settings
- * ----------------------------------------------------------------------------
- */
-
-
-function benjamin_footer_sortable_sanitize($val) {
-
-    $valids = array(
-            'return-to-top',
-            'footer-menu',
-            'widget-area-1',
-            'widget-area-2',
-    );
-
-    $valid = true;
-    $tmp_val = json_decode($val);
-    foreach($tmp_val as $v){
-        if( !in_array($v->name, $valids) ){
-            // error_log($v->name)
-            $valid = false;
-        }
-    }
-
-    if(!$valid)
-        return null;
-
-    return $val;
-}

@@ -4,7 +4,9 @@
  * helper functions
  */
 
-
+/**
+ * Get the featured video post meta
+ */
 function benjamin_get_the_post_video_url() {
     global $post;
     $url = get_post_meta($post->ID, 'featured-video', true);
@@ -12,7 +14,10 @@ function benjamin_get_the_post_video_url() {
     return $url;
 }
 
-
+/**
+ * Does this post have a featured video?
+ * @return boolean
+ */
 function benjamin_has_post_video() {
     global $post;
 
@@ -23,7 +28,12 @@ function benjamin_has_post_video() {
     return false;
 }
 
-
+/**
+ * returns the video markup
+ * @param  string $url the url of the video
+ * @param  string $background is this a background video (header)?
+ * @return string the markup
+ */
 function benjamin_get_the_video_markup($url = null, $background = null) {
     if(!$url)
         return;
@@ -33,9 +43,9 @@ function benjamin_get_the_video_markup($url = null, $background = null) {
     $type = benjamin_get_video_type($url);
 
     $output = '';
-
     $atts = '';
 
+    // if the video type is not YT or vimeo then its a locally hosted vid.. maybe
     if($type !== 'youtube' && $type !== 'vimeo'){
         if($background == 'background')
             $atts = 'autoplay loop muted';
@@ -46,20 +56,13 @@ function benjamin_get_the_video_markup($url = null, $background = null) {
             $output .= '<video class="video" '.esc_attr($atts).' '.$src.'="'.esc_attr($url).'" type="video/'.esc_attr($type).'">';
             $output .= '</video>';
         $output .= '</div>';
-    }else {
+    }elseif( wp_oembed_get($url)) {
 
         $id = benjamin_get_youtube_id($url);
-        $poster = 'style="background: url(http://img.youtube.com/vi/'.$id.'/0.jpg) no-repeat cover;"';
+        $poster = 'style="background-image: url(http://img.youtube.com/vi/'.$id.'/0.jpg); background-repeat:no-repeat; background-size:cover;"';
 
-        if($background == 'background')
-            $settings ='autoplay=1&loop=1&autohide=1&modestbranding=0&rel=0&showinfo=0&controls=0&disablekb=1&enablejsapi=0&iv_load_policy=3&playlist='.$id;
-        else
-            $settings = 'controls=1';
-
-        $url = 'https://www.youtube.com/embed/'.$id.'?'.$settings;
-
-        $output .= '<div class="video-bg video-bg--youtube">';
-            $output .= '<iframe class="video" '.$src.'="'.esc_attr($url).'" frameborder="0" height="100%" width="100%" allowfullscreen ></iframe>';
+        $output .= '<div class="video-bg video-bg--youtube" '.$poster.'>';
+            $output .= wp_oembed_get($url);
         $output .= '</div>';
     }
 
@@ -69,19 +72,34 @@ function benjamin_get_the_video_markup($url = null, $background = null) {
 }
 
 
+/**
+ * Echos the video markup
+ * @param  string $url the url of the video
+ * @param  string $background is this a background video (header)?
+ * @return echo the markup
+ */
 function benjamin_the_video_markup($url, $background = null) {
     echo benjamin_get_the_video_markup($url, $background); //WPCS: xss ok.
 }
 
-
+/**
+ * Just grabs the ID of hte youtube video - used to get hte poster
+ * @param  string $url the url of the video
+ * @return string      YT id
+ */
 function benjamin_get_youtube_id($url) {
     preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
     return $match[1];
 }
 
 
+/**
+ * Identifies whether or not the video is locally uploaded (looks at the file type)
+ * or if its a youtube or vimeo video
+ * @param  string $url the url of the video
+ * @return string      the video type
+ */
 function benjamin_get_video_type($url) {
-
 
     $type = null;
     if('.mp4' == substr( $url, -4 ) ){
@@ -98,3 +116,15 @@ function benjamin_get_video_type($url) {
 
     return $type;
 }
+
+
+/**
+ * adds teh correct settings to oembeded stuff
+ * @param  [type] $html [description]
+ * @return [type]       [description]
+ */
+function benjamin_youtube_embed_url($html) {
+    $settings ='autoplay=1&mute=1&loop=1&autohide=1&modestbranding=0&rel=0&showinfo=0&controls=0&disablekb=1&enablejsapi=0&iv_load_policy=3';
+    return str_replace("?feature=oembed", "?feature=oembed&".$settings, $html);
+}
+add_filter('oembed_result', 'benjamin_youtube_embed_url');

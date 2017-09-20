@@ -55,37 +55,3 @@ function benjamin_site_identity($wp_customize) {
 
 }
 add_action('customize_register', 'benjamin_site_identity');
-
-
-/**
- * ----------------------------------------------------------------------------
- * Sanitization settings
- * ----------------------------------------------------------------------------
- */
-
-
-function benjamin_sidebar_width_sanitize($val) {
-    $valids = array(
-        'BENJAMIN_ONE_THIRD',
-        'BENJAMIN_ONE_FOURTH',
-    );
-
-    if( !in_array($val, $valids) )
-        $val = 'BENJAMIN_ONE_THIRD';
-
-    return $val;
-}
-
-
-function benjamin_color_scheme_sanitize($val) {
-    $valids = array(
-        'standard',
-        'classic',
-        'red'
-    );
-
-    if( !in_array($val, $valids) )
-        return null;
-
-    return $val;
-}

@@ -50,7 +50,7 @@ class Benjamin_Video_Control extends WP_Customize_Control
         $this->json['localURL'] = $this->is_local_file();
         $this->json['video_type'] = $this->get_type();
 
-
+        $this->json['video_markup'] = benjamin_get_the_video_markup( $this->value() );
         // if the settings attr is not an object, we do nothing
         if ( !is_object( $this->setting ) )
             return;
@@ -121,11 +121,7 @@ class Benjamin_Video_Control extends WP_Customize_Control
                 <div class="attachment-media-view">
 
                     <div class='js--placeholder'>
-                        <div class="wp-media-wrapper wp-video">
-                            <video controls="controls" class="wp-video-shortcode" preload="metadata"
-                                <source src="{{ data.value }}" type="video/{{ data.video_type }}"/>
-                            </video>
-                        </div>
+                        {{{ data.video_markup }}}
                     </div>
 
 

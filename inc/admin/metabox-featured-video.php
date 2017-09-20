@@ -1,11 +1,14 @@
 <?php
-
+/**
+ * The markup for the featured image meta box
+ */
 function benjamin_featured_video_metabox_markup($post) {
 
     $url = get_post_meta($post->ID, 'featured-video', true);
-    $video = null;
-    if($url) {
-        $video = benjamin_get_the_video_markup($url);
+    $video = '';
+
+    if($url){
+      $video = benjamin_get_the_video_markup($url);
     }
 ?>
     <div class="js--media-wrapper">
@@ -34,7 +37,10 @@ function benjamin_featured_video_metabox_markup($post) {
 
 
 
-
+/**
+ * Register the featured image metabox
+ * @return [type] [description]
+ */
 function benjamin_featured_video_metabox() {
     $args = array(
        'public'   => true,
@@ -57,7 +63,13 @@ add_action( 'add_meta_boxes', 'benjamin_featured_video_metabox' );
 
 
 
-
+/**
+ * The save function for the featured image
+ * @param  [type] $post_id [description]
+ * @param  [type] $post    [description]
+ * @param  [type] $update  [description]
+ * @return [type]          [description]
+ */
 function benjamin_save_featured_video($post_id, $post, $update) {
 
     if(!current_user_can("edit_post", $post_id))
@@ -73,28 +85,29 @@ function benjamin_save_featured_video($post_id, $post, $update) {
     $url = isset($_POST['featured-video']) ? esc_url_raw( wp_unslash($_POST['featured-video']) ) : null;
     if( filter_var($url, FILTER_VALIDATE_URL) ) {
 
-        // get attachment id
-
-
         // if local - Check for .mp4 or .mov format, which
         // (assuming h.264 encoding) are the only cross-browser-supported formats.
-        if( strpos($url, home_url()) !== false  && benjamin_validate_local_video($url) ) {
-            update_post_meta($post_id, 'featured-video', $url);
-        } elseif( preg_match( '#^https?://(?:www\.)?(?:youtube\.com/watch|youtu\.be/)#', $url ) ) {
-            update_post_meta($post_id, 'featured-video', $url);
-        }
+        // if( strpos($url, home_url()) !== false && benjamin_validate_local_video($url) ) {
+        //     update_post_meta($post_id, 'featured-video', $url);
+        // } elseif( preg_match( '#^https?://(?:www\.)?(?:youtube\.com/watch|youtu\.be/)#', $url ) ) {
+        // }
 
 
+        update_post_meta($post_id, 'featured-video', $url);
     } else{
         delete_post_meta($post_id, 'featured-video');
     }
 
 
 }
-
 add_action("save_post", "benjamin_save_featured_video", 10, 3);
 
 
+/**
+ * I guess this ensures the video is local, dont rememeber where this is used
+ * @param  [type] $url [description]
+ * @return [type]      [description]
+ */
 function benjamin_validate_local_video($url) {
     global $wpdb;
 	$attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $url ));
