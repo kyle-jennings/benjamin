@@ -27,7 +27,7 @@ add_action('after_switch_theme', 'benjamin_set_default_settings');
 
 
 
-function benjamin_set_default_menu($args) {
+function benjamin_set_default_menu($args = array()) {
 
 
     // see wp-includes/nav-menu-template.php for available arguments
@@ -51,6 +51,18 @@ function benjamin_set_default_menu($args) {
     }
 
     $links = array();
+    
+    $link_before = isset($link_before) ? $link_before : '';
+    $link_after = isset($link_after) ? $link_after : '';
+    $before = isset($before) ? $before : '';
+    $after = isset($after) ? $after : '';
+    $items_wrap = isset($items_wrap) ? $items_wrap : '';
+    $menu_id = isset($menu_id) ? $menu_id : '';
+    $menu_class = isset($menu_class) ? $menu_class : '';
+    $echo = isset($echo) ? $echo : false;
+
+
+
     foreach($link_arr as $url => $label)
         $links[] = $link_before . '<a href="' . $url . '">' . $before . $label . $after . '</a>' . $link_after;
 
