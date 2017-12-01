@@ -10,6 +10,9 @@
 
     img {
         vertical-align: middle;
+        max-height: 100%;
+        max-width: initial;
+        width: auto;
         @media(max-width: 950px){
             height: 2rem;
         }

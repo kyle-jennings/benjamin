@@ -83,8 +83,8 @@ function benjamin_header_settings($wp_customize){
             'settings' => 'navbar_search_setting',
             'type' => 'select',
             'choices' => array(
-                'none' => 'None',
-                'navbar' => 'Navbar',
+                'none' => 'No',
+                'navbar' => 'Yes',
             )
         )
     );

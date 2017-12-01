@@ -6,7 +6,7 @@ $sticky = get_theme_mod('navbar_sticky_setting', 'no') == 'yes' ? 'sticky' : '';
     <div class="usa-nav-container">
 
         <div class="usa-navbar">
-            <button class="usa-menu-btn">Menu</button>
+            <button class="usa-menu-btn"><?php echo __('Menu', 'benjamin'); ?></button>
             <?php benjamin_navbar_brand(); ?>
         </div>
 
@@ -26,15 +26,7 @@ $sticky = get_theme_mod('navbar_sticky_setting', 'no') == 'yes' ? 'sticky' : '';
             ?>
 
             <?php if(get_theme_mod('navbar_search_setting', 'none') == 'navbar' ): ?>
-            <form class="usa-search usa-search-small">
-                <div role="search">
-                    <label class="usa-sr-only" for="search-field-small">Search small</label>
-                    <input id="search-field-small" type="search" name="search">
-                    <button type="submit">
-                        <span class="usa-sr-only">Search</span>
-                    </button>
-                </div>
-            </form>
+            <?php get_search_form(); ?>
             <?php endif;?>
         </nav>
     </div>

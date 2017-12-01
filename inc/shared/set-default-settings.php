@@ -27,11 +27,17 @@ add_action('after_switch_theme', 'benjamin_set_default_settings');
 
 
 
-function benjamin_set_default_menu($args = array()) {
-
+/**
+ * Sets default menu items when no menu is set
+ * @param  [type] $args [description]
+ * @return [type]       [description]
+ */
+function benjamin_set_default_menu( $args = array() ) {
 
     // see wp-includes/nav-menu-template.php for available arguments
     extract( $args );
+
+
 
     $link_arr = array(
         home_url() => 'Home',
@@ -62,21 +68,23 @@ function benjamin_set_default_menu($args = array()) {
     $echo = isset($echo) ? $echo : false;
 
 
+    $li_class = $theme_location == 'footer' ? 'usa-width-one-sixth usa-footer-primary-content' : '';
+    $link_class = $theme_location == 'footer' ? 'usa-footer-primary-link' : '';
 
     foreach($link_arr as $url => $label)
-        $links[] = $link_before . '<a href="' . $url . '">' . $before . $label . $after . '</a>' . $link_after;
+        $links[] = $link_before . '<a class="'.$link_class.'" href="' . $url . '">' . $before . $label . $after . '</a>' . $link_after;
 
     // We have a list
     if ( FALSE !== stripos( $items_wrap, '<ul' )
         || FALSE !== stripos( $items_wrap, '<ol' )
     ){
         foreach($links as &$link)
-            $link = "<li>$link</li>";
+            $link = '<li class="'.$li_class.'">'.$link.'</li>';
     }
 
     $output = sprintf( $items_wrap, $menu_id, $menu_class, implode('', $links) );
     if ( ! empty ( $container ) ) {
-        $output  = "<$container class='$container_class' id='$container_id'>$output</$container>";
+        $output  = '<'.$container.' class="'.$container_class.'" id="'.$container_id.'">'.$output.'</'.$container.'>';
     }
 
     if ( $echo ) {

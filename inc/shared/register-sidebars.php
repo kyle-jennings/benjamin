@@ -14,7 +14,7 @@ function benjamin_widgets_init() {
 
         $widgets = isset($sidebars[$name]) ? $sidebars[$name] : array();
         $count = count($widgets);
-        $pos = get_theme_mod($name . '_sidebar_position_setting', 'none');
+
         $horizontals = array(
             'banner-widget-area-1',
             'banner-widget-area-2',

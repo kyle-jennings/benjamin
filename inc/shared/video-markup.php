@@ -79,7 +79,7 @@ function benjamin_get_the_video_markup($url = null, $background = null) {
  * @return echo the markup
  */
 function benjamin_the_video_markup($url, $background = null) {
-    echo benjamin_get_the_video_markup($url, $background); //WPCS: xss ok.
+    echo benjamin_get_the_video_markup($url, $background);
 }
 
 /**

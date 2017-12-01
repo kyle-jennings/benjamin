@@ -170,7 +170,5 @@ function benjamin_get_custom_tax_terms($id = null, $post_type = null) {
     foreach($taxonomy_names as $tax)
         $terms += wp_get_post_terms($id, $tax);
 
-
-    // examine(wp_get_post_terms($id, 'topics'));
     return $terms;
 }
