@@ -11,7 +11,6 @@ $shared_files = array(
     '/inc/shared/jetpack.php',
     '/inc/shared/register-sidebars.php',
     '/inc/shared/widgets.php',
-    '/inc/shared/video-markup.php',
     '/inc/shared/set-default-settings.php',
 );
 
@@ -24,7 +23,6 @@ if (is_admin()) {
         '/inc/admin/ajax.php',
         '/inc/admin/assets.php',
         '/inc/admin/metabox-featured-post.php',
-        '/inc/admin/metabox-featured-video.php',
     );
     foreach($files as $file)
         require get_template_directory() . $file; // WPCS: xss ok.

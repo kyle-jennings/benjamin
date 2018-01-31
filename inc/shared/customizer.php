@@ -2,7 +2,6 @@
 
 $files = array(
     'custom-controls/label.php',
-    'custom-controls/video.php',
     'custom-controls/sortable.php',
     'custom-controls/color-scheme.php',
     'custom-controls/menu-dropdown.php',
@@ -22,16 +21,6 @@ foreach($files as $file)
 
 
 
-
-/**
- * Remove some default settings from the customizer
- * @param  object $wp_customize
- */
-function benjamin_customizer_settings($wp_customize){
-    // placeholder for near future updates
-    $wp_customize->register_control_type( 'Benjamin_Video_Control' );
-}
-add_action('customize_register', 'benjamin_customizer_settings', 50);
 
 
 /**

@@ -17,7 +17,8 @@ $args = array(
     'settings' => $name . '_header_label',
     'input_attrs' => array(
       'data-toggled-by' => $name . '_settings_active',
-    )
+    ),
+    'priority' => 1,
 );
 
 $wp_customize->add_control(
@@ -44,7 +45,8 @@ $hero_image_args = array(
     'settings'   => $name . '_image_setting',
     'input_attrs' => array(
       'data-toggled-by' => $name . '_settings_active',
-    )
+    ),
+    'priority' => 2,
 );
 
 $wp_customize->add_control(
@@ -56,35 +58,6 @@ $wp_customize->add_control(
 );
 
 
-/**
- * Hero video
- * @var array
- */
-$wp_customize->add_setting( $name . '_video_setting', array(
-    'default'      => null,
-    'sanitize_callback' => 'esc_url_raw',
-) );
-
-$description = __('Use an uploaded video, or a video from youtube to display
-in the header. Uploaded videos should be 8M and should be a .mp4, .mov, or .webm format.', 'benjamin');
-
-$hero_video_args = array(
-    'description' => $description,
-    'label'   => __('Header Video', 'benjamin'),
-    'section' => $name . '_settings_section',
-    'settings'   => $name . '_video_setting',
-    'input_attrs' => array(
-      'data-toggled-by' => $name . '_settings_active',
-    )
-);
-
-$wp_customize->add_control(
-    new Benjamin_Video_Control(
-        $wp_customize,
-        $name . '_video_setting_control',
-        $hero_video_args
-    )
-);
 
 
 
