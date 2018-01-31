@@ -59,7 +59,7 @@ function benjamin_get_the_video_markup($url = null, $background = null) {
     }elseif( wp_oembed_get($url)) {
 
         $id = benjamin_get_youtube_id($url);
-        $poster = 'style="background-image: url(http://img.youtube.com/vi/'.$id.'/0.jpg); background-repeat:no-repeat; background-size:cover;"';
+        $poster = 'style="background-image: url(https://img.youtube.com/vi/'.esc_attr($id).'/0.jpg); background-repeat:no-repeat; background-size:cover;"';
 
         $output .= '<div class="video-bg video-bg--youtube" '.$poster.'>';
             $output .= wp_oembed_get($url);
@@ -73,14 +73,16 @@ function benjamin_get_the_video_markup($url = null, $background = null) {
 
 
 /**
- * Echos the video markup
+ * Echos the video markup from the benjamin_get_the_video_markup function
+ *
+ * escaping happens in benjamin_get_the_video_markup function(); 
  * @param  string $url the url of the video
  * @param  string $background is this a background video (header)?
  * @return echo the markup
  */
 function benjamin_the_video_markup($url, $background = null) {
-    echo benjamin_get_the_video_markup($url, $background);
-}
+    echo benjamin_get_the_video_markup($url, $background);  // WPCS: xss ok;
+} 
 
 /**
  * Just grabs the ID of hte youtube video - used to get hte poster

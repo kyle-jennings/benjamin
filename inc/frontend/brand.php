@@ -47,8 +47,7 @@ function benjamin_get_custom_logo($logo_id = null){
     $logo_id = get_theme_mod('custom_logo', null);
     if(!$logo_id)
         return false;
-
-    $thumb_id = get_post_thumbnail_id($logo_id);
+    
     $thumb_url_array = wp_get_attachment_image_src($logo_id, 'full', true);
 
     if( strpos(reset($thumb_url_array), 'wp-includes/images/media/default.png') )

@@ -46,6 +46,8 @@ function benjamin_site_identity($wp_customize) {
         )
     );
 
+    // removing red color scheme for now
+    // 'red' => $red,
     $description = 'Benjamin currently comes with 3 premade color schemes, like color swatches.';
     $wp_customize->add_control( new Benjamin_Color_Scheme_Custom_Control(
         $wp_customize, 'color_scheme_control', array(
@@ -56,7 +58,6 @@ function benjamin_site_identity($wp_customize) {
             'choices' => array(
                         'standard' => $standard,
                         'classic' => $classic,
-                        'red' => $red,
                     )
             )
         )

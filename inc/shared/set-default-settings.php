@@ -71,8 +71,9 @@ function benjamin_set_default_menu( $args = array() ) {
     $li_class = $theme_location == 'footer' ? 'usa-width-one-sixth usa-footer-primary-content' : '';
     $link_class = $theme_location == 'footer' ? 'usa-footer-primary-link' : '';
 
+    // loop through the list of links, add some escaped markup, the before and afters, as well as the lable
     foreach($link_arr as $url => $label)
-        $links[] = $link_before . '<a class="'.$link_class.'" href="' . $url . '">' . $before . $label . $after . '</a>' . $link_after;
+        $links[] = $link_before . '<a class="'.esc_attr($link_class).'" href="' . esc_attr($url) . '">' . $before . $label . $after . '</a>' . $link_after;
 
     // We have a list
     if ( FALSE !== stripos( $items_wrap, '<ul' )

@@ -72,8 +72,8 @@ gulp.task('front-js',['clean:front-js'], function(){
   .pipe(plumber({ errorHandler: handleErrors }))
   .pipe(browserified)
   .pipe(minify())
-  .pipe(gulp.dest( paths.assetsPath + '/js' ))
-  .pipe(notify({message: 'JS complete'}));
+  .pipe(gulp.dest( paths.assetsPath + '/js' ));
+  // .pipe(notify({message: 'JS complete'}));
 
 });
 
@@ -91,16 +91,17 @@ gulp.task('clean:front-js', function() {
  */
 gulp.task('front-css', ['front-scss'], function() {
 
+  // removing the red theme for now
+  // paths.assetsPath + '/css/benjamin-red.css'
   return gulp.src([
       paths.assetsPath + '/css/benjamin.css',
       paths.assetsPath + '/css/benjamin-classic.css',
-      paths.assetsPath + '/css/benjamin-red.css'
     ])
     .pipe(plumber({ errorHandler: handleErrors }))
     .pipe(cssnano({ safe: true }))
     .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest( paths.assetsPath + '/css'))
-    .pipe(notify({message: 'CSS complete'}));
+    .pipe(gulp.dest( paths.assetsPath + '/css'));
+    // .pipe(notify({message: 'CSS complete'}));
 });
 
 
@@ -109,10 +110,11 @@ gulp.task('front-css', ['front-scss'], function() {
  */
 gulp.task('front-scss', ['clean:front-css'], function() {
 
+  // removing the red theme for now
+  // paths.srcPath+'/scss/benjamin-red.scss'
   return gulp.src([
       paths.srcPath+'/scss/benjamin.scss',
       paths.srcPath+'/scss/benjamin-classic.scss',
-      paths.srcPath+'/scss/benjamin-red.scss'
 
     ])
     .pipe(plumber({ errorHandler: handleErrors }))
@@ -185,8 +187,8 @@ gulp.task('admin-css', ['admin-sass'], function() {
     .pipe(plumber({ errorHandler: handleErrors }))
     .pipe(cssnano({ safe: true }))
     .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest( paths.adminAssetsPath + '/css'))
-    .pipe(notify({message: 'CSS complete'}));
+    .pipe(gulp.dest( paths.adminAssetsPath + '/css'));
+    // .pipe(notify({message: 'CSS complete'}));
 });
 
 
@@ -236,8 +238,8 @@ gulp.task('admin-js',['clean:admin-js'], function () {
   .pipe(plumber({ errorHandler: handleErrors }))
   .pipe(browserified)
   .pipe(minify())
-  .pipe(gulp.dest( paths.adminAssetsPath + '/js' ))
-  .pipe(notify({message: 'JS complete'}));
+  .pipe(gulp.dest( paths.adminAssetsPath + '/js' ));
+  // .pipe(notify({message: 'JS complete'}));
 });
 
 

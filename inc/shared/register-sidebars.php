@@ -6,6 +6,10 @@
  */
 
 
+/**
+ * Register the widget areas, and determine the width of said area to use to 
+ * size the widgets correctly
+ */
 function benjamin_widgets_init() {
     $templates = benjamin_the_template_list(true);
     $sidebars = wp_get_sidebars_widgets();
@@ -58,6 +62,12 @@ function benjamin_widgets_init() {
 add_action( 'init', 'benjamin_widgets_init' );
 
 
+/**
+ * Count the number of widgets set in an a widget area, this is used to automatically
+ * resize all the widgets to take up the full width of the area
+ * @param  [type] $count [description]
+ * @return [type]        [description]
+ */
 function benjamin_calculate_widget_width($count){
 
 
@@ -86,6 +96,12 @@ function benjamin_calculate_widget_width($count){
     endswitch;
 
 }
+
+
+/**
+ * Deactivate and hide the widget area if it is not "active"
+ * @return [type] [description]
+ */
 function benjamin_hide_inactive_templates_on_widget_screen(){
     $screen = get_current_screen();
 
@@ -105,16 +121,21 @@ function benjamin_hide_inactive_templates_on_widget_screen(){
 
     $templates = benjamin_the_template_list(true);
 
+    // loop through all the templates
     foreach($templates as $name => $args){
+        // if we are on the feed/default (archive) template or that template's settings 
+        // have bene activated, then skip it.
         if( $name == 'archive' || get_theme_mod($name.'_settings_active') == 'yes' )
             continue;
 
+        // skip the following areas
         $skip_horz = array('banner-widget-area-1','banner-widget-area-2');
+        // loop through the list of horizontal areas
         foreach($horizontals as $area){
 
             $setting = strtok($area, '-');
             $sortables = get_theme_mod($setting . '_sortables_setting', null);
-
+            // if the area is active, then add it to the skip list
             $target = ltrim(ltrim($area, $setting), '-');
             if(strpos($sortables, $target) )
                 $skip_horz[] = $area;
