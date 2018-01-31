@@ -12,6 +12,33 @@ function benjamin_site_identity($wp_customize) {
     $standard = array('#112e51', '#02bfe7','#e31c3d', '#ffffff', '#f1f1f1', '#d6d7d9');
     $red = array('#912b27', '#ba1b16','#046b99', '#ffffff', '#f1f1f1', '#d6d7d9');
 
+
+    /**
+     * Label
+     */
+    $wp_customize->add_setting(
+        'custom_logo_warning', array(
+            'default' => 'none',
+            'sanitize_callback' => 'wp_filter_nohtml_kses',
+        )
+    );
+
+
+    $wp_customize->add_control(
+        new Benjamin_Label_Custom_Control(
+            $wp_customize,
+            'custom_logo_warning_control',
+            array(
+                'label' => __('Logo', 'benjamin'),
+                'type' => 'label',
+                'section' => 'title_tagline',
+                'settings' => 'custom_logo_warning',
+                'description' => 'The logo appears in the navbar and must be toggled in the header settings section.',
+                'priority' => 1
+            )
+        )
+    );
+
     // color scheme
     $wp_customize->add_setting( 'color_scheme_setting', array(
         'default' => 'standard',
@@ -19,6 +46,8 @@ function benjamin_site_identity($wp_customize) {
         )
     );
 
+    // removing red color scheme for now
+    // 'red' => $red,
     $description = 'Benjamin currently comes with 3 premade color schemes, like color swatches.';
     $wp_customize->add_control( new Benjamin_Color_Scheme_Custom_Control(
         $wp_customize, 'color_scheme_control', array(
@@ -29,7 +58,6 @@ function benjamin_site_identity($wp_customize) {
             'choices' => array(
                         'standard' => $standard,
                         'classic' => $classic,
-                        'red' => $red,
                     )
             )
         )
@@ -55,37 +83,3 @@ function benjamin_site_identity($wp_customize) {
 
 }
 add_action('customize_register', 'benjamin_site_identity');
-
-
-/**
- * ----------------------------------------------------------------------------
- * Sanitization settings
- * ----------------------------------------------------------------------------
- */
-
-
-function benjamin_sidebar_width_sanitize($val) {
-    $valids = array(
-        'BENJAMIN_ONE_THIRD',
-        'BENJAMIN_ONE_FOURTH',
-    );
-
-    if( !in_array($val, $valids) )
-        $val = 'BENJAMIN_ONE_THIRD';
-
-    return $val;
-}
-
-
-function benjamin_color_scheme_sanitize($val) {
-    $valids = array(
-        'standard',
-        'classic',
-        'red'
-    );
-
-    if( !in_array($val, $valids) )
-        return null;
-
-    return $val;
-}

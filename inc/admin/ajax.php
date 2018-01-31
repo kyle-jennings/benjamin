@@ -2,9 +2,8 @@
 
 
 function benjamin_ajax_video() {
-    if(isset($_POST['data'])) {
+    if(isset($_POST['data']))
         $url = esc_url_raw( wp_unslash( $_POST['data'] ) );
-    }
     else
         wp_die();
 

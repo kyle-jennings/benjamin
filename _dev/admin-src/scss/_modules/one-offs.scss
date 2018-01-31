@@ -15,11 +15,15 @@
     margin-bottom: 5px;
     text-align: center;
 
-    > .wp-video,
-    iframe {
+    iframe,
+    video,
+    > .wp-video {
+        margin-bottom: -4px;
         max-width: 100% !important;
+        height: auto;
     }
 }
+
 
 
 .js--video-url {

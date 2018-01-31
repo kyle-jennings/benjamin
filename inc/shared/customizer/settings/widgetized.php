@@ -33,32 +33,3 @@ function benjamin_widgetized_settings($wp_customize) {
 
 }
 add_action('customize_register', 'benjamin_widgetized_settings');
-
-
-/**
- * ----------------------------------------------------------------------------
- * Sanitization settings
- * ----------------------------------------------------------------------------
- */
-
-
-function benjamin_widgetized_sortable_sanitize($val) {
-    $valids = array(
-        'widget-area-1',
-        'widget-area-2',
-        'widget-area-3',
-        'page-content',
-    );
-
-    $valid = true;
-    $tmp_val = json_decode($val);
-    foreach($tmp_val as $v){
-        if( !in_array($v->name, $valids) )
-            $valid = false;
-    }
-
-    if(!$valid)
-        return null;
-
-    return $val;
-}

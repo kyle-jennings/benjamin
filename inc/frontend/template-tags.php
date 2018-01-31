@@ -7,38 +7,38 @@
  * @package Benjamin
  */
 
- function benjamin_get_hero_meta(){
+function benjamin_get_hero_meta(){
 
-     $post = get_queried_object();
-     $id = $post->ID;
-     $aid = $post->post_author;
+    $post = get_queried_object();
+    $id = $post->ID;
+    $aid = $post->post_author;
 
-     $m = get_the_time('m');
-     $d = get_the_date('F j');
-     $y = get_the_time('Y');
+    $m = get_the_time('m');
+    $d = get_the_date('F j');
+    $y = get_the_time('Y');
 
-     $month_url = get_month_link($y, $m);
-     $year_url = get_year_link($y);
-     $date = '';
-     $date .= '<a class="entry-date published" href="'.$month_url.'">'.$d.'</a>, ';
-     $date .= '<a class="entry-date published" href="'.$year_url.'">'.$y.'</a>';
+    $month_url = get_month_link($y, $m);
+    $year_url = get_year_link($y);
+    $date = '';
+    $date .= '<a class="entry-date published" href="'.$month_url.'">'.$d.'</a>, ';
+    $date .= '<a class="entry-date published" href="'.$year_url.'">'.$y.'</a>';
 
 
-     $author = '<span class="author vcard">';
-     if ( function_exists( 'coauthors_posts_links' ) ) {
-         $author .= coauthors_posts_links(null, null, null, null, false);
-     } else {
-         $author .= '<a class="url fn n"
-             href="' . get_author_posts_url( $aid ) . '">';
-             $author .= get_the_author_meta('display_name', $aid);
-         $author .= '</a>';
-     }
+    $author = '<span class="author vcard">';
+    if ( function_exists( 'coauthors_posts_links' ) ) {
+        $author .= coauthors_posts_links(null, null, null, null, false);
+    } else {
+     $author .= '<a class="url fn n"
+        href="' . get_author_posts_url( $aid ) . '">';
+        $author .= get_the_author_meta('display_name', $aid);
+     $author .= '</a>';
+    }
 
-     $author .= '</span>';
+    $author .= '</span>';
 
-     return '<span class="posted-on">' . $date . '</span>
-         <span class="byline"> - ' . $author . '</span>';
- }
+    return '<span class="posted-on">' . $date . '</span>
+     <span class="byline"> - ' . $author . '</span>';
+}
 
 
 function benjamin_posted_on() {
@@ -170,7 +170,5 @@ function benjamin_get_custom_tax_terms($id = null, $post_type = null) {
     foreach($taxonomy_names as $tax)
         $terms += wp_get_post_terms($id, $tax);
 
-
-    // examine(wp_get_post_terms($id, 'topics'));
     return $terms;
 }

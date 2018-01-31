@@ -44,7 +44,7 @@ function benjamin_the_template_list($use_widget_areas = false) {
             'label' => 'Single Post',
             /* translators:  warning about activating the widget areas. */
             'description' => sprintf( __('<p>The "single post" is what you see when viewing
-            a single blog post, or single custom post type.</p> %s.', 'benjamin'), $desc_warning),
+            a single blog post, or single custom post type.</p> %s', 'benjamin'), $desc_warning),
             /* translators: the page template name. */
             'widget_description' => sprintf( __('These widgets appear on %s
             in the sidebar located on the right or left of the page.', 'benjamin'), 'single posts' )
@@ -127,59 +127,59 @@ function benjamin_the_template_list($use_widget_areas = false) {
 
     $widget_areas = array(
         'banner-widget-area-1' => array(
-            'label' => 'Banner Widget Area 1',
+            'label' => __('Banner Widget Area 1', 'benjamin'),
             'widget_description' => __('The banner is made up widget areas and are
             optionally used.  The banner is expandable only if widgets have been set.', 'benjamin')
         ),
         'banner-widget-area-2' => array(
-            'label' => 'Banner Widget Area 2',
+            'label' => __('Banner Widget Area 2', 'benjamin'),
             'widget_description' => __('The banner is made up widget areas and are
             optionally used.  The banner is expandable only if widgets have been set.', 'benjamin')
         ),
         'frontpage-widget-area-1' => array(
-            'label' => 'Frontpage Widget Area 1',
+            'label' => __('Frontpage Widget Area 1', 'benjamin'),
             'widget_description' => __('The frontpage content is made up of sortable,
             horizontal widget areas.  This is one of those areas and is
             optionally used.', 'benjamin')
         ),
         'frontpage-widget-area-2' => array(
-            'label' => 'Frontpage Widget Area 2',
+            'label' => __('Frontpage Widget Area 2', 'benjamin'),
             'widget_description' => __('The frontpage content is made up of sortable,
             horizontal widget areas.  This is one of those areas and is
             optionally used.', 'benjamin')
         ),
         'frontpage-widget-area-3' => array(
-            'label' => 'Frontpage Widget Area 3',
+            'label' => __('Frontpage Widget Area 3', 'benjamin'),
             'widget_description' => __('The frontpage content is made up of sortable,
             horizontal widget areas.  This is one of those areas and is
             optionally used.', 'benjamin')
         ),
         'widgetized-widget-area-1' => array(
-            'label' => 'Widgetized Page Area 1',
+            'label' => __('Widgetized Page Area 1', 'benjamin'),
             'widget_description' => __('The Widgetized page content is made up of
             sortable, horizontal widget areas.  This is one of those areas and
             is optionally used.', 'benjamin')
         ),
         'widgetized-widget-area-2' => array(
-            'label' => 'Widgetized Page Area 2',
+            'label' => __('Widgetized Page Area 2', 'benjamin'),
             'widget_description' => __('The Widgetized page content is made up of
             sortable, horizontal widget areas.  This is one of those areas and
             is optionally used.', 'benjamin')
         ),
         'widgetized-widget-area-3' => array(
-            'label' => 'Widgetized Page Area 3',
+            'label' => __('Widgetized Page Area 3', 'benjamin'),
             'widget_description' => __('The Widgetized page is full sortable, horizontal
             widget areas.  This is one of those areas and is optionally used.',
             'benjamin')
         ),
         'footer-widget-area-1' => array(
-            'label' => 'Footer Widget Area 1',
+            'label' => __('Footer Widget Area 1', 'benjamin'),
             'widget_description' => __('The footer area is sortable and contains two
             optional widget areas.  To use these widgets, remember to setup the
             footer in the customizer.', 'benjamin')
         ),
         'footer-widget-area-2' => array(
-            'label' => 'Footer Widget Area 2',
+            'label' => __('Footer Widget Area 2', 'benjamin'),
             'widget_description' => __('The footer area is sortable and contains two
             optional widget areas.  To use these widgets, remember to setup the
             footer in the customizer.', 'benjamin')

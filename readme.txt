@@ -22,7 +22,7 @@ Standards are a library of design guidelines and code to help government
 developers and designers quickly create trustworthy, accessible, and consistent
 digital government services.
 
-Theme Demo: https://uswds.sites.usa.gov
+Theme Demo: https://benjamin.kylejennings.codes
 
 == Installation ==
 

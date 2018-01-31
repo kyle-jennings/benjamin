@@ -1,34 +1,39 @@
 <?php
 
 function benjamin_get_navbar_brand() {
-    $logo_tag = 'em';
+
     $brand = get_theme_mod('navbar_brand_setting', 'text');
 
     $output = '';
-    if( $brand == 'text' ):
+    if($brand == 'logo'):
+
+        $url = esc_url( benjamin_get_custom_logo() );
+    
+        $img = $url
+            ? '<img src="'.$url.'" alt="'.get_bloginfo( 'name', 'display' ).'">'
+            : get_bloginfo( 'name', 'display' );
 
         $output .= '<div class="usa-logo" id="logo">';
-            $output .= '<'.$logo_tag.' class="usa-logo-text">';
-                $output .= '<a href="'.get_home_url().'" >'.get_bloginfo( 'name', 'display' ).'</a>';
-            $output .= '</'.$logo_tag.'>';
+            $output .= '<em class="usa-logo-text usa-logo-image">';
+                $output .= '<a href="'.get_home_url().'" >';
+                    $output .= $img;
+                $output .= '</a>';
+            $output .= '</em>';
         $output .= '</div>';
+        
+        return $output;
     else:
 
-        $url = esc_url(benjamin_get_custom_logo());
         $output .= '<div class="usa-logo" id="logo">';
-            $output .= '<'.$logo_tag.' class="usa-logo-text usa-logo-image">';
-                $output .= '<a href="'.get_home_url().'" >';
-
-                    $output .= $url
-                        ? '<img src="'.$url.'" alt="'.get_bloginfo( 'name', 'display' ).'">'
-                        : get_bloginfo( 'name', 'display' );
-
-                $output .= '</a>';
-            $output .= '</'.$logo_tag.'>';
+            $output .= '<em class="usa-logo-text">';
+                $output .= '<a href="'.get_home_url().'" >'.get_bloginfo( 'name', 'display' ).'</a>';
+            $output .= '</em>';
         $output .= '</div>';
+        
+        return $output;
+
     endif;
 
-    return $output;
 }
 
 
@@ -42,8 +47,7 @@ function benjamin_get_custom_logo($logo_id = null){
     $logo_id = get_theme_mod('custom_logo', null);
     if(!$logo_id)
         return false;
-
-    $thumb_id = get_post_thumbnail_id($logo_id);
+    
     $thumb_url_array = wp_get_attachment_image_src($logo_id, 'full', true);
 
     if( strpos(reset($thumb_url_array), 'wp-includes/images/media/default.png') )
