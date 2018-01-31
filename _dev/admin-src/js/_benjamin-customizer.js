@@ -8,6 +8,10 @@ jQuery(document).ready(function($) {
 
   require('./sortables');
 
+
+  wp.customize.bind( 'change', function ( setting ) {
+    wp.customize.previewer.send('widgetThing', 'widgetThing');
+  });
 });
 
 window.$ = jQuery;

@@ -34,10 +34,14 @@ function benjamin_customizer_settings($wp_customize){
 add_action('customize_register', 'benjamin_customizer_settings', 50);
 
 
+/**
+ * enqueues scripts to the WordPress Customizer
+ * @return [type] [description]
+ */
 function benjamin_customizer_enqueue() {
 
-    // this script is minified, however a non minified version is included with the
-    // theme
+  // this script is minified, however a non minified version is included with the
+  // theme
 	wp_enqueue_script(
         'custom-customize',
         get_stylesheet_directory_uri() . '/inc/admin/assets/js/_benjamin-customizer-min.js',
@@ -50,6 +54,21 @@ add_action( 'customize_controls_enqueue_scripts', 'benjamin_customizer_enqueue' 
 
 
 
+/**
+ * enqueues scripts to the WordPress Previewer
+ * @return [type] [description]
+ */
+function benjamin_previewer_enqueue() {
+  wp_enqueue_script(
+        'custom-customize',
+        get_stylesheet_directory_uri() . '/assets/js/_benjamin-previewer-min.js',
+        null,
+        '20170215',
+        true
+    );
+}
+
+add_action( 'customize_preview_init', 'benjamin_previewer_enqueue' );
 
 /**
  * ----------------------------------------------------------------------------

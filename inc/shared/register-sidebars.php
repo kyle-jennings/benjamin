@@ -16,6 +16,12 @@ function benjamin_widgets_init() {
     foreach($templates as $name => $args){
         $sidebar_size = '';
 
+        if ( is_customize_preview() ) {
+            // error_log($name);
+            // error_log(json_encode(get_theme_mods()));
+        }
+
+        
         $widgets = isset($sidebars[$name]) ? $sidebars[$name] : array();
         $count = count($widgets);
 
@@ -70,7 +76,8 @@ add_action( 'init', 'benjamin_widgets_init' );
  */
 function benjamin_calculate_widget_width($count){
 
-
+    // error_log($count);
+    // error_log('-------------------');
     switch($count):
         case 1:
             return 'usa-width-one-whole';
