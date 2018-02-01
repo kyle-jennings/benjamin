@@ -1,6 +1,35 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 // 'use strict';
 
+wp.customize.bind('ready', function() {
+
+  wp.customize.bind( 'change', function ( setting ) {
+
+    if ( setting.id.indexOf( '_settings_active' ) > -1 ) {
+      var pos = setting.id.lastIndexOf('_settings_active');
+      var name = setting.id.substr(0, pos);
+      var val = setting.get();
+      var $parentSection = wp.customize.section( 'single_settings_section' ).container.find('#accordion-section-' + name);
+      $parentSection = $parentSection.prevObject;
+      var elms = [$parentSection[0], $parentSection[1]];
+
+      elms.forEach(function(elm,i,a){
+
+        if(val == 'yes') {
+          elm.classList.add('control-section-is-active');
+        } else {
+          elm.classList.remove('control-section-is-active');
+        }
+      });
+
+
+    }
+
+  });
+  
+});
+
+
 jQuery(document).ready(function($) {
 
   require('./checkbox-group');
@@ -9,14 +38,9 @@ jQuery(document).ready(function($) {
 
   require('./sortables');
 
-
-  wp.customize.bind( 'change', function ( setting ) {
-    wp.customize.previewer.send('widgetThing', 'widgetThing');
-  });
 });
 
 window.$ = jQuery;
-
 },{"./checkbox-group":2,"./load-preview-url":3,"./refresh-alert":4,"./sortables":5}],2:[function(require,module,exports){
 $('.js--checkbox-group input[type="checkbox"]').on('change', function(e){
   var $this = $(this);

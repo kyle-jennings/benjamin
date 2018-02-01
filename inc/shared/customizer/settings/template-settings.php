@@ -28,12 +28,15 @@ function benjamin_template_layout_settings($wp_customize) {
     // for each template in the template list, we set up their customizer sections
     foreach($templates as $name => $args):
 
+        $is_active = get_theme_mod($name . '_settings_active','no') == 'yes' ? 'is-active' : null;
+
         // the section's args, add the panel arg if the template is NOT the archive
         $section_args = array(
             /* translators: Displays the dynamically set label */
             'title' => sprintf( __('%s Settings', 'benjamin'), ucfirst($args['label']) ),
             'priority' => 36,
-            'description' => $args['description']
+            'description' => $args['description'],
+            'type' => $is_active,
         );
         if( $name !== 'archive')
             $section_args['panel'] = 'extra_template_settings';
