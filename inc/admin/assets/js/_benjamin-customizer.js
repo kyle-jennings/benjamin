@@ -9,7 +9,7 @@ wp.customize.bind('ready', function() {
       var pos = setting.id.lastIndexOf('_settings_active');
       var name = setting.id.substr(0, pos);
       var val = setting.get();
-      var $parentSection = wp.customize.section( 'single_settings_section' ).container.find('#accordion-section-' + name);
+      var $parentSection = wp.customize.section( name +'_settings_section' ).container.find('#accordion-section-' + name);
       $parentSection = $parentSection.prevObject;
       var elms = [$parentSection[0], $parentSection[1]];
 
