@@ -8,6 +8,16 @@
  * @package Benjamin
  */
 
+function benjamin_get_template_info($name = null) {
+
+    if(!$name)
+        return;
+
+    $templates = benjamin_the_template_list();
+    return $templates[$name];
+}
+
+
 function benjamin_the_template_list($use_widget_areas = false) {
 
 

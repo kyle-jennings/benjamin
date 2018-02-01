@@ -3,7 +3,6 @@
 
 // these files contain functions used by both the admin section and frontend
 $shared_files = array(
-    '/inc/shared/customizer.php',
     '/inc/shared/functions.php',
     '/inc/shared/template-list.php',
     '/inc/shared/theme-support.php',
@@ -16,6 +15,11 @@ $shared_files = array(
 
 foreach($shared_files as $file)
     require get_template_directory() . $file; // WPCS: xss ok.
+
+// customizer
+require get_template_directory() . '/inc/customizer/_init.php';
+
+
 
 // only load these in the admin section
 if (is_admin()) {

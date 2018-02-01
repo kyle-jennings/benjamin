@@ -1,25 +1,26 @@
 <?php
 
 $files = array(
-    'custom-controls/label.php',
-    'custom-controls/sortable.php',
-    'custom-controls/color-scheme.php',
-    'custom-controls/menu-dropdown.php',
-    'custom-controls/checkbox-group.php',
-    'settings/_sanitizations.php',
-    'settings/identity.php',
-    'settings/header.php',
-    'settings/template-settings.php',
-    'settings/frontpage.php',
-    'settings/widgetized.php',
-    'settings/footer.php',
-    'settings/404.php',
+    '_helpers.php',
+    '_sanitizations.php',
+
+    'controls/label.php',
+    'controls/sortable.php',
+    'controls/color-scheme.php',
+    'controls/menu-dropdown.php',
+    'controls/checkbox-group.php',
+    
+    'identity.php',
+    'header.php',
+    'template-settings.php',
+    'frontpage.php',
+    'widgetized.php',
+    'footer.php',
+    'page-404.php',
 );
 
 foreach($files as $file)
-    require_once 'customizer/' . $file;
-
-
+    require_once  $file;
 
 
 
