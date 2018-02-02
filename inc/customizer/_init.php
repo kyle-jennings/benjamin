@@ -75,7 +75,7 @@ function benjamin_active_callback_filter($active, $control) {
 
   $toggled_by = $control->input_attrs['data-toggled-by'];
 
-  if( strpos($toggled_by, '_settings_active') && $toggled_by !== 'archive_settings_active' ){
+  if( strpos($toggled_by, '_settings_active') && $toggled_by !== DEFAULT_TEMPLATE.'_settings_active' ){
     return 'yes' === $wp_customize->get_setting( $toggled_by )->value();
   }elseif( $control->id == '_404_page_select_control' ){
     return 'page' == $wp_customize->get_setting( '_404_page_content_setting' )->value();

@@ -6,8 +6,8 @@
 
     $sidebars = wp_get_sidebars_widgets();
 
-    if(isset($sidebars['banner-widget-area-1']) || isset($sidebars['banner-widget-area-2']) )
-        $count = count( $sidebars['banner-widget-area-1'] + $sidebars['banner-widget-area-1'] );
+    if(isset($sidebars['banner-widget-area']) )
+        $count = count( $sidebars['banner-widget-area']);
     else
         $count = 0;
 
@@ -29,23 +29,17 @@
             </div>
         </header>  <!-- end accordion header -->
 
-        <?php if($count > 0 ): ?>
+
         <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner">
 
-            <?php if( isset($sidebars['banner-widget-area-1']) && count($sidebars['banner-widget-area-1']) > 0 ): ?>
-                <div class="sortable-row sortable-row--banner-widget-area-1 cf">
-                    <?php dynamic_sidebar('banner-widget-area-1'); ?>
-                </div>
-            <?php endif; ?>
-
-            <?php if( isset($sidebars['banner-widget-area-2']) && count($sidebars['banner-widget-area-2']) > 0 ): ?>
-                <div class="sortable-row sortable-row--banner-widget-area-2 cf">
-                    <?php dynamic_sidebar('banner-widget-area-2'); ?>
+            <?php if( isset($sidebars['banner-widget-area']) ): ?>
+                <div class="sortable-row sortable-row--banner-widget-area cf">
+                    <?php dynamic_sidebar('banner-widget-area'); ?>
                 </div>
             <?php endif; ?>
 
         </div> <!-- end accordion content -->
-        <?php endif; ?>
+
 
 
     </div> <!-- end accordion -->

@@ -11,23 +11,25 @@
  * size the widgets correctly
  */
 function benjamin_widgets_init() {
-    $templates = benjamin_the_template_list(true);
+    $templates = benjamin_the_template_list(true, true);
     $sidebars = wp_get_sidebars_widgets();
     foreach($templates as $name => $args){
         $sidebar_size = '';
 
-        if ( is_customize_preview() ) {
-            // error_log($name);
-            // error_log(json_encode(get_theme_mods()));
-        }
 
         
         $widgets = isset($sidebars[$name]) ? $sidebars[$name] : array();
         $count = count($widgets);
 
+        if ( is_customize_preview() ) {
+            error_log( $name );
+            error_log( $count );
+            error_log( '---------------' );
+        }
+
+
         $horizontals = array(
-            'banner-widget-area-1',
-            'banner-widget-area-2',
+            'banner-widget-area',
             'widgetized-widget-area-1',
             'widgetized-widget-area-2',
             'widgetized-widget-area-3',
@@ -76,8 +78,6 @@ add_action( 'init', 'benjamin_widgets_init' );
  */
 function benjamin_calculate_widget_width($count){
 
-    // error_log($count);
-    // error_log('-------------------');
     switch($count):
         case 1:
             return 'usa-width-one-whole';
@@ -130,13 +130,16 @@ function benjamin_hide_inactive_templates_on_widget_screen(){
 
     // loop through all the templates
     foreach($templates as $name => $args){
-        // if we are on the feed/default (archive) template or that template's settings 
-        // have bene activated, then skip it.
-        if( $name == 'archive' || get_theme_mod($name.'_settings_active') == 'yes' )
+        
+        // if we are on the default template or that template's settings 
+        // have been activated, then skip it.
+        if( $name == DEFAULT_TEMPLATE || get_theme_mod($name.'_settings_active') == 'yes' )
             continue;
 
         // skip the following areas
-        $skip_horz = array('banner-widget-area-1','banner-widget-area-2');
+        $skip_horz = array('banner-widget-area');
+        
+
         // loop through the list of horizontal areas
         foreach($horizontals as $area){
 
