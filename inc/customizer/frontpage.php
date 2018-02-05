@@ -3,6 +3,19 @@
 
 function benjamin_frontpage_settings($wp_customize) {
 
+    // $section = 'rontpage_settings_section'; // old section
+    $section = 'static_front_page';
+
+    $label_args = array(
+        'section' => $section,
+        'setting_id' => 'frontpage_header_content_label',
+        'label' => 'Header Content Settings',
+        'control_id' => 'frontpage_header_label_control'
+    );
+    benjamin_customizer_label($wp_customize, $label_args);
+
+
+
 
     // select the what to display in the header
     $wp_customize->add_setting( 'frontpage_hero_content_setting', array(
@@ -12,8 +25,8 @@ function benjamin_frontpage_settings($wp_customize) {
 
     $wp_customize->add_control( 'frontpage_hero_content_control', array(
             'description' => __('Select what to display in the header.','benjamin'),
-            'label'   => __('Header Page Content', 'benjamin'),
-            'section' => 'frontpage_settings_section',
+            'label'   => __('Content', 'benjamin'),
+            'section' => $section,
             'settings'=> 'frontpage_hero_content_setting',
             'priority' => 1,
             'type' => 'select',
@@ -35,7 +48,7 @@ function benjamin_frontpage_settings($wp_customize) {
          array(
              'description' => __('Display a button link in the callout to a selected page','benjamin'),
              'label'   => __('Callout Button Link', 'benjamin'),
-             'section' => 'frontpage_settings_section',
+             'section' => $section,
              'settings'=> 'frontpage_hero_callout_setting',
              'type'    => 'dropdown-pages',
              'priority' => 1,
@@ -51,7 +64,7 @@ function benjamin_frontpage_settings($wp_customize) {
 
     $wp_customize->add_control( 'frontpage_hero_page_control', array(
             'label'   => __('Select a Page', 'benjamin'),
-            'section' => 'frontpage_settings_section',
+            'section' => $section,
             'settings'=> 'frontpage_hero_page_setting',
             'type'    => 'dropdown-pages',
             'priority' => 1,
@@ -77,7 +90,7 @@ function benjamin_frontpage_settings($wp_customize) {
         'frontpage_sortables_control', array(
             'description' => $description,
             'label'   => __('Sortable Page Content', 'benjamin'),
-            'section' => 'frontpage_settings_section',
+            'section' => $section,
             'settings'=> 'frontpage_sortables_setting',
             'priority' => 1,
             'optional' => true,

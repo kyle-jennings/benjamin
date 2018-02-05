@@ -1,6 +1,21 @@
 <?php
 
+
+
 function benjamin_404_settings($wp_customize) {
+
+
+    $template = benjamin_get_template_info('_404');
+    $section = '404_content_section';
+
+    $section_args = array(
+        'section' => $section,
+        'title' => '404 Page',
+        'description' => $template['description'],
+    );
+
+
+    benjamin_customize_section( $wp_customize, $section_args );
 
     // Should we display a page in the header?
     $wp_customize->add_setting( '_404_header_page_content_setting', array(
@@ -11,7 +26,7 @@ function benjamin_404_settings($wp_customize) {
     $wp_customize->add_control( '_404_header_page_content_control', array(
             'description' => __('Select page content to the header, this is great when the header size is set to full and the other page parts are hidden.','benjamin'),
             'label'   => __('Use page content in header', 'benjamin'),
-            'section' => '_404_settings_section',
+            'section' => $section,
             'settings'=> '_404_header_page_content_setting',
             'type' => 'select',
             'type'    => 'dropdown-pages',
@@ -29,7 +44,7 @@ function benjamin_404_settings($wp_customize) {
     $wp_customize->add_control( '_404_page_content_control', array(
             'description' => __('Display some default content provided by the theme or select a page to display.','benjamin'),
             'label'   => __('Page Content', 'benjamin'),
-            'section' => '_404_settings_section',
+            'section' => $section,
             'settings'=> '_404_page_content_setting',
             'priority' => 1,
             'type' => 'select',
@@ -48,7 +63,7 @@ function benjamin_404_settings($wp_customize) {
 
     $wp_customize->add_control( '_404_page_select_control', array(
             'label'   => __('Select a Page', 'benjamin'),
-            'section' => '_404_settings_section',
+            'section' => $section,
             'settings'=> '_404_page_select_setting',
             'type'    => 'dropdown-pages',
             'priority' => 1,

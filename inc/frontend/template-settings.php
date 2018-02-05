@@ -56,14 +56,16 @@ function benjamin_get_template() {
         return $cpt;
     elseif ( is_single() && $single = benjamin_is_single() ) :
         return $single;
-    elseif ( is_page() && $page = benjamin_is_page()) :
+    elseif ( is_page() && $page = benjamin_is_page()  && !is_front_page() ) :
         return $page;
     elseif (is_404() && benjamin_settings_active('_404') ) :
         return '_404';
     elseif( is_post_type_archive( benjamin_get_cpts()) && $cpt = benjamin_which_cpt('feed') ) :
         return $cpt;
-    else :
-        return benjamin_is_feed();
+    elseif( $feed = benjamin_is_feed() ) :
+        return $feed;
+    else:
+        return DEFAULT_TEMPLATE;
     endif;
 }
 
@@ -106,8 +108,10 @@ function benjamin_is_feed(){
         return 'author';
     }elseif( is_date() && benjamin_settings_active('date') ){
         return 'date';
-    }else{
+    }elseif( (is_archive() || is_home() ) && benjamin_settings_active('archive')){
         return 'archive';
+    }else{
+        return null;
     }
 }
 

@@ -4,6 +4,18 @@
 
 function benjamin_widgetized_settings($wp_customize) {
 
+    $section = 'widgetized_content_section';
+    $template = benjamin_get_template_info('widgetized');
+
+    $section_args = array(
+        'section' => $section,
+        'title' => 'Widgetized Page',
+        'description' => $template['description'],
+    );
+
+
+    benjamin_customize_section( $wp_customize, $section_args );
+
 
     $wp_customize->add_setting( 'widgetized_sortables_setting', array(
         'default'        => '[{"name":"page-content","label":"Page Content"}]',
@@ -17,8 +29,8 @@ function benjamin_widgetized_settings($wp_customize) {
     $wp_customize->add_control( new Benjamin_Sortable_Control( $wp_customize,
        'widgetized_sortables_control', array(
            'label'   => __('Sortable Page Content', 'benjamin'),
-           'description' => $description,
-           'section' => 'widgetized_settings_section',
+           'description' => sprintf( __('%s', 'benjamin'), $description ),
+           'section' => $section,
            'settings'=> 'widgetized_sortables_setting',
            'optional' => true,
            'choices' => array(
@@ -29,7 +41,7 @@ function benjamin_widgetized_settings($wp_customize) {
                )
            )
        )
-   );
+    );
 
 }
 add_action('customize_register', 'benjamin_widgetized_settings');

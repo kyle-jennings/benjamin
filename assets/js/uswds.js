@@ -1456,7 +1456,15 @@ if(windowWidth > 600) {
 }
 
 },{}],25:[function(require,module,exports){
+var $hero = document.querySelector('.usa-hero--full');
+var $navbar = document.querySelector('.usa-header');
+var $banner = document.querySelector('.usa-banner');
+
+// console.log($navbar.offsetHeight + $banner.offsetHeight);
+// console.log($hero.offsetHeight);
+// console.log('width:'+($navbar.offsetHeight + $banner.offsetHeight)+'px'); 
+},{}],26:[function(require,module,exports){
 require('uswds');
 require('./mobile-video-bg');
-
-},{"./mobile-video-bg":24,"uswds":20}]},{},[25]);
+require('./resize-hero');
+},{"./mobile-video-bg":24,"./resize-hero":25,"uswds":20}]},{},[26]);

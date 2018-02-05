@@ -26,4 +26,9 @@ define('BENJAMIN_ONE_FOURTH' , 'usa-width-one-fourth');
 define('BENJAMIN_THREE_FOURTHS' , 'usa-width-three-fourths');
 define('BENJAMIN_ONE_HALF' , 'usa-width-one-half');
 
+
+// misc
+define('DEFAULT_TEMPLATE', 'default');
+
+
 require_once get_template_directory() . '/inc/_inc.php';

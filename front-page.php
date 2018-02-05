@@ -37,7 +37,6 @@ if( !$hide_content ):
 
     <div class="main-content <?php echo esc_attr($main_width); ?>">
     	<?php
-            // inc/frontend/page-sortables.php
             benjamin_page_sortables('frontpage_sortables_setting');
         ?>
     </div>

@@ -1,19 +1,48 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 // 'use strict';
 
-jQuery(document).ready(function($) {
 
-  require('./checkbox-group');
-  require('./load-preview-url');
-  require('./refresh-alert');
-
-  require('./sortables');
-
-});
+require('./load-preview-url');
+require('./layout-settings-flag');
+require('./count-widgets');
 
 window.$ = jQuery;
 
-},{"./checkbox-group":2,"./load-preview-url":3,"./refresh-alert":4,"./sortables":5}],2:[function(require,module,exports){
+jQuery(document).ready(function($) {
+
+  require('./checkbox-group');
+  require('./sortables');
+  // require('./refresh-alert');
+
+});
+
+
+
+//  js/fe-loader.js
+// jQuery(window).on("load", function() {
+ 
+//     monitor_events('wp.customize');
+//     monitor_events('wp.customize.previewer');
+//     monitor_events('wp.customize.control');
+//     monitor_events('wp.customize.section');
+//     monitor_events('wp.customize.panel');
+//     monitor_events('wp.customize.state');
+ 
+//     function monitor_events( object_path ) {
+//         var p = eval(object_path);
+//         var k = _.keys(p.topics);
+//         console.log( object_path + " has events ", k);
+//         _.each(k, function(a) {
+//             p.bind(a, function() {
+//                 console.log( object_path + ' event ' + a, arguments );
+//             });
+//         });
+//     }
+// });
+
+
+
+},{"./checkbox-group":2,"./count-widgets":3,"./layout-settings-flag":4,"./load-preview-url":5,"./sortables":6}],2:[function(require,module,exports){
 $('.js--checkbox-group input[type="checkbox"]').on('change', function(e){
   var $this = $(this);
   var $parent = $this.closest('.js--checkbox-group');
@@ -49,6 +78,104 @@ function save_checkbox_group_value(key, componentsStr, $field){
 }
 
 },{}],3:[function(require,module,exports){
+wp.customize.bind('ready', function() {
+
+
+  var sidebars = [
+    'banner-widget-area',
+    'widgetized-widget-area-1',
+    'widgetized-widget-area-2',
+    'widgetized-widget-area-3',
+    'frontpage-widget-area-1',
+    'frontpage-widget-area-2',
+    'frontpage-widget-area-3',
+    'footer-widget-area-1',
+    'footer-widget-area-2',
+  ];
+
+  sidebars.forEach(function(e,i,a){
+    
+    var sidebar = 'sidebars_widgets[' + e + ']';
+    
+    if( wp.customize( sidebar ) == null )
+      return;
+
+    wp.customize( sidebar, function( sidebarSetting ) {
+      sidebarSetting.bind( function( newWidgetIds, oldWidgetIds ) {
+
+        var count = wp.customize( sidebar ).get().length;
+        
+        getWidgetSize(count, e );
+
+      });
+    } );
+
+  });
+
+});
+
+
+function getWidgetSize(count, sidebar) {
+  
+  if(count == null)
+    return;
+
+
+
+  var data = {
+    "action": "benjamin_calculate_widget_width",
+    "data": count
+  };
+
+
+  $.ajax({
+    type: 'post',
+    url: ajaxurl,
+    data: data,
+
+    complete: function(response){
+      var output = response.responseText;
+      sendWidthToPreviewer(output, sidebar);
+    }
+  });
+
+}
+
+
+function sendWidthToPreviewer(className, sidebar) {
+  wp.customize.previewer.send('widgetWidthClasses', {className: className, sidebar: sidebar} );
+}
+},{}],4:[function(require,module,exports){
+
+wp.customize.bind('ready', function() {
+
+  wp.customize.bind( 'change', function ( setting ) {
+
+    if ( setting.id.indexOf( '_settings_active' ) > -1 ) {
+      var pos = setting.id.lastIndexOf('_settings_active');
+      var name = setting.id.substr(0, pos);
+      var val = setting.get();
+      var $parentSection = wp.customize.section( name +'_settings_section' ).container.find('#accordion-section-' + name);
+      $parentSection = $parentSection.prevObject;
+      var elms = [$parentSection[0], $parentSection[1]];
+
+      elms.forEach(function(elm,i,a){
+
+        if(val == 'yes') {
+          elm.classList.add('control-section-is-active');
+        } else {
+          elm.classList.remove('control-section-is-active');
+        }
+      });
+
+
+    }
+
+  });
+  
+});
+
+},{}],5:[function(require,module,exports){
 function randomString(length, chars) {
     var result = '';
     for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
@@ -83,13 +210,7 @@ function randomString(length, chars) {
 
 } ( wp.customize ) );
 
-},{}],4:[function(require,module,exports){
-window.refreshAlert = function() {
-
-  $('#save').addClass('alert alert--refresh').val('Save and Refresh');
-}
-
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 
 frontpageSortables = benjaminSortable('.js--frontpage-sortables');
 widgetizedSortables = benjaminSortable('.js--widgetized-sortables');

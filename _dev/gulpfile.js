@@ -68,6 +68,7 @@ gulp.task('front-js',['clean:front-js'], function(){
 
   return gulp.src([
     paths.srcPath + '/js/uswds.js',
+    paths.srcPath + '/js/_benjamin-previewer.js',
   ] )
   .pipe(plumber({ errorHandler: handleErrors }))
   .pipe(browserified)
@@ -293,11 +294,12 @@ gulp.task('css', function(){
  */
 gulp.task('build', function(){
   // gulp.start('fonts');
-  gulp.start('front-js');
-  gulp.start('admin-js');
   // gulp.start('img');
-  gulp.start('front-css');
+  gulp.start('admin-js');
+  gulp.start('front-js');
+  
   gulp.start('admin-css');
+  gulp.start('front-css');
 });
 
 /**
@@ -315,7 +317,8 @@ gulp.task('default', function(){
 gulp.task('watch', function() {
   gulp.start('build');
   gulp.watch(paths.adminJSGlob,['admin-js']);
-  gulp.watch(paths.scssGlob, ['front-css']);
   gulp.watch(paths.jsGlob, ['front-js']);
+  
   gulp.watch(paths.adminScssGlob, ['admin-css']);
+  gulp.watch(paths.scssGlob, ['front-css']);
 });

@@ -8,36 +8,18 @@
  */
 function benjamin_site_identity($wp_customize) {
 
+
+    $logo_desc = 'The logo appears in the navbar and must be toggled in the 
+    <a href="javascript:wp.customize.control( \'navbar_brand_control\' ).focus();">header settings section</a>.';
+
+    $wp_customize->get_control( 'custom_logo' )->description = $logo_desc;
+
+
     $classic = array('#0c555d', '#399099', '#ff5049', '#ffffff', '#f5f5f5', '#000000');
     $standard = array('#112e51', '#02bfe7','#e31c3d', '#ffffff', '#f1f1f1', '#d6d7d9');
     $red = array('#912b27', '#ba1b16','#046b99', '#ffffff', '#f1f1f1', '#d6d7d9');
 
 
-    /**
-     * Label
-     */
-    $wp_customize->add_setting(
-        'custom_logo_warning', array(
-            'default' => 'none',
-            'sanitize_callback' => 'wp_filter_nohtml_kses',
-        )
-    );
-
-
-    $wp_customize->add_control(
-        new Benjamin_Label_Custom_Control(
-            $wp_customize,
-            'custom_logo_warning_control',
-            array(
-                'label' => __('Logo', 'benjamin'),
-                'type' => 'label',
-                'section' => 'title_tagline',
-                'settings' => 'custom_logo_warning',
-                'description' => 'The logo appears in the navbar and must be toggled in the header settings section.',
-                'priority' => 1
-            )
-        )
-    );
 
     // color scheme
     $wp_customize->add_setting( 'color_scheme_setting', array(

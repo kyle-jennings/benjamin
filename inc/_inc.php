@@ -3,7 +3,6 @@
 
 // these files contain functions used by both the admin section and frontend
 $shared_files = array(
-    '/inc/shared/customizer.php',
     '/inc/shared/functions.php',
     '/inc/shared/template-list.php',
     '/inc/shared/theme-support.php',
@@ -11,12 +10,16 @@ $shared_files = array(
     '/inc/shared/jetpack.php',
     '/inc/shared/register-sidebars.php',
     '/inc/shared/widgets.php',
-    '/inc/shared/video-markup.php',
     '/inc/shared/set-default-settings.php',
 );
 
 foreach($shared_files as $file)
     require get_template_directory() . $file; // WPCS: xss ok.
+
+// customizer
+require get_template_directory() . '/inc/customizer/_init.php';
+
+
 
 // only load these in the admin section
 if (is_admin()) {
@@ -24,7 +27,6 @@ if (is_admin()) {
         '/inc/admin/ajax.php',
         '/inc/admin/assets.php',
         '/inc/admin/metabox-featured-post.php',
-        '/inc/admin/metabox-featured-video.php',
     );
     foreach($files as $file)
         require get_template_directory() . $file; // WPCS: xss ok.
