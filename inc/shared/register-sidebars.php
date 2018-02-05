@@ -21,13 +21,6 @@ function benjamin_widgets_init() {
         $widgets = isset($sidebars[$name]) ? $sidebars[$name] : array();
         $count = count($widgets);
 
-        if ( is_customize_preview() ) {
-            error_log( $name );
-            error_log( $count );
-            error_log( '---------------' );
-        }
-
-
         $horizontals = array(
             'banner-widget-area',
             'widgetized-widget-area-1',
@@ -58,7 +51,7 @@ function benjamin_widgets_init() {
     		'id'            => (string) $name,
             /* translators: sidebar description. */
     		'description'   => sprintf(  '%s', $description ),
-    		'before_widget' => '<div id="%1$s" class="widget '.$width.'">',
+    		'before_widget' => '<div id="%1$s" class="widget widget-area--' . $name . ' '. $width . '">',
     		'after_widget'  => '</div>',
     		'before_title'  => '<h3 class="widget-title">',
     		'after_title'   => '</h3>',

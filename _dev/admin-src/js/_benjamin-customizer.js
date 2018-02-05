@@ -1,42 +1,42 @@
 // 'use strict';
 
-wp.customize.bind('ready', function() {
 
-  wp.customize.bind( 'change', function ( setting ) {
+require('./load-preview-url');
+require('./layout-settings-flag');
+require('./count-widgets');
 
-    if ( setting.id.indexOf( '_settings_active' ) > -1 ) {
-      var pos = setting.id.lastIndexOf('_settings_active');
-      var name = setting.id.substr(0, pos);
-      var val = setting.get();
-      var $parentSection = wp.customize.section( name +'_settings_section' ).container.find('#accordion-section-' + name);
-      $parentSection = $parentSection.prevObject;
-      var elms = [$parentSection[0], $parentSection[1]];
-
-      elms.forEach(function(elm,i,a){
-
-        if(val == 'yes') {
-          elm.classList.add('control-section-is-active');
-        } else {
-          elm.classList.remove('control-section-is-active');
-        }
-      });
-
-
-    }
-
-  });
-  
-});
-
+window.$ = jQuery;
 
 jQuery(document).ready(function($) {
 
   require('./checkbox-group');
-  require('./load-preview-url');
-  require('./refresh-alert');
-
   require('./sortables');
+  // require('./refresh-alert');
 
 });
 
-window.$ = jQuery;
+
+
+//  js/fe-loader.js
+// jQuery(window).on("load", function() {
+ 
+//     monitor_events('wp.customize');
+//     monitor_events('wp.customize.previewer');
+//     monitor_events('wp.customize.control');
+//     monitor_events('wp.customize.section');
+//     monitor_events('wp.customize.panel');
+//     monitor_events('wp.customize.state');
+ 
+//     function monitor_events( object_path ) {
+//         var p = eval(object_path);
+//         var k = _.keys(p.topics);
+//         console.log( object_path + " has events ", k);
+//         _.each(k, function(a) {
+//             p.bind(a, function() {
+//                 console.log( object_path + ' event ' + a, arguments );
+//             });
+//         });
+//     }
+// });
+
+
