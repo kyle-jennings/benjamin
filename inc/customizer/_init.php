@@ -19,8 +19,9 @@ $files = array(
     'page-404.php',
 );
 
+// load all the settings files
 foreach($files as $file)
-    require_once  $file;
+  require_once  $file;
 
 
 
@@ -30,8 +31,7 @@ foreach($files as $file)
  */
 function benjamin_customizer_enqueue() {
 
-  // this script is minified, however a non minified version is included with the
-  // theme
+  // this script is minified, however a non minified version is included with the theme
 	wp_enqueue_script(
         'custom-customize',
         get_stylesheet_directory_uri() . '/inc/admin/assets/js/_benjamin-customizer-min.js',
@@ -60,12 +60,13 @@ function benjamin_previewer_enqueue() {
 
 add_action( 'customize_preview_init', 'benjamin_previewer_enqueue' );
 
+
+
 /**
  * ----------------------------------------------------------------------------
  * Active Callbacks for 5.2 support ::shakes fist::
  * ----------------------------------------------------------------------------
  */
-
 
 function benjamin_active_callback_filter($active, $control) {
   global $wp_customize;
@@ -75,13 +76,24 @@ function benjamin_active_callback_filter($active, $control) {
 
   $toggled_by = $control->input_attrs['data-toggled-by'];
 
+  // toggle controls if the template has been "activated"
   if( strpos($toggled_by, '_settings_active') && $toggled_by !== DEFAULT_TEMPLATE.'_settings_active' ){
+    
     return 'yes' === $wp_customize->get_setting( $toggled_by )->value();
-  }elseif( $control->id == '_404_page_select_control' ){
+  
+  // toggle the 404 header content page selection is "page" is selected
+  } elseif( $control->id == '_404_page_select_control' ){
+  
     return 'page' == $wp_customize->get_setting( '_404_page_content_setting' )->value();
+
+  // toggle the frontpage header content page selection is "page" is selected  
   }elseif( $control->id == 'frontpage_hero_callout_control' ) {
+  
     return 'callout' === $wp_customize->get_setting( 'frontpage_hero_content_setting' )->value();
+
+  // something else with the frontage
   }elseif( $control->id == 'frontpage_hero_page_control' ) {
+    
     return $this->checkToggableSettings($active, $control, $wp_customize );
   }
 

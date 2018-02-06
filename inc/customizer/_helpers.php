@@ -1,6 +1,8 @@
 <?php
 
-
+/**
+ * produces a customizer section
+ */
 function benjamin_customize_section( &$wp_customize, $args = array() ) {
 
     extract(shortcode_atts(
@@ -13,7 +15,6 @@ function benjamin_customize_section( &$wp_customize, $args = array() ) {
     ));
 
 
-    
     // the section's args, add the panel arg if the template is NOT the archive
     $section_args = array(
         /* translators: Displays the dynamically set label */
@@ -30,6 +31,9 @@ function benjamin_customize_section( &$wp_customize, $args = array() ) {
 }
 
 
+/**
+ * produces a "label" - this is simply to group like controls together
+ */
 function benjamin_customizer_label(&$wp_customize, $args = array() ) {
 
     extract(shortcode_atts(

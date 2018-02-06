@@ -1,15 +1,15 @@
 <?php
 
 
-    $banner_text = stripslashes( esc_html(get_theme_mod('banner_text_setting', null) ));
-    $banner_read_more = stripslashes( esc_html(get_theme_mod('banner_read_more_setting', null) ));
+$banner_text = stripslashes( esc_html(get_theme_mod('banner_text_setting', null) ));
+$banner_read_more = stripslashes( esc_html(get_theme_mod('banner_read_more_setting', null) ));
 
-    $sidebars = wp_get_sidebars_widgets();
+$sidebars = wp_get_sidebars_widgets();
 
-    if(isset($sidebars['banner-widget-area']) )
-        $count = count( $sidebars['banner-widget-area']);
-    else
-        $count = 0;
+if(isset($sidebars['banner-widget-area']) )
+    $count = count( $sidebars['banner-widget-area']);
+else
+    $count = 0;
 
 ?>
 <!-- Gov banner BEGIN -->
@@ -29,7 +29,6 @@
             </div>
         </header>  <!-- end accordion header -->
 
-
         <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner">
 
             <?php if( isset($sidebars['banner-widget-area']) ): ?>
@@ -39,8 +38,6 @@
             <?php endif; ?>
 
         </div> <!-- end accordion content -->
-
-
 
     </div> <!-- end accordion -->
 </div>

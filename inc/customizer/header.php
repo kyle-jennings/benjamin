@@ -18,26 +18,29 @@ function benjamin_header_settings($wp_customize){
         'priority'       => 30,
     ) );
 
-    // header size
-    $header_components = array(
-        'navbar' => 'Navbar',
-        'hero' => 'Hero',
-    );
-
-    if(benjamin_is_dot_gov())
-        $header_components['banner'] = 'Banner';
 
     $wp_customize->add_setting( 'header_sortables_setting', array(
         'default' => '[{"name":"navbar","label":"Navbar"},{"name":"hero","label":"Hero"}]',
         'sanitize_callback' => 'benjamin_header_sortable_sanitize',
     ) );
 
-    $description = 'The header area is made of sortable parts.  Simply drag these
-    parts around to change the order they are displayed.';
+    // header size
+    $header_components = array(
+        'navbar' => __('Navbar', 'benjamin'),
+        'hero' => __('Hero', 'benjamin'),
+    );
+
+    if(benjamin_is_dot_gov())
+        $header_components['banner'] = 'Banner';
+
+
+    $description = __('The header area is made of sortable parts.  Simply drag these
+        parts around to change the order they are displayed.', 'benjamin');
+
     $wp_customize->add_control(
         new Benjamin_Sortable_Control( $wp_customize,
             'header_sortables_control', array(
-                'description' => $description,
+                'description' => sprintf('%s', $description),
                 'label' => __('Header Order', 'benjamin'),
                 'section' => 'header_settings_section',
                 'settings' => 'header_sortables_setting',

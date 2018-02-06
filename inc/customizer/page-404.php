@@ -10,7 +10,7 @@ function benjamin_404_settings($wp_customize) {
 
     $section_args = array(
         'section' => $section,
-        'title' => '404 Page',
+        'title' => __('404 Page', 'benjamin'),
         'description' => $template['description'],
     );
 
@@ -49,8 +49,8 @@ function benjamin_404_settings($wp_customize) {
             'priority' => 1,
             'type' => 'select',
             'choices' => array(
-                'default' => 'Default',
-                'page' => 'Select a Page',
+                'default' => __('Default', 'benjamin'),
+                'page' => __('Select a Page', 'benjamin'),
             )
         )
     );

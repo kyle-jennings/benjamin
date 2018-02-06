@@ -9,10 +9,11 @@
 function benjamin_site_identity($wp_customize) {
 
 
-    $logo_desc = 'The logo appears in the navbar and must be toggled in the 
-    <a href="javascript:wp.customize.control( \'navbar_brand_control\' ).focus();">header settings section</a>.';
+    $logo_desc = __('The logo appears in the navbar and must be toggled in the ', 'benjamin');
+    $logo_desc .= '<a href="' . esc_attr("javascript:wp.customize.control( 'navbar_brand_control' ).focus();") . '">';
+    $logo_desc .= __('header settings section</a>.', 'benjamin');
 
-    $wp_customize->get_control( 'custom_logo' )->description = $logo_desc;
+    $wp_customize->get_control( 'custom_logo' )->description = sprintf('%s',$logo_desc);
 
 
     $classic = array('#0c555d', '#399099', '#ff5049', '#ffffff', '#f5f5f5', '#000000');
@@ -34,7 +35,7 @@ function benjamin_site_identity($wp_customize) {
     $wp_customize->add_control( new Benjamin_Color_Scheme_Custom_Control(
         $wp_customize, 'color_scheme_control', array(
             'description' => $description,
-            'label'   => 'Color Scheme',
+            'label'   => __('Color Scheme', 'benjamin'),
             'section' => 'title_tagline',
             'settings' => 'color_scheme_setting',
             'choices' => array(
@@ -57,8 +58,8 @@ function benjamin_site_identity($wp_customize) {
             'settings' => 'sidebar_size_setting',
             'type' => 'select',
             'choices' => array(
-                        'BENJAMIN_ONE_THIRD' => 'Wide',
-                        'BENJAMIN_ONE_FOURTH' => 'Narrow',
+                        'BENJAMIN_ONE_THIRD' => __('Wide', 'benjamin'),
+                        'BENJAMIN_ONE_FOURTH' => __('Narrow', 'benjamin'),
                     ),
         )
     );

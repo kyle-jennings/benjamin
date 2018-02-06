@@ -70,9 +70,9 @@ $wp_customize->add_setting( $name . '_hero_position_setting', array(
 ) );
 
 $choices = array(
-    'top' => 'Top',
-    'center' => 'Center',
-    'bottom' => 'Bottom',
+    'top' => __('Top', 'benjamin'),
+    'center' => __('Center', 'benjamin'),
+    'bottom' => __('Bottom', 'benjamin'),
 );
 
 $hero_position_args = array(
@@ -105,11 +105,11 @@ $hero_size_args = array(
     'settings' => $name . '_hero_size_setting',
     'type' => 'select',
     'choices' => array(
-        'slim' => 'Slim',
-        'medium' => 'Medium',
-        'big' => 'Big',
-        'xtra-big' => 'Extra Big',
-        'full' => 'Full Screen'
+        'slim' => __('Slim', 'benjamin'),
+        'medium' => __('Medium', 'benjamin'),
+        'big' => __('Big', 'benjamin'),
+        'xtra-big' => __('Extra Big', 'benjamin'),
+        'full' => __('Full Screen', 'benjamin'),
     ),
     'input_attrs' => array(
       'data-toggled-by' => $name . '_settings_active',

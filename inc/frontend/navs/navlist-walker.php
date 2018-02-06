@@ -1,6 +1,10 @@
 <?php
 
 
+
+/**
+ * Custom nav walker for the list style navs
+ */
 class BenjaminNavListWalker extends Walker_Nav_Menu {
 
 
@@ -35,12 +39,12 @@ class BenjaminNavListWalker extends Walker_Nav_Menu {
 
 
         if( $permalink && $permalink != '#' ) {
-            $output .= '<a class="'.$classes.'" href="'.$permalink.'">';
-                $output .= '<span>'.$title.'</span>';
+            $output .= '<a class="' . esc_attr($classes) . '" href="' . esc_url($permalink) . '">';
+                $output .= '<span>' . $title . '</span>';
             $output .= '</a>';
         }else{
-            $output .= '<span class="'.$classes.'">';
-                $output .= '<span>'.$title.'</span>';
+            $output .= '<span class="' . esc_attr($classes) . '">';
+                $output .= '<span>' . $title . '</span>';
             $output .= '</span>';
         }
 

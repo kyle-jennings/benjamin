@@ -12,10 +12,10 @@ $benjamin_widgets = array(
     'WP_Nav_Menu_Widget' => 'Benjamin_Nav_Menu_Widget',
     'WP_Widget_Archives' => 'Benjamin_Widget_Archives',
     'WP_Widget_Categories' => 'Benjamin_Widget_Categories',
-    'WP_Widget_Recent_Comments' => 'Benjamin_Widget_Recent_Comments',
-    'WP_Widget_Recent_Posts' => 'Benjamin_Widget_Recent_Posts',
     'WP_Widget_Meta' => 'Benjamin_Widget_Meta',
     'WP_Widget_Pages' => 'Benjamin_Widget_Pages',
+    'WP_Widget_Recent_Comments' => 'Benjamin_Widget_Recent_Comments',
+    'WP_Widget_Recent_Posts' => 'Benjamin_Widget_Recent_Posts',
 );
 
 // include the widget files

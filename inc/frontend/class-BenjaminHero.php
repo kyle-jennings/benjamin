@@ -108,7 +108,6 @@ class BenjaminHero {
             return;
 
         if( !function_exists('franklin_get_the_video_markup') ) {
-            examine('franklin_get_the_video_markup no defined');
             return;
         }
         return franklin_get_the_video_markup($this->video, 'background');

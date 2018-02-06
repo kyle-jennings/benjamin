@@ -7,56 +7,77 @@
  * @package Benjamin
  */
 
+
+/**
+ * gets the post date/link, and author name/link - used in the header area
+ * @return [type] [description]
+ */
 function benjamin_get_hero_meta(){
 
     $post = get_queried_object();
     $id = $post->ID;
     $aid = $post->post_author;
+    $aname = get_the_author_meta('display_name', $aid);
 
     $m = get_the_time('m');
     $d = get_the_date('F j');
     $y = get_the_time('Y');
 
-    $month_url = get_month_link($y, $m);
-    $year_url = get_year_link($y);
-    $date = '';
-    $date .= '<a class="entry-date published" href="'.$month_url.'">'.$d.'</a>, ';
-    $date .= '<a class="entry-date published" href="'.$year_url.'">'.$y.'</a>';
-
-
-    $author = '<span class="author vcard">';
-    if ( function_exists( 'coauthors_posts_links' ) ) {
-        $author .= coauthors_posts_links(null, null, null, null, false);
-    } else {
-     $author .= '<a class="url fn n"
-        href="' . get_author_posts_url( $aid ) . '">';
-        $author .= get_the_author_meta('display_name', $aid);
-     $author .= '</a>';
-    }
-
-    $author .= '</span>';
-
-    return '<span class="posted-on">' . $date . '</span>
-     <span class="byline"> - ' . $author . '</span>';
+    return benjamin_meta_markup($post, $aid, $aname);
 }
 
 
-function benjamin_posted_on() {
-    echo benjamin_get_posted_on(); //WPCS: xss ok.
+/**
+ * displays  benjamin_get_hero_meta() - used in the header area
+ *
+ * post date/link and author name/link
+ * @return [type] [description]
+ */
+function benjamin_hero_meta(){
+    echo benjamin_get_hero_meta();
 }
 
+
+
+/**
+ * Gets the meta information - used in the loop
+ * @return [type] [description]
+ */
 function benjamin_get_posted_on(){
     global $post;
 
     $id = get_the_ID();
+    $aid = get_the_author_meta( 'ID', $post->post_author );
+    $aname = get_the_author();
 
+    return benjamin_meta_markup($post, $aid, $aname);
+
+}
+
+
+/**
+ * displays  benjamin_get_posted_on() - used in the loop
+ *
+ * post date/link and author name/link
+ * @return [type] [description]
+ */
+function benjamin_posted_on() {
+    echo benjamin_get_posted_on(); //WPCS: xss ok.
+}
+
+
+
+/**
+ * Shared code between benjamin_get_posted_on and benjamin_get_hero_meta
+ * @return [type] [description]
+ */
+function benjamin_meta_markup($post, $aid, $aname) {
     $m = get_the_time('m');
     $d = get_the_date('F j');
     $y = get_the_time('Y');
 
     $month_url = get_month_link($y, $m);
     $year_url = get_year_link($y);
-
     $date = '';
     $date .= '<a class="entry-date published" href="' . esc_url($month_url) . '">'.$d.'</a>, ';
     $date .= '<a class="entry-date published" href="' . esc_url($year_url) . '">'.$y.'</a>';
@@ -66,20 +87,15 @@ function benjamin_get_posted_on(){
         $author .= coauthors_posts_links(null, null, null, null, false);
     } else {
         $author .= '<a class="url fn n"
-            href="' . get_author_posts_url( get_the_author_meta( 'ID', $post->post_author ) ) . '">';
-            $author .= get_the_author();
+            href="' . get_author_posts_url( $aid ) . '">';
+            $author .= $aname;
         $author .= '</a>';
     }
     $author .= '</span>';
 
-    $output = '';
-    $output .= '<span class="posted-on">' . $date . '</span>';
-    $output .= '<span class="byline"> - ' . $author . '</span>'; // WPCS: XSS OK.
-
-    return $output;
+    return '<span class="posted-on">' . $date . '</span>
+        <span class="byline"> - ' . $author . '</span>';
 }
-
-
 
 
 /**
@@ -123,7 +139,9 @@ function benjamin_entry_footer() {
 }
 
 
-
+/**
+ * Gets a list of the post's categories as links
+ */
 function benjamin_get_the_category_list($id = null) {
     $post = get_post($id);
     $post_type = $post->post_type;
@@ -152,6 +170,9 @@ function benjamin_get_the_category_list($id = null) {
 
 
 
+/**
+ * If using a custom taxonomy, we get the terms here
+ */
 function benjamin_get_custom_tax_terms($id = null, $post_type = null) {
     if(!$id)
         return;

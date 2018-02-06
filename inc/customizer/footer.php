@@ -14,10 +14,10 @@
 
 function benjamin_footer_settings($wp_customize) {
     $choices = array(
-            'return-to-top' => 'Return to Top',
-            'footer-menu' => 'Footer Menu',
-            'widget-area-1' => 'Widget Area 1',
-            'widget-area-2' => 'Widget Area 2'
+            'return-to-top' => __('Return to Top', 'benjamin'),
+            'footer-menu' => __('Footer Menu', 'benjamin'),
+            'widget-area-1' => __('Widget Area 1', 'benjamin'),
+            'widget-area-2' => __('Widget Area 2', 'benjamin'),
     );
 
     $wp_customize->add_section( 'footer_settings_section', array(
@@ -37,7 +37,7 @@ function benjamin_footer_settings($wp_customize) {
 
     $wp_customize->add_control( new Benjamin_Sortable_Control( $wp_customize,
        'footer_sortables_control', array(
-           'description' => $description,
+           'description' => sprintf('%s', $description),
            'label'   => __('Sortable Footer Parts', 'benjamin'),
            'section' => 'footer_settings_section',
            'settings'=> 'footer_sortables_setting',

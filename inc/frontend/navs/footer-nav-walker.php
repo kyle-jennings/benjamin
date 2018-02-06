@@ -1,10 +1,13 @@
 <?php
 
 
+/**
+ * Custom nav walker for the footer area navs
+ */
 class BenjaminFooterNavbarWalker extends Walker_Nav_Menu {
 
 
-	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
         $this->curItem = $item;
 
         $object = $item->object;
@@ -29,12 +32,12 @@ class BenjaminFooterNavbarWalker extends Walker_Nav_Menu {
         $link_class = ($depth == 0) ? 'usa-nav-link' : '';
 
         if( $permalink && $permalink != '#' ) {
-            $output .= '<a class="usa-footer-primary-link '.$classes.'" href="'.$permalink.'">';
-                $output .= '<span>'.$title.'</span>';
+            $output .= '<a class="usa-footer-primary-link ' . esc_attr($classes) . '" href="' . esc_attr($permalink) . '">';
+                $output .= '<span>' . $title . '</span>';
             $output .= '</a>';
         }else{
-            $output .= '<span class="usa-footer-primary-link '.$classes.'">';
-                $output .= '<span>'.$title.'</span>';
+            $output .= '<span class="usa-footer-primary-link ' . esc_attr($classes) . '">';
+                $output .= '<span>' . $title . '</span>';
             $output .= '</span>';
         }
 

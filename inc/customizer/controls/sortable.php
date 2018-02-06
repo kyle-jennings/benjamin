@@ -127,12 +127,12 @@ class Benjamin_Sortable_Control extends WP_Customize_Control
         </p>
         <div class="sortables">
 
-            <?php echo $this->sortable_list_markup('active', $target); //WPCS: xss ok. ?>
+            <?php echo $this->sortable_list_markup( __('active', 'benjamin'), $target); //WPCS: xss ok. ?>
 
 
             <?php
             if($this->optional):
-                echo $this->sortable_list_markup('available', $target); //WPCS: xss ok.
+                echo $this->sortable_list_markup( __('available', 'benjamin'), $target); //WPCS: xss ok.
             endif;
             ?>
 

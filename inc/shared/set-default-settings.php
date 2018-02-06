@@ -40,18 +40,18 @@ function benjamin_set_default_menu( $args = array() ) {
 
 
     $link_arr = array(
-        home_url() => 'Home',
-        wp_login_url() => 'Login'
+        home_url() => __('Home', 'benjamin'),
+        wp_login_url() => __('Login', 'benjamin')
     );
 
     if( is_user_logged_in() ) {
 
         $link_arr = array(
-            home_url() => 'Home',
-            admin_url() => 'Admin',
-            admin_url( 'nav-menus.php' ) => 'Add a Menu',
-            admin_url( 'customize.php' ) => 'Customize your Site',
-            wp_logout_url( home_url() ) => 'Logout'
+            home_url() => __('Home', 'benjamin'),
+            admin_url() => __('Admin', 'benjamin'),
+            admin_url( 'nav-menus.php' ) => __('Add a Menu', 'benjamin'),
+            admin_url( 'customize.php' ) => __('Customize your Site', 'benjamin'),
+            wp_logout_url( home_url() ) => __('Logout', 'benjamin')
         );
 
     }
@@ -80,12 +80,12 @@ function benjamin_set_default_menu( $args = array() ) {
         || FALSE !== stripos( $items_wrap, '<ol' )
     ){
         foreach($links as &$link)
-            $link = '<li class="'.$li_class.'">'.$link.'</li>';
+            $link = '<li class="'.esc_attr($li_class).'">'.$link.'</li>';
     }
 
     $output = sprintf( $items_wrap, $menu_id, $menu_class, implode('', $links) );
     if ( ! empty ( $container ) ) {
-        $output  = '<'.$container.' class="'.$container_class.'" id="'.$container_id.'">'.$output.'</'.$container.'>';
+        $output  = '<'.$container.' class="'.esc_attr($container_class).'" id="'.esc_attr($container_id).'">'.$output.'</'.$container.'>';
     }
 
     if ( $echo ) {

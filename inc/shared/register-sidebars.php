@@ -23,14 +23,14 @@ function benjamin_widgets_init() {
 
         $horizontals = array(
             'banner-widget-area',
-            'widgetized-widget-area-1',
-            'widgetized-widget-area-2',
-            'widgetized-widget-area-3',
+            'footer-widget-area-1',
+            'footer-widget-area-2',
             'frontpage-widget-area-1',
             'frontpage-widget-area-2',
             'frontpage-widget-area-3',
-            'footer-widget-area-1',
-            'footer-widget-area-2',
+            'widgetized-widget-area-1',
+            'widgetized-widget-area-2',
+            'widgetized-widget-area-3',
         );
 
         // $sidebar_size = benjamin_determine_widget_width_rules($pos, $name);
@@ -47,10 +47,10 @@ function benjamin_widgets_init() {
 
         $description = isset($args['widget_description']) ? $args['widget_description'] : '';
         register_sidebar( array(
-    		'name'          => ucfirst($args['label']),
+    		'name'          => sprintf(  __('%s', 'benjamin'), ucfirst($args['label']) ),
     		'id'            => (string) $name,
             /* translators: sidebar description. */
-    		'description'   => sprintf(  '%s', $description ),
+    		'description'   => sprintf(  __('%s', 'benjamin'), $description ),
     		'before_widget' => '<div id="%1$s" class="widget widget-area--' . $name . ' '. $width . '">',
     		'after_widget'  => '</div>',
     		'before_title'  => '<h3 class="widget-title">',
@@ -109,14 +109,14 @@ function benjamin_hide_inactive_templates_on_widget_screen(){
         return;
 
     $horizontals = array(
-        'widgetized-widget-area-1',
-        'widgetized-widget-area-2',
-        'widgetized-widget-area-3',
+        'footer-widget-area-1',
+        'footer-widget-area-2',
         'frontpage-widget-area-1',
         'frontpage-widget-area-2',
         'frontpage-widget-area-3',
-        'footer-widget-area-1',
-        'footer-widget-area-2',
+        'widgetized-widget-area-1',
+        'widgetized-widget-area-2',
+        'widgetized-widget-area-3',
     );
 
     $templates = benjamin_the_template_list(true);

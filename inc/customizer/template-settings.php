@@ -18,7 +18,7 @@ function benjamin_template_layout_settings($wp_customize) {
     $wp_customize->add_panel(
         'extra_template_settings',
         array(
-            'title' => 'More Templates Settings',
+            'title' => __('More Templates Settings', 'benjamin'),
             'priority' => 37,
         )
     );

@@ -1,10 +1,13 @@
 <?php
 
 
+/**
+ * Custom nav walker for the primary (top) navbar
+ */
 class BenjaminNavbarWalker extends Walker_Nav_Menu {
 
 
-    function start_lvl( &$output, $depth = 0, $args = array() ) {
+    public function start_lvl( &$output, $depth = 0, $args = array() ) {
 
         $id = 'side-nav-'.$this->curItem->menu_order;
 		$output .= '<ul class="usa-nav-submenu" id="'.$id.'" aria-hidden="true">';
@@ -14,7 +17,7 @@ class BenjaminNavbarWalker extends Walker_Nav_Menu {
         $output .= '</ul>';
     }
 
-	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 
 
         $this->curItem = $item;
@@ -41,18 +44,24 @@ class BenjaminNavbarWalker extends Walker_Nav_Menu {
         $link_class .= $classes;
 
         if($depth == 0 && $args->walker->has_children){
-            $output  .= '<button class=" usa-accordion-button usa-nav-link '.$child_active.'"
-            aria-expanded="false" aria-controls="side-nav-'.$item->menu_order.'">';
+            
+            $output  .= '<button class=" usa-accordion-button usa-nav-link ' . esc_attr( $child_active ) . '"
+            aria-expanded="false" aria-controls="side-nav-' . esc_attr($item->menu_order) . '">';
                 $output .= '<span>'.$title.'</span>';
             $output .= '</button>';
+
         }elseif( $permalink && $permalink != '#' ) {
-            $output .= '<a href="'.$permalink.'" class="'.$link_class.'">';
-                $output .= '<span>'.$title.'</span>';
+            
+            $output .= '<a href="' . esc_url($permalink) . '" class="' . esc_attr($link_class) . '">';
+                $output .= '<span>' . $title . '</span>';
             $output .= '</a>';
+
         }else{
-            $output .= '<span class="'.$link_class.'">';
-                $output .= '<span>'.$title.'</span>';
+            
+            $output .= '<span class="' . esc_attr($link_class) . '">';
+                $output .= '<span>' . $title . '</span>';
             $output .= '</span>';
+
         }
 
 	}

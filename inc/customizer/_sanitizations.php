@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * All the setting sanitizations on a single page
+ *
+ * IIRC I put these all together because many of them are being reused by multiple settings
+ */
+
+
 /**
  * 404 page
  */

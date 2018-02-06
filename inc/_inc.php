@@ -3,14 +3,14 @@
 
 // these files contain functions used by both the admin section and frontend
 $shared_files = array(
-    '/inc/shared/functions.php',
-    '/inc/shared/template-list.php',
-    '/inc/shared/theme-support.php',
     '/inc/shared/extras.php',
+    '/inc/shared/functions.php',
     '/inc/shared/jetpack.php',
     '/inc/shared/register-sidebars.php',
-    '/inc/shared/widgets.php',
     '/inc/shared/set-default-settings.php',
+    '/inc/shared/template-list.php',
+    '/inc/shared/theme-support.php',
+    '/inc/shared/widgets.php',
 );
 
 foreach($shared_files as $file)

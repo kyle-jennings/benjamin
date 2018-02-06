@@ -1,8 +1,5 @@
 <?php
 
-
-error_log('loaded');
-
 function benjamin_ajax_calculate_widget_width() {
 
     
