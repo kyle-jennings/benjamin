@@ -19,3 +19,15 @@ function benjamin_admin_assets() {
     wp_localize_script('admin-scripts', 'ajax_object', $ajax_object);
 }
 add_action( 'admin_enqueue_scripts', 'benjamin_admin_assets' );
+
+
+/**
+ * Hide the sticky post
+ * @return [type] [description]
+ */
+function benjamin_hide_sticky_option() {
+    ?>
+    <style type="text/css">#sticky-span { display:none!important }</style>
+    <?php
+}
+add_action( 'admin_print_styles', 'benjamin_hide_sticky_option' );

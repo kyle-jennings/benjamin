@@ -15,8 +15,6 @@ function benjamin_widgets_init() {
     $sidebars = wp_get_sidebars_widgets();
     foreach($templates as $name => $args){
         $sidebar_size = '';
-
-
         
         $widgets = isset($sidebars[$name]) ? $sidebars[$name] : array();
         $count = count($widgets);

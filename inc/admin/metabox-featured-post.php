@@ -16,8 +16,9 @@ function benjamin_featured_post_metabox_markup($post) {
         $output .= sprintf( __('Marks this post as the "featured post" in the <b> %s </b> feed.', 'benjamin'), esc_html($post->post_type) );
     $output .= '</p>';
 
-    $output .= '<label for="featured-post-- ' . esc_attr($post->post_type) . '"> '. __('Feature this post?', 'benjamin') . ' </label>';
-    $output .= '<input name="featured-post-- ' . esc_attr($post->post_type) . ' " type="checkbox" value="true" '. esc_html($checked) . ' >';
+    $output .= '<label for="featured-post--' . esc_attr($post->post_type) . '"> '. __('Feature this post?', 'benjamin') . ' </label>';
+    $output .= '<input name="featured-post--' . esc_attr($post->post_type) . '" 
+        type="checkbox" value="true" '. esc_html($checked) . ' >';
 
     echo $output; //WPCS: xss ok.
 }
@@ -52,8 +53,13 @@ add_action( 'add_meta_boxes', 'benjamin_featured_post_metabox' );
 
 /**
  * Saves the featured post setting to the DB
+ * 
+ * @param int $post_id The post ID.
+ * @param post $post The post object.
+ * @param bool $update Whether this is an existing post being updated or not.
  */
-function benjamin_save_featured_post($post_id, $post, $update) {
+function benjamin_save_featured_post($post_id, $post) {
+
 
     if(!current_user_can("edit_post", $post_id))
         return $post_id;
