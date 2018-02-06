@@ -28,10 +28,10 @@ function benjamin_the_header() {
         switch($component->name):
             case 'banner':
                 if( get_theme_mod('banner_visibility_setting', 'hide') !== 'hide')
-                    get_template_part('template-parts/section', 'banner');
+                    require get_template_directory() . '/inc/frontend/section-banner.php';
                 break;
             case 'navbar':
-                get_template_part('template-parts/navbars/navbar');
+                require get_template_directory() . '/inc/frontend/navbars/navbar.php';
                 break;
             case 'hero':
                 $hero = new BenjaminHero($template);
@@ -82,16 +82,16 @@ function benjamin_footer() {
 
         switch($name):
             case 'return-to-top':
-                get_template_part('template-parts/footers/footer', 'return');
+                require get_template_directory() . '/inc/frontend/footers/footer-return.php';
                 break;
             case 'footer-menu':
-                get_template_part('template-parts/footers/footer', 'menu');
+                require get_template_directory() . '/inc/frontend/footers/footer-menu.php';
                 break;
             case 'widget-area-1':
-                get_template_part('template-parts/footers/footer', 'widgets-1');
+                require get_template_directory() . '/inc/frontend/footers/footer-widgets-1.php';
                 break;
             case 'widget-area-2':
-                get_template_part('template-parts/footers/footer', 'widgets-2');
+                require get_template_directory() . '/inc/frontend/footers/footer-widgets-2.php';
                 break;
 
         endswitch;

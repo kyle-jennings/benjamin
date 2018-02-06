@@ -51,10 +51,10 @@ if( !is_admin() ){
         '/inc/frontend/brand.php',
         '/inc/frontend/get-width-visibility.php',
         '/inc/frontend/nav-settings.php',
-        '/inc/frontend/navs/navbar-walker.php',
-        '/inc/frontend/navs/sidenav-walker.php',
-        '/inc/frontend/navs/navlist-walker.php',
-        '/inc/frontend/navs/footer-nav-walker.php',
+        '/inc/frontend/nav-walkers/navbar-walker.php',
+        '/inc/frontend/nav-walkers/sidenav-walker.php',
+        '/inc/frontend/nav-walkers/navlist-walker.php',
+        '/inc/frontend/nav-walkers/footer-nav-walker.php',
     );
     foreach($files as $file)
         require get_template_directory() . $file; // WPCS: xss ok.
