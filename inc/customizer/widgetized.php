@@ -29,7 +29,8 @@ function benjamin_widgetized_settings($wp_customize) {
     $wp_customize->add_control( new Benjamin_Sortable_Control( $wp_customize,
        'widgetized_sortables_control', array(
            'label'   => __('Sortable Page Content', 'benjamin'),
-           'description' => sprintf( __('%s', 'benjamin'), $description ),
+           /* translators: use the $description variable above - states that the content is sortable via drag and drop */
+           'description' => sprintf( __('%s ', 'benjamin'), $description ),
            'section' => $section,
            'settings'=> 'widgetized_sortables_setting',
            'optional' => true,

@@ -12,13 +12,14 @@ function benjamin_featured_post_metabox_markup($post) {
     $output = '';
 
     $output .= '<p>';
+        /* translators: marks post as "featured" */
         $output .= sprintf( __('Marks this post as the "featured post" in the <b> %s </b> feed.', 'benjamin'), esc_html($post->post_type) );
     $output .= '</p>';
 
     $output .= '<label for="featured-post-- ' . esc_attr($post->post_type) . '"> '. __('Feature this post?', 'benjamin') . ' </label>';
     $output .= '<input name="featured-post-- ' . esc_attr($post->post_type) . ' " type="checkbox" value="true" '. esc_html($checked) . ' >';
 
-    echo $output;
+    echo $output; //WPCS: xss ok.
 }
 
 

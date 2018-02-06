@@ -6,7 +6,7 @@ function benjamin_ajax_calculate_widget_width() {
     if( !isset($_POST['data']))
         wp_die();
 
-    echo benjamin_calculate_widget_width($_POST['data']);
+    echo benjamin_calculate_widget_width( wp_unslash(absint($_POST['data'])) ); // WPCS: xss ok.
 
     wp_die();
 }

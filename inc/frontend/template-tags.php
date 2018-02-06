@@ -34,7 +34,7 @@ function benjamin_get_hero_meta(){
  * @return [type] [description]
  */
 function benjamin_hero_meta(){
-    echo benjamin_get_hero_meta();
+    echo benjamin_get_hero_meta();  //WPCS: xss ok.
 }
 
 

@@ -47,10 +47,10 @@ function benjamin_widgets_init() {
 
         $description = isset($args['widget_description']) ? $args['widget_description'] : '';
         register_sidebar( array(
-    		'name'          => sprintf(  __('%s', 'benjamin'), ucfirst($args['label']) ),
+    		'name'          => sprintf( '%s ', ucfirst($args['label']) ),
     		'id'            => (string) $name,
             /* translators: sidebar description. */
-    		'description'   => sprintf(  __('%s', 'benjamin'), $description ),
+    		'description'   => sprintf(  __('%s ', 'benjamin'), $description ),
     		'before_widget' => '<div id="%1$s" class="widget widget-area--' . $name . ' '. $width . '">',
     		'after_widget'  => '</div>',
     		'before_title'  => '<h3 class="widget-title">',

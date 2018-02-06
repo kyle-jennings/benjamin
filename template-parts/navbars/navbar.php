@@ -6,7 +6,9 @@ $sticky = get_theme_mod('navbar_sticky_setting', 'no') == 'yes' ? 'sticky' : '';
     <div class="usa-nav-container">
 
         <div class="usa-navbar">
-            <button class="usa-menu-btn"><?php echo __('Menu', 'benjamin'); ?></button>
+            <button class="usa-menu-btn">
+                <?php echo __('Menu', 'benjamin');  //WPCS: xss ok.?>
+            </button>
             <?php benjamin_navbar_brand(); ?>
         </div>
 
