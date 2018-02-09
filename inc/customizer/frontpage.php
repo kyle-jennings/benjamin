@@ -6,13 +6,13 @@ function benjamin_frontpage_settings($wp_customize) {
     // $section = 'rontpage_settings_section'; // old section
     $section = 'static_front_page';
 
-    $label_args = array(
-        'section' => $section,
-        'setting_id' => 'frontpage_header_content_label',
-        'label' => __('Header Content Settings', 'benjamin'),
-        'control_id' => 'frontpage_header_label_control'
-    );
-    benjamin_customizer_label($wp_customize, $label_args);
+    // $label_args = array(
+    //     'section' => $section,
+    //     'setting_id' => 'frontpage_header_content_label',
+    //     'label' => __('Header Content Settings', 'benjamin'),
+    //     'control_id' => 'frontpage_header_label_control'
+    // );
+    // benjamin_customizer_label($wp_customize, $label_args);
 
 
 
@@ -25,7 +25,7 @@ function benjamin_frontpage_settings($wp_customize) {
 
     $wp_customize->add_control( 'frontpage_hero_content_control', array(
             'description' => __('Select what to display in the header.','benjamin'),
-            'label'   => __('Content', 'benjamin'),
+            'label'   => __('Header Content', 'benjamin'),
             'section' => $section,
             'settings'=> 'frontpage_hero_content_setting',
             'priority' => 1,
@@ -33,7 +33,7 @@ function benjamin_frontpage_settings($wp_customize) {
             'choices' => array(
                 'callout' => __('Callout', 'benjamin'),
                 'page' => __('Select a Page', 'benjamin'),
-                'nothing' => __('Nothing', 'benjamin'),
+                'title' => __('Site title', 'benjamin'),
             )
         )
     );

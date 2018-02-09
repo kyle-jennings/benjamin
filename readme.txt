@@ -87,7 +87,14 @@ Theme Demo: https://benjamin.kylejennings.codes
 Unless otherwise specified, all the theme files, scripts and images are licensed
 under GPLv2 or later
 
+
 == Credits ==
+
+* Benjamin Franklin by David Martin ( Banner image )
+https://upload.wikimedia.org/wikipedia/commons/a/a3/Benjamin_Franklin_1767.jpg
+This work is in the public domain in the United States because it was published (or registered with the U.S. Copyright Office) before January 1, 1923.
+License: PD-1923 
+URL: https://commons.wikimedia.org/wiki/Template:PD-1923
 
 * Underscores
 http://underscores.me/
@@ -148,3 +155,13 @@ Mixed License (https://github.com/18F/web-design-standards/blob/develop/LICENSE.
 * Addressed all concerns in https://themes.trac.wordpress.org/ticket/43531#comment:7
 * added additional widget areas in the banner
 * translated, and escaped all the things
+
+* 1.8
+* translated all the things
+* Added "default" layout settings and made the "feed/archive" settings optional
+* moved some page specific non "template layout" settings to the top level of customizer
+* removed the red color scheme
+* removed the video banner and moved it to the Franklin theme
+* customizer Bug fixes
+* refactored some code
+* updated licensing information

@@ -48,12 +48,12 @@ function benjamin_customizer_label(&$wp_customize, $args = array() ) {
     if( !$section || !$setting_id || !$label || !$control_id )
         return;
 
-    $wp_customize->add_setting(
-        $setting_id, array(
-            'default' => 'none',
-            'sanitize_callback' => 'wp_filter_nohtml_kses',
-        )
-    );
+    // $wp_customize->add_setting(
+    //     $setting_id, array(
+    //         'default' => 'none',
+    //         'sanitize_callback' => 'wp_filter_nohtml_kses',
+    //     )
+    // );
 
 
     $args = array(

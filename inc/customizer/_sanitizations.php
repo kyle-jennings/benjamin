@@ -20,6 +20,21 @@ function benjamin_404_page_select_sanitize($val) {
 }
 
 
+
+function benjamin_404_hero_content_sanitize($val) {
+    $valids = array(
+        'title',
+        'page'
+    );
+
+    if( !in_array($val, $valids) )
+        return null;
+
+    return $val;
+}
+
+
+
 function benjamin_404_content_sanitize($val) {
     $valids = array(
         'default',
@@ -39,10 +54,10 @@ function benjamin_404_content_sanitize($val) {
 function benjamin_footer_sortable_sanitize($val) {
 
     $valids = array(
-            'return-to-top',
-            'footer-menu',
-            'widget-area-1',
-            'widget-area-2',
+        'return-to-top',
+        'footer-menu',
+        'widget-area-1',
+        'widget-area-2',
     );
 
     $valid = true;
@@ -198,7 +213,7 @@ function benjamin_frontpage_hero_content_sanitize($val) {
     $valids = array(
         'callout',
         'page',
-        'nothing',
+        'title',
     );
 
 
