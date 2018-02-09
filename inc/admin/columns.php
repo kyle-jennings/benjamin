@@ -6,7 +6,7 @@
  * Possible column types are: ACF value, Taxonomy (sorting), custom function
  * @param  array $columns default WP columns
  */
-function benjamin_custom_column_data( $column ) {
+function benjamin_custom_column_data( $column = null ) {
     global $post;
 
     $id = get_option('featured-post--'.$post->post_type, null);
