@@ -25,7 +25,7 @@ function benjamin_add_columns($columns){
     global $post_type;
 
 
-    $new = array('featured' => __('Featured', 'benjamin'), 'date' => __('Date') );
+    $new = array('featured' => __('Featured', 'benjamin'), 'date' => __('Date', 'benjamin') );
     array_pop($columns);
 
     return array_merge( $columns, $new);

@@ -25,10 +25,8 @@ Be sure to install the companion plugin, [Franklin](https://github.com/kyle-jenn
 * Custom post type single pages, and feeds
 
 #### Sortable Pages
-As mentioned, both the frontpage and widgetized pages are sortable, so you have control over 3 widgetized areas and page content.
+Both the frontpage and widgetized pages are sortable, so you have control over 3 widgetized areas and page content.
 
-
-![sortable pages](_dev/screenshots/sortable-pages.png#right)
 
 <br>
 
@@ -41,7 +39,6 @@ As mentioned, both the frontpage and widgetized pages are sortable, so you have 
 * Template specific widget ares
 * Hide parts of a page (such as the navbar or footer)
 
-![template-settings](_dev/screenshots/template-settings.png#right)
 
 <br>
 
@@ -55,22 +52,13 @@ As mentioned, both the frontpage and widgetized pages are sortable, so you have 
 * The "Feed" settings are used by default, all other templates must be activated
 
 
-#### 3 Color schemes
+#### 2 Color schemes
 ##### Standard - The regular US Design Standard colors
 
-![color scheme standard](_dev/screenshots/standard-scheme.png#right)
 
 <br>
 
 ##### Classic - Based on the [SitesUSA](https://sites.usa.gov) and [DigitalGov](https://www.digialgov.gov) sites
-
-![color scheme classic](_dev/screenshots/classic-scheme.png#right)
-
-<br>
-
-##### Red - A WIP
-
-![color scheme red](_dev/screenshots/red-scheme.png#right)
 
 <br>
 
@@ -80,9 +68,6 @@ As mentioned, both the frontpage and widgetized pages are sortable, so you have 
 * Change the navbar size (slim and standard padding, it makes a difference when changing the order)
 * A dark navbar color scheme
 
-
-
-![header-settings](_dev/screenshots/navbar-color-style.png#right)
 
 <br>
 
