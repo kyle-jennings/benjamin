@@ -98,7 +98,7 @@ class BenjaminFeaturedPost {
     public function getMeta(){
 
 
-        $id = $this->ID;
+        $id = $this->id;
         $aid = $this->author;
 
         $m = get_the_time('m');
@@ -123,6 +123,7 @@ class BenjaminFeaturedPost {
         }
         $author .= '</span>';
 
+        $cats = '';
         // benjamin_get_cpt_custom_tax_terms($this->id);
         if ( $categories_list = benjamin_get_the_category_list($this->id) ) {
 			$cats = '<span class="cat-links">' . __('Posted in&nbsp;', 'benjamin') . $categories_list . '</span>';

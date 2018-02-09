@@ -2,7 +2,7 @@ Benjamin
 ========
 
 
-<img alt="benjamin" src="screenshot.jpg" style="float: right; margin-left: 10px;">
+<img alt="benjamin" src="screenshot.png" style="float: right; margin-left: 10px;">
 
 Benjamin is a flexible and feature rich WordPess theme build with Automattic's _s (underscores) theme 18f's [Web Design Standards](https://standards.usa.gov).  
 
