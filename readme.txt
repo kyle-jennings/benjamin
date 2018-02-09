@@ -90,7 +90,7 @@ under GPLv2 or later
 
 == Credits ==
 
-* Benjamin Franklin by David Martin ( Banner image )
+* Benjamin Franklin by David Martin ( Banner image in screenshot )
 https://upload.wikimedia.org/wikipedia/commons/a/a3/Benjamin_Franklin_1767.jpg
 This work is in the public domain in the United States because it was published (or registered with the U.S. Copyright Office) before January 1, 1923.
 License: PD-1923 
@@ -109,9 +109,9 @@ Mixed License (https://github.com/18F/web-design-standards/blob/develop/LICENSE.
 
 
 *  This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
 == Changelog ==
 
