@@ -1,8 +1,8 @@
 === Benjamin ===
 
 Requires at least: 4.5
-Tested up to: 4.7
-Stable tag: 1.7
+Tested up to: 4.9.3
+Stable tag: 2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Copyright 2017 Kyle Jennings
@@ -156,7 +156,7 @@ GNU General Public License for more details.
 * added additional widget areas in the banner
 * translated, and escaped all the things
 
-* 1.8
+* 1.9
 * translated all the things
 * Added "default" layout settings and made the "feed/archive" settings optional
 * moved some page specific non "template layout" settings to the top level of customizer
@@ -165,3 +165,5 @@ GNU General Public License for more details.
 * customizer Bug fixes
 * refactored some code
 * updated licensing information
+
+* 2.0
