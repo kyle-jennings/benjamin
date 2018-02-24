@@ -8,10 +8,11 @@ function benjamin_scripts() {
     if(is_admin())
         return;
 
-    $benjamin_color_scheme = get_theme_mod('color_scheme_setting', 'standard');
-
-    $benjamin_color_scheme = $benjamin_color_scheme == 'standard'
-        ? '' : '-'.$benjamin_color_scheme;
+    $default = get_stylesheet_directory_uri() . '/assets/css/benjamin.min.css';
+    $theme = get_theme_mod('color_scheme_setting', $default);
+    
+    if( !$theme = filter_var( apply_filters('bootswatches_filter_css_uri', $theme), FILTER_VALIDATE_URL ) )
+        $theme = $default;
 
     // the following scripts and styles are minified, however unminified version
     // are included with this theme.
@@ -20,8 +21,8 @@ function benjamin_scripts() {
         'benjamin', get_stylesheet_directory_uri() . '/assets/js/uswds-min.js',
          null, null, true
     );
-    wp_enqueue_style( 'benjamin',
-         get_stylesheet_directory_uri() . '/assets/css/benjamin'.$benjamin_color_scheme.'.min.css' );
+
+    wp_enqueue_style( 'benjamin', $theme );
 
      // comment script
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )

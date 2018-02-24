@@ -71,7 +71,7 @@ add_action( 'customize_preview_init', 'benjamin_previewer_enqueue' );
 function benjamin_active_callback_filter($active, $control) {
   global $wp_customize;
 
-  $toggled_by = !isset($control->input_attrs) ? $control->input_attrs['data-toggled-by'] : null;
+  $toggled_by = isset($control->input_attrs['data-toggled-by']) ? $control->input_attrs['data-toggled-by'] : null;
 
 
   // toggle controls if the template has been "activated"

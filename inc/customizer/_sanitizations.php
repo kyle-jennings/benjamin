@@ -240,18 +240,6 @@ function benjamin_sidebar_width_sanitize($val) {
 }
 
 
-function benjamin_color_scheme_sanitize($val) {
-    $valids = array(
-        'standard',
-        'classic',
-        'red'
-    );
-
-    if( !in_array($val, $valids) )
-        return null;
-
-    return $val;
-}
 
 
 /**
@@ -449,6 +437,53 @@ function benjamin_widgetized_sortable_sanitize($val) {
     }
 
     if(!$valid)
+        return null;
+
+    return $val;
+}
+
+
+
+// maps the themes array and returns the css uri
+function benjamin_color_scheme_validate_map($theme){
+
+    return $theme['uri'];
+}
+
+
+/**
+ * Validate the color scheme setting
+ * @param  [object] $valitity similar to wp_error
+ * @param  string $val      the pre-saved value from the control
+ * @return string           the value (or the error object)
+ */
+function benjamin_color_scheme_validate($valitity, $val) {
+    
+    $choices = array(
+        'standard' => array(
+            'uri' => get_stylesheet_directory_uri() . '/assets/css/benjamin.min.css',
+            'colors' => array('#112e51', '#02bfe7','#e31c3d', '#ffffff', '#f1f1f1', '#d6d7d9')
+        ),
+        'classic' => array(
+            'uri' => get_stylesheet_directory_uri() . '/assets/css/benjamin-classic.min.css',
+            'colors' => array('#0c555d', '#399099', '#ff5049', '#ffffff', '#f5f5f5', '#000000')
+
+        )
+    );
+    $choices = apply_filters('benjamin_filter_color_schemes', $choices);
+
+    $valids = array_map( 'benjamin_color_scheme_validate_map', $choices );
+    
+    if( !in_array($val, $valids) )
+        return $validity->add( 'required', __( 'CSS not found', 'bootswatches' ) );
+
+    return $val;
+}
+
+
+function benjamin_color_scheme_sanitize($val) {
+
+    if( !esc_url_raw($val) )
         return null;
 
     return $val;
