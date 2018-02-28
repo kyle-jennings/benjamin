@@ -71,13 +71,16 @@ function benjamin_save_featured_post($post_id, $post) {
         return $post_id;
 
 
-    if( isset($_POST['featured-post--'.$post->post_type]) ) {
+    // if the post has been stickies, remove that flag and apply our flag
+    if( $post->post_type == 'post' && isset( $_POST['sticky'] ) ) {
+        unset( $_POST['sticky'] );
+        update_option('featured-post--'.$post->post_type, $post_id);
+    } elseif( isset($_POST['featured-post--'.$post->post_type]) ) {
         update_option('featured-post--'.$post->post_type, $post_id);
 
     } elseif( !isset($_POST['featured-post--'.$post->post_type])
         && $post_id == get_option('featured-post--'.$post->post_type, true)
     ) {
-
         delete_option('featured-post--'.$post->post_type);
     }
 

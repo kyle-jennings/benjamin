@@ -1,4 +1,4 @@
-# Copyright (C) 2017 Example project
+# Copyright (C) 2018 Example project
 # This file is distributed under the same license as the Example project package.
 msgid ""
 msgstr ""
@@ -69,6 +69,10 @@ msgctxt "submit button"
 msgid "Search"
 msgstr ""
 
+#: ../searchform.php:20
+msgid "Search"
+msgstr ""
+
 #: ../page-templates/sidenav.php:2
 msgid "Sidenav Page"
 msgstr ""
@@ -89,7 +93,7 @@ msgstr ""
 msgid "Template Page 4"
 msgstr ""
 
-#: ../page-templates/widgetized.php:2
+#: ../page-templates/widgetized.php:2, ../inc/customizer/widgetized.php:12
 msgid "Widgetized Page"
 msgstr ""
 
@@ -113,7 +117,7 @@ msgstr ""
 msgid "Pages:"
 msgstr ""
 
-#: ../template-parts/content-page.php:32, ../inc/frontend/template-tags.php:117
+#: ../template-parts/content-page.php:32, ../inc/frontend/template-tags.php:133
 msgid "Edit %s"
 msgstr ""
 
@@ -121,7 +125,232 @@ msgstr ""
 msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: ../inc/frontend/class-BenjaminFeaturedPost.php:128
+#: ../inc/admin/columns.php:28
+msgid "Featured"
+msgstr ""
+
+#: ../inc/admin/columns.php:28
+msgid "Date"
+msgstr ""
+
+#. translators: marks post as "featured"
+#: ../inc/admin/metabox-featured-post.php:16
+msgid "Marks this post as the \"featured post\" in the <b> %s </b> feed."
+msgstr ""
+
+#: ../inc/admin/metabox-featured-post.php:19
+msgid "Feature this post?"
+msgstr ""
+
+#: ../inc/customizer/footer.php:17
+msgid "Return to Top"
+msgstr ""
+
+#: ../inc/customizer/footer.php:18
+msgid "Footer Menu"
+msgstr ""
+
+#: ../inc/customizer/footer.php:19, ../inc/customizer/frontpage.php:98, ../inc/customizer/widgetized.php:38
+msgid "Widget Area 1"
+msgstr ""
+
+#: ../inc/customizer/footer.php:20, ../inc/customizer/frontpage.php:99, ../inc/customizer/widgetized.php:39
+msgid "Widget Area 2"
+msgstr ""
+
+#: ../inc/customizer/footer.php:24
+msgid "Footer Settings"
+msgstr ""
+
+#: ../inc/customizer/footer.php:34, ../inc/customizer/widgetized.php:25
+msgid ""
+"The page content is sortable, and optional.  Simply drag the\n"
+"    available components from the \"available\" box over to active.  This setting\n"
+"    does not depend on the \"Settings Active\" setting above."
+msgstr ""
+
+#: ../inc/customizer/footer.php:41
+msgid "Sortable Footer Parts"
+msgstr ""
+
+#: ../inc/customizer/frontpage.php:27, ../inc/customizer/page-404.php:30
+msgid "Select what to display in the header."
+msgstr ""
+
+#: ../inc/customizer/frontpage.php:28, ../inc/customizer/page-404.php:31
+msgid "Header Content"
+msgstr ""
+
+#: ../inc/customizer/frontpage.php:34
+msgid "Callout"
+msgstr ""
+
+#: ../inc/customizer/frontpage.php:35, ../inc/customizer/frontpage.php:66, ../inc/customizer/page-404.php:37, ../inc/customizer/page-404.php:78, ../inc/customizer/page-404.php:90
+msgid "Select a Page"
+msgstr ""
+
+#: ../inc/customizer/frontpage.php:36
+msgid "Site title"
+msgstr ""
+
+#: ../inc/customizer/frontpage.php:49
+msgid "Display a button link in the callout to a selected page"
+msgstr ""
+
+#: ../inc/customizer/frontpage.php:50
+msgid "Callout Button Link"
+msgstr ""
+
+#: ../inc/customizer/frontpage.php:85
+msgid ""
+"The page content is sortable, and optional.  Simply drag the\n"
+"          available components from the \"available\" box over to active.  This setting\n"
+"          does not depend on the \"Settings Active\" setting above."
+msgstr ""
+
+#: ../inc/customizer/frontpage.php:92, ../inc/customizer/widgetized.php:31
+msgid "Sortable Page Content"
+msgstr ""
+
+#: ../inc/customizer/frontpage.php:100, ../inc/customizer/widgetized.php:40
+msgid "Widget Area 3"
+msgstr ""
+
+#: ../inc/customizer/frontpage.php:101, ../inc/customizer/page-404.php:71, ../inc/customizer/widgetized.php:41
+msgid "Page Content"
+msgstr ""
+
+#: ../inc/customizer/header.php:17, ../inc/customizer/template-settings/header.php:14
+msgid "Header Settings"
+msgstr ""
+
+#: ../inc/customizer/header.php:29
+msgid "Navbar"
+msgstr ""
+
+#: ../inc/customizer/header.php:30
+msgid "Hero"
+msgstr ""
+
+#: ../inc/customizer/header.php:37
+msgid ""
+"The header area is made of sortable parts.  Simply drag these\n"
+"        parts around to change the order they are displayed."
+msgstr ""
+
+#: ../inc/customizer/header.php:44
+msgid "Header Order"
+msgstr ""
+
+#: ../inc/customizer/header.php:69
+msgid "Navbar Settings"
+msgstr ""
+
+#: ../inc/customizer/header.php:84
+msgid "Display Search in Navbar"
+msgstr ""
+
+#: ../inc/customizer/header.php:104
+msgid "Navbar Color Scheme"
+msgstr ""
+
+#: ../inc/customizer/header.php:122
+msgid "Stick the navbar to the top of the screen when you scroll down the page"
+msgstr ""
+
+#: ../inc/customizer/header.php:123
+msgid "Navbar sticky on scroll"
+msgstr ""
+
+#: ../inc/customizer/header.php:141
+msgid "Navbar Brand Type"
+msgstr ""
+
+#: ../inc/customizer/header.php:170
+msgid "Banner Settings"
+msgstr ""
+
+#: ../inc/customizer/header.php:186
+msgid "Banner Visibility"
+msgstr ""
+
+#: ../inc/customizer/header.php:204
+msgid "Banner Text"
+msgstr ""
+
+#: ../inc/customizer/header.php:218
+msgid "Banner Read More"
+msgstr ""
+
+#: ../inc/customizer/identity.php:12
+msgid "The logo appears in the navbar and must be toggled in the "
+msgstr ""
+
+#: ../inc/customizer/identity.php:14
+msgid "header settings section</a>."
+msgstr ""
+
+#: ../inc/customizer/identity.php:50
+msgid "Color Scheme"
+msgstr ""
+
+#: ../inc/customizer/identity.php:70
+msgid "Wide"
+msgstr ""
+
+#: ../inc/customizer/identity.php:71
+msgid "Narrow"
+msgstr ""
+
+#: ../inc/customizer/page-404.php:14
+msgid "404 Page"
+msgstr ""
+
+#: ../inc/customizer/page-404.php:38
+msgid "Default title"
+msgstr ""
+
+#: ../inc/customizer/page-404.php:50
+msgid "Select page content to the header, this is great when the header size is set to full and the other page parts are hidden."
+msgstr ""
+
+#: ../inc/customizer/page-404.php:51
+msgid "Select header content from page"
+msgstr ""
+
+#: ../inc/customizer/page-404.php:70
+msgid "Display some default content provided by the theme or select a page to display."
+msgstr ""
+
+#: ../inc/customizer/page-404.php:77
+msgid "Default"
+msgstr ""
+
+#: ../inc/customizer/template-settings.php:21
+msgid "More Templates Settings"
+msgstr ""
+
+#: ../inc/customizer/template-settings.php:38, ../inc/customizer/widgetized.php:33, ../inc/shared/register-sidebars.php:51
+msgid "%s "
+msgstr ""
+
+#: ../inc/customizer/_sanitizations.php:381
+msgid "Please enter a valid YouTube URL."
+msgstr ""
+
+#: ../inc/customizer/_sanitizations.php:394
+msgid "This video file is too large to use as a header video. Try a shorter video or optimize the compression settings and re-upload a file that is less than 8MB. Or, upload your video to YouTube and link it with the option below."
+msgstr ""
+
+#: ../inc/customizer/_sanitizations.php:400
+msgid "Only %1$s or %2$s files may be used for header video. Please convert your video file and try again, or, upload your video to YouTube and link it with the option below."
+msgstr ""
+
+#: ../inc/customizer/_sanitizations.php:478
+msgid "CSS not found"
+msgstr ""
+
+#: ../inc/frontend/class-BenjaminFeaturedPost.php:129
 msgid "Posted in&nbsp;"
 msgstr ""
 
@@ -129,92 +358,177 @@ msgstr ""
 msgid "Read More"
 msgstr ""
 
-#: ../inc/frontend/template-tags.php:95
+#: ../inc/frontend/template-tags.php:111
 msgid "Posted in %1$s"
 msgstr ""
 
-#: ../inc/frontend/template-tags.php:98
+#: ../inc/frontend/template-tags.php:114
 msgid ", "
 msgstr ""
 
-#: ../inc/frontend/template-tags.php:102
+#: ../inc/frontend/template-tags.php:118
 msgid "Tagged %1$s"
 msgstr ""
 
 #. translators: %s: post title
-#: ../inc/frontend/template-tags.php:110
+#: ../inc/frontend/template-tags.php:126
 msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
 msgstr ""
 
-#: ../inc/shared/template-list.php:27
-msgid ""
-"This is your default page, and the page where your\n"
-"            blog post feed is located.  If other template's settings\n"
-"            have not been activated then this is whats used."
+#: ../inc/shared/custom-post-types.php:20
+msgid "A single instance of a %s."
 msgstr ""
 
-#: ../inc/shared/template-list.php:36
-msgid "The frontpage is the located at %1$s %2$s"
+#: ../inc/shared/custom-post-types.php:27
+msgid "The feed for your %s."
+msgstr ""
+
+#: ../inc/shared/set-default-settings.php:43, ../inc/shared/set-default-settings.php:50
+msgid "Home"
+msgstr ""
+
+#: ../inc/shared/set-default-settings.php:44
+msgid "Login"
+msgstr ""
+
+#: ../inc/shared/set-default-settings.php:51
+msgid "Admin"
+msgstr ""
+
+#: ../inc/shared/set-default-settings.php:52
+msgid "Add a Menu"
+msgstr ""
+
+#: ../inc/shared/set-default-settings.php:53
+msgid "Customize your Site"
+msgstr ""
+
+#: ../inc/shared/set-default-settings.php:54
+msgid "Logout"
+msgstr ""
+
+#: ../inc/shared/template-list.php:31
+msgid "<p>This is your feed, or archive page. This page shows your recent new, archived, filtered posts ect."
+msgstr ""
+
+#: ../inc/shared/template-list.php:34, ../inc/shared/template-list.php:47, ../inc/shared/template-list.php:57, ../inc/shared/template-list.php:67, ../inc/shared/template-list.php:77, ../inc/shared/template-list.php:87, ../inc/shared/template-list.php:97, ../inc/shared/template-list.php:107, ../inc/shared/template-list.php:117, ../inc/shared/template-list.php:127, ../inc/shared/template-list.php:204
+msgid ""
+"These widgets appear on %s\n"
+"            in the sidebar located on the right or left of the page."
 msgstr ""
 
 #: ../inc/shared/template-list.php:42
 msgid ""
-"The \"single post\" is what you see when viewing\n"
-"            a single blog post, or single custom post type. %s"
+"<p>The frontpage is the located at %1$s\n"
+"            and the content area is made of 4 sortable areas. You can also set\n"
+"            the content in the page header.</p> %2$s "
 msgstr ""
 
-#: ../inc/shared/template-list.php:49
+#: ../inc/shared/template-list.php:54
 msgid ""
-"The \"single page\" is what you see when viewing\n"
-"            a page. %s"
+"<p>The \"single post\" is what you see when viewing\n"
+"            a single blog post, or single custom post type.</p> %s"
 msgstr ""
 
-#: ../inc/shared/template-list.php:56
+#: ../inc/shared/template-list.php:64
 msgid ""
-"This is a special page template, the\n"
-"            Widgetized page is sortable and contains 3 horizontal widget areas\n"
-"            along with the sidebar. %s"
+"<p>The \"single page\" is what you see when viewing\n"
+"            a page.</p> %s."
 msgstr ""
 
-#: ../inc/shared/template-list.php:63, ../inc/shared/template-list.php:70, ../inc/shared/template-list.php:77, ../inc/shared/template-list.php:84
+#: ../inc/shared/template-list.php:74
 msgid ""
-"This is just an extra page template, use this\n"
-"            if you want to style an individul page differently then your\n"
-"            standard pages."
+"<p>This is a special page template,\n"
+"            the content area is made of 4 sortable areas.</p> %s "
 msgstr ""
 
-#: ../inc/shared/template-list.php:91
+#: ../inc/shared/template-list.php:83, ../inc/shared/template-list.php:93, ../inc/shared/template-list.php:103, ../inc/shared/template-list.php:113
 msgid ""
-"This page is what user's see when they attempt\n"
-"            to view an invalid page URL. %s"
+"<p>This is just an extra page template, use this\n"
+"            if you want to style an individual page differently then your\n"
+"            standard pages.</p> %s"
 msgstr ""
 
-#: ../inc/shared/template-list.php:103, ../inc/shared/template-list.php:107
-msgid "The banner is made up widget areas and are optionally used.  The banner is expandable only if widgets have been set"
+#: ../inc/shared/template-list.php:123
+msgid ""
+"<p>This page is what user's see when they attempt\n"
+"            to view an invalid page URL. Both the page and header content are\n"
+"            configurable.</p> %s "
 msgstr ""
 
-#: ../inc/shared/template-list.php:111, ../inc/shared/template-list.php:115, ../inc/shared/template-list.php:119
-msgid "The frontpage content is made up of sortable, horizontal widget areas.  This is one of those areas and is optionally used."
+#: ../inc/shared/template-list.php:138
+msgid "Banner Widgets"
 msgstr ""
 
-#: ../inc/shared/template-list.php:123, ../inc/shared/template-list.php:127
-msgid "The Widgetized page content is made up of sortable, horizontal widget areas.  This is one of those areas and is optionally used."
+#: ../inc/shared/template-list.php:139
+msgid ""
+"The banner is made up widget areas and are\n"
+"            optionally used.  The banner is expandable only if widgets have been set."
 msgstr ""
 
-#: ../inc/shared/template-list.php:131
-msgid "The Widgetized page is full sortable, horizontal widget areas.  This is one of those areas and is optionally used."
+#: ../inc/shared/template-list.php:144
+msgid "Frontpage Widget Area 1"
 msgstr ""
 
-#: ../inc/shared/template-list.php:135, ../inc/shared/template-list.php:139
-msgid "The footer area is sortable and contains two optional widget areas.  To use these widgets, remember to setup the footer in the customizer."
+#: ../inc/shared/template-list.php:145, ../inc/shared/template-list.php:151, ../inc/shared/template-list.php:157
+msgid ""
+"The frontpage content is made up of sortable,\n"
+"            horizontal widget areas.  This is one of those areas and is\n"
+"            optionally used."
 msgstr ""
 
-#: ../inc/shared/template-list.php:165
-msgid "A single instance of a %s"
+#: ../inc/shared/template-list.php:150
+msgid "Frontpage Widget Area 2"
 msgstr ""
 
-#: ../inc/shared/template-list.php:172
-msgid "The feed for your %s"
+#: ../inc/shared/template-list.php:156
+msgid "Frontpage Widget Area 3"
+msgstr ""
+
+#: ../inc/shared/template-list.php:162
+msgid "Widgetized Page Area 1"
+msgstr ""
+
+#: ../inc/shared/template-list.php:163, ../inc/shared/template-list.php:169
+msgid ""
+"The Widgetized page content is made up of\n"
+"            sortable, horizontal widget areas.  This is one of those areas and\n"
+"            is optionally used."
+msgstr ""
+
+#: ../inc/shared/template-list.php:168
+msgid "Widgetized Page Area 2"
+msgstr ""
+
+#: ../inc/shared/template-list.php:174
+msgid "Widgetized Page Area 3"
+msgstr ""
+
+#: ../inc/shared/template-list.php:175
+msgid ""
+"The Widgetized page is full sortable, horizontal\n"
+"            widget areas.  This is one of those areas and is optionally used."
+msgstr ""
+
+#: ../inc/shared/template-list.php:180
+msgid "Footer Widget Area 1"
+msgstr ""
+
+#: ../inc/shared/template-list.php:181, ../inc/shared/template-list.php:187
+msgid ""
+"The footer area is sortable and contains two\n"
+"            optional widget areas.  To use these widgets, remember to setup the\n"
+"            footer in the customizer."
+msgstr ""
+
+#: ../inc/shared/template-list.php:186
+msgid "Footer Widget Area 2"
+msgstr ""
+
+#: ../inc/shared/template-list.php:200
+msgid ""
+"<p>These settings are the default settings used on every page unless the other\n"
+"            templates' settings been activated.</p>"
 msgstr ""
 
 #: ../inc/shared/theme-support.php:39
@@ -386,222 +700,173 @@ msgstr ""
 msgid "Display post date?"
 msgstr ""
 
-#: ../inc/shared/customizer/404.php:12
-msgid "Select page content to the header, this is great when the header size is set to full and the other page parts are hidden."
+#: ../inc/customizer/controls/sortable.php:130
+msgid "active"
 msgstr ""
 
-#: ../inc/shared/customizer/404.php:13
-msgid "Use page content in header"
+#: ../inc/customizer/controls/sortable.php:135
+msgid "available"
 msgstr ""
 
-#: ../inc/shared/customizer/404.php:30
-msgid "Display some default content provided by the theme or select a page to display."
-msgstr ""
-
-#: ../inc/shared/customizer/404.php:31
-msgid "Page Content"
-msgstr ""
-
-#: ../inc/shared/customizer/404.php:50, ../inc/shared/customizer/frontpage.php:56
-msgid "Select a Page"
-msgstr ""
-
-#: ../inc/shared/customizer/footer.php:24
-msgid "Footer Settings"
-msgstr ""
-
-#: ../inc/shared/customizer/footer.php:34, ../inc/shared/customizer/widgetized.php:13
-msgid ""
-"The page content is sortable, and optional.  Simply drag the\n"
-"    available components from the \"available\" box over to active.  This setting\n"
-"    does not depend on the \"Settings Active\" setting above."
-msgstr ""
-
-#: ../inc/shared/customizer/footer.php:41
-msgid "Sortable Footer Parts"
-msgstr ""
-
-#: ../inc/shared/customizer/frontpage.php:14
-msgid "Select what to display in the header."
-msgstr ""
-
-#: ../inc/shared/customizer/frontpage.php:15
-msgid "Header Page Content"
-msgstr ""
-
-#: ../inc/shared/customizer/frontpage.php:36
-msgid "Display a button link in the callout to a selected page"
-msgstr ""
-
-#: ../inc/shared/customizer/frontpage.php:37
-msgid "Callout Button Link"
-msgstr ""
-
-#: ../inc/shared/customizer/frontpage.php:85, ../inc/shared/customizer/widgetized.php:19
-msgid "Sortable Page Content"
-msgstr ""
-
-#: ../inc/shared/customizer/header.php:17, ../inc/shared/customizer/template-settings.php:76
-msgid "Header Settings"
-msgstr ""
-
-#: ../inc/shared/customizer/header.php:41
-msgid "Header Order"
-msgstr ""
-
-#: ../inc/shared/customizer/header.php:66
-msgid "Navbar Settings"
-msgstr ""
-
-#: ../inc/shared/customizer/header.php:81
-msgid "Display Search in Navbar"
-msgstr ""
-
-#: ../inc/shared/customizer/header.php:101
-msgid "Navbar Color Scheme"
-msgstr ""
-
-#: ../inc/shared/customizer/header.php:119
-msgid "Stick the navbar to the top of the screen when you scroll down the page"
-msgstr ""
-
-#: ../inc/shared/customizer/header.php:120
-msgid "Navbar sticky on scroll"
-msgstr ""
-
-#: ../inc/shared/customizer/header.php:138
-msgid "Navbar Brand Type"
-msgstr ""
-
-#: ../inc/shared/customizer/header.php:167
-msgid "Banner Settings"
-msgstr ""
-
-#: ../inc/shared/customizer/header.php:183
-msgid "Banner Visibility"
-msgstr ""
-
-#: ../inc/shared/customizer/header.php:201
-msgid "Banner Text"
-msgstr ""
-
-#: ../inc/shared/customizer/header.php:215
-msgid "Banner Read More"
-msgstr ""
-
-#: ../inc/shared/customizer/template-settings.php:28
-msgid "%s Settings"
-msgstr ""
-
-#: ../inc/shared/customizer/template-settings.php:41
+#: ../inc/customizer/template-settings/activate.php:10
 msgid ""
 "Overrides the default template settings to give\n"
-"            this template a unique look and feel.  <br /><br /><b>If you do not activate these\n"
-"            settings then the default (Feed) settings and widgets will be used.</b>"
+"    this template a unique look and feel.  <br /><br /><b>If you do not activate these\n"
+"    settings then the default (Feed) settings and widgets will be used.</b>"
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:44
+#: ../inc/customizer/template-settings/activate.php:13
 msgid "Use Template Settings"
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:102
+#: ../inc/customizer/template-settings/activate.php:18
+msgid "No"
+msgstr ""
+
+#: ../inc/customizer/template-settings/activate.php:19
+msgid "Yes"
+msgstr ""
+
+#: ../inc/customizer/template-settings/header.php:42
 msgid "Change the header image, for best results use an image that is at least 1080px wide by 720px tall."
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:103
+#: ../inc/customizer/template-settings/header.php:43
 msgid "Header Image"
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:129
-msgid ""
-"Use an uploaded video, or a video from youtube to display\n"
-"    in the header. Uploaded videos should be 8M and should be a .mp4, .mov, or .webm format."
+#: ../inc/customizer/template-settings/header.php:73
+msgid "Top"
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:134
-msgid "Header Video"
+#: ../inc/customizer/template-settings/header.php:74
+msgid "Center"
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:166
+#: ../inc/customizer/template-settings/header.php:75
+msgid "Bottom"
+msgstr ""
+
+#: ../inc/customizer/template-settings/header.php:79
 msgid "Because the header image size can be changed, this option will give you some more control with how the image is displayed."
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:167
+#: ../inc/customizer/template-settings/header.php:80
 msgid "Header Image Position"
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:189
+#: ../inc/customizer/template-settings/header.php:102
 msgid "Changes the height of the hero banner"
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:190
+#: ../inc/customizer/template-settings/header.php:103
 msgid "Header Size"
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:219
-msgid "Sidebar Settings"
+#: ../inc/customizer/template-settings/header.php:108
+msgid "Slim"
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:244
-msgid "Hide or move your sidebar to change the layout of the content area."
+#: ../inc/customizer/template-settings/header.php:109
+msgid "Medium"
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:245
-msgid "Sidebar Position"
+#: ../inc/customizer/template-settings/header.php:110
+msgid "Big"
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:270
-msgid "Hide or show the sidebar on different screen size (ie: hide on phones)"
+#: ../inc/customizer/template-settings/header.php:111
+msgid "Extra Big"
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:271
-msgid "Sidebar Visibility"
+#: ../inc/customizer/template-settings/header.php:112
+msgid "Full Screen"
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:303
+#: ../inc/customizer/template-settings/layout.php:14
 msgid "Other Settings"
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:329
+#: ../inc/customizer/template-settings/layout.php:38
 msgid "Hide parts of a page, great for making landing pages."
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:330
+#: ../inc/customizer/template-settings/layout.php:39
 msgid "Page Layout"
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:488
-msgid "Please enter a valid YouTube URL."
+#: ../inc/customizer/template-settings/layout.php:43
+msgid "Hide Banner"
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:501
-msgid "This video file is too large to use as a header video. Try a shorter video or optimize the compression settings and re-upload a file that is less than 8MB. Or, upload your video to YouTube and link it with the option below."
+#: ../inc/customizer/template-settings/layout.php:44
+msgid "Hide Navbar"
 msgstr ""
 
-#: ../inc/shared/customizer/template-settings.php:507
-msgid "Only %1$s or %2$s files may be used for header video. Please convert your video file and try again, or, upload your video to YouTube and link it with the option below."
+#: ../inc/customizer/template-settings/layout.php:45
+msgid "Hide Page Content and Sidebar"
 msgstr ""
 
-#: ../inc/shared/customizer-fields/video.php:19, ../inc/shared/customizer-fields/video.php:24
-msgid "Select File"
+#: ../inc/customizer/template-settings/layout.php:46
+msgid "Hide Footer"
 msgstr ""
 
-#: ../inc/shared/customizer-fields/video.php:20
-msgid "Change File"
+#: ../inc/customizer/template-settings/sidebar.php:14
+msgid "Sidebar Settings"
 msgstr ""
 
-#: ../inc/shared/customizer-fields/video.php:21
-msgid "Default"
+#: ../inc/customizer/template-settings/sidebar.php:42
+msgid "Hide or move your sidebar to change the layout of the content area."
 msgstr ""
 
-#: ../inc/shared/customizer-fields/video.php:22
-msgid "Remove"
+#: ../inc/customizer/template-settings/sidebar.php:43
+msgid "Sidebar Position"
 msgstr ""
 
-#: ../inc/shared/customizer-fields/video.php:23
-msgid "No file selected"
+#: ../inc/customizer/template-settings/sidebar.php:48
+msgid "No sidebar"
 msgstr ""
 
-#: ../inc/shared/customizer-fields/video.php:25
-msgid "Choose File"
+#: ../inc/customizer/template-settings/sidebar.php:49
+msgid "Left"
+msgstr ""
+
+#: ../inc/customizer/template-settings/sidebar.php:50
+msgid "Right"
+msgstr ""
+
+#: ../inc/customizer/template-settings/sidebar.php:68
+msgid "Hide or show the sidebar on different screen size (ie: hide on phones)"
+msgstr ""
+
+#: ../inc/customizer/template-settings/sidebar.php:69
+msgid "Sidebar Visibility"
+msgstr ""
+
+#: ../inc/customizer/template-settings/sidebar.php:74
+msgid "Always visible"
+msgstr ""
+
+#: ../inc/customizer/template-settings/sidebar.php:75
+msgid "Hide on medium screens and larger"
+msgstr ""
+
+#: ../inc/customizer/template-settings/sidebar.php:76
+msgid "Hide on desktop"
+msgstr ""
+
+#: ../inc/customizer/template-settings/sidebar.php:77
+msgid "Visible on medium screens and larger"
+msgstr ""
+
+#: ../inc/customizer/template-settings/sidebar.php:78
+msgid "Visible on desktop"
+msgstr ""
+
+#: ../inc/frontend/footers/footer-return.php:6
+msgid "Return to top"
+msgstr ""
+
+#: ../inc/frontend/navbars/navbar.php:10
+msgid "Menu"
 msgstr ""

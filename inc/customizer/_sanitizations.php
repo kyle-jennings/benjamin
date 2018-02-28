@@ -475,7 +475,7 @@ function benjamin_color_scheme_validate($valitity, $val) {
     $valids = array_map( 'benjamin_color_scheme_validate_map', $choices );
     
     if( !in_array($val, $valids) )
-        return $validity->add( 'required', __( 'CSS not found', 'bootswatches' ) );
+        return $validity->add( 'required', __( 'CSS not found', 'benjamin' ) );
 
     return $val;
 }

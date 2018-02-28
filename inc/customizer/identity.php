@@ -55,23 +55,6 @@ function benjamin_site_identity($wp_customize) {
         )
     );
 
-    $wp_customize->add_setting( 'sidebar_size_setting', array(
-        'default' => 'BENJAMIN_ONE_THIRD',
-        'sanitize_callback' => 'benjamin_sidebar_width_sanitize',
-        )
-    );
-
-    $wp_customize->add_control( 'sidebar_size_control', array(
-            'label'   => 'Sizebar Size',
-            'section' => 'title_tagline',
-            'settings' => 'sidebar_size_setting',
-            'type' => 'select',
-            'choices' => array(
-                        'BENJAMIN_ONE_THIRD' => __('Wide', 'benjamin'),
-                        'BENJAMIN_ONE_FOURTH' => __('Narrow', 'benjamin'),
-                    ),
-        )
-    );
 
 }
 add_action('customize_register', 'benjamin_site_identity');

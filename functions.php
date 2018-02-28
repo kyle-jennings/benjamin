@@ -1,4 +1,6 @@
 <?php
+
+
 /**
 * The Amendment functions and definitions
 *

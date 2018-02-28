@@ -14,6 +14,7 @@ function benjamin_template_settings($log = null) {
 
     $template = benjamin_get_template();
     $sidebar_position = get_theme_mod($template . '_sidebar_position_setting', 'none');
+    $sidebar_size = get_theme_mod($template . '_sidebar_size_setting', 'BENJAMIN_ONE_FOURTH');
 
     $main_width = '';
     // if the sidebar is not displayed, the main area is full width
@@ -21,7 +22,7 @@ function benjamin_template_settings($log = null) {
     if($sidebar_position == 'none') {
         $main_width = BENJAMIN_FULL_WIDTH;
     } else {
-        $main_width = benjamin_get_main_width($sidebar_position);
+        $main_width = benjamin_get_main_width($sidebar_position, $sidebar_size);
         $main_width .= ' ' . benjamin_get_main_visibility($template, $sidebar_position);
     }
 
@@ -33,6 +34,7 @@ function benjamin_template_settings($log = null) {
         'main_width' => $main_width,
         'hide_content' => $hide_content,
         'sidebar_position' => $sidebar_position,
+        'sidebar_size' => $sidebar_size,
     );
 }
 
