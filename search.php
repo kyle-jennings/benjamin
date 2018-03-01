@@ -57,7 +57,7 @@ if( !$hide_content ):
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content', 'search' );
+				get_template_part( 'template-parts/feed/content', get_post_format()  );
 
 			endwhile;
 
@@ -65,7 +65,7 @@ if( !$hide_content ):
 
 		else :
 
-			get_template_part( 'template-parts/content', 'none' );
+			get_template_part( 'template-parts/feed/content', get_post_format()  );
 
 		endif; ?>
   </div>

@@ -9,6 +9,12 @@
     background-color: $color-primary-alt-darkest;
     background-image: none;
     position: relative;
+
+    .post-meta__field {
+        float: left;
+        margin-bottom: 0;
+        margin-right: 10px;
+    }
 }
 
 .usa-hero--medium {

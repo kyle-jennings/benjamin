@@ -9,10 +9,10 @@ function benjamin_scripts() {
         return;
 
     $default = get_stylesheet_directory_uri() . '/assets/css/benjamin.min.css';
-    $theme = get_theme_mod('color_scheme_setting', $default);
+    $uri = get_theme_mod('color_scheme_setting', $default);
     
-    if( !$theme = filter_var( apply_filters('bootswatches_filter_css_uri', $theme), FILTER_VALIDATE_URL ) )
-        $theme = $default;
+    if( !$uri = filter_var( apply_filters('bootswatches_filter_css_uri', $uri), FILTER_VALIDATE_URL ) )
+        $uri = $default;
 
     // the following scripts and styles are minified, however unminified version
     // are included with this theme.
@@ -21,8 +21,8 @@ function benjamin_scripts() {
         'benjamin', get_stylesheet_directory_uri() . '/assets/js/uswds-min.js',
          null, null, true
     );
-
-    wp_enqueue_style( 'benjamin', $theme );
+    wp_enqueue_style( 'dashicons' );
+    wp_enqueue_style( 'benjamin', $uri, 'dashicons' );
 
      // comment script
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )

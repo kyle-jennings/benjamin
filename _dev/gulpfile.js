@@ -105,7 +105,6 @@ gulp.task('front-css', ['front-scss'], function() {
     // .pipe(notify({message: 'CSS complete'}));
 });
 
-
 /**
  * Compile Sass and run stylesheet through PostCSS.
  */
@@ -144,7 +143,10 @@ gulp.task('clean:front-css', function() {
 
 // fonts
 gulp.task('fonts', function(){
-  return gulp.src(paths.npmPath + '/uswds/dist/fonts/**.*')
+  return gulp.src(
+      [
+        paths.npmPath + '/uswds/dist/fonts/**.*'
+      ])
     .pipe(gulp.dest(paths.assetsPath + '/fonts'));
 });
 
