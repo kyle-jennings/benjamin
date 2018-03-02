@@ -145,7 +145,7 @@ gulp.task('clean:front-css', function() {
 gulp.task('fonts', function(){
   return gulp.src(
       [
-        paths.npmPath + '/uswds/dist/fonts/**.*'
+        paths.npmPath + '/uswds/dist/fonts/**.woff'
       ])
     .pipe(gulp.dest(paths.assetsPath + '/fonts'));
 });
