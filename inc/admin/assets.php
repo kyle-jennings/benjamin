@@ -5,13 +5,14 @@
  */
 function benjamin_admin_assets() {
 
+    $dir = get_stylesheet_directory_uri() . '/assets/admin/';
     // the following style and script files are minified, however non minified
     // versions are incuded with this theme
     wp_enqueue_style( 'admin-style',
-        get_stylesheet_directory_uri() . '/inc/admin/assets/css/benjamin-admin.min.css' );
+        $dir. 'css/benjamin-admin.min.css' );
 
     wp_enqueue_script( 'admin-scripts',
-        get_stylesheet_directory_uri() . '/inc/admin/assets/js/_benjamin-admin-min.js',
+        $dir. 'js/_benjamin-admin-min.js',
         null, '20170215', true
     );
 

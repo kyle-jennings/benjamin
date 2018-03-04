@@ -1,0 +1,48 @@
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+
+#post_formats_gallery{
+  overflow:auto;
+}
+
+#post_format_gallery_list li{
+  float:left;
+  margin:5px;
+}
+
+#post_format_gallery_list li a{
+  text-align:center;
+}
+
+
+.pfp-quote-field {
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    input,
+    textarea {
+        min-width: 300px;
+        max-width: 100%;
+        resize: none;
+    }
+
+    textarea {
+        width: 100%;
+    }
+}
+
+.pfp-aside,
+.pfp-status {
+    textarea {
+        width: 100%;
+    }    
+}

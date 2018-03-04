@@ -29,6 +29,7 @@ if (is_admin()) {
         'assets',
         'columns',
         'metabox-featured-post',
+        'post-formats'
     );
 
 

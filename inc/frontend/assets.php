@@ -8,7 +8,8 @@ function benjamin_scripts() {
     if(is_admin())
         return;
 
-    $default = get_stylesheet_directory_uri() . '/assets/css/benjamin.min.css';
+    $dir = get_stylesheet_directory_uri() . '/assets/frontend/';
+    $default = $dir .'css/benjamin.min.css';
     $uri = get_theme_mod('color_scheme_setting', $default);
     
     if( !$uri = filter_var( apply_filters('bootswatches_filter_css_uri', $uri), FILTER_VALIDATE_URL ) )
@@ -18,7 +19,7 @@ function benjamin_scripts() {
     // are included with this theme.
 
 	wp_enqueue_script(
-        'benjamin', get_stylesheet_directory_uri() . '/assets/js/uswds-min.js',
+        'benjamin', $dir .'js/uswds-min.js',
          null, null, true
     );
     wp_enqueue_style( 'dashicons' );

@@ -34,3 +34,13 @@
 .button .dashicons {
     margin-top: 3px;
 }
+
+
+.postbox[id^='post_formats_'] {
+    display: none;
+}
+
+
+#titlediv + #top-sortables{
+    margin-top: 20px;
+}
