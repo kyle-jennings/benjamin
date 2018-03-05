@@ -64,9 +64,9 @@ function benjamin_entry_header() {
  * @return string
  */
 function benjamin_get_the_author($post = null) {
+    
     if(!$post)
         global $post;
-
 
     $aid = get_the_author_meta( 'ID', $post->post_author );
 
@@ -420,6 +420,8 @@ function benjamin_post_thumbnail($post = null) {
 }
 
 
+
+
 /**
  * the icon displayed before the title for post formats
  */
@@ -462,7 +464,7 @@ function benjamin_post_format_icon($format = null) {
     endswitch;
     //
     if( is_sticky() )
-        $icon = 'thumb-tack';
+        $icon = 'dashicons-sticky';
 
     if(!$icon)
         return '';

@@ -53,7 +53,7 @@ if( !$hide_content ):
 
 			endwhile;
 
-			the_posts_navigation();
+			benjamin_the_posts_navigation();
 
 		else :
 

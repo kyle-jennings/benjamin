@@ -26,7 +26,7 @@ class PostFormatAudio extends PostFormat {
         $url = get_post_meta($post->ID, '_post_format_audio', true);
     ?>
         <div class="pfp-media-holder">
-            <?php echo call_user_func('benjamin_postformat_get_the_audio_markup',$url); // WPCS: xss ok. ?> 
+            <?php echo call_user_func('benjamin_get_the_audio_markup',$url); // WPCS: xss ok. ?> 
         </div>
 
         <a class="button pfp-js-media-library" data-media="audio"

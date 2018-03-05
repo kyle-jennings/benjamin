@@ -224,7 +224,7 @@ jQuery(document).ready(function($){
     // when the media is selelected, set the values
     wp.media.frames.mediaBox.on('select', function(){
       media_attachment = wp.media.frames.mediaBox.state().get('selection').first().toJSON();
-
+      console.log(media_attachment);
       var funcName = 'pfp' + titleCase(format) + 'Select';
       pfpMediaSelect(media_attachment, format, $metabox);
 

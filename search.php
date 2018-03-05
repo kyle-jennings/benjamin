@@ -39,8 +39,7 @@ if( !$hide_content ):
 
   <div class="main-content <?php echo esc_attr($main_width); ?>">
 		<?php
-		if ( have_posts() ) :
-
+        if ( have_posts() ) :
 			if ( is_home() && ! is_front_page() ) : ?>
 				<header>
 					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
@@ -60,12 +59,11 @@ if( !$hide_content ):
 				get_template_part( 'template-parts/feed/content', get_post_format()  );
 
 			endwhile;
-
-			the_posts_navigation();
+            benjamin_the_posts_navigation();
 
 		else :
 
-			get_template_part( 'template-parts/feed/content', get_post_format()  );
+			get_template_part( 'template-parts/feed/content', 'none'  );
 
 		endif; ?>
   </div>

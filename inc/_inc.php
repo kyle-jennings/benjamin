@@ -3,6 +3,7 @@
 
 // these files contain functions used by both the admin section and frontend
 $shared_files = array(
+    'audio-markup',
     'custom-post-types',
     'extras',
     'functions',
@@ -11,6 +12,7 @@ $shared_files = array(
     'set-default-settings',
     'template-list',
     'theme-support',
+    'video-markup',
     'widgets',
 );
 
@@ -45,9 +47,12 @@ if( !is_admin() ){
         'assets',
         'brand',
         'class-BenjaminFeaturedPost',
-        'class-BenjaminHero',
+        'hero/BenjaminHero',
+        'hero/BenjaminHeroBG',
+        'hero/BenjaminHeroContent',
         'excerpts',
         'filters',
+        'galleries',
         'get-sidebar',
         'get-width-visibility',
         'nav-settings',
@@ -56,6 +61,7 @@ if( !is_admin() ){
         'nav-walkers/navlist-walker',
         'nav-walkers/sidenav-walker',
         'page-sortables',
+        'post-format-markup',
         'sticky-sidenav',
         'template-parts',
         'template-settings',

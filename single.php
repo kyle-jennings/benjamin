@@ -35,7 +35,15 @@ if( !$hide_content ):
     	<?php
     	while ( have_posts() ) : the_post();
 
-    		get_template_part( 'template-parts/singles/content', get_post_format() );
+            if( get_post_meta($post->ID, '_post_format_' . get_post_format(), true) ) {
+                $part = (get_post_format() == 'chat') ? 'chat' : get_post_format();
+                $part = ($part !== 'chat' && get_post_format() ) ? 'post-format' : $part;
+
+                get_template_part( 'template-parts/singles/content', $part );                
+            }
+            else {
+                get_template_part( 'template-parts/singles/content' );
+            }
 
             $navigation_args = array(
                 'prev_text' => '&laquo; Previous Post',
