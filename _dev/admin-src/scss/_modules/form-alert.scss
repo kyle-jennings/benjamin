@@ -1,0 +1,17 @@
+.alert {
+    border: 1px solid $red-light !important;
+}
+
+#save.alert--refresh+.spinner {
+    position: relative;
+    &::before {
+        color: $red-light;
+        content: 'Refresh Page After Save';
+        position: absolute;
+        top: -13px;
+        right: 0;
+        text-align: right;
+        visibility: visible;
+        width: 200px;
+    }
+}

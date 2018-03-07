@@ -14,7 +14,7 @@ global $post;
 
     <div class="post-content col-md-12">
         <?php
-        // examine('boom');
+
         echo '<header class="post-header">';
             the_title( '<h1 class="post-title">','</h1>' );
 

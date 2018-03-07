@@ -27,9 +27,9 @@ class PostFormatGallery extends PostFormat {
     ?>
         <input class="post_format_value" type="hidden" name="post_format_gallery" value="<?php echo esc_attr($gallery); ?>" />
         <p>
-            <?php echo __('Select Images to add to your gallery here.', 'benjamin'); ?>
-            <input type="button" value="<?php echo __('Manage Gallery', 'benjamin'); ?>" id="post_format_gallery_add" />
-            <a class="gallery_remove" href="#" ><?php echo __('Remove Gallery', 'benjamin'); ?></a>
+            <?php echo __('Select Images to add to your gallery here.', 'benjamin');  // WPCS: xss ok. ?>
+            <input type="button" value="<?php echo __('Manage Gallery', 'benjamin');  // WPCS: xss ok. ?>" id="post_format_gallery_add" />
+            <a class="gallery_remove" href="#" ><?php echo __('Remove Gallery', 'benjamin');  // WPCS: xss ok. ?></a>
 
         </p>
         <div class="pfp-shortcode-holder" id="post_format_gallery_list">
@@ -46,7 +46,7 @@ class PostFormatGallery extends PostFormat {
         $is_revision = wp_is_post_revision($post_id);
 
         $nonce = isset( $_POST[ 'post_format_gallery_nonce'] ) 
-            ? wp_verify_nonce( $_POST['post_format_gallery_nonce'], 'post_format_gallery_nonce')  // WPCS: xss ok.
+            ? wp_verify_nonce( sanitize_key(wp_unslash($_POST['post_format_gallery_nonce'])), 'post_format_gallery_nonce')
             : false;
         $is_valid_nonce = $nonce ? 'true' : 'false';
 

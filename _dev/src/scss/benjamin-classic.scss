@@ -1,0 +1,16 @@
+$output-bourbon-deprecation-warnings: false !default;
+/*! benjamin @version */
+
+// Vendor -------------- //
+@import 'lib/bourbon';
+@import 'lib/neat';
+@import 'lib/normalize';
+
+// Core -------------- //
+@import '_variables/classic';
+@import 'core/fonts';
+@import 'core/base';
+@import 'core/grid';
+@import 'core/utilities';
+
+@import 'manifest';

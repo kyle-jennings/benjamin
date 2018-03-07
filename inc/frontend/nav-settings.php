@@ -49,5 +49,5 @@ function benjamin_get_the_posts_navigation() {
 
 
 function benjamin_the_posts_navigation() {
-    echo benjamin_get_the_posts_navigation();
+    echo benjamin_get_the_posts_navigation(); // WPCS: xss ok.
 }

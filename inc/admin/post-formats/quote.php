@@ -47,7 +47,7 @@ class PostFormatQuote extends PostFormat {
         $is_autosave = wp_is_post_autosave($post_id);
         $is_revision = wp_is_post_revision($post_id);
         $nonce = isset( $_POST[ 'post_format_quote_nonce'] ) 
-            ? wp_verify_nonce( $_POST['post_format_quote_nonce'], 'post_format_quote_nonce')  // WPCS: xss ok.
+            ? wp_verify_nonce( sanitize_key(wp_unslash($_POST['post_format_quote_nonce'])), 'post_format_quote_nonce')  // WPCS: xss ok.
             : false;
         $is_valid_nonce = $nonce ? 'true' : 'false';
 
@@ -57,11 +57,11 @@ class PostFormatQuote extends PostFormat {
         }
 
         if(isset($_POST['post_format_quote_author'])){
-            update_post_meta($post_id, '_post_format_quote_author', sanitize_text_field($_POST['post_format_quote_author']) );
+            update_post_meta($post_id, '_post_format_quote_author', sanitize_text_field( wp_unslash($_POST['post_format_quote_author'])) );
         }
 
         if(isset($_POST['post_format_quote_body'])){
-            update_post_meta($post_id, '_post_format_quote_body', sanitize_textarea_field($_POST['post_format_quote_body']) );
+            update_post_meta($post_id, '_post_format_quote_body', sanitize_text_field( wp_unslash($_POST['post_format_quote_body'])) );
         }
     }
 

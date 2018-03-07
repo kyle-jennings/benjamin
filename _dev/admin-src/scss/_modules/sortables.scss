@@ -1,0 +1,79 @@
+.customize-control {
+    .sortables > div {
+        border: 1px solid #e5e5e5;
+        box-shadow: 0 1px 1px rgba(0,0,0,.04);
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    .sortable,
+    .ui-state-highlight {
+
+        background-color: $off-white;
+        border-left: 4px solid $dark-grey;
+        margin-bottom: 5px;
+        padding: 4px 10px;
+        &:hover {
+            cursor: move;
+        }
+    }
+
+
+    .sortables__list {
+        margin-left: 0;
+        min-height: 30px;
+        list-style-type: none;
+
+        &:empty {
+            &::before {
+                display: block;
+                content: 'Empty - using page content';
+            }
+        }
+
+    }
+
+    .sortables__list-title {
+        font-size: 1.1em;
+        font-weight: bold;
+        margin: 0 0 10px;
+    }
+
+    .sortables__active-list .sortable {
+        background-color: lighten($blue, 40%);
+        border-left: 4px solid $blue;
+        color: darken($blue, 15%);
+        padding: 5px;
+    }
+
+
+    .ui-state-highlight {
+        background-color: lighten($dark-grey, 20%);
+        min-height: 30px;
+    }
+
+    .sortable__title {
+        // background-color: $off-white;
+        font-size: 1em;
+        margin: 0;
+        padding: 0;
+
+        .sortables__active-list & {
+            background-color: lighten($blue, 40%);
+        }
+    }
+
+
+    .sortable__visibility {
+        display: none;
+        select {
+            font-size: 10px;
+            margin-left: 5px;
+        }
+
+        .sortables__active-list & {
+            display: block;
+        }
+    }
+
+}

@@ -23,12 +23,12 @@ class PostFormatStatus extends PostFormat {
     public static function meta_box_html($post)
     {
         wp_nonce_field('post_format_status_nonce', 'post_format_status_nonce');
-        $statusBody = get_post_meta($post->ID, '_post_format_status_body', true);
+        $statusBody = get_post_meta($post->ID, '_post_format_status', true);
     ?>
         <p>
             <label>
                 <?php echo __('Status', 'benjamin'); // WPCS: xss ok. ?><br />
-                <textarea name="post_format_status_body"><?php echo esc_attr($statusBody); ?></textarea>
+                <textarea name="post_format_status"><?php echo esc_attr($statusBody); ?></textarea>
             </label>
         </p>
         <?php
@@ -41,7 +41,7 @@ class PostFormatStatus extends PostFormat {
         $is_autosave = wp_is_post_autosave($post_id);
         $is_revision = wp_is_post_revision($post_id);
         $nonce = isset( $_POST[ 'post_format_status_nonce'] ) 
-            ? wp_verify_nonce( $_POST['post_format_status_nonce'], 'post_format_status_nonce')  // WPCS: xss ok.
+            ? wp_verify_nonce( sanitize_key(wp_unslash($_POST['post_format_status_nonce'])), 'post_format_status_nonce')  // WPCS: xss ok.
             : false;
         $is_valid_nonce = $nonce ? 'true' : 'false';
 
@@ -49,8 +49,8 @@ class PostFormatStatus extends PostFormat {
             return;
         }
 
-        if(isset($_POST['post_format_status_body'])){
-            update_post_meta($post_id, '_post_format_status_body', sanitize_textarea_field($_POST['post_format_status_body']) );
+        if(isset($_POST['post_format_status'])){
+            update_post_meta($post_id, '_post_format_status', sanitize_text_field( wp_unslash($_POST['post_format_status']) ) );
         }
     }
 

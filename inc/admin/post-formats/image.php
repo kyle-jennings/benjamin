@@ -54,7 +54,7 @@ class PostFormatImage extends PostFormat {
         $is_revision = wp_is_post_revision($post_id);
 
         $nonce = isset( $_POST[ 'post_format_image_nonce'] ) 
-            ? wp_verify_nonce( $_POST['post_format_image_nonce'], 'post_format_image_nonce')  // WPCS: xss ok.
+            ? wp_verify_nonce( sanitize_key(wp_unslash($_POST['post_format_image_nonce'])), 'post_format_image_nonce')  // WPCS: xss ok.
             : false;
         $is_valid_nonce = $nonce ? 'true' : 'false';
 

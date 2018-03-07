@@ -23,7 +23,7 @@ class BenjaminHero {
     public $HeroContent;
     public $HeroBackground;
 
-    public function __construct($template = null) {
+    public function __construct($template = null, $pf_exclude = array() ) {
         $this->template = $template;
 
         if( is_front_page() )
@@ -50,7 +50,7 @@ class BenjaminHero {
             $this->currentpage = 'fallback';
 
 
-        $this->HeroContent = new BenjaminHeroContent(null, $this->template, $this->currentpage);
+        $this->HeroContent = new BenjaminHeroContent(null, $this->template, $this->currentpage, $pf_exclude );
         $this->HeroBackground = new BenjaminHeroBG(null, $this->template, $this->currentpage);
 
         $this->HeroBackground->getBackground();
@@ -68,11 +68,11 @@ class BenjaminHero {
         $output = '';
         $size = $this->heroSize($this->template);
         $style = $this->HeroBackground->getStyle($this->template);
-
+        $post_format = $this->isPostFormat();
 
         $class = $size;
         $class .= ($this->HeroBackground->image) ? ' hero--has-background' : '';
-        $class .= $this->isPostFormat() ? ' hero--is-post-format' : '';
+        $class .= $post_format ? ' hero--is-post-format' : '';
         
         $output .= '<section class="usa-hero '.$size.'" '.$style.'>';
             $output .= '<div class="usa-grid">';
@@ -95,16 +95,16 @@ class BenjaminHero {
         $format = get_post_format();
 
         if ( $format == 'video' && $this->HeroContent->getVideo() )
-            return true;
+            return 'video';
         elseif ( $format == 'gallery' && $this->HeroContent->getGallery() )
-            return true;
+            return 'gallery';
         elseif( $format == 'image' && $this->HeroContent->getImage() )
-            return true;
+            return 'image';
         elseif($format == 'audio' && $this->HeroContent->getAudio() ) {
             add_action('wp_footer', 'benjamin_enqueue_visualizer_script' );
-            return true;
+            return 'audio';
         }elseif( $format == 'quote' && $this->HeroContent->getQuote() )
-            return true;
+            return 'quote';
         else
             return false;
 

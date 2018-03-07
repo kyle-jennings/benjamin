@@ -9,46 +9,41 @@ function benjamin_carousel_markup($images =array(), $size = 'carousel-feed') {
 
     $images = explode(',', $images);
     $count = count($images);
-
-
-    ?>
+?>
     <div id="carousel" class="js--carousel carousel cf" data-ride="carousel">
 
 
         <!-- Wrapper for slides -->
-        <div class="carousel-inner cf" role="listbox">
-            <?php foreach($images as $i=>$id): ?>
-                <?php
-                    $image = get_post($id);
-                    $image_title = $image->post_title;
-                    $image_caption = $image->post_excerpt;
-                    $src = wp_get_attachment_image_src($id, $size);
-                    if(empty($src))
-                        continue;
+        <div class="carousel-inner cf">
+        <?php foreach($images as $i => $id):
 
-                    $active = ($i == 0) ? 'active' : '';
+                $src = wp_get_attachment_image_src($id, $size);
+                
+                if( empty($src) )
+                    continue;
+                
+                $image = get_post($id);
+                $title = isset($image->post_title) ? $image->post_title : null;
+                $caption = isset($image->post_excerpt) ? $image->post_excerpt : null;
 
-                 ?>
-                <div class="item <?php echo esc_attr($active); ?>">
-                    <img src="<?php echo esc_url($src[0]); ?>" alt="...">
-                    <div class="carousel-caption">
-                        <?php echo esc_html($image_caption); ?>
-                    </div>
+                $active = ($i == 0) ? 'active' : '';
+
+        ?>
+            <div class="item <?php echo esc_attr($active); ?>">
+                <img src="<?php echo esc_url_raw($src[0]); ?>" alt="<?php echo $title; ?>">
+                <!--                 
+                <?php if ($caption) : ?>
+                <div class="carousel-caption">
+                    <?php echo esc_html($caption); ?>
                 </div>
-            <?php endforeach; ?>
+                <?php endif; ?> 
+                -->
+
+            </div>
+        <?php endforeach; ?>
         </div>
 
 
-        <!-- Indicators -->
-        <ol class="carousel-indicators cf">
-            <?php for($num = 0; $num < $count; $num++ ): ?>
-            <?php $active = ($num == 0) ? 'active' : ''; ?>
-            <li class="<?php echo esc_attr($active); ?> " data-target="#carousel" 
-                data-slide-to="<?php echo esc_attr($num); ?>" >
-                &nbsp;
-             </li>
-        <?php endfor; ?>
-        </ol>
 
         <div class="carousel-controls">
             <!-- Controls -->
@@ -61,6 +56,13 @@ function benjamin_carousel_markup($images =array(), $size = 'carousel-feed') {
                 <span class="dashicons dashicons-arrow-right-alt2" aria-hidden="true"></span>
             </a>
         </div>
+
+        <ol class="carousel-nav cf">
+        <?php
+            foreach($images as $i => $id)
+                echo '<li><img src="' . wp_get_attachment_image_src($id, 'thumbnail')[0] . '" /></li>';
+        ?>
+        </ol>
     </div>
     <?php
 }
@@ -75,3 +77,17 @@ function benjamin_get_carousel_markup($images =array(), $size = 'carousel-feed')
 
     return $content;
 }
+
+
+
+/**
+<ol class="carousel-indicators cf">
+<?php for($num = 0; $num < $count; $num++ ): ?>
+<?php $active = ($num == 0) ? 'active' : ''; ?>
+<li class="<?php echo esc_attr($active); ?> " data-target="#carousel" 
+data-slide-to="<?php echo esc_attr($num); ?>" >
+&nbsp;
+</li>
+<?php endfor; ?>
+</ol>
+**/

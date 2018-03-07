@@ -56,7 +56,7 @@ class PostFormatAudio extends PostFormat {
 
 
         $nonce = isset( $_POST[ 'post_format_audio_nonce'] ) 
-            ? wp_verify_nonce( $_POST['post_format_audio_nonce'], 'post_format_audio_nonce')  // WPCS: xss ok.
+            ? wp_verify_nonce( sanitize_key(wp_unslash($_POST['post_format_audio_nonce'])), 'post_format_audio_nonce')  // WPCS: xss ok.
             : false;
         $is_valid_nonce = $nonce ? 'true' : 'false';
 

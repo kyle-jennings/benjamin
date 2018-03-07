@@ -36,15 +36,17 @@ class PostFormatChat extends PostFormat {
     {
         $is_autosave = wp_is_post_autosave($post_id);
         $is_revision = wp_is_post_revision($post_id);
-        $is_valid_nonce = (isset($_POST[ 'post_format_chat_nonce' ]) && wp_verify_nonce($_POST['post_format_chat_nonce'], 'post_format_chat_nonce')) ? 'true' : 'false';
-
+        $nonce = isset( $_POST[ 'post_format_chat_nonce'] ) 
+            ? wp_verify_nonce( sanitize_key(wp_unslash($_POST['post_format_chat_nonce'])), 'post_format_chat_nonce')  // WPCS: xss ok.
+            : false;
+        $is_valid_nonce = $nonce ? 'true' : 'false';
         if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
             return;
         }
 
         if(isset($_POST['post_format_chat'])){
 
-            update_post_meta($post_id, '_post_format_chat', $_POST['post_format_chat']);
+            update_post_meta($post_id, '_post_format_chat', sanitize_text_field(wp_unslash($_POST['post_format_chat'])));
         }else{
             delete_post_meta($post_id, '_post_format_chat');
 

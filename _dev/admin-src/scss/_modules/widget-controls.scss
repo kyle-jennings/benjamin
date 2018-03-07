@@ -1,0 +1,17 @@
+/* Widget Control */
+.benjamin-widget-area-options {
+    display: none;
+}
+
+.widgets-holder-wrap .benjamin-widget-area-options {
+    display: block;
+}
+
+.widgets-holder-wrap.closed .benjamin-widget-area-options {
+    margin-bottom: 9px;
+}
+
+.customize-section-description,
+.customize-description-description {
+    margin-bottom: 20px;
+}

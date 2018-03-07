@@ -1,0 +1,34 @@
+.sidebar {
+    min-height: 1px;
+}
+
+
+.sidebar.usa-section-dark {
+
+    &::after {
+        z-index: -1;
+    }
+
+
+    &::before {
+        background-color: $color-primary-darkest;
+        background-image: none;
+        width: calc(100vw);
+        margin-left: calc(#{$site-margins}/-2);
+    }
+
+    &::before,
+    &::after{
+        bottom: 0;
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+
+    }
+
+
+    .widget {
+        position: relative;
+    }
+}

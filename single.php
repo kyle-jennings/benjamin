@@ -37,7 +37,7 @@ if( !$hide_content ):
 
             if( get_post_meta($post->ID, '_post_format_' . get_post_format(), true) ) {
                 $part = (get_post_format() == 'chat') ? 'chat' : get_post_format();
-                $part = ($part !== 'chat' && get_post_format() ) ? 'post-format' : $part;
+                $part = ($part !== 'gallery' && $part !== 'chat' && get_post_format() ) ? 'post-format' : $part;
 
                 get_template_part( 'template-parts/singles/content', $part );                
             }

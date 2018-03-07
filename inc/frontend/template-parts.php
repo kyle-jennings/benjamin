@@ -12,7 +12,7 @@
  *
  * @return markup the echo mark up
  */
-function benjamin_the_header() {
+function benjamin_the_header( $pf_exclude = array() ) {
     $template = benjamin_get_template();
 
     $layout_settings = get_theme_mod($template.'_page_layout_setting', '[]');
@@ -34,7 +34,7 @@ function benjamin_the_header() {
                 require dirname(__FILE__) . '/navbars/navbar.php';
                 break;
             case 'hero':
-                $hero = new BenjaminHero($template);
+                $hero = new BenjaminHero($template, $pf_exclude);
                 echo $hero; //WPCS: xss ok.
                 break;
         endswitch;

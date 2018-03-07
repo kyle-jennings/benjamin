@@ -10,19 +10,19 @@ class BenjaminHeroContent
     public $hasFeaturedImage = false;
     public $hasFeaturedPost = false;
 
-    public function __construct($post_id, $template, $currentpage)
+    public function __construct($post_id, $template, $currentpage, $pf_exclude )
     {
 
         $this->post_id = $post_id;
         $this->template = $template;
         $this->currentpage = $currentpage;
-
+        $this->pf_exclude = $pf_exclude;
     }
 
     public function __toString()
     {
 
-        $func = $this->currentpage.'Content';
+        $func = $this->currentpage . 'Content';
         $func = array($this, $func);
 
         return call_user_func($func);
@@ -36,7 +36,7 @@ class BenjaminHeroContent
     public function getContent()
     {
 
-        $func = $this->currentpage.'Content';
+        $func = $this->currentpage . 'Content';
         $func = array($this, $func);
 
         return call_user_func($func);
@@ -102,7 +102,7 @@ class BenjaminHeroContent
 
         $format = get_post_format();
 
-        if( $this->getPostFormatContent($format) )
+        if( $this->getPostFormatContent($format) && !in_array($format, $this->pf_exclude ) )
             $output .= $this->getPostFormatContent($format);
         else
             $output .= $this->getSingularTitle();
@@ -114,7 +114,7 @@ class BenjaminHeroContent
 
     public function getPostFormatContent($format)
     {
-        $func = 'get'.ucfirst($format);
+        $func = 'get' . ucfirst($format);
 
         if( method_exists($this, $func) && call_user_func( array($this, $func)) )
             return call_user_func( array($this, $func));
@@ -259,13 +259,35 @@ class BenjaminHeroContent
         global $post;
 
         $output = '';
+        $quote = array(
+            'quote' => get_post_meta($post->ID, '_post_format_quote_body', true),
+            'author' => get_post_meta($post->ID, '_post_format_quote_author', true),
+        );
 
-        $quote = get_post_meta($post->ID, '_post_format_quote', true);
-
-        if(!$quote)
+        if(empty($quote) || !$quote['quote'] )
             return null;
 
         $output .= benjamin_get_quote_markup($quote);
+
+        return $output;
+    }
+
+
+    /**
+     * Gets the post format Aside
+     * @return [type] [description]
+     */
+    public function getAside()
+    {
+        global $post;
+
+        $output = '';
+        $aside = get_post_meta($post->ID, '_post_format_aside', true);
+        if(!$aside)
+            return null;
+
+
+        $output .= $aside;
 
         return $output;
     }
@@ -297,7 +319,7 @@ class BenjaminHeroContent
 
 
     /**
-     * Gets the post format quote
+     * Gets the post format Link
      * @return [type] [description]
      */
     public function getLink()
@@ -306,9 +328,12 @@ class BenjaminHeroContent
 
         $output = '';
 
-        $link = get_post_meta($post->ID, '_post_format_link', true);
+        $link = array(
+            'link' => get_post_meta($post->ID, '_post_format_link_url', true),
+            'text' => get_post_meta($post->ID, '_post_format_link_text', true),
+        );
 
-        if(!$link)
+        if(empty($link) || !$link['link'] || !$link['text'])
             return null;
 
         $output .= '<span class="hero__pre-title">';
@@ -317,12 +342,32 @@ class BenjaminHeroContent
         $output .= '</span>';
 
         $output .= '<h1 class="hero__title">';
-            $output .= '<a href="'.$link['url'].'" target="_blank" follow="no-follow">'.$link['text'].'</a>';
+            $output .= '<a href="'.$link['link'].'" target="_blank" follow="no-follow">'.$link['text'].'</a>';
         $output .= '</h1>';
 
         return $output;
     }
 
+
+
+    /**
+     * Gets the post format status
+     * @return [type] [description]
+     */
+    public function getStatus()
+    {
+        global $post;
+
+        $output = '';
+        $status = get_post_meta($post->ID, '_post_format_status', true);
+        if(!$status)
+            return null;
+
+
+        $output .= $status;
+
+        return $output;
+    }
 
 
 

@@ -1,0 +1,27 @@
+
+.pfp-media-holder {
+    background-color: #000;
+    margin-bottom: 10px;
+    text-align: center;
+
+    > img {
+        margin-top: 4px;
+        max-height: 300px;
+    }
+}
+
+.pfp-video,
+.pfp-embed {
+    margin-top: 4px;
+    max-height: 300px;
+}
+
+.pfp-hide {
+    display: none;
+}
+
+
+.pfp-or-hr {
+    display: inline-block;
+    margin: 0 5px;
+}

@@ -1,0 +1,112 @@
+
+// basically the wrapper around all the fields
+.chat-log {
+    max-width: 500px;
+}
+
+// the select field for the chatlog location
+.chat-location-wrapper {
+    margin-bottom: 10px;
+}
+
+// the fields with the author names
+.authors-form > div{
+    float: left;
+    margin-right: 10px;
+
+    label {
+        display: block;
+    }
+}
+
+
+// adding a new message either before the log, or when inserting into the log
+.new-message-form {
+    > div {
+        float: left;
+        margin-right: 10px;
+    }
+
+    label {
+        display: block;
+    }
+
+    button {
+        clear: both;
+        display: block;
+    }
+}
+
+
+
+
+
+.message {
+    margin-bottom: 10px;
+
+    .message__author {
+        font-size: 16px;
+        margin: 0px;
+    }
+}
+
+.message__actions{
+    a {
+        font-size: 16px;
+    }
+    .dashicons-no {
+        color:rgb(177, 43, 0);
+    }
+    .dashicons-plus-alt {
+        color: rgb(3, 130, 0);
+    }
+    .dashicons-dismiss {
+        color:rgb(177, 43, 0);
+    }
+}
+
+.message__text {
+    padding: 10px;
+    margin:0 0 10px;
+    position: relative;
+
+    &::before {
+        border-top: 10px solid transparent;
+        border-bottom: 0 solid transparent;
+        content: '';
+        display: block;
+        height: 0;
+        position: absolute;
+        bottom: 0;
+        width: 0;
+    }
+    p {
+        margin:0 0 10px;
+    }
+}
+
+.message--author-1 {
+    .message__author {}
+    .message__text{
+        background: rgb(117, 144, 230);
+        &::before{
+            border-right: 10px solid rgb(117, 144, 230);
+            left:-10px;
+        }
+    }
+}
+
+.message--author-2 {
+    .message__author {
+        text-align: right;
+    }
+
+    .message__text {
+        background: rgb(145, 154, 182);
+        text-align: right;
+        &::before{
+            border-left: 10px solid rgb(145, 154, 182);
+            right:-10px;
+        }
+    }
+}

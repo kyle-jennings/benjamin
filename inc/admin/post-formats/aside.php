@@ -24,12 +24,12 @@ class PostFormatAside extends PostFormat {
     {
 
         wp_nonce_field('post_format_aside_nonce', 'post_format_aside_nonce');
-        $asideBody = get_post_meta($post->ID, '_post_format_aside_body', true);
+        $asideBody = get_post_meta($post->ID, '_post_format_aside', true);
     ?>
         <p>
             <label>
                 <?php esc_attr_e('Aside Body', 'benjamin'); ?><br />
-                <textarea name="post_format_aside_body"><?php echo esc_attr($asideBody); ?></textarea>
+                <textarea name="post_format_aside"><?php echo esc_attr($asideBody); ?></textarea>
             </label>
         </p>
         <?php
@@ -44,7 +44,7 @@ class PostFormatAside extends PostFormat {
         $is_revision = wp_is_post_revision($post_id);
 
         $nonce = isset( $_POST[ 'post_format_aside_nonce'] ) 
-            ? wp_verify_nonce( $_POST['post_format_aside_nonce'], 'post_format_aside_nonce')  // WPCS: xss ok.
+                        ? wp_verify_nonce( sanitize_key(wp_unslash($_POST['post_format_aside_nonce'])), 'post_format_aside_nonce')  // WPCS: xss ok.
             : false;
 
         $is_valid_nonce = $nonce ? 'true' : 'false';
@@ -54,8 +54,8 @@ class PostFormatAside extends PostFormat {
         }
 
 
-        if(isset($_POST['post_format_aside_body'])){
-            update_post_meta($post_id, '_post_format_aside_body', sanitize_text_field( wp_unslash($_POST['post_format_aside_body'])) );  // WPCS: xss ok.
+        if(isset($_POST['post_format_aside'])){
+            update_post_meta($post_id, '_post_format_aside', sanitize_text_field( wp_unslash($_POST['post_format_aside'])) );  // WPCS: xss ok.
         }
     }
 

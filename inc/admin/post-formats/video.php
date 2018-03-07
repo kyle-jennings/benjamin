@@ -56,7 +56,7 @@ class PostFormatVideo extends PostFormat {
         $is_autosave = wp_is_post_autosave($post_id);
         $is_revision = wp_is_post_revision($post_id);
         $nonce = isset( $_POST[ 'post_format_video_nonce'] ) 
-            ? wp_verify_nonce( $_POST['post_format_video_nonce'], 'post_format_video_nonce')  // WPCS: xss ok.
+            ? wp_verify_nonce( sanitize_key($_POST['post_format_video_nonce']), 'post_format_video_nonce')  // WPCS: xss ok.
             : false;
         $is_valid_nonce = $nonce ? 'true' : 'false';
 
@@ -65,7 +65,7 @@ class PostFormatVideo extends PostFormat {
         }
 
         if(isset($_POST['post_format_video'])){
-            update_post_meta($post_id, '_post_format_video', esc_url($_POST['post_format_video']) );
+            update_post_meta($post_id, '_post_format_video', esc_url_raw( wp_unslash($_POST['post_format_video']) ) );
         }
     }
 

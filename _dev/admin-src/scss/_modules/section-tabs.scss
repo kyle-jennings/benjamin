@@ -1,0 +1,10 @@
+.control-section-is-active h3 {
+
+    &::before {
+        content: "\f147";
+        display: block;
+        float: left;
+        font-family: "dashicons";
+        margin-right: 5px;
+    }
+}

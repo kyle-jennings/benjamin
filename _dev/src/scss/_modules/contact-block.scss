@@ -1,0 +1,19 @@
+.usa-footer-contact-links {
+    margin-bottom: 4rem;
+
+    &.left {
+        text-align: left;
+    }
+
+    &.center {
+        text-align: center;
+    }
+
+    &.left .usa-social-link,
+    &.center .usa-social-link {
+        margin-left: 0;
+        margin-right: 1rem;
+        left: 0;
+        right: 1.2rem;
+    }
+}
