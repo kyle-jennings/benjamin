@@ -123,7 +123,7 @@ class Benjamin_Sortable_Control extends WP_Customize_Control
         </label>
 
         <p class="description customize-control-description">
-            <?php echo esc_html($this->description); ?>
+            <?php echo $this->description; //WPCS: xss ok.?>
         </p>
         <div class="sortables">
 

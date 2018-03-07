@@ -34,7 +34,7 @@ function benjamin_customizer_enqueue() {
   // this script is minified, however a non minified version is included with the theme
 	wp_enqueue_script(
         'custom-customize',
-        get_stylesheet_directory_uri() . '/inc/admin/assets/js/_benjamin-customizer-min.js',
+        get_stylesheet_directory_uri() . '/assets/admin/js/_benjamin-customizer-min.js',
         null,
         '20170215',
         true
@@ -51,7 +51,7 @@ add_action( 'customize_controls_enqueue_scripts', 'benjamin_customizer_enqueue' 
 function benjamin_previewer_enqueue() {
   wp_enqueue_script(
         'custom-customize',
-        get_stylesheet_directory_uri() . '/assets/js/_benjamin-previewer-min.js',
+        get_stylesheet_directory_uri() . '/assets/frontend/js/_benjamin-previewer-min.js',
         null,
         '20170215',
         true

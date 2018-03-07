@@ -1440,49 +1440,6 @@ function isFunction (arg) {
   return (typeof arg === 'function');
 }
 },{}],24:[function(require,module,exports){
-(function(){
-  
-  var playing = true;
-  var slides = document.querySelectorAll('.js--carousel .item');
-  var currentSlide = 0;
-  var slideInterval = setInterval(nextSlide, 6000);
-
-  function nextSlide() {
-    goToSlide(currentSlide + 1);
-  }
-
-  function previousSlide() {
-    goToSlide(currentSlide - 1);
-  }
-
-  function goToSlide(n) {
-    slides[currentSlide].className = 'item';
-    currentSlide = (n + slides.length) % slides.length;
-    slides[currentSlide].className = 'item active';
-  }
-  
-  function pauseSlideshow() {
-    playing = false;
-    clearInterval(slideInterval);
-  }
-
-  function playSlideshow() {
-
-      playing = true;
-      slideInterval = setInterval(nextSlide,2000);
-  }
-
-  document.querySelector('.js--next').onclick = function(){
-    pauseSlideshow();
-    nextSlide();
-  };
-  document.querySelector('.js--prev').onclick = function(){
-    pauseSlideshow();
-    previousSlide();
-  };
-
-}());
-},{}],25:[function(require,module,exports){
 var windowWidth = window.innerWidth;
 
 if(windowWidth > 600) {
@@ -1498,7 +1455,7 @@ if(windowWidth > 600) {
   }
 }
 
-},{}],26:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 var $hero = document.querySelector('.usa-hero--full');
 var $navbar = document.querySelector('.usa-header');
 var $banner = document.querySelector('.usa-banner');
@@ -1506,9 +1463,8 @@ var $banner = document.querySelector('.usa-banner');
 // console.log($navbar.offsetHeight + $banner.offsetHeight);
 // console.log($hero.offsetHeight);
 // console.log('width:'+($navbar.offsetHeight + $banner.offsetHeight)+'px'); 
-},{}],27:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 require('uswds');
 require('./mobile-video-bg');
 require('./resize-hero');
-require('./carousel');
-},{"./carousel":24,"./mobile-video-bg":25,"./resize-hero":26,"uswds":20}]},{},[27]);
+},{"./mobile-video-bg":24,"./resize-hero":25,"uswds":20}]},{},[26]);
