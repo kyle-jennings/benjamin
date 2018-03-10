@@ -30,6 +30,7 @@ if (is_admin()) {
         'ajax',
         'assets',
         'columns',
+        'functions',
         'metabox-featured-post',
         'post-formats'
     );

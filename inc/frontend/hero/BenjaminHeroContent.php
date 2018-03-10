@@ -10,13 +10,13 @@ class BenjaminHeroContent
     public $hasFeaturedImage = false;
     public $hasFeaturedPost = false;
 
-    public function __construct($post_id, $template, $currentpage, $pf_exclude )
+    public function __construct($post_id, $template, $currentpage, $pf_include )
     {
 
         $this->post_id = $post_id;
         $this->template = $template;
         $this->currentpage = $currentpage;
-        $this->pf_exclude = $pf_exclude;
+        $this->pf_include = $pf_include;
     }
 
     public function __toString()
@@ -102,7 +102,7 @@ class BenjaminHeroContent
 
         $format = get_post_format();
 
-        if( $this->getPostFormatContent($format) && !in_array($format, $this->pf_exclude ) )
+        if( $this->getPostFormatContent($format) && in_array($format, $this->pf_include ) )
             $output .= $this->getPostFormatContent($format);
         else
             $output .= $this->getSingularTitle();
@@ -171,7 +171,6 @@ class BenjaminHeroContent
 
 
         $output .= benjamin_get_the_audio_markup($src);
-        // $output .= '<h1 class="hero__title">'.get_the_title().'</h1>';
 
         return $output;
     }
@@ -230,21 +229,11 @@ class BenjaminHeroContent
         if(!$src)
             return null;
 
-        // if( !has_post_thumbnail() )
-        //     return null;
+        $output .= '<img class="hero-post-format-image" src="'.$src.'">';
+        if( isset($caption))
+            $output .= '<div class="hero-post-format-image__caption">'. $caption . '</div>';
 
 
-        // $src = get_the_post_thumbnail_url();
-        // $image = get_post( get_post_thumbnail_id() );
-        // $title = $image->post_title;
-        // $caption = $image->post_excerpt;
-
-        // $output .= '<div >';
-            $output .= '<img class="hero-post-format-image" src="'.$src.'">';
-            if( isset($caption))
-                $output .= '<div class="hero-post-format-image__caption">'. $caption . '</div>';
-
-        // $output .= '</div>';
 
         return $output;
     }
@@ -259,13 +248,7 @@ class BenjaminHeroContent
         global $post;
 
         $output = '';
-        $quote = array(
-            'quote' => get_post_meta($post->ID, '_post_format_quote_body', true),
-            'author' => get_post_meta($post->ID, '_post_format_quote_author', true),
-        );
-
-        if(empty($quote) || !$quote['quote'] )
-            return null;
+        $quote = get_post_meta($post->ID, '_post_format_quote', true);
 
         $output .= benjamin_get_quote_markup($quote);
 
@@ -328,12 +311,8 @@ class BenjaminHeroContent
 
         $output = '';
 
-        $link = array(
-            'link' => get_post_meta($post->ID, '_post_format_link_url', true),
-            'text' => get_post_meta($post->ID, '_post_format_link_text', true),
-        );
-
-        if(empty($link) || !$link['link'] || !$link['text'])
+        $link = get_post_meta($post->ID, '_post_format_link', true);
+        if(empty($link) || !isset($link['url']) || !isset($link['text']))
             return null;
 
         $output .= '<span class="hero__pre-title">';
@@ -342,7 +321,7 @@ class BenjaminHeroContent
         $output .= '</span>';
 
         $output .= '<h1 class="hero__title">';
-            $output .= '<a href="'.$link['link'].'" target="_blank" follow="no-follow">'.$link['text'].'</a>';
+            $output .= '<a href="'.$link['url'].'" target="_blank" follow="no-follow">'.$link['text'].'</a>';
         $output .= '</h1>';
 
         return $output;

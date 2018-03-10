@@ -1,6 +1,6 @@
 // 'use strict';
 
-require('./post-formats/gallery');
+// require('./post-formats/gallery');
 require('./post-formats/media');
 require('./post-formats/hide-boxes');
 

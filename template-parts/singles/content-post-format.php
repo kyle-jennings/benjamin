@@ -9,17 +9,15 @@
 global $post;
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('cf row'); ?> >
-
-
-    <div class="post-content col-md-12">
+<article id="post-<?php the_ID(); ?>" <?php post_class('entry cf row'); ?> >
+    <div class="post-content entry-content col-md-12">
         <?php
 
         echo '<header class="post-header">';
-            the_title( '<h1 class="post-title">','</h1>' );
+            the_title( '<h1 class="post-title entry-title">','</h1>' );
 
             if ( 'page' !== get_post_type() ) : ?>
-            <div class="post-meta">
+            <div class="post-meta entry-meta">
             <?php
                 echo benjamin_get_the_date(); // WPCS: xss ok.
                 echo benjamin_get_the_author(); // WPCS: xss ok.
@@ -33,7 +31,7 @@ global $post;
 
         ?>
 
-        <div class="post-content">
+        <div class="post-content entry-content">
         <?php
 
 

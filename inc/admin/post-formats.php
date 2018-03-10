@@ -3,15 +3,18 @@
 class PostFormat {
     
     public static $screens = array();
-    public static $formats = array( 'gallery', 'link', 'image', 'quote', 'video', 'audio', 'aside', 'status');
+    public static $formats = array();
 
     public static function init($screens = array() ){
         self::$screens = $screens;
+        self::$formats = json_decode(POST_FORMATS);
 
-        add_theme_support('post-formats', self::$formats);
+        $supported = array('audio', 'aside', 'chat', 'image', 'link', 'quote', 'video', 'status');
+        $forms = array_intersect(self::$formats, $supported);
+        add_theme_support('post-formats',  $supported );
 
         // creates the forms for each psot format type
-        foreach(self::$formats as $format){
+        foreach($forms as $format){
 
             // so long the class exists, add teh metabox and save meta code
             if( class_exists( 'PostFormat' . ucfirst($format) ) ) {
@@ -82,5 +85,6 @@ foreach($files as $file)
     require_once $admin_root . DIRECTORY_SEPARATOR . 'post-formats' . DIRECTORY_SEPARATOR . $file . '.php';
 
 PostFormat::init( 
-    array( 'post', 'page' ) 
+    array( 'post', 'page' ),
+    POST_FORMATS
 );

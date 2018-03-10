@@ -23,7 +23,7 @@ class BenjaminHero {
     public $HeroContent;
     public $HeroBackground;
 
-    public function __construct($template = null, $pf_exclude = array() ) {
+    public function __construct($template = null, $pf_include = array() ) {
         $this->template = $template;
 
         if( is_front_page() )
@@ -50,7 +50,7 @@ class BenjaminHero {
             $this->currentpage = 'fallback';
 
 
-        $this->HeroContent = new BenjaminHeroContent(null, $this->template, $this->currentpage, $pf_exclude );
+        $this->HeroContent = new BenjaminHeroContent(null, $this->template, $this->currentpage, $pf_include );
         $this->HeroBackground = new BenjaminHeroBG(null, $this->template, $this->currentpage);
 
         $this->HeroBackground->getBackground();

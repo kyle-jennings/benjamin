@@ -1,14 +1,18 @@
 blockquote {
-    *::before{
-        color: rgba($color-white, .6);
+    p::before,
+    cite::before {
+        color: $color-gray-light;
         font-family: 'dashicons';
         display: inline-block;        
     }
     p {
         font-size: 3rem;
-    }
-    p::before {
-        content: "\f122";
+        margin: 0;
+        margin-bottom: .5rem;
+
+        &::before {
+            content: "\f122";
+        }
     }
 
     cite::before {

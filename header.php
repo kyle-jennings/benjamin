@@ -18,8 +18,8 @@
 
 
 <?php 
-    $pf_exclude = array('chat', 'gallery');
-    benjamin_the_header($pf_exclude); 
+    $pf_include = json_decode(POST_FORMATS);
+    benjamin_the_header($pf_include); 
 ?>
 
 

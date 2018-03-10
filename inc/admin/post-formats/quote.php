@@ -22,19 +22,23 @@ class PostFormatQuote extends PostFormat {
     public static function meta_box_html($post)
     {
         wp_nonce_field('post_format_quote_nonce', 'post_format_quote_nonce');
-        $quoteAuthor = get_post_meta($post->ID, '_post_format_quote_author', true);
-        $quoteBody = get_post_meta($post->ID, '_post_format_quote_body', true);
+        $quote = array();
+        $quote = get_post_meta($post->ID, '_post_format_quote', true);
+        $author = isset($quote['author']) ? $quote['author'] : '';
+        $body = isset($quote['body']) ? $quote['body'] : '';
     ?>
         <p>
             <label>
-                <?php echo __('Quote Author', 'benjamin'); // WPCS: xss ok. ?><br />
-                <input type="text" value="<?php echo esc_attr($quoteAuthor); ?>" name="post_format_quote_author" />
+                <?php echo __('Quote', 'benjamin'); // WPCS: xss ok. ?><br />
+                <textarea name="post_format_quote[body]"><?php echo esc_attr($body); ?></textarea>
             </label>
         </p>
+
         <p>
             <label>
-                <?php echo __('Quote Body', 'benjamin'); // WPCS: xss ok. ?><br />
-                <textarea name="post_format_quote_body"><?php echo esc_html($quoteBody); ?></textarea>
+                <?php echo __('Quote', 'benjamin'); // WPCS: xss ok. ?><br />
+                <input type="text" value="<?php echo esc_attr($author); ?>"
+                 name="post_format_quote[author]" placeholder="<?php echo __('unknown author', 'benjamin'); ?>" />
             </label>
         </p>
         <?php
@@ -56,12 +60,9 @@ class PostFormatQuote extends PostFormat {
             return;
         }
 
-        if(isset($_POST['post_format_quote_author'])){
-            update_post_meta($post_id, '_post_format_quote_author', sanitize_text_field( wp_unslash($_POST['post_format_quote_author'])) );
-        }
-
-        if(isset($_POST['post_format_quote_body'])){
-            update_post_meta($post_id, '_post_format_quote_body', sanitize_text_field( wp_unslash($_POST['post_format_quote_body'])) );
+        if(isset($_POST['post_format_quote'])){
+            $val = benjamin_sanitize_text_or_array_field($_POST['post_format_quote']);
+            update_post_meta($post_id, '_post_format_quote', $val );
         }
     }
 

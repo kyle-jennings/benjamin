@@ -32,5 +32,8 @@ define('BENJAMIN_ONE_HALF' , 'usa-width-one-half');
 // misc
 define('DEFAULT_TEMPLATE', 'default');
 
+define('POST_FORMATS', json_encode(
+    array('link', 'image', 'quote', 'video', 'audio')
+));
 
 require_once get_template_directory() . '/inc/_inc.php';

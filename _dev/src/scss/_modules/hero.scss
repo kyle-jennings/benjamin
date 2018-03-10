@@ -10,7 +10,8 @@
     background-image: none;
     position: relative;
 
-    .post-meta__field {
+    .post-meta__field,
+    .entry-meta__field  {
         float: left;
         margin-bottom: 0;
         margin-right: 10px;

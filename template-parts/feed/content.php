@@ -7,21 +7,42 @@
  * @package Benjamin
  */
 
+$link = get_post_meta($post->ID, '_post_format_link', true);
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('cf'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('entry cf'); ?>>
     <header class="entry-header">
-        <?php
-        if ( !is_single() ) :
-            $pre = '<h2 class="entry-title">';
-            $pre .= benjamin_post_format_icon( get_post_format());
-            $pre .= '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">';
+        <h3 class="entry-title">
+    <?php
+        $pre = '';
+        $pre .= benjamin_post_format_icon( get_post_format());
 
-            the_title(  $pre, '</a></h2>');
-        endif;
-        ?>
+        if(isset( $link['url']) && isset($link['text'])) {
+            $pre .= '<a class="link-offsite" href="'.esc_url($link['url']).'" target="_blank" rel="follow">';// WPCS: xss ok.
+                $pre .= esc_html($link['text']); // WPCS: xss ok.
+            $pre .= '</a>';
+                // $pre .= '<span class="dashicons dashicons-external"></span>';
+        }else {
+            $pre .= the_title(
+                '<a href="'
+                . esc_url( get_permalink() ) . '" rel="bookmark">',
+                '</a>'
+            );
+        }
+        
+        echo $pre; // WPCS: xss ok.
+    ?>
+        </h3>
     </header><!-- .entry-header -->
     <div class="grid">
+        <?php
+
+            if( get_post_meta($post->ID, '_post_format_' . get_post_format(), true) 
+                && in_array(get_post_format(), json_decode(POST_FORMATS)) ) 
+            {
+                benjamin_post_format_markup($post,  get_post_format() );
+            }
+        ?>
 
         <div class="usa-width-one-fourth">
 

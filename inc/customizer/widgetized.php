@@ -35,7 +35,7 @@ function benjamin_widgetized_settings($wp_customize) {
            /* translators: use the $description variable above - states that the content is sortable via drag and drop */
            'description' => sprintf( __('%s ', 'benjamin'), $description ),
            'section' => $section,
-           'settings'=> 'widgetized_sortables_setting',
+           'settings' => 'widgetized_sortables_setting',
            'optional' => true,
            'choices' => array(
                    'widget-area-1' => __('Widget Area 1', 'benjamin'),

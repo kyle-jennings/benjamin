@@ -84,7 +84,7 @@ function benjamin_get_the_author($post = null) {
     $author .= '</span>';
 
 
-    $output = '<span class="post-meta__field byline"> ' . $author . '</span>'; // WPCS: XSS OK.
+    $output = '<span class="post-meta__field entry-meta__field byline"> ' . $author . '</span>'; // WPCS: XSS OK.
 
     return $output;
 }
@@ -110,10 +110,10 @@ function benjamin_get_the_date($post = null) {
 
     $date = '';
     $date .= '<i class="dashicons dashicons-calendar-alt" aria-hidden="true" title="Date Published"></i>';
-    $date .= '<a class="post-date published" href="' . esc_url($month_url) . '">'.$d.'</a>, ';
-    $date .= '<a class="post-date published" href="' . esc_url($year_url) . '">'.$y.'</a>';
+    $date .= '<a class="post-date entry-date published" href="' . esc_url($month_url) . '">'.$d.'</a>, ';
+    $date .= '<a class="post-date entry-date published" href="' . esc_url($year_url) . '">'.$y.'</a>';
 
-    $output = '<span class="post-meta__field posted-on">' . $date . '</span>';
+    $output = '<span class="post-meta__field entry-meta__field posted-on">' . $date . '</span>';
 
     return $output;
 }
@@ -156,7 +156,7 @@ function benjamin_get_the_comment_count_link($post = null) {
     $comments .= '<a href="#comments">'.$text.'</a>';
 
 
-    $output = '<span class="post-meta__field"> ' . $comments . '</span>'; // WPCS: XSS OK.
+    $output = '<span class="post-meta__field entry-meta__field"> ' . $comments . '</span>'; // WPCS: XSS OK.
 
     return $output;
 }
@@ -205,7 +205,7 @@ function benjamin_get_the_comment_popup($anchor = null) {
             $comments .= $content;
 
 
-        $output = '<span class="post-meta__field"> ' . $comments . '</span>'; // WPCS: XSS OK.
+        $output = '<span class="post-meta__field entry-meta__field"> ' . $comments . '</span>'; // WPCS: XSS OK.
     }
 
     return $output;
@@ -223,7 +223,7 @@ function benjamin_get_categories_links($post = null) {
     $output = '';
     // categories
     if ( $categories_list = benjamin_get_the_category_list($post->ID) ) {
-        $output .= sprintf( '<span class="post-meta__field"><i class="dashicons dashicons-category" title="Categories"></i>' . esc_html( '%s' ) . '</span>', $categories_list );
+        $output .= sprintf( '<span class="post-meta__field entry-meta__field"><i class="dashicons dashicons-category" title="Categories"></i>' . esc_html( '%s' ) . '</span>', $categories_list );
     }
 
     return $output;
@@ -242,7 +242,7 @@ function benjamin_get_tags_links() {
     // tags
     $tags_list = get_the_tag_list( '', esc_html__( ', ', 'benjamin' ) );
     if ( $tags_list ) {
-        $output .= sprintf( '<span class="post-meta__field"><i class="dashicons dashicons-tag" title="Tags"></i>' . esc_html( '%s' ) . '</span>', $tags_list);
+        $output .= sprintf( '<span class="post-meta__field entry-meta__field"><i class="dashicons dashicons-tag" title="Tags"></i>' . esc_html( '%s' ) . '</span>', $tags_list);
     }
 
     return $output;
@@ -268,13 +268,13 @@ function benjamin_get_entry_footer($post = null) {
             'echo' => false
         ) );
         if ( 'page' !== get_post_type() ):
-        $output .= '<div class="post-meta">';
+        $output .= '<div class="post-meta entry-meta">';
             $output .= benjamin_get_categories_links();
             $output .= benjamin_get_tags_links();
         $output .= '</div>';
         endif;
 
-        $output .= '<div class="post-meta">';
+        $output .= '<div class="post-meta entry-meta">';
             $output .= benjamin_get_the_edit_post_link();
         $output .= '</div>';
     $output .= '</footer>';
@@ -308,7 +308,7 @@ function benjamin_get_the_edit_post_link($post_id = null){
             esc_html__( 'Edit %s', 'benjamin' ),
             the_title( '<span class="screen-reader-text">"', '"</span>', false )
         ),
-        '<div class="post-meta__field"> <i class="dashicons dashicons-edit"></i>',
+        '<div class="post-meta__field entry-meta__field"> <i class="dashicons dashicons-edit"></i>',
         '</div>',
         $post_id
     );
@@ -400,7 +400,7 @@ function benjamin_get_post_thumbnail($post = null){
     $output = '';
     if( has_post_thumbnail() ):
 
-        $output .= '<figure class="post-featured-image">';
+        $output .= '<figure class="post-featured-image entry-featured-image">';
             $output .= '<a href="'.esc_url( get_the_permalink() ).'" rel="bookmark">';
                 $output .= get_the_post_thumbnail($post, 'thumbnail');
             $output .= '</a>';
@@ -425,10 +425,9 @@ function benjamin_post_thumbnail($post = null) {
 /**
  * the icon displayed before the title for post formats
  */
-function benjamin_post_format_icon($format = null) {
+function benjamin_get_post_format_icon($format = null) {
 
     $icon = null;
-
 
     switch($format):
         case 'gallery':
@@ -472,4 +471,8 @@ function benjamin_post_format_icon($format = null) {
     $output = '<i class="dashicons '.$icon.'"></i>';
 
     return $output;
+}
+
+function benjamin_post_format_icon($format = null) {
+    echo benjamin_get_post_format_icon($format);
 }
