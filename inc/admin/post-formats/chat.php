@@ -2,14 +2,16 @@
 
 class PostFormatChat extends PostFormat {
 
+    public static $format = 'chat';
+    
     // register the meta box
     public static function register_meta_box()
     {
-        foreach(self::$screens as $screen){
+        foreach ( self::$screens as $screen ) {
             add_meta_box(
                 'post_formats_chat',
-                __('Chat', 'benjamin'),
-                array('PostFormatChat', 'meta_box_html'),
+                __( 'Chat', 'benjamin' ),
+                array( 'PostFormatChat', 'meta_box_html' ),
                 $screen,
                 'top',
                 'default'
@@ -19,38 +21,18 @@ class PostFormatChat extends PostFormat {
 
 
     // the markup
-    public static function meta_box_html($post)
+    public static function meta_box_html( $post )
     {
-        wp_nonce_field('post_format_chat_nonce', 'post_format_chat_nonce');
-        $chat = get_post_meta($post->ID, '_post_format_chat', true);
-        // $chat = array();
-        wp_localize_script('post_formats_js', 'chat', $chat);
+        wp_nonce_field( 'post_format_nonce_' . self::$format, 'post_format_nonce_' . self::$format );
+
+        $value = self::meta_box_saved_value( $post->ID, self::$format, null );
+
+        wp_localize_script( 'post_formats_js', 'chat', $value );
     ?>
         <div class="chat-log cf" id="post_format_chat_log"></div>
     <?php
     }
 
 
-    // save the value
-    public static function meta_box_save($post_id)
-    {
-        $is_autosave = wp_is_post_autosave($post_id);
-        $is_revision = wp_is_post_revision($post_id);
-        $nonce = isset( $_POST[ 'post_format_chat_nonce'] ) 
-            ? wp_verify_nonce( sanitize_key(wp_unslash($_POST['post_format_chat_nonce'])), 'post_format_chat_nonce')  // WPCS: xss ok.
-            : false;
-        $is_valid_nonce = $nonce ? 'true' : 'false';
-        if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
-            return;
-        }
-
-        if(isset($_POST['post_format_chat'])){
-
-            update_post_meta($post_id, '_post_format_chat', sanitize_text_field(wp_unslash($_POST['post_format_chat'])));
-        }else{
-            delete_post_meta($post_id, '_post_format_chat');
-
-        }
-    }
 
 }

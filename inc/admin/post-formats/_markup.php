@@ -1,7 +1,11 @@
 <?php
 
+function benjamin_postformat_get_the_audio_markup( $url = null ) {
+    return benjamin_get_the_audio_markup( $url );
+}
 
-function benjamin_postformat_get_the_video_markup($url = null) {
+
+function benjamin_postformat_get_the_video_markup( $url = null ) {
     if(!$url)
         return;
 

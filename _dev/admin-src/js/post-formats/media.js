@@ -8,7 +8,6 @@ jQuery(document).ready(function($){
     var $metabox = $this.closest('.postbox');
     var url = $this.val();
     var format = $this.data('media');
-    console.log(url);
     window['pfpAJAXMarkup'](url, format, $metabox);
 
   });
@@ -55,7 +54,7 @@ jQuery(document).ready(function($){
     // when the media is selelected, set the values
     wp.media.frames.mediaBox.on('select', function(){
       media_attachment = wp.media.frames.mediaBox.state().get('selection').first().toJSON();
-      console.log(media_attachment);
+
       var funcName = 'pfp' + titleCase(format) + 'Select';
       pfpMediaSelect(media_attachment, format, $metabox);
 
@@ -77,56 +76,11 @@ jQuery(document).ready(function($){
 function pfpMediaSelect(media_attachment, format, $metabox){
   var $html = pfpAJAXMarkup(media_attachment.url, format, $metabox);
 
+  console.log( media_attachment, format, $metabox );
   $metabox.find('.post_format_value').val(media_attachment.url);
 
 }
 
-
-/**
- * set the image correctly
- * @param  {object} media_attachment the media object sent from the wp media library
- * @param  {string} format           what type of post format are we working with?
- * @param  {object} $metabox         jquery object/DOM element
- * @return {html}                  new DOM element to display the media
- */
-function pfpImageSelect(media_attachment, format, $metabox){
-  var $html = pfpAJAXMarkup(media_attachment.url, format, $metabox);
-
-  $metabox.find('.post_format_value').val(media_attachment.url);
-
-}
-
-
-/**
- * set the video correctly
- * @param  {object} media_attachment the media object sent from the wp media library
- * @param  {string} format           what type of post format are we working with?
- * @param  {object} $metabox         jquery object/DOM element
- * @return {html}                  new DOM element to display the media
- */
-function pfpVideoSelect(media_attachment, format, $metabox){
-  var $html = pfpAJAXMarkup(media_attachment.url, format, $metabox);
-
-  $metabox.find('.post_format_url').val(media_attachment.url);
-  $metabox.find('.post_format_value').val(media_attachment.url);
-
-}
-
-
-/**
- * set the Audio correctly
- * @param  {object} media_attachment the media object sent from the wp media library
- * @param  {string} format           what type of post format are we working with?
- * @param  {object} $metabox         jquery object/DOM element
- * @return {html}                  new DOM element to display the media
- */
-function pfpAudioSelect(media_attachment, format, $metabox){
-  var $html = pfpAJAXMarkup(media_attachment.url, format, $metabox);
-
-  $metabox.find('.post_format_url').val(media_attachment.url);
-  $metabox.find('.post_format_value').val(media_attachment.url);
-
-}
 
 
 
@@ -151,7 +105,7 @@ window.pfpAJAXMarkup = function(url, format, $metabox){
     data: data,
     complete: function(response){
       if(response.status == 200){
-
+        console.log(response);
         var $html = response.responseText;
         if($html == ''){
           $metabox.find('.post_format_url').val('');
@@ -163,7 +117,7 @@ window.pfpAJAXMarkup = function(url, format, $metabox){
     }
   });
 
-}
+};
 
 
 

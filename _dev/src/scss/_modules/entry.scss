@@ -24,8 +24,11 @@
     .entry-title {
         .dashicons {
             color: $color-gray-light;
+            font-size: inherit;
+            height: auto;
             margin-right: 1.5rem;
             line-height: 1.3;
+            width: auto;
         }
     }
 

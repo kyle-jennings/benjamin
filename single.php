@@ -20,8 +20,10 @@ get_header();
  */
 
 extract( benjamin_template_settings() );
+$format = get_post_format();
+$exclude = array( 'chat', 'gallery', 'aside' );
 
-if( ! $hide_content ) :
+if ( ! $hide_content ) :
 ?>
 
 <section id="primary" class="usa-grid usa-section">
@@ -32,15 +34,16 @@ if( ! $hide_content ) :
     endif;
     ?>
     <div class="main-content <?php echo esc_attr( $main_width ); ?>">
-    	<?php
-    	while ( have_posts() ) :
+        <?php
+        while ( have_posts() ) :
             the_post();
 
-            if( get_post_meta( $post->ID, '_post_format_' . get_post_format(), true ) ) {
-                $part = ( get_post_format() == 'chat' ) ? 'chat' : get_post_format();
-                $part = ( $part !== 'gallery' && $part !== 'chat' && get_post_format() ) ? 'post-format' : $part;
+            
+            if ( $format && benjamin_use_post_format_content( $post, $format, $exclude )  ) {
+                
+                $part = ( !in_array( $format, $exclude, true ) ) ? 'post-format' : $format;
+                get_template_part( 'template-parts/singles/content', $part );
 
-                get_template_part( 'template-parts/singles/content', $part );                
             } else {
                 get_template_part( 'template-parts/singles/content' );
             }

@@ -1,70 +1,80 @@
 <?php
 
-function benjamin_get_post_format_markup($post = null, $format = 'standard')
-{
-    if(!$post){
+function benjamin_get_post_format_markup( $post = null, $format = 'standard' ) {
+
+    if ( ! $post ) {
         global $post;
     }
 
-    $value = get_post_meta($post->ID, '_post_format_' . $format, true);
-    if(!$format)
-        return '';
+    $value = benjamin_get_post_format_value( $post->ID, $format, null );
+
+    if ( ! $format || !$value)
+        return false;
 
     $markup = null;
-    switch($format){
+    switch ( $format ) {
         case 'aside':
             $markup = $value;
             break;
         case 'audio':
-            $background = has_post_thumbnail() ? get_the_post_thumbnail_url($post, 'full') : '';
-            $markup .= benjamin_get_the_audio_markup($value);
+            $background = has_post_thumbnail() ? get_the_post_thumbnail_url( $post, 'full' ) : '';
+            $markup    .= benjamin_get_the_audio_markup( $value );
             break;
-        case 'chat';
-            break;
-        case 'image';
+        case 'image':
             $markup .= '<a href="' . get_permalink() . '">';
-                $markup .= '<img class="post-featured-image entry-featured-image" src="' . esc_url( $value ) . '">';
+            $markup .= '<img class="post-featured-image entry-featured-image" src="' . esc_url( $value ) . '">';
             $markup .= '</a>';
             break;
         case 'quote':
-            $markup .= benjamin_get_quote_markup($value);
+            $markup .= benjamin_get_quote_markup( $value );
+            break;
+        case 'status':
+            $markup .= benjamin_get_status_markup( $value );
             break;
         case 'video':
-            $markup .= benjamin_get_the_video_markup($value);
+            $markup .= benjamin_get_the_video_markup( $value );
             break;
     }
-    if(!$markup)
-        return '';
 
-    $output ='<div class="entry__post-format-header usa-width-one-whole">';
-        $output .= $markup;
+    if ( ! $markup ) {
+        return '';
+    }
+
+    $output = '<div class="entry__post-format-header usa-width-one-whole">';
+    $output .= $markup;
     $output .='</div>';
 
     return $output;
 }
 
 
-function benjamin_post_format_markup($post = null, $format = 'standard'){
-    if(!$post){
+function benjamin_post_format_markup( $post = null, $format = 'standard' ) {
+    
+    if ( ! $post ) {
         global $post;
     }
 
-    echo benjamin_get_post_format_markup($post, $format);
+    echo benjamin_get_post_format_markup( $post, $format );
 
 }
+
 
 /**
  * The markup for quotes, as created by the quote post format
  */
 function benjamin_get_quote_markup( $quote = array() ) {
-    if( !is_array($quote) || !isset($quote['author']) || !isset($quote['body']) )
+    if( ! is_array( $quote ) || ! isset( $quote['author'] ) || ! isset( $quote['body'] ) ){
         return;
+    }
 
     $output = '';
     $output .= '<blockquote>';
-        $output .= '<p> '. $quote['body'] . '</p>';
-        if($quote['author'])
-            $output .= '<cite> '. $quote['author'] . '</cite>';
+
+        $output .= '<p> ' . $quote['body'] . '</p>';
+        
+        if ( $quote['author'] ) {
+            $output .= '<cite> ' . $quote['author'] . '</cite>';
+        }
         
     $output .= '</blockquote>';
 
@@ -76,9 +86,10 @@ function benjamin_get_quote_markup( $quote = array() ) {
 /**
  * The markup for the chat logs - this isnt used yet as it requires some work
  */
-function benjamin_get_chat_log($chat = null) {
-    if(!$chat || empty($chat) || empty($chat['messages']))
+function benjamin_get_chat_log( $chat = null ) {
+    if ( ! $chat || empty( $chat ) || empty( $chat['messages'] ) ) {
         return;
+    }
 
     $messages = $chat['messages'];
     $style = 'graphical';
@@ -86,13 +97,28 @@ function benjamin_get_chat_log($chat = null) {
     $output = '';
     $output .= '<ol class="chat-log">';
 
-    foreach($messages as $message){
-        $output .= '<li class="chat-log__message chat-log__author- '. $message['authorID'] . '">';
-            $output .= '<h6 class="chat-log__author"> '. $message['displayName'] . '</h6>';
-            $output .= '<p class="chat-log__text"> '. $message['text'] . '</p>';
+    foreach ( $messages as $message ) {
+        $output .= '<li class="chat-log__message chat-log__author- ' . $message['authorID'] . '">';
+            $output .= '<h6 class="chat-log__author"> ' . $message['displayName'] . '</h6>';
+            $output .= '<p class="chat-log__text"> ' . $message['text'] . '</p>';
         $output .= '</li>';
     }
     $output .= '</ol>';
+
+    return $output;
+}
+
+
+
+/**
+ * The markup for the chat logs - this isnt used yet as it requires some work
+ */
+function benjamin_get_status_markup( $status = null ) {
+    if ( ! $status || empty( $status ) ) {
+        return;
+    }
+
+    $output = '<p> ' . $status . '</p>';
 
     return $output;
 }

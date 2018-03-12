@@ -9,14 +9,14 @@
 global $post;
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('entry cf row'); ?> >
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'entry cf row' ); ?> >
     <div class="post-content entry-content col-md-12">
         <?php
 
         echo '<header class="post-header">';
-            the_title( '<h1 class="post-title entry-title">','</h1>' );
 
-            if ( 'page' !== get_post_type() ) : ?>
+        if ( 'page' !== get_post_type() ) :
+        ?>
             <div class="post-meta entry-meta">
             <?php
                 echo benjamin_get_the_date(); // WPCS: xss ok.
@@ -24,8 +24,8 @@ global $post;
                 echo benjamin_get_the_comment_count_link(); // WPCS: xss ok.
             ?>
             </div><!-- .post-meta -->
-            <?php
-            endif;
+        <?php
+        endif;
 
         echo '</header>';
 
@@ -49,7 +49,9 @@ global $post;
         </div><!-- .post-meta -->
 
 
-        <?php echo benjamin_get_entry_footer($post); // WPCS: xss ok.?>
+        <?php 
+            echo benjamin_get_entry_footer( $post ); // WPCS: xss ok.
+        ?>
 
 
     </div>

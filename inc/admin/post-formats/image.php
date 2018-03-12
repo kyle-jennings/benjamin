@@ -2,14 +2,25 @@
 
 class PostFormatImage extends PostFormat {
 
-    // register
+    /**
+     * The powt format name
+     *
+     * @var string
+     */
+    public static $format = 'image';
+
+    /**
+     * Registers the post format
+     *
+     * @return void
+     */
     public static function register_meta_box()
     {
-        foreach(self::$screens as $screen){
+        foreach ( self::$screens as $screen ) {
             add_meta_box(
                 'post_formats_image',
-                __('Image', 'benjamin'),
-                array('PostFormatImage', 'meta_box_html'),
+                __( 'Image', 'benjamin' ),
+                array( 'PostFormatImage', 'meta_box_html' ),
                 $screen,
                 'top',
                 'default'
@@ -18,54 +29,44 @@ class PostFormatImage extends PostFormat {
     }
 
 
-    // the markup
-    public static function meta_box_html($post)
+    /**
+     * The HTML for the post meta box.
+     *
+     * @param  wp_post $post the post object.
+     * @return void
+     */
+    public static function meta_box_html( $post )
     {
-        $url = get_post_meta($post->ID, '_post_format_image', true);
+        wp_nonce_field( 'post_format_nonce_' . self::$format, 'post_format_nonce_' . self::$format );
+
+        $value = self::meta_box_saved_value( $post->ID, self::$format, null );
     ?>
         <div class="pfp-media-holder">
-            <?php echo call_user_func('benjamin_postformat_get_the_image_markup',$url); // WPCS: xss ok. ?>
+            <?php echo call_user_func( 'benjamin_postformat_get_the_image_markup', $value ); // WPCS: xss ok. ?>
         </div>
 
 
         <a class="button pfp-js-media-library" data-media="image"
             id="post_format_image_select">
             <span class="dashicons dashicons-format-image"></span>
-            Select Image
+            <?php echo __( 'Select Image', 'benjamin'); ?>
         </a>
 
-        <span class="pfp-or-hr">or use an oembed url</span>
+        <span class="pfp-or-hr"><?php __('or use an oembed url', 'benjamin'); ?></span>
 
 
-        <input class="post_format_value" id="post_format_image" data-media="image" name="post_format_image"  type="url"
-            value="<?php echo esc_url_raw($url); ?>" />
+        <input class="post_format_value" 
+            data-media="image" 
+            id="post_format_image_value" 
+            name="post_format_value[<?php echo esc_attr( self::$format ); ?>]" 
+            type="url" 
+            value="<?php echo esc_url_raw( $value ); ?>" 
+        />
 
         <a class="pfp-js-remove-media" data-media="image"
-            href="#" >Remove Image</a>
+            href="#" ><?php echo __( 'Remove Image', 'benjamin' ); ?></a>
 
         <?php
-    }
-
-
-    // save the value
-    public static function meta_box_save($post_id)
-    {
-        $is_autosave = wp_is_post_autosave($post_id);
-        $is_revision = wp_is_post_revision($post_id);
-
-        $nonce = isset( $_POST[ 'post_format_image_nonce'] ) 
-            ? wp_verify_nonce( sanitize_key(wp_unslash($_POST['post_format_image_nonce'])), 'post_format_image_nonce')  // WPCS: xss ok.
-            : false;
-        $is_valid_nonce = $nonce ? 'true' : 'false';
-
-
-        if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
-            return;
-        }
-
-        if(isset($_POST['post_format_image'])){
-            update_post_meta($post_id, '_post_format_image', sanitize_text_field( wp_unslash($_POST['post_format_image'])) );
-        }
     }
 
 

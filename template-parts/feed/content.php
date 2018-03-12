@@ -1,5 +1,5 @@
 <?php
-/** 
+/**
  * Template part for displaying posts
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
@@ -7,61 +7,51 @@
  * @package Benjamin
  */
 
-$link = get_post_meta($post->ID, '_post_format_link', true);
+$post_format = get_post_format();
+
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('entry cf'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'entry cf' ); ?>>
+    
     <header class="entry-header">
         <h3 class="entry-title">
-    <?php
-        $pre = '';
-        $pre .= benjamin_post_format_icon( get_post_format());
-
-        if(isset( $link['url']) && isset($link['text'])) {
-            $pre .= '<a class="link-offsite" href="'.esc_url($link['url']).'" target="_blank" rel="follow">';// WPCS: xss ok.
-                $pre .= esc_html($link['text']); // WPCS: xss ok.
-            $pre .= '</a>';
-                // $pre .= '<span class="dashicons dashicons-external"></span>';
-        }else {
-            $pre .= the_title(
-                '<a href="'
-                . esc_url( get_permalink() ) . '" rel="bookmark">',
-                '</a>'
-            );
-        }
-        
-        echo $pre; // WPCS: xss ok.
-    ?>
+        <?php
+            echo benjamin_get_feed_entry_title(); // WPCS: xss ok.
+        ?>
         </h3>
     </header><!-- .entry-header -->
+
     <div class="grid">
         <?php
 
-            if( get_post_meta($post->ID, '_post_format_' . get_post_format(), true) 
-                && in_array(get_post_format(), json_decode(POST_FORMATS)) ) 
-            {
-                benjamin_post_format_markup($post,  get_post_format() );
-            }
+        if ( benjamin_get_post_format_value( $post->ID, $post_format, null ) &&
+            in_array( $post_format, json_decode( POST_FORMATS ), true )
+        ) {
+            benjamin_post_format_markup( $post, $post_format );
+        }
         ?>
 
         <div class="usa-width-one-fourth">
 
-           <?php benjamin_post_thumbnail($post); ?>
+            <?php 
+                benjamin_post_thumbnail( $post );
+            ?>
 
             <?php
-                if ( 'page' !== get_post_type() ) : ?>
+            if ( 'page' !== get_post_type() ) :
+            ?>
                 <div class="entry-meta">
-                <?php 
-                    echo benjamin_get_the_date(); // WPCS: xss ok.
-                    echo benjamin_get_the_author(); // WPCS: xss ok.
+            <?php
+                echo benjamin_get_the_date(); // WPCS: xss ok.
+                echo benjamin_get_the_author(); // WPCS: xss ok.
 
-                    echo benjamin_get_the_comment_popup(); // WPCS: xss ok.
-                    echo benjamin_get_categories_links(); // WPCS: xss ok.
-                    echo benjamin_get_tags_links(); // WPCS: xss ok. 
-                ?>
-                </div><!-- .entry-meta -->
-                <?php
-                endif;
+                echo benjamin_get_the_comment_popup(); // WPCS: xss ok.
+                echo benjamin_get_categories_links(); // WPCS: xss ok.
+                echo benjamin_get_tags_links(); // WPCS: xss ok.
+            ?>
+            </div><!-- .entry-meta -->
+            <?php
+            endif;
             ?>
         </div>
 

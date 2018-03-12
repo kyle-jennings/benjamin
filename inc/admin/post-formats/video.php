@@ -2,15 +2,17 @@
 
 class PostFormatVideo extends PostFormat {
 
+    public static $format = 'video';
+
     // register the metabox
-    public static function register_meta_box($screens = array())
+    public static function register_meta_box( $screens = array() )
     {
 
-        foreach(self::$screens as $screen){
+        foreach ( self::$screens as $screen ) {
             add_meta_box(
                 'post_formats_video',
                 __('Video', 'benjamin'),
-                array('PostFormatVideo', 'meta_box_markup'),
+                array( 'PostFormatVideo', 'meta_box_markup' ),
                 $screen,
                 'top',
                 'default'
@@ -20,53 +22,39 @@ class PostFormatVideo extends PostFormat {
 
 
     // the markup
-    public static function meta_box_markup($post)
+    public static function meta_box_markup( $post )
     {
 
-        wp_nonce_field('post_format_video_nonce', 'post_format_video_nonce');
-        $url = get_post_meta($post->ID, '_post_format_video', true);
+        wp_nonce_field( 'post_format_nonce_' . self::$format, 'post_format_nonce_' . self::$format );
+
+        $value = self::meta_box_saved_value( $post->ID, self::$format, null );
 
     ?>
 
         <div class="pfp-media-holder">
-            <?php echo call_user_func( array('PostFormatVideo', 'get_the_video_player_markup'), $url );  // WPCS: xss ok.  ?>
+        <?php echo call_user_func( array( 'PostFormatVideo', 'get_the_video_player_markup' ), $value );  // WPCS: xss ok. ?>
         </div>
 
         <a class="button pfp-js-media-library" data-media="video"
             id="post_format_video_select">
             <span class="dashicons dashicons-format-video"></span>
-            Select Video
+            <?php echo __('Select Video', 'benjmain' ); ?>
         </a>
 
-        <span class="pfp-or-hr">or use an oembed url</span>
+        <span class="pfp-or-hr"> <?php echo __('or use an oembed url', 'benjamin'); ?></span>
 
-        <input class="post_format_value" data-media="video" name="post_format_video" type="url"
-            id="post_format_video_value" value="<?php echo esc_url_raw($url); ?>" />
+        <input class="post_format_value" 
+            data-media="video" 
+            id="post_format_video_value" 
+            name="post_format_value[<?php echo esc_attr( self::$format ); ?>]" 
+            type="url" 
+            value="<?php echo esc_url_raw( $value ); ?>" 
+        />
 
         <a class="pfp-js-remove-media" data-media="video"
-            href="#" >Remove Video</a>
+            href="#" ><?php echo __('Remove Video', 'benjmain' ); ?></a>
 
         <?php
-    }
-
-
-    // save the value
-    public static function meta_box_save($post_id)
-    {
-        $is_autosave = wp_is_post_autosave($post_id);
-        $is_revision = wp_is_post_revision($post_id);
-        $nonce = isset( $_POST[ 'post_format_video_nonce'] ) 
-            ? wp_verify_nonce( sanitize_key($_POST['post_format_video_nonce']), 'post_format_video_nonce')  // WPCS: xss ok.
-            : false;
-        $is_valid_nonce = $nonce ? 'true' : 'false';
-
-        if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
-            return;
-        }
-
-        if(isset($_POST['post_format_video'])){
-            update_post_meta($post_id, '_post_format_video', esc_url_raw( wp_unslash($_POST['post_format_video']) ) );
-        }
     }
 
 

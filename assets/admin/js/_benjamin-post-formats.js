@@ -1,15 +1,11 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 // 'use strict';
 
-// require('./post-formats/gallery');
 require('./post-formats/media');
 require('./post-formats/hide-boxes');
+require('./post-formats/status');
 
-// window.React = require('react');
-// window.ReactDOM = require('react-dom');
-// require('./post-formats/chat');
-
-},{"./post-formats/hide-boxes":2,"./post-formats/media":3}],2:[function(require,module,exports){
+},{"./post-formats/hide-boxes":2,"./post-formats/media":3,"./post-formats/status":4}],2:[function(require,module,exports){
 
 // more or less just hides and shows the various metaboxes
 jQuery(document).ready(function($){
@@ -18,35 +14,56 @@ jQuery(document).ready(function($){
   clearLink();
 
 
-  if($("#post-formats-select").length) {
-    var selectedPostFormat = $("input[name='post_format']:checked").val();
+  if( $("#post-formats-select").length <= 0) 
+    return;
 
-    var post_formats = ['aside', 'status', 'gallery', 'image', 'link', 'quote', 'audio', 'video', 'chat'];
-
-    if($.inArray(selectedPostFormat, post_formats) != '-1') {
-			$('#post_formats_' + selectedPostFormat).show();
-		}
-
-    $("input[name='post_format']:radio").change(function() {
-			hide_format_boxes();
-			if($.inArray($(this).val(),post_formats) != '-1') {
-				$('#post_formats_' + $(this).val()).show()
-			}
-		});
-  }
-
-});
-
-function hide_format_boxes(){
+  var selectedPostFormat = $("input[name='post_format']:checked").val();
 
   var post_formats = ['aside', 'status', 'gallery', 'image', 'link', 'quote', 'audio', 'video', 'chat'];
 
+  // show the metabox on init
+  if( $.inArray( selectedPostFormat, post_formats ) != '-1' ) {
+		$('#post_formats_' + selectedPostFormat).show();
+	}
+
+
+  $("input[name='post_format']:radio").change(function() {
+    // hide the meta boxes
+		hide_format_boxes();
+
+    // if the selected post format is in the post formats list then show the box
+		if( $.inArray( $(this).val(), post_formats ) != '-1' ) {
+			$('#post_formats_' + $(this).val()).show()
+		}
+  
+    // hide the editor if status is selected, otherwise show
+    if( $.inArray( $(this).val(), ['status'] ) != '-1' ) {
+      console.log('hide');
+      $('#postdivrich').hide();
+    } else {
+      console.log('show');
+      $('#postdivrich').show();
+    }
+  
+  });
+
+
+
+
+
+});
+
+
+function hide_format_boxes(){
+  var post_formats = ['aside', 'status', 'gallery', 'image', 'link', 'quote', 'audio', 'video', 'chat'];
   post_formats = post_formats.map( function(a){
     return '#post_formats_'+a;
   }).join(', ');
 
   $(post_formats).hide();
 }
+
+
 
 
 function clearLink() {
@@ -68,7 +85,6 @@ jQuery(document).ready(function($){
     var $metabox = $this.closest('.postbox');
     var url = $this.val();
     var format = $this.data('media');
-    console.log(url);
     window['pfpAJAXMarkup'](url, format, $metabox);
 
   });
@@ -115,7 +131,7 @@ jQuery(document).ready(function($){
     // when the media is selelected, set the values
     wp.media.frames.mediaBox.on('select', function(){
       media_attachment = wp.media.frames.mediaBox.state().get('selection').first().toJSON();
-      console.log(media_attachment);
+
       var funcName = 'pfp' + titleCase(format) + 'Select';
       pfpMediaSelect(media_attachment, format, $metabox);
 
@@ -137,56 +153,11 @@ jQuery(document).ready(function($){
 function pfpMediaSelect(media_attachment, format, $metabox){
   var $html = pfpAJAXMarkup(media_attachment.url, format, $metabox);
 
+  console.log( media_attachment, format, $metabox );
   $metabox.find('.post_format_value').val(media_attachment.url);
 
 }
 
-
-/**
- * set the image correctly
- * @param  {object} media_attachment the media object sent from the wp media library
- * @param  {string} format           what type of post format are we working with?
- * @param  {object} $metabox         jquery object/DOM element
- * @return {html}                  new DOM element to display the media
- */
-function pfpImageSelect(media_attachment, format, $metabox){
-  var $html = pfpAJAXMarkup(media_attachment.url, format, $metabox);
-
-  $metabox.find('.post_format_value').val(media_attachment.url);
-
-}
-
-
-/**
- * set the video correctly
- * @param  {object} media_attachment the media object sent from the wp media library
- * @param  {string} format           what type of post format are we working with?
- * @param  {object} $metabox         jquery object/DOM element
- * @return {html}                  new DOM element to display the media
- */
-function pfpVideoSelect(media_attachment, format, $metabox){
-  var $html = pfpAJAXMarkup(media_attachment.url, format, $metabox);
-
-  $metabox.find('.post_format_url').val(media_attachment.url);
-  $metabox.find('.post_format_value').val(media_attachment.url);
-
-}
-
-
-/**
- * set the Audio correctly
- * @param  {object} media_attachment the media object sent from the wp media library
- * @param  {string} format           what type of post format are we working with?
- * @param  {object} $metabox         jquery object/DOM element
- * @return {html}                  new DOM element to display the media
- */
-function pfpAudioSelect(media_attachment, format, $metabox){
-  var $html = pfpAJAXMarkup(media_attachment.url, format, $metabox);
-
-  $metabox.find('.post_format_url').val(media_attachment.url);
-  $metabox.find('.post_format_value').val(media_attachment.url);
-
-}
 
 
 
@@ -211,7 +182,7 @@ window.pfpAJAXMarkup = function(url, format, $metabox){
     data: data,
     complete: function(response){
       if(response.status == 200){
-
+        console.log(response);
         var $html = response.responseText;
         if($html == ''){
           $metabox.find('.post_format_url').val('');
@@ -223,7 +194,7 @@ window.pfpAJAXMarkup = function(url, format, $metabox){
     }
   });
 
-}
+};
 
 
 
@@ -236,4 +207,20 @@ function titleCase(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+},{}],4:[function(require,module,exports){
+$('.js--post-format-status-textarea').on('keyup', function(){
+  var max = 140;
+  var $this = $(this);
+  var count = $this.val().length;
+  var $countElm = $this.prev('.js--char-count');
+
+  $countElm.text(count);
+  if (count >= max) {
+    $countElm.css('color', 'red');
+  }
+  else {
+    $countElm.css('color', '');
+  }
+    
+});
 },{}]},{},[1]);
