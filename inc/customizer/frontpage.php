@@ -40,20 +40,20 @@ function benjamin_frontpage_settings($wp_customize) {
 
 
     // Select the page link to use in the callout
-     $wp_customize->add_setting( 'frontpage_hero_callout_setting', array(
-         'default' => '',
-         'sanitize_callback' => 'absint',
-     ) );
-     $wp_customize->add_control( 'frontpage_hero_callout_control',
-         array(
-             'description' => __('Display a button link in the callout to a selected page','benjamin'),
-             'label'   => __('Callout Button Link', 'benjamin'),
-             'section' => $section,
-             'settings'=> 'frontpage_hero_callout_setting',
-             'type'    => 'dropdown-pages',
-             'priority' => 1,
-         )
-     );
+    $wp_customize->add_setting( 'frontpage_hero_callout_setting', array(
+        'default' => '',
+        'sanitize_callback' => 'absint',
+    ) );
+    $wp_customize->add_control( 'frontpage_hero_callout_control',
+        array(
+            'description' => __('Display a button link in the callout to a selected page','benjamin'),
+            'label'   => __('Callout Button Link', 'benjamin'),
+            'section' => $section,
+            'settings'=> 'frontpage_hero_callout_setting',
+            'type'    => 'dropdown-pages',
+            'priority' => 1,
+        )
+    );
 
 
 
