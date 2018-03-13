@@ -3,22 +3,6 @@
 class PostFormatChat extends PostFormat {
 
     public static $format = 'chat';
-    
-    // register the meta box
-    public static function register_meta_box()
-    {
-        foreach ( self::$screens as $screen ) {
-            add_meta_box(
-                'post_formats_chat',
-                __( 'Chat', 'benjamin' ),
-                array( 'PostFormatChat', 'meta_box_html' ),
-                $screen,
-                'top',
-                'default'
-            );
-        }
-    }
-
 
     // the markup
     public static function meta_box_html( $post )

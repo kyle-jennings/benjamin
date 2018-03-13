@@ -4,15 +4,16 @@ class PostFormat {
     
     public static $screens = array();
     public static $formats = array();
+    public static $supported = array( 'audio', 'aside', 'chat', 'image', 'link', 'quote', 'video', 'status' );
 
     public static function init( $screens = array() ) {
         self::$screens = $screens;
         self::$formats = json_decode( POST_FORMATS );
 
-        $supported = array( 'audio', 'aside', 'chat', 'image', 'link', 'quote', 'video', 'status' );
-        $forms     = array_intersect( self::$formats, $supported );
-        add_theme_support( 'post-formats', $supported );
+        $forms = array_intersect( self::$formats, self::$supported );
+        add_theme_support( 'post-formats', self::$supported );
 
+        add_action( 'add_meta_boxes', array( 'PostFormat', 'register_meta' ) );
         // creates the forms for each psot format type.
         foreach ( $forms as $format ) {
 
@@ -21,10 +22,8 @@ class PostFormat {
                 $class_name = 'PostFormat' . ucfirst( $format );
                 $class      = new $class_name( self::$screens );
 
-                add_action( 'add_meta_boxes', array( $class, 'register_meta_box' ) );
             }
         }
-
 
         add_action( 'save_post', array( 'PostFormat', 'save' ) );
         add_action( 'init', array( 'PostFormat', 'cpt_support' ), 11 );
@@ -34,6 +33,30 @@ class PostFormat {
 
     }
 
+
+    /**
+     * Registers all teh meta boxes with some gross double forloops!
+     *
+     * @return void
+     */
+    public static function register_meta ()
+    {
+        foreach ( self::$screens as $screen ) {
+            $forms = array_intersect( self::$formats, self::$supported );
+            
+            foreach ( $forms as $format ) {
+                $title = ucfirst( $format );
+                add_meta_box(
+                    'post_formats_' . $format,
+                    sprintf( __( '%s ', 'benjamin' ), esc_attr( $title ) ),
+                    array( 'PostFormat' . $title, 'meta_box_html' ),
+                    $screen,
+                    'top',
+                    'default'
+                );
+            }
+        }
+    }
 
 
     // displays the metaboxes.
@@ -86,14 +109,14 @@ class PostFormat {
             return;
         }
 
-        $format = $_POST['post_format'];
+        $format = sanitize_text_field( wp_unslash( $_POST['post_format'] ) );
 
         // now that we have the format, check for the nonce
         if ( ! isset( $_POST[ 'post_format_nonce_' . $format ] ) ) {
             return;
         }
 
-        $val = $_POST['post_format_value'];
+        $val = wp_unslash( $_POST['post_format_value'] );
         
         $nonce = sanitize_key( wp_unslash( $_POST[ 'post_format_nonce_' . $format ] ) );
         $is_valid_nonce = wp_verify_nonce( $nonce, 'post_format_nonce_' . $format );

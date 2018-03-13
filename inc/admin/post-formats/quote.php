@@ -5,22 +5,6 @@ class PostFormatQuote extends PostFormat {
     public static $format = 'quote';
 
 
-    // register the metabox
-    public static function register_meta_box()
-    {
-        foreach(self::$screens as $screen){
-            add_meta_box(
-                'post_formats_quote',
-                __('Quote', 'benjamin'),
-                array('PostFormatQuote', 'meta_box_html'),
-                $screen,
-                'top',
-                'default'
-            );
-        }
-    }
-
-
     // the markup
     public static function meta_box_html( $post )
     {

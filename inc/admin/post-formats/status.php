@@ -4,25 +4,6 @@ class PostFormatStatus extends PostFormat {
 
     public static $format = 'status';
 
-    /**
-     * Register the metabox
-     *
-     * @return void.
-     */
-    public static function register_meta_box()
-    {
-        foreach ( self::$screens as $screen ) {
-            add_meta_box(
-                'post_formats_status',
-                __( 'Status', 'benjamin' ),
-                array( 'PostFormatStatus', 'meta_box_html' ),
-                $screen,
-                'top',
-                'default'
-            );
-        }
-    }
-
 
     /**
      * [meta_box_html description]

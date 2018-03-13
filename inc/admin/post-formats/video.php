@@ -4,25 +4,9 @@ class PostFormatVideo extends PostFormat {
 
     public static $format = 'video';
 
-    // register the metabox
-    public static function register_meta_box( $screens = array() )
-    {
-
-        foreach ( self::$screens as $screen ) {
-            add_meta_box(
-                'post_formats_video',
-                __('Video', 'benjamin'),
-                array( 'PostFormatVideo', 'meta_box_markup' ),
-                $screen,
-                'top',
-                'default'
-            );
-        }
-    }
-
 
     // the markup
-    public static function meta_box_markup( $post )
+    public static function meta_box_html( $post )
     {
 
         wp_nonce_field( 'post_format_nonce_' . self::$format, 'post_format_nonce_' . self::$format );
@@ -38,7 +22,7 @@ class PostFormatVideo extends PostFormat {
         <a class="button pfp-js-media-library" data-media="video"
             id="post_format_video_select">
             <span class="dashicons dashicons-format-video"></span>
-            <?php echo __('Select Video', 'benjmain' ); ?>
+            <?php echo __('Select Video', 'benjamin' ); ?>
         </a>
 
         <span class="pfp-or-hr"> <?php echo __('or use an oembed url', 'benjamin'); ?></span>
@@ -52,7 +36,7 @@ class PostFormatVideo extends PostFormat {
         />
 
         <a class="pfp-js-remove-media" data-media="video"
-            href="#" ><?php echo __('Remove Video', 'benjmain' ); ?></a>
+            href="#" ><?php echo __('Remove Video', 'benjamin' ); ?></a>
 
         <?php
     }

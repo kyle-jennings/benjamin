@@ -4,21 +4,6 @@ class PostFormatLink extends PostFormat {
 
     public static $format = 'link';
 
-    // register the metabox
-    public static function register_meta_box()
-    {
-        foreach(self::$screens as $screen){
-            add_meta_box(
-                'post_formats_link',
-                __('Link', 'benjamin'),
-                array('PostFormatLink', 'meta_box_html'),
-                $screen,
-                'top',
-                'default'
-            );
-        }
-    }
-
 
     // the markup
     public static function meta_box_html( $post )

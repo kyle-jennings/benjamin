@@ -4,21 +4,6 @@ class PostFormatAudio extends PostFormat {
 
     public static $format = 'audio';
 
-    // register
-    public static function register_meta_box()
-    {
-        foreach ( self::$screens as $screen ) {
-            add_meta_box(
-                'post_formats_audio',
-                __( 'Audio', 'benjamin' ),
-                array( 'PostFormatAudio', 'meta_box_html' ),
-                $screen,
-                'top',
-                'default'
-            );
-        }
-    }
-
 
     // the markup
     public static function meta_box_html( $post )
@@ -34,7 +19,7 @@ class PostFormatAudio extends PostFormat {
         <a class="button pfp-js-media-library" data-media="audio"
             id="post_format_audio_select">
             <span class="dashicons dashicons-format-audio"></span>
-            <?php echo __('Select Audio', 'benjmain' ); ?>
+            <?php echo __('Select Audio', 'benjamin' ); ?>
         </a>
 
         <span class="pfp-or-hr"> <?php echo __('or use an oembed url', 'benjamin'); ?></span>

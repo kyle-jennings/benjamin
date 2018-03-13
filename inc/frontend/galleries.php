@@ -59,8 +59,12 @@ function benjamin_carousel_markup($images =array(), $size = 'carousel-feed') {
 
         <ol class="carousel-nav cf">
         <?php
-            foreach($images as $i => $id)
-                echo '<li><img src="' . wp_get_attachment_image_src($id, 'thumbnail')[0] . '" /></li>';
+            foreach($images as $i => $id) {
+                $src = wp_get_attachment_image_src( $id, 'thumbnail' );
+                if ( !empty( $src ) ) {
+                    echo '<li><img src="' . esc_url_raw( $src[0] ) . '" /></li>';
+                }
+            }
         ?>
         </ol>
     </div>

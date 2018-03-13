@@ -9,25 +9,6 @@ class PostFormatImage extends PostFormat {
      */
     public static $format = 'image';
 
-    /**
-     * Registers the post format
-     *
-     * @return void
-     */
-    public static function register_meta_box()
-    {
-        foreach ( self::$screens as $screen ) {
-            add_meta_box(
-                'post_formats_image',
-                __( 'Image', 'benjamin' ),
-                array( 'PostFormatImage', 'meta_box_html' ),
-                $screen,
-                'top',
-                'default'
-            );
-        }
-    }
-
 
     /**
      * The HTML for the post meta box.

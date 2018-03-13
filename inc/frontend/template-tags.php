@@ -18,7 +18,8 @@ function benjamin_get_feed_entry_title( $post = null ) {
     $title       = '';
     
     if ( $post_format === 'link' ) {
-        $link = get_post_meta( $post->ID, '_post_format_link', true );
+
+        $link = benjamin_get_post_format_value( $post->ID, 'link', null );
     }
 
     $title .= benjamin_post_format_icon( $post_format );
