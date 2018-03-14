@@ -27,7 +27,7 @@ class PostFormatQuote extends PostFormat {
                 <?php echo __( 'Author', 'benjamin' ); // WPCS: xss ok. ?><br />
                 <input type="text" value="<?php echo esc_attr( $author ); ?>"
                  name="post_format_value[<?php echo esc_attr( self::$format ); ?>][author]"
-                 placeholder="<?php echo __( 'unknown author', 'benjamin' ); ?>" />
+                 placeholder="<?php echo __( 'unknown author', 'benjamin' ); // WPCS: xss ok. ?>" />
             </label>
         </p>
         <?php

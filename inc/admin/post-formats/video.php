@@ -22,10 +22,10 @@ class PostFormatVideo extends PostFormat {
         <a class="button pfp-js-media-library" data-media="video"
             id="post_format_video_select">
             <span class="dashicons dashicons-format-video"></span>
-            <?php echo __('Select Video', 'benjamin' ); ?>
+            <?php echo __('Select Video', 'benjamin' ); // WPCS: xss ok.?>
         </a>
 
-        <span class="pfp-or-hr"> <?php echo __('or use an oembed url', 'benjamin'); ?></span>
+        <span class="pfp-or-hr"> <?php echo __('or use an oembed url', 'benjamin'); // WPCS: xss ok.?></span>
 
         <input class="post_format_value" 
             data-media="video" 
@@ -36,7 +36,7 @@ class PostFormatVideo extends PostFormat {
         />
 
         <a class="pfp-js-remove-media" data-media="video"
-            href="#" ><?php echo __('Remove Video', 'benjamin' ); ?></a>
+            href="#" ><?php echo __('Remove Video', 'benjamin' ); // WPCS: xss ok.?></a>
 
         <?php
     }

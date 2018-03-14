@@ -19,10 +19,10 @@ class PostFormatAudio extends PostFormat {
         <a class="button pfp-js-media-library" data-media="audio"
             id="post_format_audio_select">
             <span class="dashicons dashicons-format-audio"></span>
-            <?php echo __('Select Audio', 'benjamin' ); ?>
+            <?php echo esc_html( __('Select Audio', 'benjamin' )); ?>
         </a>
 
-        <span class="pfp-or-hr"> <?php echo __('or use an oembed url', 'benjamin'); ?></span>
+        <span class="pfp-or-hr"> <?php echo __('or use an oembed url', 'benjamin'); // WPCS: xss ok.?></span>
 
          <input class="post_format_value" 
             data-media="audio" 
@@ -33,7 +33,7 @@ class PostFormatAudio extends PostFormat {
         />
 
         <a class="pfp-js-remove-media" data-media="audio"
-            href="#" > <?php echo __( 'Remove Audio', 'benjamin' ); ?> </a>
+            href="#" > <?php echo __( 'Remove Audio', 'benjamin' ); // WPCS: xss ok.?> </a>
 
         <?php
     }

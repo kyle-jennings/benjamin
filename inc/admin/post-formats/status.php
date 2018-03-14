@@ -20,7 +20,7 @@ class PostFormatStatus extends PostFormat {
     ?>
         <p>
             <label>
-                <?php echo __( 'Character Count', 'benjamin' ); ?> 
+                <?php echo __( 'Character Count', 'benjamin' ); // WPCS: xss ok.?> 
                 <span class="js--char-count"><?php echo esc_html( strlen( $value ) ); ?></span>
                 <textarea class="js--post-format-status-textarea" 
                 name="post_format_value[<?php echo esc_attr( self::$format ); ?>]"

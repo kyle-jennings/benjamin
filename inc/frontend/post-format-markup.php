@@ -54,7 +54,7 @@ function benjamin_post_format_markup( $post = null, $format = 'standard' ) {
         global $post;
     }
 
-    echo benjamin_get_post_format_markup( $post, $format );
+    echo benjamin_get_post_format_markup( $post, $format ); //WPCS: xss ok.
 
 }
 

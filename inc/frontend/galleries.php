@@ -30,7 +30,7 @@ function benjamin_carousel_markup($images =array(), $size = 'carousel-feed') {
 
         ?>
             <div class="item <?php echo esc_attr($active); ?>">
-                <img src="<?php echo esc_url_raw($src[0]); ?>" alt="<?php echo $title; ?>">
+                <img src="<?php echo esc_url_raw($src[0]); ?>" alt="<?php echo esc_attr($title); ?>">
                 <!--                 
                 <?php if ($caption) : ?>
                 <div class="carousel-caption">

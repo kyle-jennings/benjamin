@@ -48,6 +48,7 @@ class PostFormat {
                 $title = ucfirst( $format );
                 add_meta_box(
                     'post_formats_' . $format,
+                    /* translators: one of the post format types*/
                     sprintf( __( '%s ', 'benjamin' ), esc_attr( $title ) ),
                     array( 'PostFormat' . $title, 'meta_box_html' ),
                     $screen,
@@ -116,7 +117,6 @@ class PostFormat {
             return;
         }
 
-        $val = wp_unslash( $_POST['post_format_value'] );
         
         $nonce = sanitize_key( wp_unslash( $_POST[ 'post_format_nonce_' . $format ] ) );
         $is_valid_nonce = wp_verify_nonce( $nonce, 'post_format_nonce_' . $format );
@@ -125,8 +125,8 @@ class PostFormat {
             return;
         }
 
-        if ( $val ) {
-            update_post_meta( $post_id, '_post_format_value', benjamin_sanitize_text_or_array_field( $val ) );
+        if ( isset($_POST['post_format_value']) ) {
+            update_post_meta( $post_id, '_post_format_value', benjamin_sanitize_text_or_array_field( wp_unslash($val) ) );
         }
     }
 

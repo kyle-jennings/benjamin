@@ -22,7 +22,7 @@ to include various 18F components via shortcodes!
 * Status
 * Other post formats can be toggled, but there is no special support yet
 
-#### Template settings include:  
+#### Customizable layout settings:  
 * Header background image (select the default image if a "featured image" is not set)
 * Header background image positioning
 * Header Size (slim, medium, big, and full page)
@@ -32,7 +32,7 @@ to include various 18F components via shortcodes!
 * Hide parts of a page (such as the navbar or footer)
 
 
-#### Configurable settings for many template types:
+#### Template specific layout settings:
 * Default settings (the templates below can override the defaults)
 * Feeds (archive, search, categories ect)
 * Frontpage - a flexible page with sortable rows of widget areas
@@ -48,7 +48,7 @@ to include various 18F components via shortcodes!
 
 
 #### Sortable Pages
-Sopme templates have sortable content area - 3 rows  widgetized areas and a row for the page content.
+Some templates have sortable content area - 3 rows  widgetized areas and a row for the page content.
 
 
 <br>

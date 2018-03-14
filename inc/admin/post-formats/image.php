@@ -30,10 +30,10 @@ class PostFormatImage extends PostFormat {
         <a class="button pfp-js-media-library" data-media="image"
             id="post_format_image_select">
             <span class="dashicons dashicons-format-image"></span>
-            <?php echo __( 'Select Image', 'benjamin'); ?>
+            <?php echo __( 'Select Image', 'benjamin'); // WPCS: xss ok. ?>
         </a>
 
-        <span class="pfp-or-hr"><?php __('or use an oembed url', 'benjamin'); ?></span>
+        <span class="pfp-or-hr"><?php __('or use an oembed url', 'benjamin'); // WPCS: xss ok. ?></span>
 
 
         <input class="post_format_value" 
@@ -45,7 +45,7 @@ class PostFormatImage extends PostFormat {
         />
 
         <a class="pfp-js-remove-media" data-media="image"
-            href="#" ><?php echo __( 'Remove Image', 'benjamin' ); ?></a>
+            href="#" ><?php echo __( 'Remove Image', 'benjamin' ); // WPCS: xss ok. ?></a>
 
         <?php
     }

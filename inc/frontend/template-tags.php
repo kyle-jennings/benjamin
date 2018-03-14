@@ -46,7 +46,7 @@ function benjamin_feed_entry_title( $post = null ) {
         global $post;
     }
 
-    echo benjamin_get_feed_entry_title( $post );
+    echo benjamin_get_feed_entry_title( $post ); // WPCS: xss ok.
 }
 
 
@@ -523,5 +523,5 @@ function benjamin_get_post_format_icon( $format = null ) {
 }
 
 function benjamin_post_format_icon( $format = null ) {
-    echo benjamin_get_post_format_icon( $format );
+    echo benjamin_get_post_format_icon( $format ); // WPCS: xss ok.
 }

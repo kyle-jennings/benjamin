@@ -27,7 +27,7 @@ class PostFormatLink extends PostFormat {
                 <?php echo __( 'Text', 'benjamin' ); // WPCS: xss ok. ?><br />
                 <input type="text" value="<?php echo esc_attr( $text ); ?>" 
                 name="post_format_value[<?php echo esc_attr( self::$format ); ?>][text]"
-                 placeholder="<?php echo __( 'click here', 'benjamin' ); ?>"/>
+                 placeholder="<?php echo esc_attr( __( 'click here', 'benjamin' )); ?>"/>
             </label>
         </p>
         <?php
