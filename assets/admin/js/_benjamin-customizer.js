@@ -157,14 +157,14 @@ function randomString(length, chars) {
 
 function toggle404Page(api, isExpanded){
     var rand = randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
-
+    var randNum = randomString(32, '0123456789');
     var url = api.settings.url.home + rand;
 
     if ( isExpanded ) {
-        api.previewer.previewUrl.set( url );
+        api.previewer.previewUrl.set( url + '?p=' + randNum );
     }else {
         url = api.settings.url.home;
-        api.previewer.previewUrl.set( url );
+        api.previewer.previewUrl.set( url + '?p=' + randNum );
     }
 }
 
@@ -176,7 +176,6 @@ function toggle404Page(api, isExpanded){
      */
     api.section( '_404_settings_section', function( section ) {
         section.expanded.bind( function( isExpanded ) {
-            console.log('404 settings');
             toggle404Page(api, isExpanded);
         } );
     } );
