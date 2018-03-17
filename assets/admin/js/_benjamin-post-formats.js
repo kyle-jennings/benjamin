@@ -35,15 +35,7 @@ jQuery(document).ready(function($){
 		if( $.inArray( $(this).val(), post_formats ) != '-1' ) {
 			$('#post_formats_' + $(this).val()).show()
 		}
-  
-    // hide the editor if status is selected, otherwise show
-    if( $.inArray( $(this).val(), ['status'] ) != '-1' ) {
-      console.log('hide');
-      $('#postdivrich').hide();
-    } else {
-      console.log('show');
-      $('#postdivrich').show();
-    }
+
   
   });
 
