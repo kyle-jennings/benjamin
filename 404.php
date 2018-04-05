@@ -19,7 +19,7 @@ get_header();
  * $sidebar_position
  *
  */
-extract( benjamin_template_settings() );
+extract(benjamin_template_settings());
 
 /**
  * the 404 settings
@@ -30,14 +30,14 @@ extract( benjamin_template_settings() );
  * $header_page
  *
  */
-extract( benjamin_get_404_settings() );
+extract(benjamin_get_404_settings());
 
-if( !$hide_content ):
+if (!$hide_content):
 ?>
 
 <section id="primary" class="usa-grid usa-section">
     <?php
-    if($sidebar_position == 'left'):
+    if ($sidebar_position == 'left') :
         benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
     endif;
     ?>
@@ -45,31 +45,29 @@ if( !$hide_content ):
   <div class="main-content <?php echo esc_attr($main_width); ?>">
         <?php
 
-            if($content == 'page' && $pid):
+        if ($content == 'page' && $pid) :
+            $page = get_page($pid);
+            $content = apply_filters('the_content', $page->post_content);
+            echo $content; // WPCS: xss ok.
+        else :
+            echo '<p>' . esc_html_e('It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'benjamin') . '</p>';
 
-                $page = get_page($pid);
-                $content = apply_filters('the_content', $page->post_content);
-                echo $content; // WPCS: xss ok.
+            get_search_form();
 
-            else :
-                echo '<p>' . esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'benjamin' ) . '</p>';
+            echo '<br>';
+            echo '<br>';
+            echo '<br>';
 
-                get_search_form();
-
-                echo '<br>';
-                echo '<br>';
-                echo '<br>';
-
-    			the_widget( 'Benjamin_Widget_Pages', array('title'=>'Pages') );
-            endif;
-		?>
+            the_widget('Benjamin_Widget_Pages', array('title'=> __('Pages', 'benjamin')));
+        endif;
+    ?>
   </div>
 
-  <?php
-  if($sidebar_position == 'right'):
-      benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
-  endif;
-  ?>
+<?php
+if ($sidebar_position == 'right') :
+    benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
+endif;
+?>
 </section>
 
 <?php

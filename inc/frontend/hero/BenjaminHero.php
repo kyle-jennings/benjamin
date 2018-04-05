@@ -23,35 +23,37 @@ class BenjaminHero {
     public $HeroContent;
     public $HeroBackground;
 
-    public function __construct( $template = null, $pf_include = array() ) {
+    public function __construct($template = null, $pf_include = array())
+    {
         $this->template = $template;
 
-        if ( is_front_page() )
+        if (is_front_page()) {
             $this->currentpage = 'frontpage';
-        elseif ( is_404() )
+        } elseif (is_404()) {
             $this->currentpage = '_404';
-        elseif ( is_page() || is_single() || is_singular() )
+        } elseif (is_page() || is_single() || is_singular()) {
             $this->currentpage = 'singular';
-        elseif ( is_author() )
+        } elseif (is_author()) {
             $this->currentpage = 'author';
-        elseif ( is_date() )
+        } elseif (is_date()) {
             $this->currentpage = 'date';
-        elseif ( is_tag() )
+        } elseif (is_tag()) {
             $this->currentpage = 'tag';
-        elseif ( is_category() )
+        } elseif (is_category()) {
             $this->currentpage = 'category';
-        elseif ( is_search() )
+        } elseif (is_search()) {
             $this->currentpage = 'search';
-        elseif ( is_home() )
+        } elseif (is_home()) {
             $this->currentpage = 'home';
-        elseif ( is_archive() )
+        } elseif (is_archive()) {
             $this->currentpage = 'archive';
-        else
+        } else {
             $this->currentpage = 'fallback';
+        }
 
 
-        $this->HeroContent    = new BenjaminHeroContent( null, $this->template, $this->currentpage, $pf_include );
-        $this->HeroBackground = new BenjaminHeroBG( null, $this->template, $this->currentpage );
+        $this->HeroContent    = new BenjaminHeroContent(null, $this->template, $this->currentpage, $pf_include);
+        $this->HeroBackground = new BenjaminHeroBG(null, $this->template, $this->currentpage);
 
         $this->HeroBackground->getBackground();
     }
@@ -68,15 +70,15 @@ class BenjaminHero {
     public function output()
     {
         $output = '';
-        $size = $this->heroSize( $this->template );
-        $style = $this->HeroBackground->getStyle( $this->template );
+        $size = $this->heroSize($this->template);
+        $style = $this->HeroBackground->getStyle($this->template);
         $post_format = $this->isPostFormat();
 
         $class = $size;
         $class .= $this->HeroBackground->image ? ' hero--has-background' : '';
         $class .= $post_format ? ' hero--is-post-format' : '';
         
-        $output .= '<section class="usa-hero ' . $size . '" ' . $style . '>';
+        $output .= '<section class="usa-hero ' . esc_attr($size) . '" ' . esc_attr($style) . '>';
             $output .= '<div class="usa-grid">';
                 $output .= $this->HeroContent->getContent();
 
@@ -86,29 +88,31 @@ class BenjaminHero {
     }
 
 
-    function isPostFormat()
+    public function isPostFormat()
     {
         global $post;
 
 
-        if ($this->currentpage !== 'singular')
+        if ($this->currentpage !== 'singular') {
             return false;
+        }
 
         $format = get_post_format();
 
-        if ( $format == 'video' && $this->HeroContent->getVideo() )
+        if ($format == 'video' && $this->HeroContent->getVideo()) {
             return 'video';
-        elseif ( $format == 'gallery' && $this->HeroContent->getGallery() )
+        } elseif ($format == 'gallery' && $this->HeroContent->getGallery()) {
             return 'gallery';
-        elseif ( $format == 'image' && $this->HeroContent->getImage() )
+        } elseif ($format == 'image' && $this->HeroContent->getImage()) {
             return 'image';
-        elseif ($format == 'audio' && $this->HeroContent->getAudio() ) {
-            add_action('wp_footer', 'benjamin_enqueue_visualizer_script' );
+        } elseif ($format == 'audio' && $this->HeroContent->getAudio()) { 
+            add_action('wp_footer', 'benjamin_enqueue_visualizer_script');
             return 'audio';
-        }elseif ( $format == 'quote' && $this->HeroContent->getQuote() )
+        } elseif ($format == 'quote' && $this->HeroContent->getQuote()) {
             return 'quote';
-        else
+        } else {
             return false;
+        }
 
         return false;
     }
@@ -119,7 +123,7 @@ class BenjaminHero {
      * @param  [type] $template [description]
      * @return [type]           [description]
      */
-    function heroSize($template = null)
+    public function heroSize($template = null)
     {
 
         $setting = get_theme_mod($template . '_hero_size_setting', 'slim');
@@ -127,6 +131,4 @@ class BenjaminHero {
         $size ='usa-hero--'.$setting;
         return $size;
     }
-
-
 }

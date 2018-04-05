@@ -31,14 +31,6 @@ function benjamin_carousel_markup($images =array(), $size = 'carousel-feed') {
         ?>
             <div class="item <?php echo esc_attr($active); ?>">
                 <img src="<?php echo esc_url_raw($src[0]); ?>" alt="<?php echo esc_attr($title); ?>">
-                <!--                 
-                <?php if ($caption) : ?>
-                <div class="carousel-caption">
-                    <?php echo esc_html($caption); ?>
-                </div>
-                <?php endif; ?> 
-                -->
-
             </div>
         <?php endforeach; ?>
         </div>
@@ -81,17 +73,3 @@ function benjamin_get_carousel_markup($images =array(), $size = 'carousel-feed')
 
     return $content;
 }
-
-
-
-/**
-<ol class="carousel-indicators cf">
-<?php for($num = 0; $num < $count; $num++ ): ?>
-<?php $active = ($num == 0) ? 'active' : ''; ?>
-<li class="<?php echo esc_attr($active); ?> " data-target="#carousel" 
-data-slide-to="<?php echo esc_attr($num); ?>" >
-&nbsp;
-</li>
-<?php endfor; ?>
-</ol>
-**/

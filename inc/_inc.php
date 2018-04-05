@@ -16,8 +16,9 @@ $shared_files = array(
     'widgets',
 );
 
-foreach($shared_files as $file)
+foreach ($shared_files as $file) {
     require dirname(__FILE__) . '/shared/' . $file . '.php'; // WPCS: xss ok.
+}
 
 // customizer
 require dirname(__FILE__) . '/customizer/_init.php';
@@ -36,13 +37,14 @@ if (is_admin()) {
     );
 
 
-    foreach($files as $file)
+    foreach ($files as $file) {
         require dirname(__FILE__) . '/admin/' . $file . '.php'; // WPCS: xss ok.
+    }
 }
 
 
 // only load these on the frontend
-if( !is_admin() ){
+if (!is_admin()) {
 
     $files = array(
         'assets',
@@ -68,6 +70,8 @@ if( !is_admin() ){
         'template-settings',
         'template-tags',
     );
-    foreach($files as $file)
+
+    foreach ($files as $file) {
         require dirname(__FILE__) . '/frontend/' . $file . '.php'; // WPCS: xss ok.
+    }
 }

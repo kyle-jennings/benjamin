@@ -82,7 +82,7 @@ class BenjaminHeroContent
                 $output .= '404';
             $output .= '</span>';
 
-            $output .= '<h1 class="hero__title">Page not found</h1>';
+            $output .= '<h1 class="hero__title">' . __('Page not found', 'benjamin') . '</h1>';
 
             return $output;
         }
@@ -100,9 +100,7 @@ class BenjaminHeroContent
     {
         $output = '';
 
-
         $output .= $this->getSingularTitle();
-
 
         return $output;
     }

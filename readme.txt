@@ -2,7 +2,7 @@
 
 Requires at least: 4.5
 Tested up to: 4.9.4
-Stable tag: 2.0.4
+Stable tag: 2.0.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Copyright 2017 Kyle Jennings
@@ -180,3 +180,6 @@ GNU General Public License for more details.
 * 2.0.4
 * Stop hiding the text editor when using the status post format
 * small code cleanup
+
+* 2.0.5
+* fixed post format saving bug

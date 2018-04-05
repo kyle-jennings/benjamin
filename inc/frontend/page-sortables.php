@@ -90,7 +90,7 @@ function benjamin_sortable_default($target_name){
     $url = esc_url(admin_url( 'customize.php?autofocus[section]='.$target_name.'_settings_section' ));
 
     $output = '';
-    $output .= '<h2>Page not configured</h2>';
+    $output .= '<h2>' . __('Page not configured', 'benjamin') . '</h2>';
     $output .= '<p> <a href="'.$url.'">Click here</a> to set up this page. </p>';
 
     return $output;
