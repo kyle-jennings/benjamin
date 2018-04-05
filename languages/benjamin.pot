@@ -13,8 +13,12 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../404.php:55
+#: ../404.php:53
 msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgstr ""
+
+#: ../404.php:61, ../inc/widgets/Benjamin_Widget_Pages.php:29, ../inc/widgets/Benjamin_Widget_Pages.php:286
+msgid "Pages"
 msgstr ""
 
 #. translators: 1: title.
@@ -49,28 +53,36 @@ msgstr ""
 msgid "Skip to main content"
 msgstr ""
 
-#: ../searchform.php:13
+#: ../searchform.php:15
 msgctxt "search lable"
 msgid "Search for:"
 msgstr ""
 
-#: ../searchform.php:15
+#: ../searchform.php:18
 msgctxt "placeholder"
 msgid "Search ..."
 msgstr ""
 
-#: ../searchform.php:17
+#: ../searchform.php:20
 msgctxt "title"
 msgid "Search for:"
 msgstr ""
 
-#: ../searchform.php:18
+#: ../searchform.php:21
 msgctxt "submit button"
 msgid "Search"
 msgstr ""
 
-#: ../searchform.php:20
+#: ../searchform.php:23
 msgid "Search"
+msgstr ""
+
+#: ../single.php:43
+msgid "Previous Post"
+msgstr ""
+
+#: ../single.php:44
+msgid "Next Post "
 msgstr ""
 
 #: ../page-templates/sidenav.php:2
@@ -93,36 +105,8 @@ msgstr ""
 msgid "Template Page 4"
 msgstr ""
 
-#: ../page-templates/widgetized.php:2, ../inc/customizer/widgetized.php:12
+#: ../page-templates/widgetized.php:2, ../inc/customizer/widgetized.php:12, ../inc/shared/template-list.php:112
 msgid "Widgetized Page"
-msgstr ""
-
-#: ../template-parts/content-none.php:14
-msgid "Nothing Found"
-msgstr ""
-
-#: ../template-parts/content-none.php:25
-msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr ""
-
-#: ../template-parts/content-none.php:38
-msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
-msgstr ""
-
-#: ../template-parts/content-none.php:44
-msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
-msgstr ""
-
-#: ../template-parts/content-page.php:20, ../template-parts/content.php:43
-msgid "Pages:"
-msgstr ""
-
-#: ../template-parts/content-page.php:32, ../inc/frontend/template-tags.php:133
-msgid "Edit %s"
-msgstr ""
-
-#: ../template-parts/content.php:35
-msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
 #: ../inc/admin/columns.php:28
@@ -142,34 +126,46 @@ msgstr ""
 msgid "Feature this post?"
 msgstr ""
 
-#: ../inc/customizer/footer.php:17
+#: ../inc/admin/post-formats.php:50, ../inc/customizer/template-settings.php:38, ../inc/customizer/widgetized.php:36, ../inc/shared/register-sidebars.php:51
+msgid "%s "
+msgstr ""
+
+#: ../inc/customizer/footer.php:17, ../inc/shared/set-default-settings.php:17, ../inc/frontend/footers/footer-return.php:6
+msgid "Return to top"
+msgstr ""
+
+#: ../inc/customizer/footer.php:18, ../inc/shared/set-default-settings.php:18
+msgid "Footer menu"
+msgstr ""
+
+#: ../inc/customizer/footer.php:27
 msgid "Return to Top"
 msgstr ""
 
-#: ../inc/customizer/footer.php:18
+#: ../inc/customizer/footer.php:28
 msgid "Footer Menu"
 msgstr ""
 
-#: ../inc/customizer/footer.php:19, ../inc/customizer/frontpage.php:98, ../inc/customizer/widgetized.php:38
+#: ../inc/customizer/footer.php:29, ../inc/customizer/frontpage.php:102, ../inc/customizer/widgetized.php:41
 msgid "Widget Area 1"
 msgstr ""
 
-#: ../inc/customizer/footer.php:20, ../inc/customizer/frontpage.php:99, ../inc/customizer/widgetized.php:39
+#: ../inc/customizer/footer.php:30, ../inc/customizer/frontpage.php:103, ../inc/customizer/widgetized.php:42
 msgid "Widget Area 2"
 msgstr ""
 
-#: ../inc/customizer/footer.php:24
+#: ../inc/customizer/footer.php:34
 msgid "Footer Settings"
 msgstr ""
 
-#: ../inc/customizer/footer.php:34, ../inc/customizer/widgetized.php:25
+#: ../inc/customizer/footer.php:44
 msgid ""
 "The page content is sortable, and optional.  Simply drag the\n"
 "    available components from the \"available\" box over to active.  This setting\n"
 "    does not depend on the \"Settings Active\" setting above."
 msgstr ""
 
-#: ../inc/customizer/footer.php:41
+#: ../inc/customizer/footer.php:54
 msgid "Sortable Footer Parts"
 msgstr ""
 
@@ -201,84 +197,92 @@ msgstr ""
 msgid "Callout Button Link"
 msgstr ""
 
-#: ../inc/customizer/frontpage.php:85
+#: ../inc/customizer/frontpage.php:85, ../inc/customizer/widgetized.php:25
 msgid ""
-"The page content is sortable, and optional.  Simply drag the\n"
-"          available components from the \"available\" box over to active.  This setting\n"
-"          does not depend on the \"Settings Active\" setting above."
+"The page content is sortable, and optional.  Simply drag the \n"
+"        available components from the \"available\" box over to \"active\".  Once a widget \n"
+"        area has been dragged to \"active\" you'll need to add some "
 msgstr ""
 
-#: ../inc/customizer/frontpage.php:92, ../inc/customizer/widgetized.php:31
+#: ../inc/customizer/frontpage.php:90, ../inc/customizer/widgetized.php:30
+msgid "widgets"
+msgstr ""
+
+#: ../inc/customizer/frontpage.php:96, ../inc/customizer/widgetized.php:34
 msgid "Sortable Page Content"
 msgstr ""
 
-#: ../inc/customizer/frontpage.php:100, ../inc/customizer/widgetized.php:40
+#: ../inc/customizer/frontpage.php:104, ../inc/customizer/widgetized.php:43
 msgid "Widget Area 3"
 msgstr ""
 
-#: ../inc/customizer/frontpage.php:101, ../inc/customizer/page-404.php:71, ../inc/customizer/widgetized.php:41
+#: ../inc/customizer/frontpage.php:105, ../inc/customizer/page-404.php:71, ../inc/customizer/widgetized.php:44, ../inc/frontend/page-sortables.php:8
 msgid "Page Content"
 msgstr ""
 
-#: ../inc/customizer/header.php:17, ../inc/customizer/template-settings/header.php:14
-msgid "Header Settings"
+#: ../inc/customizer/header.php:15, ../inc/customizer/header.php:45, ../inc/shared/set-default-settings.php:14, ../inc/shared/set-default-settings.php:138
+msgid "Banner"
 msgstr ""
 
-#: ../inc/customizer/header.php:29
+#: ../inc/customizer/header.php:16, ../inc/customizer/header.php:43, ../inc/shared/set-default-settings.php:15, ../inc/shared/set-default-settings.php:128
 msgid "Navbar"
 msgstr ""
 
-#: ../inc/customizer/header.php:30
+#: ../inc/customizer/header.php:17, ../inc/customizer/header.php:44, ../inc/shared/set-default-settings.php:16, ../inc/shared/set-default-settings.php:132
 msgid "Hero"
 msgstr ""
 
-#: ../inc/customizer/header.php:37
+#: ../inc/customizer/header.php:28, ../inc/customizer/template-settings/header.php:14
+msgid "Header Settings"
+msgstr ""
+
+#: ../inc/customizer/header.php:49
 msgid ""
 "The header area is made of sortable parts.  Simply drag these\n"
 "        parts around to change the order they are displayed."
 msgstr ""
 
-#: ../inc/customizer/header.php:44
+#: ../inc/customizer/header.php:57
 msgid "Header Order"
 msgstr ""
 
-#: ../inc/customizer/header.php:69
+#: ../inc/customizer/header.php:82
 msgid "Navbar Settings"
 msgstr ""
 
-#: ../inc/customizer/header.php:84
+#: ../inc/customizer/header.php:97
 msgid "Display Search in Navbar"
 msgstr ""
 
-#: ../inc/customizer/header.php:104
+#: ../inc/customizer/header.php:117
 msgid "Navbar Color Scheme"
 msgstr ""
 
-#: ../inc/customizer/header.php:122
+#: ../inc/customizer/header.php:135
 msgid "Stick the navbar to the top of the screen when you scroll down the page"
 msgstr ""
 
-#: ../inc/customizer/header.php:123
+#: ../inc/customizer/header.php:136
 msgid "Navbar sticky on scroll"
 msgstr ""
 
-#: ../inc/customizer/header.php:141
+#: ../inc/customizer/header.php:154
 msgid "Navbar Brand Type"
 msgstr ""
 
-#: ../inc/customizer/header.php:170
+#: ../inc/customizer/header.php:183
 msgid "Banner Settings"
 msgstr ""
 
-#: ../inc/customizer/header.php:186
+#: ../inc/customizer/header.php:199
 msgid "Banner Visibility"
 msgstr ""
 
-#: ../inc/customizer/header.php:204
+#: ../inc/customizer/header.php:217
 msgid "Banner Text"
 msgstr ""
 
-#: ../inc/customizer/header.php:218
+#: ../inc/customizer/header.php:231
 msgid "Banner Read More"
 msgstr ""
 
@@ -294,15 +298,7 @@ msgstr ""
 msgid "Color Scheme"
 msgstr ""
 
-#: ../inc/customizer/identity.php:70
-msgid "Wide"
-msgstr ""
-
-#: ../inc/customizer/identity.php:71
-msgid "Narrow"
-msgstr ""
-
-#: ../inc/customizer/page-404.php:14
+#: ../inc/customizer/page-404.php:14, ../inc/shared/template-list.php:203
 msgid "404 Page"
 msgstr ""
 
@@ -330,10 +326,6 @@ msgstr ""
 msgid "More Templates Settings"
 msgstr ""
 
-#: ../inc/customizer/template-settings.php:38, ../inc/customizer/widgetized.php:33, ../inc/shared/register-sidebars.php:51
-msgid "%s "
-msgstr ""
-
 #: ../inc/customizer/_sanitizations.php:381
 msgid "Please enter a valid YouTube URL."
 msgstr ""
@@ -350,7 +342,11 @@ msgstr ""
 msgid "CSS not found"
 msgstr ""
 
-#: ../inc/frontend/class-BenjaminFeaturedPost.php:129
+#: ../inc/frontend/class-BenjaminFeaturedPost.php:50
+msgid "Featured "
+msgstr ""
+
+#: ../inc/frontend/class-BenjaminFeaturedPost.php:138
 msgid "Posted in&nbsp;"
 msgstr ""
 
@@ -358,21 +354,40 @@ msgstr ""
 msgid "Read More"
 msgstr ""
 
-#: ../inc/frontend/template-tags.php:111
-msgid "Posted in %1$s"
+#: ../inc/frontend/nav-settings.php:44
+msgid "Older Posts"
 msgstr ""
 
-#: ../inc/frontend/template-tags.php:114
+#: ../inc/frontend/nav-settings.php:45
+msgid "Newer Posts"
+msgstr ""
+
+#: ../inc/frontend/page-sortables.php:94
+msgid "Page not configured"
+msgstr ""
+
+#: ../inc/frontend/template-tags.php:184, ../inc/frontend/template-tags.php:233
+msgid "Leave a Comment"
+msgstr ""
+
+#: ../inc/frontend/template-tags.php:187, ../inc/frontend/template-tags.php:236
+msgid "1 comment"
+msgstr ""
+
+#: ../inc/frontend/template-tags.php:191
+msgid "%s comments"
+msgstr ""
+
+#: ../inc/frontend/template-tags.php:239
+msgid "% comments"
+msgstr ""
+
+#: ../inc/frontend/template-tags.php:287
 msgid ", "
 msgstr ""
 
-#: ../inc/frontend/template-tags.php:118
-msgid "Tagged %1$s"
-msgstr ""
-
-#. translators: %s: post title
-#: ../inc/frontend/template-tags.php:126
-msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+#: ../inc/frontend/template-tags.php:355, ../template-parts/singles/content-page.php:31
+msgid "Edit %s"
 msgstr ""
 
 #: ../inc/shared/custom-post-types.php:20
@@ -383,159 +398,178 @@ msgstr ""
 msgid "The feed for your %s."
 msgstr ""
 
-#: ../inc/shared/set-default-settings.php:43, ../inc/shared/set-default-settings.php:50
+#: ../inc/shared/set-default-settings.php:65, ../inc/shared/set-default-settings.php:71
 msgid "Home"
 msgstr ""
 
-#: ../inc/shared/set-default-settings.php:44
+#: ../inc/shared/set-default-settings.php:66
 msgid "Login"
 msgstr ""
 
-#: ../inc/shared/set-default-settings.php:51
+#: ../inc/shared/set-default-settings.php:72
 msgid "Admin"
 msgstr ""
 
-#: ../inc/shared/set-default-settings.php:52
+#: ../inc/shared/set-default-settings.php:73
 msgid "Add a Menu"
 msgstr ""
 
-#: ../inc/shared/set-default-settings.php:53
+#: ../inc/shared/set-default-settings.php:74
 msgid "Customize your Site"
 msgstr ""
 
-#: ../inc/shared/set-default-settings.php:54
+#: ../inc/shared/set-default-settings.php:75
 msgid "Logout"
 msgstr ""
 
-#: ../inc/shared/template-list.php:31
-msgid "<p>This is your feed, or archive page. This page shows your recent new, archived, filtered posts ect."
+#: ../inc/shared/template-list.php:27
+msgid ""
+"The layout settings and widgets on this template are not available\n"
+"    unless the template is activated in the customizer."
 msgstr ""
 
-#: ../inc/shared/template-list.php:34, ../inc/shared/template-list.php:47, ../inc/shared/template-list.php:57, ../inc/shared/template-list.php:67, ../inc/shared/template-list.php:77, ../inc/shared/template-list.php:87, ../inc/shared/template-list.php:97, ../inc/shared/template-list.php:107, ../inc/shared/template-list.php:117, ../inc/shared/template-list.php:127, ../inc/shared/template-list.php:204
-msgid ""
-"These widgets appear on %s\n"
-"            in the sidebar located on the right or left of the page."
+#: ../inc/shared/template-list.php:33
+msgid "Feed/Archive"
 msgstr ""
 
-#: ../inc/shared/template-list.php:42
-msgid ""
-"<p>The frontpage is the located at %1$s\n"
-"            and the content area is made of 4 sortable areas. You can also set\n"
-"            the content in the page header.</p> %2$s "
+#: ../inc/shared/template-list.php:34
+msgid "This is your feed, or archive page. This page shows your recent new, archived, filtered posts ect."
 msgstr ""
 
-#: ../inc/shared/template-list.php:54
-msgid ""
-"<p>The \"single post\" is what you see when viewing\n"
-"            a single blog post, or single custom post type.</p> %s"
+#: ../inc/shared/template-list.php:40, ../inc/shared/template-list.php:62, ../inc/shared/template-list.php:83, ../inc/shared/template-list.php:103, ../inc/shared/template-list.php:123, ../inc/shared/template-list.php:142, ../inc/shared/template-list.php:161, ../inc/shared/template-list.php:176, ../inc/shared/template-list.php:195, ../inc/shared/template-list.php:214, ../inc/shared/template-list.php:308
+msgid "These widgets appear on %s in the sidebar located on the right or left of the page."
 msgstr ""
 
-#: ../inc/shared/template-list.php:64
-msgid ""
-"<p>The \"single page\" is what you see when viewing\n"
-"            a page.</p> %s."
+#: ../inc/shared/template-list.php:49
+msgid "Front Page"
+msgstr ""
+
+#: ../inc/shared/template-list.php:53
+msgid "The frontpage is the located at %1$s and the content area is made of 4 sortable areas. You can also set the content in the page header. %2$s "
+msgstr ""
+
+#: ../inc/shared/template-list.php:71
+msgid "Single Post"
 msgstr ""
 
 #: ../inc/shared/template-list.php:74
 msgid ""
-"<p>This is a special page template,\n"
-"            the content area is made of 4 sortable areas.</p> %s "
+"The \"single post\" is what you see when viewing\n"
+"            a single blog post, or single custom post type. %s"
 msgstr ""
 
-#: ../inc/shared/template-list.php:83, ../inc/shared/template-list.php:93, ../inc/shared/template-list.php:103, ../inc/shared/template-list.php:113
-msgid ""
-"<p>This is just an extra page template, use this\n"
-"            if you want to style an individual page differently then your\n"
-"            standard pages.</p> %s"
+#: ../inc/shared/template-list.php:92
+msgid "Single Page"
 msgstr ""
 
-#: ../inc/shared/template-list.php:123
-msgid ""
-"<p>This page is what user's see when they attempt\n"
-"            to view an invalid page URL. Both the page and header content are\n"
-"            configurable.</p> %s "
+#: ../inc/shared/template-list.php:95
+msgid "The \"single page\" is what you see when viewing a page. %s."
 msgstr ""
 
-#: ../inc/shared/template-list.php:138
-msgid "Banner Widgets"
+#: ../inc/shared/template-list.php:115
+msgid "This is a special page template, the content area is made of 4 sortable areas. %s "
 msgstr ""
 
-#: ../inc/shared/template-list.php:139
-msgid ""
-"The banner is made up widget areas and are\n"
-"            optionally used.  The banner is expandable only if widgets have been set."
+#: ../inc/shared/template-list.php:131
+msgid "Page Template 1"
 msgstr ""
 
-#: ../inc/shared/template-list.php:144
-msgid "Frontpage Widget Area 1"
-msgstr ""
-
-#: ../inc/shared/template-list.php:145, ../inc/shared/template-list.php:151, ../inc/shared/template-list.php:157
-msgid ""
-"The frontpage content is made up of sortable,\n"
-"            horizontal widget areas.  This is one of those areas and is\n"
-"            optionally used."
+#: ../inc/shared/template-list.php:134, ../inc/shared/template-list.php:153, ../inc/shared/template-list.php:187
+msgid "This is just an extra page template, use this if you want to style an individual page differently then your standard pages. %s"
 msgstr ""
 
 #: ../inc/shared/template-list.php:150
+msgid "Page Template 2"
+msgstr ""
+
+#: ../inc/shared/template-list.php:169
+msgid "Page Template 3"
+msgstr ""
+
+#: ../inc/shared/template-list.php:171
+msgid ""
+"This is just an extra page template, use this\n"
+"            if you want to style an individual page differently then your\n"
+"            standard pages. %s"
+msgstr ""
+
+#: ../inc/shared/template-list.php:184
+msgid "Page Template 4"
+msgstr ""
+
+#: ../inc/shared/template-list.php:206
+msgid "This page is what user's see when they attempt to view an invalid page URL. Both the page and header content are configurable. %s "
+msgstr ""
+
+#: ../inc/shared/template-list.php:229
+msgid "Banner Widgets"
+msgstr ""
+
+#: ../inc/shared/template-list.php:230
+msgid "The banner is made up widget areas and are optionally used.  The banner is expandable only if widgets have been set."
+msgstr ""
+
+#: ../inc/shared/template-list.php:237
+msgid "Frontpage Widget Area 1"
+msgstr ""
+
+#: ../inc/shared/template-list.php:238, ../inc/shared/template-list.php:245, ../inc/shared/template-list.php:252
+msgid "The frontpage content is made up of sortable, horizontal widget areas.  This is one of those areas and is optionally used."
+msgstr ""
+
+#: ../inc/shared/template-list.php:244
 msgid "Frontpage Widget Area 2"
 msgstr ""
 
-#: ../inc/shared/template-list.php:156
+#: ../inc/shared/template-list.php:251
 msgid "Frontpage Widget Area 3"
 msgstr ""
 
-#: ../inc/shared/template-list.php:162
+#: ../inc/shared/template-list.php:258
 msgid "Widgetized Page Area 1"
 msgstr ""
 
-#: ../inc/shared/template-list.php:163, ../inc/shared/template-list.php:169
-msgid ""
-"The Widgetized page content is made up of\n"
-"            sortable, horizontal widget areas.  This is one of those areas and\n"
-"            is optionally used."
+#: ../inc/shared/template-list.php:259, ../inc/shared/template-list.php:266
+msgid "The Widgetized page content is made up of sortable, horizontal widget areas.  This is one of those areas and is optionally used."
 msgstr ""
 
-#: ../inc/shared/template-list.php:168
+#: ../inc/shared/template-list.php:265
 msgid "Widgetized Page Area 2"
 msgstr ""
 
-#: ../inc/shared/template-list.php:174
+#: ../inc/shared/template-list.php:272
 msgid "Widgetized Page Area 3"
 msgstr ""
 
-#: ../inc/shared/template-list.php:175
-msgid ""
-"The Widgetized page is full sortable, horizontal\n"
-"            widget areas.  This is one of those areas and is optionally used."
+#: ../inc/shared/template-list.php:273
+msgid "The Widgetized page is full sortable, horizontal widget areas.  This is one of those areas and is optionally used."
 msgstr ""
 
-#: ../inc/shared/template-list.php:180
+#: ../inc/shared/template-list.php:279
 msgid "Footer Widget Area 1"
 msgstr ""
 
-#: ../inc/shared/template-list.php:181, ../inc/shared/template-list.php:187
-msgid ""
-"The footer area is sortable and contains two\n"
-"            optional widget areas.  To use these widgets, remember to setup the\n"
-"            footer in the customizer."
+#: ../inc/shared/template-list.php:280, ../inc/shared/template-list.php:287
+msgid "The footer area is sortable and contains two optional widget areas.  To use these widgets, remember to setup the footer in the customizer."
 msgstr ""
 
-#: ../inc/shared/template-list.php:186
+#: ../inc/shared/template-list.php:286
 msgid "Footer Widget Area 2"
 msgstr ""
 
-#: ../inc/shared/template-list.php:200
-msgid ""
-"<p>These settings are the default settings used on every page unless the other\n"
-"            templates' settings been activated.</p>"
+#: ../inc/shared/template-list.php:301
+msgid "Default Layout Settings"
 msgstr ""
 
-#: ../inc/shared/theme-support.php:39
-msgid "Primary"
+#: ../inc/shared/template-list.php:302
+msgid "These settings are the default settings used on every page unless the other templates' settings been activated."
 msgstr ""
 
 #: ../inc/shared/theme-support.php:40
+msgid "Primary"
+msgstr ""
+
+#: ../inc/shared/theme-support.php:41
 msgid "Footer"
 msgstr ""
 
@@ -543,7 +577,7 @@ msgstr ""
 msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
 msgstr ""
 
-#: ../inc/widgets/Benjamin_Nav_Menu_Widget.php:146, ../inc/widgets/Benjamin_Widget_Archives.php:205, ../inc/widgets/Benjamin_Widget_Categories.php:196, ../inc/widgets/Benjamin_Widget_Meta.php:180, ../inc/widgets/Benjamin_Widget_Pages.php:285, ../inc/widgets/Benjamin_Widget_Recent_Comments.php:250, ../inc/widgets/Benjamin_Widget_Recent_Posts.php:218
+#: ../inc/widgets/Benjamin_Nav_Menu_Widget.php:146, ../inc/widgets/Benjamin_Widget_Archives.php:205, ../inc/widgets/Benjamin_Widget_Categories.php:196, ../inc/widgets/Benjamin_Widget_Meta.php:180, ../inc/widgets/Benjamin_Widget_Pages.php:285, ../inc/widgets/Benjamin_Widget_Recent_Comments.php:250, ../inc/widgets/Benjamin_Widget_Recent_Posts.php:232
 msgid "Title:"
 msgstr ""
 
@@ -555,7 +589,7 @@ msgstr ""
 msgid "&mdash; Select &mdash;"
 msgstr ""
 
-#: ../inc/widgets/Benjamin_Nav_Menu_Widget.php:168, ../inc/widgets/Benjamin_Widget_Archives.php:219, ../inc/widgets/Benjamin_Widget_Categories.php:216, ../inc/widgets/Benjamin_Widget_Meta.php:193, ../inc/widgets/Benjamin_Widget_Pages.php:315, ../inc/widgets/Benjamin_Widget_Recent_Comments.php:264, ../inc/widgets/Benjamin_Widget_Recent_Posts.php:235
+#: ../inc/widgets/Benjamin_Nav_Menu_Widget.php:168, ../inc/widgets/Benjamin_Widget_Archives.php:219, ../inc/widgets/Benjamin_Widget_Categories.php:216, ../inc/widgets/Benjamin_Widget_Meta.php:193, ../inc/widgets/Benjamin_Widget_Pages.php:315, ../inc/widgets/Benjamin_Widget_Recent_Comments.php:264, ../inc/widgets/Benjamin_Widget_Recent_Posts.php:249
 msgid "Menu Style:"
 msgstr ""
 
@@ -587,7 +621,7 @@ msgstr ""
 msgid "Select Week"
 msgstr ""
 
-#: ../inc/widgets/Benjamin_Widget_Archives.php:87
+#: ../inc/widgets/Benjamin_Widget_Archives.php:87, ../inc/widgets/Benjamin_Widget_Recent_Posts.php:85
 msgid "Select Post"
 msgstr ""
 
@@ -640,10 +674,6 @@ msgstr ""
 msgid "A list of your site&#8217;s Pages."
 msgstr ""
 
-#: ../inc/widgets/Benjamin_Widget_Pages.php:29, ../inc/widgets/Benjamin_Widget_Pages.php:286
-msgid "Pages"
-msgstr ""
-
 #: ../inc/widgets/Benjamin_Widget_Pages.php:289
 msgid "Sort by:"
 msgstr ""
@@ -684,20 +714,116 @@ msgstr ""
 msgid "Number of comments to show:"
 msgstr ""
 
-#: ../inc/widgets/Benjamin_Widget_Recent_Posts.php:26
+#: ../inc/widgets/Benjamin_Widget_Recent_Posts.php:28
 msgid "Your site&#8217;s most recent Posts."
 msgstr ""
 
-#: ../inc/widgets/Benjamin_Widget_Recent_Posts.php:29, ../inc/widgets/Benjamin_Widget_Recent_Posts.php:138, ../inc/widgets/Benjamin_Widget_Recent_Posts.php:219
+#: ../inc/widgets/Benjamin_Widget_Recent_Posts.php:32, ../inc/widgets/Benjamin_Widget_Recent_Posts.php:146, ../inc/widgets/Benjamin_Widget_Recent_Posts.php:233
 msgid "Recent Posts"
 msgstr ""
 
-#: ../inc/widgets/Benjamin_Widget_Recent_Posts.php:221
+#: ../inc/widgets/Benjamin_Widget_Recent_Posts.php:235
 msgid "Number of posts to show:"
 msgstr ""
 
-#: ../inc/widgets/Benjamin_Widget_Recent_Posts.php:225
+#: ../inc/widgets/Benjamin_Widget_Recent_Posts.php:239
 msgid "Display post date?"
+msgstr ""
+
+#: ../template-parts/feed/content-none.php:14, ../template-parts/singles/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: ../template-parts/feed/content-none.php:25, ../template-parts/singles/content-none.php:24
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: ../template-parts/feed/content-none.php:38, ../template-parts/singles/content-none.php:37
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: ../template-parts/feed/content-none.php:44, ../template-parts/singles/content-none.php:41
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""
+
+#: ../template-parts/feed/content.php:64, ../template-parts/singles/content.php:27
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../template-parts/feed/content.php:78, ../template-parts/singles/content-page.php:19, ../template-parts/singles/content.php:35
+msgid "Pages:"
+msgstr ""
+
+#: ../inc/admin/post-formats/aside.php:18
+msgid "Aside Body"
+msgstr ""
+
+#: ../inc/admin/post-formats/audio.php:22
+msgid "Select Audio"
+msgstr ""
+
+#: ../inc/admin/post-formats/audio.php:25, ../inc/admin/post-formats/image.php:37, ../inc/admin/post-formats/video.php:28
+msgid "or use an oembed url"
+msgstr ""
+
+#: ../inc/admin/post-formats/audio.php:36
+msgid "Remove Audio"
+msgstr ""
+
+#: ../inc/admin/post-formats/gallery.php:26
+msgid "Select Images to add to your gallery here."
+msgstr ""
+
+#: ../inc/admin/post-formats/gallery.php:27
+msgid "Manage Gallery"
+msgstr ""
+
+#: ../inc/admin/post-formats/gallery.php:28
+msgid "Remove Gallery"
+msgstr ""
+
+#: ../inc/admin/post-formats/image.php:34
+msgid "Select Image"
+msgstr ""
+
+#: ../inc/admin/post-formats/image.php:49
+msgid "Remove Image"
+msgstr ""
+
+#: ../inc/admin/post-formats/link.php:20
+msgid "URL"
+msgstr ""
+
+#: ../inc/admin/post-formats/link.php:27
+msgid "Text"
+msgstr ""
+
+#: ../inc/admin/post-formats/link.php:30
+msgid "click here"
+msgstr ""
+
+#: ../inc/admin/post-formats/quote.php:20
+msgid "Quote"
+msgstr ""
+
+#: ../inc/admin/post-formats/quote.php:27
+msgid "Author"
+msgstr ""
+
+#: ../inc/admin/post-formats/quote.php:30
+msgid "unknown author"
+msgstr ""
+
+#: ../inc/admin/post-formats/status.php:23
+msgid "Character Count"
+msgstr ""
+
+#: ../inc/admin/post-formats/video.php:25
+msgid "Select Video"
+msgstr ""
+
+#: ../inc/admin/post-formats/video.php:39
+msgid "Remove Video"
 msgstr ""
 
 #: ../inc/customizer/controls/sortable.php:130
@@ -835,36 +961,48 @@ msgstr ""
 msgid "Right"
 msgstr ""
 
-#: ../inc/customizer/template-settings/sidebar.php:68
-msgid "Hide or show the sidebar on different screen size (ie: hide on phones)"
-msgstr ""
-
-#: ../inc/customizer/template-settings/sidebar.php:69
-msgid "Sidebar Visibility"
-msgstr ""
-
-#: ../inc/customizer/template-settings/sidebar.php:74
-msgid "Always visible"
-msgstr ""
-
-#: ../inc/customizer/template-settings/sidebar.php:75
-msgid "Hide on medium screens and larger"
-msgstr ""
-
 #: ../inc/customizer/template-settings/sidebar.php:76
-msgid "Hide on desktop"
+msgid "Wide"
 msgstr ""
 
 #: ../inc/customizer/template-settings/sidebar.php:77
+msgid "Narrow"
+msgstr ""
+
+#: ../inc/customizer/template-settings/sidebar.php:93
+msgid "Hide or show the sidebar on different screen size (ie: hide on phones)"
+msgstr ""
+
+#: ../inc/customizer/template-settings/sidebar.php:94
+msgid "Sidebar Visibility"
+msgstr ""
+
+#: ../inc/customizer/template-settings/sidebar.php:99
+msgid "Always visible"
+msgstr ""
+
+#: ../inc/customizer/template-settings/sidebar.php:100
+msgid "Hide on medium screens and larger"
+msgstr ""
+
+#: ../inc/customizer/template-settings/sidebar.php:101
+msgid "Hide on desktop"
+msgstr ""
+
+#: ../inc/customizer/template-settings/sidebar.php:102
 msgid "Visible on medium screens and larger"
 msgstr ""
 
-#: ../inc/customizer/template-settings/sidebar.php:78
+#: ../inc/customizer/template-settings/sidebar.php:103
 msgid "Visible on desktop"
 msgstr ""
 
-#: ../inc/frontend/footers/footer-return.php:6
-msgid "Return to top"
+#: ../inc/frontend/hero/BenjaminHeroContent.php:85
+msgid "Page not found"
+msgstr ""
+
+#: ../inc/frontend/hero/BenjaminHeroContent.php:587
+msgid "Learn More"
 msgstr ""
 
 #: ../inc/frontend/navbars/navbar.php:10

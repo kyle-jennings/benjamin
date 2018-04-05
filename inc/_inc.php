@@ -55,7 +55,6 @@ if (!is_admin()) {
         'hero/BenjaminHeroContent',
         'excerpts',
         'filters',
-        'galleries',
         'get-sidebar',
         'get-width-visibility',
         'nav-settings',

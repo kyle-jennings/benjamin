@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 /**
  * Get the header parts
  *

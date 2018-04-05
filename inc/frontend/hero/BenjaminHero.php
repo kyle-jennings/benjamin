@@ -72,11 +72,9 @@ class BenjaminHero {
         $output = '';
         $size = $this->heroSize($this->template);
         $style = $this->HeroBackground->getStyle($this->template);
-        $post_format = $this->isPostFormat();
 
         $class = $size;
         $class .= $this->HeroBackground->image ? ' hero--has-background' : '';
-        $class .= $post_format ? ' hero--is-post-format' : '';
         
         $output .= '<section class="usa-hero ' . esc_attr($size) . '" ' . esc_attr($style) . '>';
             $output .= '<div class="usa-grid">';

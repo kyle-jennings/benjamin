@@ -5,13 +5,14 @@ function benjamin_page_sortables($target = null) {
     if($target == null)
         return false;
 
+    $page_content_label = __('Page Content', 'benjamin');
     $target_name = strtok($target, '_');
 
-    $sortables = get_theme_mod($target, '[{"name":"page-content","label":"Page Content"}]');
+    $sortables = get_theme_mod($target, '[{"name":"page-content","label":"' . $page_content_label . '"}]');
 
 
     if(!$sortables || $sortables == '[]'){
-        $sortables = '[{"name":"page-content","label":"Page Content"}]';
+        $sortables = '[{"name":"page-content","label":"' . $page_content_label . '"}]';
     }
 
     $sortables = json_decode($sortables);
