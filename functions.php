@@ -9,9 +9,9 @@
  * @package Benjamin
  */
 
-if ( version_compare( $GLOBALS['wp_version'], '4.6', '<' ) ) {
-	require get_template_directory() . '/inc/back-compat.php';
-	return;
+if (version_compare($GLOBALS['wp_version'], '4.6', '<')) {
+    require get_template_directory() . '/inc/back-compat.php';
+    return;
 }
 
 // Define some constants.
@@ -33,7 +33,7 @@ define('BENJAMIN_ONE_HALF', 'usa-width-one-half');
 define('DEFAULT_TEMPLATE', 'default');
 
 define('POST_FORMATS', json_encode(
-    array( 'audio', 'image', 'link', 'quote', 'status', 'video' )
+    array('audio', 'image', 'gallery', 'link', 'quote', 'status', 'video')
 ));
 
 require_once get_template_directory() . '/inc/_inc.php';
