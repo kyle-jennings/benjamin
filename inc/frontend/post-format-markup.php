@@ -24,11 +24,11 @@ function benjamin_get_post_format_markup($post = null, $format = 'standard')
             $markup    .= benjamin_get_the_audio_markup($value);
             break;
         case 'gallery':
-            $markup = benjamin_get_carousel_markup($value, 'large');
+            $markup = do_shortcode('[gallery ids="' . $value . '"]');
             break;
         case 'image':
-            $markup = '<a href="' . get_permalink() . '">';
-            $markup .= '<img class="post-featured-image entry-featured-image" src="' . esc_url($value) . '">';
+            $markup = '<a href="' . esc_url_raw($value) . '">';
+            $markup .= '<img class="post-featured-image entry-featured-image" src="' . esc_url_raw($value) . '">';
             $markup .= '</a>';
             break;
         case 'quote':

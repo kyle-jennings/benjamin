@@ -27,7 +27,7 @@ function gallery_box(){
     var $this = event.target;
     var $metabox = $this.closest('.postbox');
     gallery_media($metabox);
-  })
+  });
 }
 
 
@@ -38,9 +38,9 @@ function gallery_media($metabox) {
   
   // if the gallery has already been initialized then just reopen it
   if(wp.media.frames.galleryBox){
-    delete wp.media.frames.galleryBox;
-    // wp.media.frames.galleryBox.open();
-    // return;
+    // delete wp.media.frames.galleryBox;
+    wp.media.frames.galleryBox.open();
+    return;
   }
 
   // initialize media library in gallery mode
@@ -77,7 +77,7 @@ function gallery_media($metabox) {
     $metabox.querySelector('.post_format_value').value = str;
 
     benjamin_ajax_shortcode('[gallery link="none" ids="' + str + '"]', $metabox)
-  })
+  });
 
   // open the initialized media library
   wp.media.frames.galleryBox.open();

@@ -37,13 +37,7 @@ if (! $hide_content) :
         while (have_posts()) :
             the_post();
 
-            
-            // if ($format && benjamin_use_post_format_content($post, $format, $exclude)) {
-            //     $part = (!in_array($format, $exclude, true)) ? 'post-format' : $format;
-            //     get_template_part('template-parts/singles/content', $part);
-            // } else {
             get_template_part('template-parts/singles/content');
-
 
             $navigation_args = array(
                 'prev_text' => '&laquo; ' . __('Previous Post', 'benjamin'),

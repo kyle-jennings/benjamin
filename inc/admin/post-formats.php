@@ -5,7 +5,7 @@ class PostFormat
     
     public static $screens = array();
     public static $formats = array();
-    public static $supported = array('audio', 'aside', 'chat', 'image', 'gallery', 'link', 'quote', 'video', 'status');
+    public static $supported = array('audio', 'aside', 'chat', 'gallery', 'image', 'link', 'quote', 'video', 'status');
 
     public static function init($screens = array())
     {
@@ -121,6 +121,7 @@ class PostFormat
             return;
         }
 
+        // examine($_POST);
         if (isset($_POST['post_format_value'])) {
             update_post_meta($post_id, '_post_format_value', benjamin_sanitize_text_or_array_field(wp_unslash($_POST['post_format_value'])));
         }
