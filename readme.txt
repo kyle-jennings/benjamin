@@ -117,55 +117,55 @@ GNU General Public License for more details.
 == Changelog ==
 
 * 1.2
-* namespaced all functions, classes, and constants
-* properly sanitized all customizer and settings API
-* replaced the screenshot
-* included unminified JS alongside the minified JS
-* added support for custom post types
-* added support for co-authors plus plugin
-* moved contact settings to Franklin as customizer settings
-* changed footer settings to sortable components
+* Namespaced all functions, classes, and constants
+* Properly sanitized all customizer and settings API
+* Replaced the screenshot
+* Included unminified JS alongside the minified JS
+* Added support for custom post types
+* Added support for co-authors plus plugin
+* Moved contact settings to Franklin as customizer settings
+* Changed footer settings to sortable components
 * Choose your 404 page content
 
 * 1.3
-* re-namespaced everything to use theme slug, and not the uswds acronymn
-* added options to hide parts of a given page
+* Re-namespaced everything to use theme slug, and not the uswds acronymn
+* Added options to hide parts of a given page
 
 * 1.4
-* added some additional settings to the 404 page
-* added permalink to the hero area featured post title
-* fixed a JS bug in the customizer caused by using 404 as an array index
-* fixed the preview for changing the sidebar width
-* used built in customizer settings for my layout activate setting
-* added some toggles to the various customizer fields
-* added styles for CF7 validations
-* prepped settings for the eventual hero area video BGs
+* Added some additional settings to the 404 page
+* Added permalink to the hero area featured post title
+* Fixed a JS bug in the customizer caused by using 404 as an array index
+* Fixed the preview for changing the sidebar width
+* Used built in customizer settings for my layout activate setting
+* Added some toggles to the various customizer fields
+* Added styles for CF7 validations
+* Prepped settings for the eventual hero area video BGs
 
 * 1.5
 * Video hero (header) backgrounds now work
-* refactored hero functions into a class
-* cleaned up files
-* fixed some bugs
-* customizer 404 section opens a non-existent page for styling
-* added labels to customizer section groups
+* Refactored hero functions into a class
+* Cleaned up files
+* Fixed some bugs
+* Customizer 404 section opens a non-existent page for styling
+* Added labels to customizer section groups
 
 * 1.6
-* fixed some debug warnings
+* Fixed some debug warnings
 
 * 1.7
 * Addressed all concerns in https://themes.trac.wordpress.org/ticket/43531#comment:7
-* added additional widget areas in the banner
-* translated, and escaped all the things
+* Added additional widget areas in the banner
+* Translated, and escaped all the things
 
 * 1.9
-* translated all the things
+* Translated all the things
 * Added "default" layout settings and made the "feed/archive" settings optional
-* moved some page specific non "template layout" settings to the top level of customizer
-* removed the red color scheme
-* removed the video banner and moved it to the Franklin theme
-* customizer Bug fixes
-* refactored some code
-* updated licensing information
+* Moved some page specific non "template layout" settings to the top level of customizer
+* Removed the red color scheme
+* Removed the video banner and moved it to the Franklin theme
+* Customizer Bug fixes
+* Refactored some code
+* Updated licensing information
 
 * 2.0.2
 * Added support for post formats
@@ -174,12 +174,17 @@ GNU General Public License for more details.
 * More translations
 
 * 2.0.3
-* fixed a customizer bug where the 404 preview wouldnt load if the defauly permalinks were used
-* fixed bug toggling the banner uin the customizer preview
+* Fixed a customizer bug where the 404 preview wouldnt load if the defauly permalinks were used
+* Fixed bug toggling the banner uin the customizer preview
 
 * 2.0.4
 * Stop hiding the text editor when using the status post format
-* small code cleanup
+* Small code cleanup
 
 * 2.0.5
-* fixed post format saving bug
+* Fixed post format saving bug
+
+* 2.0.6
+* Fixed more untranslated text
+* Refactored some files to be more legible
+* Moved the post format markup out of the hero to just before the content
