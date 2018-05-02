@@ -13,7 +13,13 @@
 
     <?php if (get_post_format()) : ?>
     <div class="post-content entry-content col-md-12">
-        <?php benjamin_post_format_markup($post, get_post_format())?>
+        
+        <?php
+        if(class_exists('BenjaminPostFormat')) {
+            benjamin_post_format_markup( $post, get_post_format() );
+        }
+        ?>
+
     </div>
     <?php endif; ?>
 

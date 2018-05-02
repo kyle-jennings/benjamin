@@ -20,7 +20,7 @@
     title="<?php echo esc_attr_x('Search for:', 'title', 'benjamin') ?>" />
     <button type="submit" value="<?php echo esc_attr_x('Search', 'submit button', 'benjamin'); ?>">
         <span class="usa-sr-only">
-            <?php echo __('Search', 'benjamin'); ?>    
+            <?php echo __('Search', 'benjamin'); // WPCS: xss ok. ?>    
         </span>
     </button>
   </div>

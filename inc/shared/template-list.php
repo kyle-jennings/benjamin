@@ -35,8 +35,8 @@ function benjamin_the_template_list($use_widget_areas = false, $add_default = fa
                 'This is your feed, or archive page. This page shows your recent new, archived, filtered posts ect.',
                 'benjamin'
             ),
-            /* translators: the page template name. */
             'widget_description' => sprintf(
+                /* translators: the page template name. */
                 __(
                     'These widgets appear on %s in the sidebar located on the right or left of the page.',
                     'benjamin'
@@ -47,9 +47,9 @@ function benjamin_the_template_list($use_widget_areas = false, $add_default = fa
 
         'frontpage' => array(
             'label' => __('Front Page', 'benjamin'),
-            /* translators: 1: site url. */
-            /* translators: 2: warning about activating the widget areas. */
             'description' => sprintf(
+                /* translators: 1: site url. */
+                /* translators: 2: warning about activating the widget areas. */
                 __(
                     'The frontpage is the located at %1$s and the content area is made of 4 sortable areas. You can also set the content in the page header. %2$s ',
                     'benjamin'
@@ -57,8 +57,8 @@ function benjamin_the_template_list($use_widget_areas = false, $add_default = fa
                 site_url(),
                 $desc_warning
             ),
-            /* translators: the page template name. */
             'widget_description' => sprintf(
+                /* translators: the page template name. */
                 __(
                     'These widgets appear on %s in the sidebar located on the right or left of the page.',
                     'benjamin'
@@ -69,8 +69,8 @@ function benjamin_the_template_list($use_widget_areas = false, $add_default = fa
 
         'single' => array(
             'label' => __('Single Post', 'benjamin'),
-            /* translators:  warning about activating the widget areas. */
             'description' => sprintf(
+                /* translators:  warning about activating the widget areas. */
                 __(
                     'The "single post" is what you see when viewing
             a single blog post, or single custom post type. %s',
@@ -78,8 +78,8 @@ function benjamin_the_template_list($use_widget_areas = false, $add_default = fa
                 ),
                 $desc_warning
             ),
-            /* translators: the page template name. */
             'widget_description' => sprintf(
+                /* translators: the page template name. */
                 __(
                     'These widgets appear on %s in the sidebar located on the right or left of the page.',
                     'benjamin'
@@ -90,16 +90,16 @@ function benjamin_the_template_list($use_widget_areas = false, $add_default = fa
 
         'page' => array(
             'label' => __('Single Page', 'benjamin'),
-            /* translators:  warning about activating the widget areas. */
             'description' => sprintf(
+                /* translators:  warning about activating the widget areas. */
                 __(
                     'The "single page" is what you see when viewing a page. %s.',
                     'benjamin'
                 ),
                 $desc_warning
             ),
-            /* translators: the page template name. */
             'widget_description' => sprintf(
+                /* translators: the page template name. */
                 __(
                     'These widgets appear on %s in the sidebar located on the right or left of the page.',
                     'benjamin'
@@ -110,16 +110,16 @@ function benjamin_the_template_list($use_widget_areas = false, $add_default = fa
 
         'widgetized' => array(
             'label' => __('Widgetized Page', 'benjamin'),
-            /* translators:  warning about activating the widget areas. */
             'description' =>  sprintf(
+                /* translators:  warning about activating the widget areas. */
                 __(
                     'This is a special page template, the content area is made of 4 sortable areas. %s ',
                     'benjamin'
                 ),
                 $desc_warning
             ),
-            /* translators: the page template name. */
             'widget_description' => sprintf(
+                /* translators: the page template name. */
                 __(
                     'These widgets appear on %s in the sidebar located on the right or left of the page.',
                     'benjamin'
@@ -129,16 +129,16 @@ function benjamin_the_template_list($use_widget_areas = false, $add_default = fa
         ),
         'template-1' => array(
             'label' => __('Page Template 1', 'benjamin'),
-            /* translators:  warning about activating the widget areas. */
             'description' => sprintf(
+                /* translators:  warning about activating the widget areas. */
                 __(
                     'This is just an extra page template, use this if you want to style an individual page differently then your standard pages. %s',
                     'benjamin'
                 ),
                 $desc_warning
             ),
-            /* translators: the page template name. */
             'widget_description' => sprintf(
+                /* translators: the page template name. */
                 __(
                     'These widgets appear on %s in the sidebar located on the right or left of the page.',
                     'benjamin'
@@ -148,16 +148,16 @@ function benjamin_the_template_list($use_widget_areas = false, $add_default = fa
         ),
         'template-2' => array(
             'label' => __('Page Template 2', 'benjamin'),
-            /* translators:  warning about activating the widget areas. */
             'description' => sprintf(
+                /* translators:  warning about activating the widget areas. */
                 __(
                     'This is just an extra page template, use this if you want to style an individual page differently then your standard pages. %s',
                     'benjamin'
                 ),
                 $desc_warning
             ),
-            /* translators: the page template name. */
             'widget_description' => sprintf(
+                /* translators: the page template name. */
                 __(
                     'These widgets appear on %s in the sidebar located on the right or left of the page.',
                     'benjamin'
@@ -171,8 +171,8 @@ function benjamin_the_template_list($use_widget_areas = false, $add_default = fa
             'description' => sprintf(__('This is just an extra page template, use this
             if you want to style an individual page differently then your
             standard pages. %s', 'benjamin'), $desc_warning),
-            /* translators: the page template name. */
             'widget_description' => sprintf(
+                /* translators: the page template name. */
                 __(
                     'These widgets appear on %s in the sidebar located on the right or left of the page.',
                     'benjamin'
@@ -182,16 +182,16 @@ function benjamin_the_template_list($use_widget_areas = false, $add_default = fa
         ),
         'template-4' => array(
             'label' => __('Page Template 4', 'benjamin'),
-            /* translators:  warning about activating the widget areas. */
             'description' => sprintf(
+                /* translators:  warning about activating the widget areas. */
                 __(
                     'This is just an extra page template, use this if you want to style an individual page differently then your standard pages. %s',
                     'benjamin'
                 ),
                 $desc_warning
             ),
-            /* translators: the page template name. */
             'widget_description' => sprintf(
+                /* translators: the page template name. */
                 __(
                     'These widgets appear on %s in the sidebar located on the right or left of the page.',
                     'benjamin'
@@ -201,16 +201,16 @@ function benjamin_the_template_list($use_widget_areas = false, $add_default = fa
         ),
         '_404' => array(
             'label' => __('404 Page', 'benjamin'),
-            /* translators:  warning about activating the widget areas. */
             'description' => sprintf(
+                /* translators:  warning about activating the widget areas. */
                 __(
                     'This page is what user\'s see when they attempt to view an invalid page URL. Both the page and header content are configurable. %s ',
                     'benjamin'
                 ),
                 $desc_warning
             ),
-            /* translators: the page template name. */
             'widget_description' => sprintf(
+                /* translators: the page template name. */
                 __(
                     'These widgets appear on %s in the sidebar located on the right or left of the page.',
                     'benjamin'
@@ -303,8 +303,8 @@ function benjamin_the_template_list($use_widget_areas = false, $add_default = fa
                 'These settings are the default settings used on every page unless the other templates\' settings been activated.',
                 'benjamin'
             ),
-            /* translators: the page template name. */
             'widget_description' => sprintf(
+                /* translators: the page template name. */
                 __(
                     'These widgets appear on %s in the sidebar located on the right or left of the page.',
                     'benjamin'

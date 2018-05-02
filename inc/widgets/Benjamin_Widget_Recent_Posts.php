@@ -82,7 +82,7 @@ class Benjamin_Widget_Recent_Posts extends WP_Widget
         $dropdown_id = "{$this->id_base}-dropdown-{$this->number}";
 
         echo '<select id="' . esc_attr($dropdown_id) . '">';
-        echo '<option>-- ' . __('Select Post', 'benjamin') . ' --</option>';
+        echo '<option>-- ' . __('Select Post', 'benjamin') . ' --</option>'; // WPCS: xss ok.
 
         while ($r->have_posts()) :
             $r->the_post(); ?>

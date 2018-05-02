@@ -14,9 +14,9 @@ if(!function_exists('benjamin_get_post_format_markup')){
         }
 
         $value = benjamin_get_post_format_value($post->ID, $format, null);
-        // examine($format);
-
-        if (!$format || !$value) {
+        $valid_pf = in_array( $format, json_decode( BENJAMIN_POST_FORMATS ), true );
+        
+        if (!$format || $format == 'standard' || !$value || !$valid_pf) {
             return false;
         }
 

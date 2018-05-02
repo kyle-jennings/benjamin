@@ -6,9 +6,6 @@
  *
  * @package Benjamin
  */
-
-$post_format = get_post_format();
-
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'entry cf' ); ?>>
@@ -23,11 +20,8 @@ $post_format = get_post_format();
 
     <div class="grid">
         <?php
-
-        if ( benjamin_get_post_format_value( $post->ID, $post_format, null ) &&
-            in_array( $post_format, json_decode( BENJAMIN_POST_FORMATS ), true )
-        ) {
-            benjamin_post_format_markup( $post, $post_format );
+        if(class_exists('BenjaminPostFormat')) {
+            benjamin_post_format_markup( $post, get_post_format() );
         }
         ?>
 

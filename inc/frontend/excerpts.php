@@ -27,11 +27,6 @@ function benjamin_custom_excerpt_more( $output ) {
     return $output;
 }
 
-
-// if(get_option('rss_use_excerpt', true) == true) {
-    // $summary_settings = get_option('summary_settings', true);
-
-    add_filter( 'excerpt_length', 'benjamin_excerpt_length' );
-    add_filter( 'excerpt_more', 'benjamin_auto_excerpt_more' );
-    add_filter( 'get_the_excerpt', 'benjamin_custom_excerpt_more' );
-// }
+add_filter( 'excerpt_length', 'benjamin_excerpt_length' );
+add_filter( 'excerpt_more', 'benjamin_auto_excerpt_more' );
+add_filter( 'get_the_excerpt', 'benjamin_custom_excerpt_more' );

@@ -45,7 +45,6 @@ function benjamin_franklin_advert() {
         $btn_url = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=franklin'), 'install-plugin_franklin');
         $btn_text = 'Install Now';
     } else {
-
         $btn_url = admin_url('plugins.php?action=activate&plugin=' . $plugin . '&plugin_status=all&paged=1&s');
         $btn_url = wp_nonce_url($btn_url, 'activate-plugin_' . $plugin);
         $btn_text = 'Activate';
@@ -56,28 +55,30 @@ function benjamin_franklin_advert() {
     <div class="franklin-notice">
         <div class="franklin-notice__inner">
             <h3 class="franklin-notice__title">
-                <?php echo __('Install Franklin', 'benjamin'); ?>
+                <?php echo __('Install Franklin', 'benjamin'); // WPCS: xss ok. ?>
             </h3>
             <p>
-                <?php echo __('Please in Benjamin\'s companion plugin to add additonal features like:', 'benjamin'); ?>
+                <?php echo __('Please in Benjamin\'s companion plugin to add additonal features like:', 'benjamin'); // WPCS: xss ok.  ?>
             </p>
             <ul class="franklin-notice__features">
-                <li><?php echo __('UI Components shortcodes', 'benjamin'); ?></li>
-                <li><?php echo __('Post Formats', 'benjamin'); ?></li>
-                <li><?php echo __('Access to Digital Search', 'benjamin'); ?></li>
-                <li><?php echo __('And more!', 'benjamin'); ?></li>
+                <li><?php echo __('UI Components shortcodes', 'benjamin'); // WPCS: xss ok. ?></li>
+                <li><?php echo __('Post Formats', 'benjamin'); // WPCS: xss ok. ?></li>
+                <li><?php echo __('Access to Digital Search', 'benjamin'); // WPCS: xss ok. ?></li>
+                <li><?php echo __('And more!', 'benjamin'); // WPCS: xss ok. ?></li>
             </ul>
             
             <p>
-                <a href="https://wordpress.org/plugins/franklin/" target="_blank"><?php echo __('Click here', 'benjamin'); ?></a> 
-                <?php echo __(' to learn more, or install and activate now.','benjamin'); ?>
+                <a href="https://wordpress.org/plugins/franklin/" target="_blank"><?php echo __('Click here', 'benjamin'); // WPCS: xss ok.  ?></a> 
+                <?php echo __(' to learn more, or install and activate now.','benjamin'); // WPCS: xss ok. ?>
             </p>
 
             <a class="button button-primary franklin-notice__button js--install-activate-franklin" href="<?php echo esc_url($btn_url)?>">
-                <?php echo sprintf(
-                        __('%s', 'benjamin'),
-                        $btn_text  
-                    )
+                <?php
+                    echo sprintf(
+                        // translators: Either "install Now or Activate. See lines 46 and 51"
+                        esc_html(__('%s ', 'benjamin')), // WPCS: xss ok. 
+                        esc_html($btn_text) // WPCS: xss ok.
+                    ); // WPCS: xss ok.
                 ?>
             </a>
         </div>
