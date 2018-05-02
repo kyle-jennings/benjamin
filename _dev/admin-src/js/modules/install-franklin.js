@@ -52,9 +52,9 @@ window.franklinPlugin = {
 
   },
 
-  init: function() {
-    
-    var $installFranklin = document.querySelector('.js--install-activate-franklin');
+
+  installButtonEvent: function(){
+     var $installFranklin = document.querySelector('.js--install-activate-franklin');
     if(!$installFranklin) {
       return;
     }
@@ -81,10 +81,27 @@ window.franklinPlugin = {
       } else if (text.indexOf('Activate') > -1 && url.indexOf('action=activate') > -1) {
         console.log('activate plugin', e.originalEvent, 'bom');
       }
-      
-
     });
+      
+  },
+
+
+  dismissButtonEvent: function(){
+
+    var $franklinNoticeDismiss = document.querySelector('.js--dismiss-franklin-notice');
+    if($franklinNoticeDismiss) {
+      $franklinNoticeDismiss.addEventListener('click', function(e){
+        e.preventDefault();
+        var $notice  = this.closest('.franklin-notice');
+        this.closest('.franklin-notice').parentNode.removeChild($notice);
+      });
+    }
+  },
+
+  init: function() {
+
   }
 };
 
-franklinPlugin.init();
+franklinPlugin.installButtonEvent();
+franklinPlugin.dismissButtonEvent();

@@ -22,23 +22,43 @@
 
     p {
         font-size: 1.2rem;
+        width: 35%;
+    }
+
+    li {
+        line-height: 1.4rem;
     }
 }
+.franklin-notice__dismiss {
+    text-decoration: none;
+    z-index: 9;
+
+    &::before {
+        color: rgba($white, .6);
+        transition: color 500ms ease;
+    }
+
+    &:hover::before {
+        color: $white;
+    }
+}
+
 
 .franklin-notice__inner {
     position: relative;
     z-index: 2;
 }
 
-
-.franklin-notice__pre-title {
-    font-size: 1.2rem;
-    margin-bottom: 0;
-}
 .franklin-notice__title {
     color: white;
-    font-size: 3rem;
-    // margin-top: 0;
+    font-size: 4rem;
+    line-height: 5.5rem;
+    margin:1rem 0 0;
+}
+
+.franklin-notice__sub-title {
+    font-size: 1.2rem;
+    margin-top: 0;
 }
 
 .franklin-notice .franklin-notice__button {
