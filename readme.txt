@@ -2,7 +2,7 @@
 
 Requires at least: 4.5
 Tested up to: 4.9.4
-Stable tag: 2.0.5
+Stable tag: 2.0.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Copyright 2017 Kyle Jennings
@@ -188,3 +188,12 @@ GNU General Public License for more details.
 * Fixed more untranslated text
 * Refactored some files to be more legible
 * Moved the post format markup out of the hero to just before the content
+
+* 2.0.7
+* removed some unused vars from the primary menu
+
+* 2.0.8
+* moved post format admin forms over to the franklin plugin
+* replaced some code with WordPress specific functions
+* escaped some WP functions
+* added a notice to download Franklin

@@ -42,7 +42,7 @@ function benjamin_template_layout_settings($wp_customize) {
         );
 
         // do not put the default settings in the panel
-        if( $name !== DEFAULT_TEMPLATE)
+        if( $name !== BENJAMIN_DEFAULT_TEMPLATE)
             $section_args['panel'] = 'extra_template_settings';
 
 
@@ -54,12 +54,12 @@ function benjamin_template_layout_settings($wp_customize) {
 
         // now do the settings
         
-        if($name!== DEFAULT_TEMPLATE)
+        if($name!== BENJAMIN_DEFAULT_TEMPLATE)
             require('template-settings/activate.php');
 
         require('template-settings/header.php');
         require('template-settings/sidebar.php');
-        // if($name!== DEFAULT_TEMPLATE)
+        // if($name!== BENJAMIN_DEFAULT_TEMPLATE)
         require('template-settings/layout.php');
 
     endforeach;

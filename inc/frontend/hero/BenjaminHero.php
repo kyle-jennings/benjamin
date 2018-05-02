@@ -23,7 +23,7 @@ class BenjaminHero {
     public $HeroContent;
     public $HeroBackground;
 
-    public function __construct($template = null, $pf_include = array())
+    public function __construct($template = null)
     {
         $this->template = $template;
 
@@ -52,7 +52,7 @@ class BenjaminHero {
         }
 
 
-        $this->HeroContent    = new BenjaminHeroContent(null, $this->template, $this->currentpage, $pf_include);
+        $this->HeroContent    = new BenjaminHeroContent(null, $this->template, $this->currentpage);
         $this->HeroBackground = new BenjaminHeroBG(null, $this->template, $this->currentpage);
 
         $this->HeroBackground->getBackground();

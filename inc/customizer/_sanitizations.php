@@ -461,11 +461,11 @@ function benjamin_color_scheme_validate($valitity, $val) {
     
     $choices = array(
         'standard' => array(
-            'uri' => get_stylesheet_directory_uri() . '/assets/css/benjamin.min.css',
+            'uri' => get_template_directory_uri() . '/assets/css/benjamin.min.css',
             'colors' => array('#112e51', '#02bfe7','#e31c3d', '#ffffff', '#f1f1f1', '#d6d7d9')
         ),
         'classic' => array(
-            'uri' => get_stylesheet_directory_uri() . '/assets/css/benjamin-classic.min.css',
+            'uri' => get_template_directory_uri() . '/assets/css/benjamin-classic.min.css',
             'colors' => array('#0c555d', '#399099', '#ff5049', '#ffffff', '#f5f5f5', '#000000')
 
         )

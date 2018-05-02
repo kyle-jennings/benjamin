@@ -75,7 +75,7 @@ class BenjaminFeaturedPost
         $this->title = get_the_title($id);
         $this->terms = get_the_term_list($id, 'category', null, ', ');
         $this->date = get_the_date($this->date_format, $id);
-        $this->url = get_permalink($id);
+        $this->url = esc_url(get_permalink($id));
         $this->excerpt = get_the_excerpt($id);
 
         $this->author = $post->post_author;

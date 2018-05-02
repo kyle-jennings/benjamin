@@ -90,7 +90,7 @@ class Benjamin_Widget_Pages extends WP_Widget {
             $indent = ($show_children == '1' && $page->post_parent > 0)
                 ? '&nbsp;&nbsp; - ' : '' ;
 
-            $output .= '<option value="'.get_permalink($page->ID).'">';
+            $output .= '<option value="' . esc_url(get_permalink($page->ID)) . '">';
                 $output .= $indent . $page->post_title; // WPCS: xss ok.
             $output .= '</option>';
         }
@@ -107,7 +107,7 @@ class Benjamin_Widget_Pages extends WP_Widget {
         $output .= '<ul class="usa-sidenav-sub_list">';
         foreach($children as $child){
             $output .= '<li>';
-                $output .= '<a href="'.get_permalink($child->ID).'">';
+                $output .= '<a href="' . esc_url(get_permalink($child->ID)) . '">';
                     $output .= $child->post_title;
                 $output .= '</a>';
             $output .= '</li>';
@@ -150,7 +150,7 @@ class Benjamin_Widget_Pages extends WP_Widget {
         foreach($pages as $page){
 
             $output .= '<li>';
-                $output .= '<a href="'.get_permalink($page->ID).'">';
+                $output .= '<a href="' . esc_url(get_permalink($page->ID)) . '">';
                     $output .= $page->post_title;
                 $output .= '</a>';
 

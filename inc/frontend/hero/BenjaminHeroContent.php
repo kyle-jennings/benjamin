@@ -10,13 +10,12 @@ class BenjaminHeroContent
     public $hasFeaturedImage = false;
     public $hasFeaturedPost = false;
 
-    public function __construct($post_id, $template, $currentpage, $pf_include )
+    public function __construct($post_id, $template, $currentpage)
     {
 
         $this->post_id = $post_id;
         $this->template = $template;
         $this->currentpage = $currentpage;
-        $this->pf_include = $pf_include;
     }
 
     public function __toString()
@@ -584,7 +583,7 @@ class BenjaminHeroContent
 
                 if( !is_null( $id ) && $id != 0 )
                     $output .= '<a class="usa-button usa-button-big usa-button-secondary"
-                        href="' . get_the_permalink( $id ) . '">' . __( 'Learn More', 'benjamin' ) . '</a>';
+                        href="' . esc_url(get_the_permalink( $id )) . '">' . __( 'Learn More', 'benjamin' ) . '</a>';
 
         $output .= '</div>';
 

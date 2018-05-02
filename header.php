@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta charset="<?php bloginfo('charset'); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -13,13 +13,12 @@
 
 
 <a class="usa-skipnav" href="#primary">
-    <?php esc_html_e( 'Skip to main content', 'benjamin' ); ?>
+    <?php esc_html_e('Skip to main content', 'benjamin'); ?>
 </a>
 
 
-<?php 
-    $pf_include = json_decode( POST_FORMATS );
-    benjamin_the_header( $pf_include );
+<?php
+    benjamin_the_header();
 ?>
 
 

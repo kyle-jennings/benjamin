@@ -59,8 +59,6 @@ function benjamin_set_default_menu($args = array())
     // see wp-includes/nav-menu-template.php for available arguments
     extract($args);
 
-
-
     $link_arr = array(
         home_url() => __('Home', 'benjamin'),
         wp_login_url() => __('Login', 'benjamin')
@@ -78,10 +76,6 @@ function benjamin_set_default_menu($args = array())
 
     $links = array();
     
-    $link_before = isset($link_before) ? $link_before : '';
-    $link_after = isset($link_after) ? $link_after : '';
-    $before = isset($before) ? $before : '';
-    $after = isset($after) ? $after : '';
     $items_wrap = isset($items_wrap) ? $items_wrap : '';
     $menu_id = isset($menu_id) ? $menu_id : '';
     $menu_class = isset($menu_class) ? $menu_class : '';
@@ -93,21 +87,21 @@ function benjamin_set_default_menu($args = array())
 
     // loop through the list of links, add some escaped markup, the before and afters, as well as the lable
     foreach ($link_arr as $url => $label) {
-        $links[] = $link_before . '<a class="'.esc_attr($link_class).'" href="' . esc_attr($url) . '">' . $before . $label . $after . '</a>' . $link_after;
+        $links[] = '<a class="' . esc_attr($link_class) . '" href="' . esc_url($url) . '">' .
+        esc_html($label) . '</a>';
     }
 
     // We have a list
-    if (false !== stripos($items_wrap, '<ul')
-        || false !== stripos($items_wrap, '<ol')
-    ) {
+    if (stripos($items_wrap, '<ul' !== false) || stripos($items_wrap, '<ol' !== false)) {
         foreach ($links as &$link) {
-            $link = '<li class="'.esc_attr($li_class).'">'.$link.'</li>';
+            $link = '<li class="'.esc_attr($li_class).'">' . $link . '</li>';
         }
     }
 
     $output = sprintf($items_wrap, $menu_id, $menu_class, implode('', $links));
-    if (! empty($container)) {
-        $output  = '<'.$container.' class="'.esc_attr($container_class).'" id="'.esc_attr($container_id).'">'.$output.'</'.$container.'>';
+    if (!empty($container)) {
+        $output  = '<' . esc_attr($container) . ' class="' . esc_attr($container_class) . '" id="' .
+        esc_attr($container_id) . '">' . $output . '</' . esc_attr($container) . '>'; //$output cannot be escaped
     }
 
     if ($echo) {
@@ -122,7 +116,10 @@ function benjamin_set_default_menu($args = array())
 function benjamin_default_header_order()
 {
     $arr = array(
-
+        (object) array(
+            'name' => 'banner',
+            'label' => __('Banner', 'benjamin')
+        ),
         (object) array (
             'name' => 'navbar',
             'label' => __('Navbar', 'benjamin')
@@ -132,15 +129,6 @@ function benjamin_default_header_order()
             'label' => __('Hero', 'benjamin')
         ),
     );
-
-    $banner = (object) array(
-        'name' => 'banner',
-        'label' => __('Banner', 'benjamin')
-    );
-
-    if (benjamin_is_dot_gov()) {
-        array_unshift($arr, $banner);
-    }
 
     return $arr;
 }

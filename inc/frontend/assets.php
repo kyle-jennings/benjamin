@@ -8,7 +8,7 @@ function benjamin_scripts() {
     if(is_admin())
         return;
 
-    $dir = get_stylesheet_directory_uri() . '/assets/frontend/';
+    $dir = get_template_directory_uri() . '/assets/frontend/';
     $default = $dir .'css/benjamin.min.css';
     $uri = get_theme_mod('color_scheme_setting', $default);
     

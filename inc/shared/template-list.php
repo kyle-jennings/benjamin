@@ -297,7 +297,7 @@ function benjamin_the_template_list($use_widget_areas = false, $add_default = fa
 
 
     if ($add_default == true) {
-        $templates = array(DEFAULT_TEMPLATE => array(
+        $templates = array(BENJAMIN_DEFAULT_TEMPLATE => array(
             'label' => __('Default Layout Settings', 'benjamin'),
             'description' => __(
                 'These settings are the default settings used on every page unless the other templates\' settings been activated.',

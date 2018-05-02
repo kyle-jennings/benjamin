@@ -1,67 +1,78 @@
 <?php
 
-function benjamin_get_post_format_markup($post = null, $format = 'standard')
-{
+if(!function_exists('benjamin_get_post_format_markup')){
 
-    if (!$post) {
-        global $post;
+    function benjamin_get_post_format_markup($post = null, $format = 'standard')
+    {
+
+        if(!class_exists('BenjaminPostFormat')) {
+            return;
+        }    
+        
+        if (!$post) {
+            global $post;
+        }
+
+        $value = benjamin_get_post_format_value($post->ID, $format, null);
+        // examine($format);
+
+        if (!$format || !$value) {
+            return false;
+        }
+
+        $markup = null;
+        switch ($format) {
+            case 'aside':
+                $markup = $value;
+                break;
+            case 'audio':
+                $background = has_post_thumbnail() ? get_the_post_thumbnail_url($post, 'full') : '';
+                $markup    .= benjamin_get_the_audio_markup($value);
+                break;
+            case 'gallery':
+                $markup = do_shortcode('[gallery ids="' . $value . '"]');
+                break;
+            case 'image':
+                $markup = '<a href="' . esc_url_raw($value) . '">';
+                $markup .= '<img class="post-featured-image entry-featured-image" src="' . esc_url_raw($value) . '">';
+                $markup .= '</a>';
+                break;
+            case 'quote':
+                $markup = benjamin_get_quote_markup($value);
+                break;
+            case 'status':
+                $markup = benjamin_get_status_markup($value);
+                break;
+            case 'video':
+                $markup = benjamin_get_the_video_markup($value);
+                break;
+        }
+
+        if (!$markup) {
+            return '';
+        }
+
+        $output = '<div class="entry__post-format-header usa-width-one-whole">';
+        $output .= $markup;
+        $output .='</div>';
+
+        return $output;
     }
 
-    $value = benjamin_get_post_format_value($post->ID, $format, null);
-    // examine($format);
 
-    if (!$format || !$value) {
-        return false;
-    }
 
-    $markup = null;
-    switch ($format) {
-        case 'aside':
-            $markup = $value;
-            break;
-        case 'audio':
-            $background = has_post_thumbnail() ? get_the_post_thumbnail_url($post, 'full') : '';
-            $markup    .= benjamin_get_the_audio_markup($value);
-            break;
-        case 'gallery':
-            $markup = do_shortcode('[gallery ids="' . $value . '"]');
-            break;
-        case 'image':
-            $markup = '<a href="' . esc_url_raw($value) . '">';
-            $markup .= '<img class="post-featured-image entry-featured-image" src="' . esc_url_raw($value) . '">';
-            $markup .= '</a>';
-            break;
-        case 'quote':
-            $markup = benjamin_get_quote_markup($value);
-            break;
-        case 'status':
-            $markup = benjamin_get_status_markup($value);
-            break;
-        case 'video':
-            $markup = benjamin_get_the_video_markup($value);
-            break;
-    }
-
-    if (!$markup) {
-        return '';
-    }
-
-    $output = '<div class="entry__post-format-header usa-width-one-whole">';
-    $output .= $markup;
-    $output .='</div>';
-
-    return $output;
 }
 
+if(!function_exists('benjamin_post_format_markup')) {
 
-function benjamin_post_format_markup($post = null, $format = 'standard')
-{
-    
-    if (!$post) {
-        global $post;
+    function benjamin_post_format_markup($post = null, $format = 'standard')
+    {
+        if (!$post) {
+            global $post;
+        }
+
+        echo benjamin_get_post_format_markup($post, $format); //WPCS: xss ok.
     }
-
-    echo benjamin_get_post_format_markup($post, $format); //WPCS: xss ok.
 }
 
 

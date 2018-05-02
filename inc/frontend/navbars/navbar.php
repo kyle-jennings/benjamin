@@ -19,15 +19,15 @@ $sticky = get_theme_mod('navbar_sticky_setting', 'no') == 'yes' ? 'sticky' : '';
                 $args =  array(
                     'theme_location' => 'primary',
                     'container' => '',
-                    'menu_class'     => 'usa-nav-primary usa-accordion',
+                    'menu_class' => 'usa-nav-primary usa-accordion',
                     'walker' => new BenjaminNavbarWalker(),
                     'fallback_cb' => 'benjamin_set_default_menu'
                 );
 
-             wp_nav_menu( $args );
+                wp_nav_menu($args);
             ?>
 
-            <?php if(get_theme_mod('navbar_search_setting', 'none') == 'navbar' ): ?>
+            <?php if (get_theme_mod('navbar_search_setting', 'none') == 'navbar') : ?>
             <?php get_search_form(); ?>
             <?php endif;?>
         </nav>

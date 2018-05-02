@@ -29,8 +29,6 @@ foreach($benjamin_widgets as $old=>$new)
 function benjamin_register_widgets() {
     global $benjamin_widgets;
 
-    unregister_widget( 'WP_Widget_Links' );
-
     foreach($benjamin_widgets as $old=>$new){
         unregister_widget( $old );
         register_widget( $new );

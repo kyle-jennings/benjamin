@@ -36,7 +36,7 @@ function benjamin_customizer_enqueue()
   // this script is minified, however a non minified version is included with the theme
     wp_enqueue_script(
         'custom-customize',
-        get_stylesheet_directory_uri() . '/assets/admin/js/_benjamin-customizer-min.js',
+        get_template_directory_uri() . '/assets/admin/js/_benjamin-customizer-min.js',
         null,
         '20170215',
         true
@@ -54,7 +54,7 @@ function benjamin_previewer_enqueue()
 {
     wp_enqueue_script(
         'custom-customize',
-        get_stylesheet_directory_uri() . '/assets/frontend/js/_benjamin-previewer-min.js',
+        get_template_directory_uri() . '/assets/frontend/js/_benjamin-previewer-min.js',
         null,
         '20170215',
         true
@@ -77,7 +77,7 @@ function benjamin_active_callback_filter($active, $control)
 
     $toggled_by = isset($control->input_attrs['data-toggled-by']) ? $control->input_attrs['data-toggled-by'] : null;
 
-    if (strpos($toggled_by, '_settings_active') && $toggled_by !== DEFAULT_TEMPLATE . '_settings_active') {
+    if (strpos($toggled_by, '_settings_active') && $toggled_by !== BENJAMIN_DEFAULT_TEMPLATE . '_settings_active') {
         return 'yes' === $wp_customize->get_setting($toggled_by)->value();
     } elseif ($control->id == '_404_header_page_content_control') {
         return 'page' == $wp_customize->get_setting('_404_hero_content_setting')->value();

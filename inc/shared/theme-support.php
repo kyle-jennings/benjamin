@@ -63,5 +63,10 @@ function benjamin_setup() {
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
+
+
+    $post_formats = array('audio', 'aside', 'chat', 'gallery', 'image', 'link', 'quote', 'video', 'status');
+    add_theme_support('post-formats', $post_formats);
+
 }
 add_action( 'after_setup_theme', 'benjamin_setup' );

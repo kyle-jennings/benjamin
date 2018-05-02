@@ -67,7 +67,7 @@ function benjamin_get_template() {
     elseif( $feed = benjamin_is_feed() ) :
         return $feed;
     else:
-        return DEFAULT_TEMPLATE;
+        return BENJAMIN_DEFAULT_TEMPLATE;
     endif;
 }
 

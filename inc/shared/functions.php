@@ -1,29 +1,5 @@
 <?php
 
-// determines whether or not the site is a dot gov or dot mill
-function benjamin_is_dot_gov() {
-    $domain = isset( $_SERVER['SERVER_NAME'] ) ? esc_url_raw( wp_unslash( $_SERVER['SERVER_NAME'] ) ) : null;
-
-    if ( !$domain )
-        return false;
-
-    $parts = explode( '.', $domain );
-    $len = count( $parts );
-    $tld = $parts[ $len - 1 ];
-    $is_dot_gov = false;
-
-    $domains = array( 'gov', 'mil' );
-
-    if ( in_array( $tld, $domains, true )
-        || ( defined( 'BENJAMIN_FORCE_BANNER' ) && BENJAMIN_FORCE_BANNER == true )
-    ) {
-        $is_dot_gov = true;
-    }
-
-    return $is_dot_gov;
-}
-
-
 // cleans strings from machine safe to human readable
 function benjamin_clean_string( $string ) {
     $find = array( '-', '_' );
@@ -32,7 +8,6 @@ function benjamin_clean_string( $string ) {
     $string = ucwords( $string );
     return $string;
 }
-
 
 
 /**
@@ -63,7 +38,7 @@ function benjamin_get_post_format_value( $post_id = null, $format = null, $defau
 
 function benjamin_use_post_format_content( $post = null, $format = 'standard', $exclude ) {
     
-    $include = json_decode( POST_FORMATS );
+    $include = json_decode( BENJAMIN_POST_FORMATS );
     if ( !in_array( $format, $include, true ) ) {
         return false;
     }

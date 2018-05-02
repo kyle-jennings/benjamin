@@ -17,11 +17,11 @@ $shared_files = array(
 );
 
 foreach ($shared_files as $file) {
-    require dirname(__FILE__) . '/shared/' . $file . '.php'; // WPCS: xss ok.
+    require get_template_directory() . '/inc/shared/' . $file . '.php'; // WPCS: xss ok.
 }
 
 // customizer
-require dirname(__FILE__) . '/customizer/_init.php';
+require get_template_directory() . '/inc/customizer/_init.php';
 
 
 
@@ -30,15 +30,13 @@ if (is_admin()) {
     $files = array(
         'ajax',
         'assets',
-        'columns',
         'functions',
-        'metabox-featured-post',
-        'post-formats'
+        'metabox-featured-post'
     );
 
 
     foreach ($files as $file) {
-        require dirname(__FILE__) . '/admin/' . $file . '.php'; // WPCS: xss ok.
+        require get_template_directory() . '/inc/admin/' . $file . '.php'; // WPCS: xss ok.
     }
 }
 
@@ -71,6 +69,6 @@ if (!is_admin()) {
     );
 
     foreach ($files as $file) {
-        require dirname(__FILE__) . '/frontend/' . $file . '.php'; // WPCS: xss ok.
+        require get_template_directory() . '/inc/frontend/' . $file . '.php'; // WPCS: xss ok.
     }
 }

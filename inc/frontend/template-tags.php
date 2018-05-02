@@ -142,18 +142,13 @@ function benjamin_get_the_date( $post = null ) {
     if ( !$post )
         global $post;
 
-
+    $date_str = get_the_date( get_option('date_format'), $post );
     $m = get_the_time( 'm', $post );
-    $d = get_the_date( 'F j', $post );
     $y = get_the_time( 'Y', $post );
-
-    $month_url = get_month_link( $y, $m );
-    $year_url = get_year_link( $y );
-
+    $url  = get_month_link($y, $m);
     $date = '';
     $date .= '<i class="dashicons dashicons-calendar-alt" aria-hidden="true" title="Date Published"></i>';
-    $date .= '<a class="post-date entry-date published" href="' . esc_url( $month_url ) . '">' . $d . '</a>, ';
-    $date .= '<a class="post-date entry-date published" href="' . esc_url( $year_url ) . '">' . $y . '</a>';
+    $date .= '<a class="post-date entry-date published" href="' . esc_url( $url ) . '">' . $date_str . '</a>';
 
     $output = '<span class="post-meta__field entry-meta__field posted-on">' . $date . '</span>';
 

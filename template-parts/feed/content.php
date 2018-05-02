@@ -25,7 +25,7 @@ $post_format = get_post_format();
         <?php
 
         if ( benjamin_get_post_format_value( $post->ID, $post_format, null ) &&
-            in_array( $post_format, json_decode( POST_FORMATS ), true )
+            in_array( $post_format, json_decode( BENJAMIN_POST_FORMATS ), true )
         ) {
             benjamin_post_format_markup( $post, $post_format );
         }

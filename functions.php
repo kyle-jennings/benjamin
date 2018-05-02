@@ -30,10 +30,12 @@ define('BENJAMIN_ONE_HALF', 'usa-width-one-half');
 
 
 // misc.
-define('DEFAULT_TEMPLATE', 'default');
+define('BENJAMIN_DEFAULT_TEMPLATE', 'default');
 
-define('POST_FORMATS', json_encode(
-    array('audio', 'image', 'gallery', 'link', 'quote', 'status', 'video')
-));
+if(!defined('BENJAMIN_POST_FORMATS')) {
+    define('BENJAMIN_POST_FORMATS', json_encode(
+        array('audio', 'image', 'gallery', 'link', 'quote', 'status', 'video')
+    ));
+}
 
 require_once get_template_directory() . '/inc/_inc.php';

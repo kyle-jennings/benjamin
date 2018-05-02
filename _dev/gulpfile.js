@@ -43,8 +43,10 @@ var paths = {
 };
 paths.scssGlob = paths.srcPath + '/scss/**/*.scss';
 paths.jsGlob = paths.srcPath + '/js/**/*.js';
+
 paths.adminScssGlob = paths.adminSrcPath + '/scss/**/*.scss';
 paths.adminJSGlob = paths.adminSrcPath + '/js/**/*.js';
+paths.adminImgGlob = paths.adminSrcPath + '/img/**/*';
 
 
 
@@ -136,7 +138,7 @@ gulp.task('clean:front-css', function() {
 });
 
 // fonts
-gulp.task('fonts', function(){
+gulp.task('front-fonts', function(){
   return gulp.src(
       [
         paths.npmPath + '/uswds/dist/fonts/**.woff',
@@ -154,7 +156,7 @@ gulp.task('clean:fonts', function() {
 
 // images
 // image optimization
-gulp.task('img', function(){
+gulp.task('front-img', function(){
 
   return gulp.src([
     paths.srcPath + '/img/**/*',
@@ -168,7 +170,7 @@ gulp.task('img', function(){
 
 gulp.task('clean:img', function(){
   return del(
-    [ paths.adminAssetsPath + '/img' ],
+    [ paths.assetsPath + '/img' ],
     {read:false, force: true});
 });
 
@@ -262,6 +264,27 @@ gulp.task('clean:admin-js', function() {
     {read:false, force: true});
 });
 
+
+// images
+// image optimization
+gulp.task('admin-img', function(){
+
+  return gulp.src([
+    paths.adminImgGlob
+  ])
+  .pipe(imagemin({
+    progressive: true,
+  }))
+  .pipe( gulp.dest( paths.adminAssetsPath + '/img' ) );
+});
+
+gulp.task('clean:admin-img', function(){
+  return del(
+    [ paths.adminAssetsPath + '/img' ],
+    {read:false, force: true});
+});
+
+
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 //  Utilities
@@ -305,14 +328,18 @@ gulp.task('css', function(){
  * Builds the JS and CSS
  * @return {[type]} [description]
  */
-gulp.task('build', function(){
-  // gulp.start('fonts');
-  // gulp.start('img');
-  gulp.start('admin-js');
-  gulp.start('front-js');
-  
-  gulp.start('admin-css');
+gulp.task('build-front', function(){
+  gulp.start('front-fonts');
+  gulp.start('front-img');
   gulp.start('front-css');
+  gulp.start('front-js');
+});
+
+
+gulp.task('build-admin', function(){
+  gulp.start('admin-css');
+  gulp.start('admin-css');
+  gulp.start('admin-img');
 });
 
 
@@ -322,13 +349,14 @@ gulp.task('build', function(){
  * @return {[type]} [description]
  */
 gulp.task('build-all', function(){
-  gulp.start('fonts');
-  gulp.start('img');
+  gulp.start('front-fonts');
+  gulp.start('front-img');
   gulp.start('front-css');
   gulp.start('front-js');
   
   gulp.start('admin-css');
   gulp.start('admin-js');
+  gulp.start('admin-img');
 });
 
 /**
@@ -344,10 +372,13 @@ gulp.task('default', function(){
  * Process tasks and reload browsers.
  */
 gulp.task('watch', function() {
-  gulp.start('build');
-  gulp.watch(paths.adminJSGlob,['admin-js']);
+  gulp.start('build-all');
   gulp.watch(paths.jsGlob, ['front-js']);
-  
-  gulp.watch(paths.adminScssGlob, ['admin-css']);
   gulp.watch(paths.scssGlob, ['front-css']);
+  gulp.watch(paths.imgGlob, ['front-img']);
+  gulp.watch(paths.fontGlob, ['front-font']);
+  
+  gulp.watch(paths.adminJSGlob,['admin-js']);
+  gulp.watch(paths.adminScssGlob, ['admin-css']);
+  gulp.watch(paths.adminImgGlob, ['admin-img']);
 });

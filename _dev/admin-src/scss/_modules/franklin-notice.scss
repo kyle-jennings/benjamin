@@ -1,0 +1,48 @@
+.franklin-notice {
+    background-image: url('../img/banner-772x250.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-size: 1.2rem;
+    margin: 20px 20px 20px 2px;
+    padding: 20px;
+    position: relative;
+
+    &::before {
+        background-color: rgba(0,0,0, .6);
+        content:'';
+        display: block;
+        position: absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left: 0;
+        z-index: 1;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+}
+
+.franklin-notice__inner {
+    position: relative;
+    z-index: 2;
+}
+
+
+.franklin-notice__pre-title {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+.franklin-notice__title {
+    color: white;
+    font-size: 3rem;
+    // margin-top: 0;
+}
+
+.franklin-notice .franklin-notice__button {
+    font-size: 2rem;
+    height: auto;
+    padding: 1rem;
+}
