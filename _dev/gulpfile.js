@@ -364,7 +364,7 @@ gulp.task('build-all', function(){
  * @return {[type]} [description]
  */
 gulp.task('default', function(){
-  gulp.start('build');
+  gulp.start('build-all');
 });
 
 

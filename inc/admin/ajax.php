@@ -65,3 +65,12 @@ function benjamin_postformat_oembed( $url = null, $type = null ) {
     exit();
 }
 add_action( 'wp_ajax_benjamin_postformat_oembed', 'benjamin_postformat_oembed' );
+
+
+
+function benjamin_dismiss_franklin_notice() {
+    $result = update_option('benjamin-franklin-notice', 'dismissed');
+    echo esc_html($result);
+    exit();
+}
+add_action( 'wp_ajax_benjamin_dismiss_franklin_notice', 'benjamin_dismiss_franklin_notice' );

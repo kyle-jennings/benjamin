@@ -70,9 +70,9 @@ window.franklinPlugin = {
 
   },
 
-  init: function() {
-    
-    var $installFranklin = document.querySelector('.js--install-activate-franklin');
+
+  installButtonEvent: function(){
+     var $installFranklin = document.querySelector('.js--install-activate-franklin');
     if(!$installFranklin) {
       return;
     }
@@ -99,11 +99,49 @@ window.franklinPlugin = {
       } else if (text.indexOf('Activate') > -1 && url.indexOf('action=activate') > -1) {
         console.log('activate plugin', e.originalEvent, 'bom');
       }
+    });
       
+  },
+
+  saveDismissValue: function(){
+
+    var data = {
+      action: 'benjamin_dismiss_franklin_notice'
+    };
+
+    jQuery.ajax({
+      type: "POST",
+      url: ajaxurl,
+      data: data
+    });
+  },
+
+  dismissButtonEvent: function(){
+
+
+    var $franklinNoticeDismiss = document.querySelectorAll('.js--dismiss-franklin-notice');
+    if($franklinNoticeDismiss.length <= 0) {
+      return false;
+    }
+    $franklinNoticeDismiss.forEach(function($elm,k){
+
+      $elm.addEventListener('click', function(e){
+        e.preventDefault();
+        var $notice  = this.closest('.franklin-notice');
+        this.closest('.franklin-notice').parentNode.removeChild($notice);
+
+        franklinPlugin.saveDismissValue();
+      });
 
     });
+    
+  },
+
+  init: function() {
+
   }
 };
 
-franklinPlugin.init();
+franklinPlugin.installButtonEvent();
+franklinPlugin.dismissButtonEvent();
 },{}]},{},[1]);

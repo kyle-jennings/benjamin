@@ -13,7 +13,7 @@ function benjamin_admin_assets() {
 
     wp_enqueue_script( 'admin-scripts',
         $dir. 'js/_benjamin-admin-min.js',
-        null, '20170215', true
+        array('jquery'), '20170215', true
     );
 
     $ajax_object = array('ajax_url' => admin_url('admin-ajax.php'));

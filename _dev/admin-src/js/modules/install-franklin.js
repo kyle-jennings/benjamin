@@ -85,17 +85,38 @@ window.franklinPlugin = {
       
   },
 
+  saveDismissValue: function(){
+
+    var data = {
+      action: 'benjamin_dismiss_franklin_notice'
+    };
+
+    jQuery.ajax({
+      type: "POST",
+      url: ajaxurl,
+      data: data
+    });
+  },
 
   dismissButtonEvent: function(){
 
-    var $franklinNoticeDismiss = document.querySelector('.js--dismiss-franklin-notice');
-    if($franklinNoticeDismiss) {
-      $franklinNoticeDismiss.addEventListener('click', function(e){
+
+    var $franklinNoticeDismiss = document.querySelectorAll('.js--dismiss-franklin-notice');
+    if($franklinNoticeDismiss.length <= 0) {
+      return false;
+    }
+    $franklinNoticeDismiss.forEach(function($elm,k){
+
+      $elm.addEventListener('click', function(e){
         e.preventDefault();
         var $notice  = this.closest('.franklin-notice');
         this.closest('.franklin-notice').parentNode.removeChild($notice);
+
+        franklinPlugin.saveDismissValue();
       });
-    }
+
+    });
+    
   },
 
   init: function() {

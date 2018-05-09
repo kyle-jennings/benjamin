@@ -57,10 +57,9 @@ function benjamin_template_layout_settings($wp_customize) {
         if($name!== BENJAMIN_DEFAULT_TEMPLATE)
             require('template-settings/activate.php');
 
-        require('template-settings/header.php');
-        require('template-settings/sidebar.php');
-        // if($name!== BENJAMIN_DEFAULT_TEMPLATE)
-        require('template-settings/layout.php');
+        require( get_template_directory() . '/inc/customizer/template-settings/header.php');
+        require( get_template_directory() . '/inc/customizer/template-settings/sidebar.php');
+        require( get_template_directory() . '/inc/customizer/template-settings/layout.php');
 
     endforeach;
 

@@ -28,8 +28,10 @@ require get_template_directory() . '/inc/customizer/_init.php';
 // only load these in the admin section
 if (is_admin()) {
     $files = array(
+        'about-page',
         'ajax',
         'assets',
+        'franklin-notice',
         'functions',
         'metabox-featured-post'
     );
