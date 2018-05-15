@@ -91,11 +91,9 @@ function benjamin_set_default_menu($args = array())
         esc_html($label) . '</a>';
     }
 
-    // We have a list
-    if (stripos($items_wrap, '<ul' !== false) || stripos($items_wrap, '<ol' !== false)) {
-        foreach ($links as &$link) {
-            $link = '<li class="'.esc_attr($li_class).'">' . $link . '</li>';
-        }
+    // wrap all link items
+    foreach ($links as &$link) {
+        $link = '<li class="'.esc_attr($li_class).'">' . $link . '</li>';
     }
 
     $output = sprintf($items_wrap, $menu_id, $menu_class, implode('', $links));

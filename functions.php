@@ -31,6 +31,7 @@ define('BENJAMIN_ONE_HALF', 'usa-width-one-half');
 
 // misc.
 define('BENJAMIN_DEFAULT_TEMPLATE', 'default');
+define('BENJAMIN_FRONTEND_ASSETS_DIR', get_template_directory_uri() . '/assets/frontend/');
 
 if(!defined('BENJAMIN_POST_FORMATS')) {
     define('BENJAMIN_POST_FORMATS', json_encode(

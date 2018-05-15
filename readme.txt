@@ -2,7 +2,7 @@
 
 Requires at least: 4.5
 Tested up to: 4.9.4
-Stable tag: 2.0.8
+Stable tag: 2.0.9.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Copyright 2017 Kyle Jennings
@@ -22,7 +22,7 @@ Standards are a library of design guidelines and code to help government
 developers and designers quickly create trustworthy, accessible, and consistent
 digital government services.
 
-Theme Demo: https://benjamin.kylejennings.codes
+
 
 == Installation ==
 
@@ -192,7 +192,7 @@ GNU General Public License for more details.
 * 2.0.7
 * removed some unused vars from the primary menu
 
-* 2.0.8
+* 2.0.9
 * moved post format admin forms over to the franklin plugin
 * replaced some code with WordPress specific functions
 * escaped some WP functions
