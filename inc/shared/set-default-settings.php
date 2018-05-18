@@ -1,6 +1,41 @@
 <?php
 
 /**
+ * 
+ * @return [type] [description]
+ */
+function benjamin_get_default_header_srotables()
+{
+    $banner_label = __('Banner', 'benjamin');
+    $navbar_label = __('Navbar', 'benjamin');
+    $hero_label = __('Hero', 'benjamin');
+
+    $json = '[';
+    $json .= '{"name":"banner","label": "' . $banner_label . '"}, ';
+    $json .= '{"name":"navbar","label":"' . $navbar_label . '"}, ';
+    $json .= '{"name":"hero","label":"' . $hero_label . '"}';
+    $json .= ']';
+
+    return $json;
+}
+
+
+function benjamin_get_default_footer_sortables()
+{
+
+    $return_label = __('Return to top', 'benjamin');
+    $footer_label = __('Footer menu', 'benjamin');
+
+    $json = '[';
+    $json .= '{"name":"return-to-top","label":"' . $return_label . '"},';
+    $json .= '{"name":"footer-menu","label":"' . $footer_label . '"}';
+    $json .= ']';
+
+    return $json;
+}
+
+
+/**
  * Sets some default values when the theme is first loaded
  *
  * Sets the following values (if not previously set) when the theme is activated:
@@ -11,11 +46,6 @@
  */
 function benjamin_set_default_settings()
 {
-    $banner_label = __('Banner', 'benjamin');
-    $navbar_label = __('Navbar', 'benjamin');
-    $hero_label = __('Hero', 'benjamin');
-    $return_label = __('Return to top', 'benjamin');
-    $footer_label = __('Footer menu', 'benjamin');
 
     if (!get_theme_mod('archive_sidebar_position_setting')) {
         set_theme_mod('archive_sidebar_position_setting', 'right');
@@ -26,21 +56,11 @@ function benjamin_set_default_settings()
     }
 
     if (!get_theme_mod('header_sortables_setting')) {
-        $json = '[';
-        $json .= '{"name":"banner","label": "' . $banner_label . '"}, ';
-        $json .= '{"name":"navbar","label":"' . $navbar_label . '"}, ';
-        $json .= '{"name":"hero","label":"' . $hero_label . '"}';
-        $json .= ']';
-        set_theme_mod('header_sortables_setting', $json);
+        set_theme_mod('header_sortables_setting', benjamin_get_default_header_srotables() );
     }
 
     if (!get_theme_mod('footer_sortables_setting')) {
-        $json = '[';
-        $json .= '{"name":"return-to-top","label":"' . $return_label . '"},';
-        $json .= '{"name":"footer-menu","label":"' . $footer_label . '"}';
-        $json .= ']';
-
-        set_theme_mod('footer_sortables_setting', $json);
+        set_theme_mod('footer_sortables_setting', benjamin_get_default_footer_sortables());
     }
 }
 

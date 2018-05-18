@@ -15,7 +15,7 @@
 <footer class="usa-footer usa-footer-medium" role="contentinfo">
     <?php
         // inc/frontend/footer.php
-        benjamin_footer();
+        benjamin_the_footer();
     ?>
 </footer>
 <?php wp_footer(); ?>

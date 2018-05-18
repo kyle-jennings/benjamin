@@ -1,5 +1,27 @@
 <?php
 
+
+/**
+ * gets the 404 settings
+ * @return array keyed array with settings
+ */
+function benjamin_get_404_settings() {
+
+    $content = get_theme_mod('_404_page_content_setting', 'default');
+    $pid = get_theme_mod('_404_page_select_setting', null);
+    $header_page = get_theme_mod('_404_header_page_content_setting', null);
+
+    $args = array(
+        'header_page' => $header_page,
+        'content' => $content,
+        'pid' => $pid,
+    );
+
+    return $args;
+}
+
+
+
 /**
  * Get the header parts
  *
@@ -15,7 +37,8 @@ function benjamin_the_header() {
     $layout_settings = get_theme_mod($template.'_page_layout_setting', '[]');
     $layout_settings = json_decode($layout_settings);
 
-    $order = json_decode(get_theme_mod('header_sortables_setting', '[{"name":"banner","label":"Banner"},{"name":"navbar","label":"Navbar"},{"name":"hero","label":"Hero"}]'));
+    $json = benjamin_get_default_header_srotables();
+    $order = json_decode(get_theme_mod('header_sortables_setting', $json));
 
     $order = $order ? $order : benjamin_default_header_order();
 
@@ -39,41 +62,21 @@ function benjamin_the_header() {
 }
 
 
-
-/**
- * gets the 404 settings
- * @return array keyed array with settings
- */
-function benjamin_get_404_settings() {
-
-    $content = get_theme_mod('_404_page_content_setting', 'default');
-    $pid = get_theme_mod('_404_page_select_setting', null);
-    $header_page = get_theme_mod('_404_header_page_content_setting', null);
-
-    $args = array(
-        'header_page' => $header_page,
-        'content' => $content,
-        'pid' => $pid,
-    );
-
-    return $args;
-}
-
-
 /**
  * The footer conditional
  */
-function benjamin_footer() {
+function benjamin_the_footer() {
     $template = benjamin_get_template();
 
-    $sortables = get_theme_mod('footer_sortables_setting', '[]');
+    $json = benjamin_get_default_footer_sortables();
+
+    $sortables = get_theme_mod('footer_sortables_setting', $json);
 
     if(!$sortables || benjamin_hide_layout_part('footer', $template) ) {
         return;
     }
 
     $sortables = json_decode($sortables);
-
     foreach($sortables as $s):
         $name = $s->name;
 
