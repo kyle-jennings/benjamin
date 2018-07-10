@@ -240,15 +240,9 @@ gulp.task('admin-js',['clean:admin-js'], function () {
     return b.bundle();
   });
 
-  var condition = function(file){
-
-    return (file !== '_benjamin-post-formats.js') ? true : false;
-  };
-
   return gulp.src([
     paths.adminSrcPath + '/js/_benjamin-admin.js',
-    paths.adminSrcPath + '/js/_benjamin-customizer.js',
-    paths.adminSrcPath + '/js/_benjamin-post-formats.js'
+    paths.adminSrcPath + '/js/_benjamin-customizer.js'
   ] )
   .pipe(plumber({ errorHandler: handleErrors }))
   .pipe(browserified)

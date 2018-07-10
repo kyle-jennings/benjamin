@@ -76,7 +76,7 @@ class BenjaminHero {
         $class = $size;
         $class .= $this->HeroBackground->image ? ' hero--has-background' : '';
         
-        $output .= '<section class="usa-hero ' . esc_attr($size) . '" ' . esc_attr($style) . '>';
+        $output .= '<section class="usa-hero ' . esc_attr($size) . '" ' . $style . '>';
             $output .= '<div class="usa-grid">';
                 $output .= $this->HeroContent->getContent();
 
