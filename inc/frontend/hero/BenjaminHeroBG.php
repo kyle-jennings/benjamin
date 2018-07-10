@@ -65,11 +65,11 @@ class BenjaminHeroBG
         if(!$this->image)
             return;
 
-        $pos = get_theme_mod($template.'_hero_position_setting', 'top-left');
+        $pos = get_theme_mod($template . '_hero_position_setting', 'top-left');
         $pos = str_replace('-',' ', $pos);
         $output = 'style="';
-            $output .= 'background-image: url(\''.$this->image.'\');';
-            $output .= 'background-position: '.$pos.';';
+            $output .= 'background-image: url(\'' . esc_url($this->image) . '\');';
+            $output .= 'background-position: ' . esc_attr($pos) . ';';
         $output .= '"';
 
         return $output;
