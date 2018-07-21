@@ -54,7 +54,7 @@ window.franklinPlugin = {
 
 
   installButtonEvent: function(){
-     var $installFranklin = document.querySelector('.js--install-activate-franklin');
+    var $installFranklin = document.querySelector('.js--install-activate-franklin');
     if(!$installFranklin) {
       return;
     }

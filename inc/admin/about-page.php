@@ -16,6 +16,18 @@ function benjamin_about_theme_menu_items() {
 add_action( 'admin_menu', 'benjamin_about_theme_menu_items' );
 
 
+function benjamin_enqueue_updaatescript($hook) {
+
+    if ($hook !== 'appearance_page_about-benjamin') {
+        return;
+    }
+
+    if ( current_user_can( 'install_plugins' ) ) {
+        wp_enqueue_script( 'plugin-install' );
+        wp_enqueue_script( 'updates' );
+    }
+}
+add_action('admin_enqueue_scripts', 'benjamin_enqueue_updaatescript');
 
 /**
  * The content about the "about benjamin" page
