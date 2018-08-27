@@ -7,6 +7,7 @@ Benjamin
 Benjamin is a flexible and feature rich WordPess theme build with Automattic's _s (underscores) 
 theme 18f's [Web Design Standards](https://standards.usa.gov).  
 
+
 Be sure to install the companion plugin, [Franklin](https://github.com/kyle-jennings/Franklin/) 
 to include various 18F components via shortcodes!
 <br>
@@ -31,7 +32,6 @@ to include various 18F components via shortcodes!
 * Sidebar visibility (hide or show on different screen sizes)
 * Hide parts of a page (such as the navbar or footer)
 
-
 #### Template specific layout settings:
 * Default settings (the templates below can override the defaults)
 * Feeds (archive, search, categories ect)
@@ -46,10 +46,8 @@ to include various 18F components via shortcodes!
 * Custom post type single pages, and feeds
 * Each of these templates has it's own specific widget area (only used when override the default settings)
 
-
 #### Sortable Pages
 Some templates have sortable content area - 3 rows  widgetized areas and a row for the page content.
-
 
 <br>
 
@@ -57,11 +55,9 @@ Some templates have sortable content area - 3 rows  widgetized areas and a row f
 * a post can be marked as "featured" and displayed promptly in the feed page hero.  
 This replaces the "sticky" feature and works on all custom post types
 
-
 #### 2 Color schemes
 
 <br>
-
 
 #### Header Settings
 * Change the order of the site banner (collaspsible widget area), the Hero, and the navbar.

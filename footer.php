@@ -16,7 +16,7 @@
     <?php
         // inc/frontend/footer.php
         benjamin_the_footer();
-    ?>
+?>
 </footer>
 <?php wp_footer(); ?>
 
