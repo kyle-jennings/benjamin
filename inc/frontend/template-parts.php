@@ -37,7 +37,7 @@ function benjamin_the_header() {
     $layout_settings = get_theme_mod($template.'_page_layout_setting', '[]');
     $layout_settings = json_decode($layout_settings);
 
-    $json = benjamin_get_default_header_srotables();
+    $json = benjamin_get_default_header_sortables();
     $order = json_decode(get_theme_mod('header_sortables_setting', $json));
 
     $order = $order ? $order : benjamin_default_header_order();
