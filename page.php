@@ -28,14 +28,14 @@ if( !$hide_content ):
 
     <?php
     if($sidebar_position == 'left'):
-        benjamin_get_sidebar($template, $sidebar_position);
+        benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
     endif;
     ?>
     <div class="main-content <?php echo esc_attr($main_width); ?>">
     	<?php
     	while ( have_posts() ) : the_post();
 
-    		get_template_part( 'template-parts/content', 'page' );
+    		get_template_part( 'template-parts/singles/content', 'page' );
 
 
     	endwhile; // End of the loop.
@@ -43,7 +43,7 @@ if( !$hide_content ):
     </div>
     <?php
     if($sidebar_position == 'right'):
-        benjamin_get_sidebar($template, $sidebar_position);
+        benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
     endif;
     ?>
 

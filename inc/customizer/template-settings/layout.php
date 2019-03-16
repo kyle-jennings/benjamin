@@ -40,10 +40,10 @@ $layout_args = array(
     'section' => $name.'_settings_section',
     'settings'=> $name.'_page_layout_setting',
     'choices' => array(
-        'banner' => 'Hide Banner',
-        'navbar' => 'Hide Navbar',
-        'page-content' => 'Hide Page Content and Sidebar',
-        'footer' => 'Hide Footer'
+        'banner' => __('Hide Banner', 'benjamin'),
+        'navbar' => __('Hide Navbar', 'benjamin'),
+        'page-content' => __('Hide Page Content and Sidebar', 'benjamin'),
+        'footer' => __('Hide Footer', 'benjamin'),
     ),
     'input_attrs' => array(
       'data-toggled-by' => $name . '_settings_active',

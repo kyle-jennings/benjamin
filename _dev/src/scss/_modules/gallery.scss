@@ -11,6 +11,9 @@
 .gallery-item {
     float: left;
     margin:0 1em 1em 0;
+    padding-bottom: 2.2rem;
+    position: relative;
+
 
     a {
         display: block;
@@ -33,6 +36,30 @@
 
     }
 
+    // set the image height ot auto so they do no stretch
+    img {
+        height: auto;
+    }
+
+    .gallery-caption {
+        line-height: 2.2rem;
+        margin-bottom: -2.2rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+    }
+    &:hover .gallery-caption,
+    &:focus .gallery-caption,
+    &:active .gallery-caption {
+        background-color: $color-white;
+        overflow: auto;
+        position: absolute;
+        text-overflow: initial;
+        white-space: initial;
+        width: 100%;
+        z-index: 99;
+    }
 
     // 1 column
     .gallery-columns-1 & {
@@ -43,9 +70,5 @@
         }
     }
 
-    // set the image height ot auto so they do no stretch
-    img {
-        height: auto;
-    }
 
 }

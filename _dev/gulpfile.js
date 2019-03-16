@@ -5,6 +5,7 @@ var concat = require('gulp-concat');
 var del = require('del');
 var fs = require('fs');
 var gulp = require('gulp');
+var gulpif = require('gulp-if');
 var util = require('gulp-util');
 var imagemin = require('gulp-imagemin');
 var notify = require('gulp-notify');
@@ -31,33 +32,27 @@ var config = {
 // dir paths
 var paths = {
   srcPath: './src',
-  assetsPath: '../assets',
   adminSrcPath: './admin-src',
-  adminAssetsPath: '../inc/admin/assets',
+
+  assetsPath: '../assets/frontend',
+  adminAssetsPath: '../assets/admin',
+  
   npmPath : './node_modules',
   bowerPath: './bower_components',
   vendorPath: './js/vendor'
 };
 paths.scssGlob = paths.srcPath + '/scss/**/*.scss';
 paths.jsGlob = paths.srcPath + '/js/**/*.js';
+
 paths.adminScssGlob = paths.adminSrcPath + '/scss/**/*.scss';
 paths.adminJSGlob = paths.adminSrcPath + '/js/**/*.js';
+paths.adminImgGlob = paths.adminSrcPath + '/img/**/*';
 
 
 
 // ---------------------------------------------------------------------------
 //  The frontend assets
 // ---------------------------------------------------------------------------
-
-// gulp.task('front-js',['clean:front-js'], function(){
-//
-//   return gulp.src( [
-//       paths.npmPath + '/uswds/dist/js/uswds.js',
-//       paths.npmPath + '/uswds/dist/js/uswds.min.js',
-//       paths.npmPath + '/uswds/dist/js/uswds.min.js.map'
-//     ])
-//     .pipe( gulp.dest(paths.assetsPath + '/js') );
-// });
 
 gulp.task('front-js',['clean:front-js'], function(){
 
@@ -67,6 +62,7 @@ gulp.task('front-js',['clean:front-js'], function(){
   });
 
   return gulp.src([
+    paths.srcPath + '/js/audio.js',
     paths.srcPath + '/js/uswds.js',
     paths.srcPath + '/js/_benjamin-previewer.js',
   ] )
@@ -105,7 +101,6 @@ gulp.task('front-css', ['front-scss'], function() {
     // .pipe(notify({message: 'CSS complete'}));
 });
 
-
 /**
  * Compile Sass and run stylesheet through PostCSS.
  */
@@ -143,8 +138,12 @@ gulp.task('clean:front-css', function() {
 });
 
 // fonts
-gulp.task('fonts', function(){
-  return gulp.src(paths.npmPath + '/uswds/dist/fonts/**.*')
+gulp.task('front-fonts', function(){
+  return gulp.src(
+      [
+        paths.npmPath + '/uswds/dist/fonts/**.woff',
+        paths.npmPath + '/uswds/dist/fonts/**.woff2'
+      ])
     .pipe(gulp.dest(paths.assetsPath + '/fonts'));
 });
 
@@ -157,26 +156,31 @@ gulp.task('clean:fonts', function() {
 
 // images
 // image optimization
-gulp.task('img', function(){
-  console.log(paths.srcPath + '/img/**/*');
-  console.log(paths.assetsPath + '/img');
-  return gulp.src( paths.srcPath + '/img/**/*')
-    .pipe(imagemin({
-      progressive: true,
-    }))
-    .pipe( gulp.dest( paths.assetsPath + '/img' ) );
+gulp.task('front-img', function(){
+
+  return gulp.src([
+    paths.srcPath + '/img/**/*',
+    paths.npmPath + '/uswds/dist/img/**/*',
+  ])
+  .pipe(imagemin({
+    progressive: true,
+  }))
+  .pipe( gulp.dest( paths.assetsPath + '/img' ) );
 });
 
 gulp.task('clean:img', function(){
   return del(
-    [ paths.adminAssetsPath + '/img' ],
+    [ paths.assetsPath + '/img' ],
     {read:false, force: true});
 });
 
+
+
+// ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 //  The Admin
 // ---------------------------------------------------------------------------
-
+// ---------------------------------------------------------------------------
 
 
 /**
@@ -184,7 +188,9 @@ gulp.task('clean:img', function(){
  */
 gulp.task('admin-css', ['admin-sass'], function() {
 
-  return gulp.src( paths.adminAssetsPath + '/css/benjamin-admin.css')
+  return gulp.src([
+      paths.adminAssetsPath + '/css/benjamin-admin.css'
+    ])
     .pipe(plumber({ errorHandler: handleErrors }))
     .pipe(cssnano({ safe: true }))
     .pipe(rename({suffix: '.min'}))
@@ -197,8 +203,10 @@ gulp.task('admin-css', ['admin-sass'], function() {
  * Compile Sass and run stylesheet through PostCSS.
  */
 gulp.task('admin-sass', ['clean:admin-css'], function() {
-  console.log(paths.adminSrcPath+'/scss/benjamin-admin.scss');
-  return gulp.src(paths.adminSrcPath+'/scss/benjamin-admin.scss')
+
+  return gulp.src([
+      paths.adminSrcPath+'/scss/benjamin-admin.scss'
+    ])
     .pipe(plumber({ errorHandler: handleErrors }))
     .pipe(sourcemaps.init())
     .pipe(sass({
@@ -240,7 +248,6 @@ gulp.task('admin-js',['clean:admin-js'], function () {
   .pipe(browserified)
   .pipe(minify())
   .pipe(gulp.dest( paths.adminAssetsPath + '/js' ));
-  // .pipe(notify({message: 'JS complete'}));
 });
 
 
@@ -251,8 +258,31 @@ gulp.task('clean:admin-js', function() {
     {read:false, force: true});
 });
 
+
+// images
+// image optimization
+gulp.task('admin-img', function(){
+
+  return gulp.src([
+    paths.adminImgGlob
+  ])
+  .pipe(imagemin({
+    progressive: true,
+  }))
+  .pipe( gulp.dest( paths.adminAssetsPath + '/img' ) );
+});
+
+gulp.task('clean:admin-img', function(){
+  return del(
+    [ paths.adminAssetsPath + '/img' ],
+    {read:false, force: true});
+});
+
+
+// ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 //  Utilities
+// ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
 gulp.task('pot', function () {
@@ -289,17 +319,38 @@ gulp.task('css', function(){
 
 
 /**
- * Builds the JS and SASS
+ * Builds the JS and CSS
  * @return {[type]} [description]
  */
-gulp.task('build', function(){
-  // gulp.start('fonts');
-  // gulp.start('img');
-  gulp.start('admin-js');
+gulp.task('build-front', function(){
+  gulp.start('front-fonts');
+  gulp.start('front-img');
+  gulp.start('front-css');
+  gulp.start('front-js');
+});
+
+
+gulp.task('build-admin', function(){
+  gulp.start('admin-css');
+  gulp.start('admin-css');
+  gulp.start('admin-img');
+});
+
+
+
+/**
+ * Builds the JS, CSS, images, and moves fonts
+ * @return {[type]} [description]
+ */
+gulp.task('build-all', function(){
+  gulp.start('front-fonts');
+  gulp.start('front-img');
+  gulp.start('front-css');
   gulp.start('front-js');
   
   gulp.start('admin-css');
-  gulp.start('front-css');
+  gulp.start('admin-js');
+  gulp.start('admin-img');
 });
 
 /**
@@ -307,7 +358,7 @@ gulp.task('build', function(){
  * @return {[type]} [description]
  */
 gulp.task('default', function(){
-  gulp.start('build');
+  gulp.start('build-all');
 });
 
 
@@ -315,10 +366,13 @@ gulp.task('default', function(){
  * Process tasks and reload browsers.
  */
 gulp.task('watch', function() {
-  gulp.start('build');
-  gulp.watch(paths.adminJSGlob,['admin-js']);
+  gulp.start('build-all');
   gulp.watch(paths.jsGlob, ['front-js']);
-  
-  gulp.watch(paths.adminScssGlob, ['admin-css']);
   gulp.watch(paths.scssGlob, ['front-css']);
+  gulp.watch(paths.imgGlob, ['front-img']);
+  gulp.watch(paths.fontGlob, ['front-font']);
+  
+  gulp.watch(paths.adminJSGlob,['admin-js']);
+  gulp.watch(paths.adminScssGlob, ['admin-css']);
+  gulp.watch(paths.adminImgGlob, ['admin-img']);
 });

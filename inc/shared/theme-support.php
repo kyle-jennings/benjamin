@@ -34,6 +34,7 @@ function benjamin_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
+
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'benjamin' ),
@@ -62,5 +63,10 @@ function benjamin_setup() {
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
+
+
+    $post_formats = array('audio', 'aside', 'chat', 'gallery', 'image', 'link', 'quote', 'video', 'status');
+    add_theme_support('post-formats', $post_formats);
+
 }
 add_action( 'after_setup_theme', 'benjamin_setup' );

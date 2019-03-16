@@ -10,50 +10,51 @@
 get_header();
 
 /**
- * get all the settings needed for the the template layout
+ * Get all the settings needed for the the template layout
  *
- * returns:
+ * Returns:
  * $template
  * $main_width
  * $hide_content
  * $sidebar_position
- *
  */
-extract( benjamin_template_settings() );
 
-if( !$hide_content ):
+extract(benjamin_template_settings());
+
+
+if (! $hide_content) :
 ?>
 
 <section id="primary" class="usa-grid usa-section">
 
     <?php
-    if($sidebar_position == 'left'):
-        benjamin_get_sidebar($template, $sidebar_position);
+    if ($sidebar_position == 'left') :
+        benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
     endif;
     ?>
     <div class="main-content <?php echo esc_attr($main_width); ?>">
-    	<?php
-    	while ( have_posts() ) : the_post();
+        <?php
+        while (have_posts()) :
+            the_post();
 
-    		get_template_part( 'template-parts/content', get_post_format() );
+            get_template_part('template-parts/singles/content');
 
             $navigation_args = array(
-                'prev_text' => '&laquo; Previous Post',
-                'next_text' => 'Next Post &raquo;',
+                'prev_text' => '&laquo; ' . __('Previous Post', 'benjamin'),
+                'next_text' => __('Next Post ', 'benjamin') . '&raquo;',
             );
-    		the_post_navigation($navigation_args);
+            the_post_navigation($navigation_args);
 
-    		// If comments are open or we have at least one comment, load up the comment template.
-    		if ( comments_open() || get_comments_number() ) :
-    			comments_template();
-    		endif;
-
-    	endwhile; // End of the loop.
-    	?>
+            // If comments are open or we have at least one comment, load up the comment template.
+            if (comments_open() || get_comments_number()) :
+                comments_template();
+            endif;
+        endwhile; // End of the loop.
+        ?>
     </div>
     <?php
-    if($sidebar_position == 'right'):
-        benjamin_get_sidebar($template, $sidebar_position);
+    if ($sidebar_position === 'right') :
+        benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
     endif;
     ?>
 

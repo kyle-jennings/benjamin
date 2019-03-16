@@ -39,3 +39,10 @@
         left: 0;
     }
 }
+
+.video-screen {
+
+    > * {
+        max-height: 400px;
+    }
+}

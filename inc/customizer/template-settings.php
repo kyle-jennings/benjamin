@@ -18,7 +18,7 @@ function benjamin_template_layout_settings($wp_customize) {
     $wp_customize->add_panel(
         'extra_template_settings',
         array(
-            'title' => 'More Templates Settings',
+            'title' => __('More Templates Settings', 'benjamin'),
             'priority' => 37,
         )
     );
@@ -35,14 +35,14 @@ function benjamin_template_layout_settings($wp_customize) {
         // the section's args, add the panel arg if the template is NOT the archive
         $section_args = array(
             /* translators: Displays the dynamically set label */
-            'title' => sprintf( __('%s', 'benjamin'), ucfirst($args['label']) ),
+            'title' => sprintf( __('%s ', 'benjamin'), ucfirst($args['label']) ),
             'priority' => 36,
             'description' => $args['description'],
             'type' => $is_active,
         );
 
         // do not put the default settings in the panel
-        if( $name !== DEFAULT_TEMPLATE)
+        if( $name !== BENJAMIN_DEFAULT_TEMPLATE)
             $section_args['panel'] = 'extra_template_settings';
 
 
@@ -54,13 +54,12 @@ function benjamin_template_layout_settings($wp_customize) {
 
         // now do the settings
         
-        if($name!== DEFAULT_TEMPLATE)
+        if($name!== BENJAMIN_DEFAULT_TEMPLATE)
             require('template-settings/activate.php');
 
-        require('template-settings/header.php');
-        require('template-settings/sidebar.php');
-        // if($name!== DEFAULT_TEMPLATE)
-        require('template-settings/layout.php');
+        require( get_template_directory() . '/inc/customizer/template-settings/header.php');
+        require( get_template_directory() . '/inc/customizer/template-settings/sidebar.php');
+        require( get_template_directory() . '/inc/customizer/template-settings/layout.php');
 
     endforeach;
 

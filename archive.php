@@ -24,49 +24,46 @@ get_header();
  * $sidebar_position
  *
  */
-extract( benjamin_template_settings() );
+extract(benjamin_template_settings());
 
-if( !$hide_content ):
+if (!$hide_content) :
 ?>
 
 
 <section id="primary" class="usa-grid usa-section">
     <?php
-    if($sidebar_position == 'left'):
-        benjamin_get_sidebar($template, $sidebar_position);
+    if ($sidebar_position == 'left') :
+        benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
     endif;
     ?>
 
-  <div class="main-content <?php echo esc_attr($main_width); ?>">
-		<?php
-		if ( have_posts() ) :
+    <div class="main-content <?php echo esc_attr($main_width); ?>">
+    <?php
+    if (have_posts()) :
+        /* Start the Loop */
+        while (have_posts()) :
+            the_post();
 
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+        /*
+        * Include the Post-Format-specific template for the content.
+        * If you want to override this in a child theme, then include a file
+        * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+        */
+            get_template_part('template-parts/feed/content', get_post_format());
+        endwhile;
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+        benjamin_the_posts_navigation();
+    else :
+        get_template_part('template-parts/feed/content', 'none');
+    endif;
+    ?>
+    </div>
 
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif; ?>
-  </div>
-
-  <?php
-  if($sidebar_position == 'right'):
-      benjamin_get_sidebar($template, $sidebar_position);
-  endif;
-  ?>
+    <?php
+    if ($sidebar_position == 'right') :
+        benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
+    endif;
+    ?>
 
 </section>
 

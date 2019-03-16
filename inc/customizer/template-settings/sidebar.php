@@ -45,9 +45,9 @@ $sidebar_pos_args = array(
     'settings' => $name . '_sidebar_position_setting',
     'type' => 'select',
     'choices' => array(
-        'none' => 'No sidebar',
-        'left' => 'Left',
-        'right' => 'Right'
+        'none' => __('No sidebar', 'benjamin'),
+        'left' => __('Left', 'benjamin'),
+        'right' => __('Right', 'benjamin'),
     ),
     'input_attrs' => array(
       'data-toggled-by' => $name . '_settings_active',
@@ -56,6 +56,31 @@ $sidebar_pos_args = array(
 
 $wp_customize->add_control($name . '_sidebar_position_control', $sidebar_pos_args);
 
+
+
+/**
+ * Sidebar Size
+ */
+$wp_customize->add_setting( $name . '_sidebar_size_setting', array(
+    'default' => 'BENJAMIN_ONE_THIRD',
+    'sanitize_callback' => 'benjamin_sidebar_width_sanitize',
+    )
+);
+
+$wp_customize->add_control( $name . '_sidebar_size_control', array(
+        'label'   => 'Sizebar Size',
+        'section' => $name . '_settings_section',
+        'settings' => $name . '_sidebar_size_setting',
+        'type' => 'select',
+        'choices' => array(
+            'BENJAMIN_ONE_THIRD' => __('Wide', 'benjamin'),
+            'BENJAMIN_ONE_FOURTH' => __('Narrow', 'benjamin'),
+        ),
+        'input_attrs' => array(
+            'data-toggled-by' => $name . '_sidebar_position_setting',
+        )
+    )
+);
 
 /**
  * Sidebar Visibility
@@ -71,14 +96,14 @@ $sidebar_visibility_args = array(
     'settings' => $name . '_sidebar_visibility_setting',
     'type' => 'select',
     'choices' => array(
-        'always-visible' => 'Always visible',
-        'hidden-medium-up' => 'Hide on medium screens and larger',
-        'hidden-large-up' => 'Hide on desktop',
-        'visible-medium-up' => 'Visible on medium screens and larger',
-        'visible-large-up' => 'Visible on desktop',
+        'always-visible' => __('Always visible', 'benjamin'),
+        'hidden-medium-up' => __('Hide on medium screens and larger', 'benjamin'),
+        'hidden-large-up' => __('Hide on desktop', 'benjamin'),
+        'visible-medium-up' => __('Visible on medium screens and larger', 'benjamin'),
+        'visible-large-up' => __('Visible on desktop', 'benjamin'),
     ),
     'input_attrs' => array(
-      'data-toggled-by' => $name . '_settings_active',
+      'data-toggled-by' => $name . '_sidebar_position_setting',
     )
 );
 

@@ -1,6 +1,41 @@
 <?php
 
 /**
+ * 
+ * @return [type] [description]
+ */
+function benjamin_get_default_header_srotables()
+{
+    $banner_label = __('Banner', 'benjamin');
+    $navbar_label = __('Navbar', 'benjamin');
+    $hero_label = __('Hero', 'benjamin');
+
+    $json = '[';
+    $json .= '{"name":"banner","label": "' . $banner_label . '"}, ';
+    $json .= '{"name":"navbar","label":"' . $navbar_label . '"}, ';
+    $json .= '{"name":"hero","label":"' . $hero_label . '"}';
+    $json .= ']';
+
+    return $json;
+}
+
+
+function benjamin_get_default_footer_sortables()
+{
+
+    $return_label = __('Return to top', 'benjamin');
+    $footer_label = __('Footer menu', 'benjamin');
+
+    $json = '[';
+    $json .= '{"name":"return-to-top","label":"' . $return_label . '"},';
+    $json .= '{"name":"footer-menu","label":"' . $footer_label . '"}';
+    $json .= ']';
+
+    return $json;
+}
+
+
+/**
  * Sets some default values when the theme is first loaded
  *
  * Sets the following values (if not previously set) when the theme is activated:
@@ -9,20 +44,26 @@
  * The archive page hero sanitize_bookmark
  * The archive header order
  */
-function benjamin_set_default_settings() {
-    if(!get_theme_mod('archive_sidebar_position_setting'))
+function benjamin_set_default_settings()
+{
+
+    if (!get_theme_mod('archive_sidebar_position_setting')) {
         set_theme_mod('archive_sidebar_position_setting', 'right');
+    }
 
-    if(!get_theme_mod('archive_hero_size_setting'))
+    if (!get_theme_mod('archive_hero_size_setting')) {
         set_theme_mod('archive_hero_size_setting', 'slim');
+    }
 
-    if(!get_theme_mod('header_sortables_setting'))
-        set_theme_mod('header_sortables_setting', '[{"name":"banner","label":"Banner"},{"name":"navbar","label":"Navbar"},{"name":"hero","label":"Hero"}]');
+    if (!get_theme_mod('header_sortables_setting')) {
+        set_theme_mod('header_sortables_setting', benjamin_get_default_header_srotables() );
+    }
 
-    if(!get_theme_mod('footer_sortables_setting'))
-        set_theme_mod('footer_sortables_setting', '[{"name":"return-to-top","label":"Return to Top"},{"name":"footer-menu","label":"Footer Menu"}]');
-
+    if (!get_theme_mod('footer_sortables_setting')) {
+        set_theme_mod('footer_sortables_setting', benjamin_get_default_footer_sortables());
+    }
 }
+
 add_action('after_switch_theme', 'benjamin_set_default_settings');
 
 
@@ -32,36 +73,29 @@ add_action('after_switch_theme', 'benjamin_set_default_settings');
  * @param  [type] $args [description]
  * @return [type]       [description]
  */
-function benjamin_set_default_menu( $args = array() ) {
+function benjamin_set_default_menu($args = array())
+{
 
     // see wp-includes/nav-menu-template.php for available arguments
-    extract( $args );
-
-
+    extract($args);
 
     $link_arr = array(
-        home_url() => 'Home',
-        wp_login_url() => 'Login'
+        home_url() => __('Home', 'benjamin'),
+        wp_login_url() => __('Login', 'benjamin')
     );
 
-    if( is_user_logged_in() ) {
-
+    if (is_user_logged_in()) {
         $link_arr = array(
-            home_url() => 'Home',
-            admin_url() => 'Admin',
-            admin_url( 'nav-menus.php' ) => 'Add a Menu',
-            admin_url( 'customize.php' ) => 'Customize your Site',
-            wp_logout_url( home_url() ) => 'Logout'
+            home_url() => __('Home', 'benjamin'),
+            admin_url() => __('Admin', 'benjamin'),
+            admin_url('nav-menus.php') => __('Add a Menu', 'benjamin'),
+            admin_url('customize.php') => __('Customize your Site', 'benjamin'),
+            wp_logout_url(home_url()) => __('Logout', 'benjamin')
         );
-
     }
 
     $links = array();
     
-    $link_before = isset($link_before) ? $link_before : '';
-    $link_after = isset($link_after) ? $link_after : '';
-    $before = isset($before) ? $before : '';
-    $after = isset($after) ? $after : '';
     $items_wrap = isset($items_wrap) ? $items_wrap : '';
     $menu_id = isset($menu_id) ? $menu_id : '';
     $menu_class = isset($menu_class) ? $menu_class : '';
@@ -72,52 +106,47 @@ function benjamin_set_default_menu( $args = array() ) {
     $link_class = $theme_location == 'footer' ? 'usa-footer-primary-link' : '';
 
     // loop through the list of links, add some escaped markup, the before and afters, as well as the lable
-    foreach($link_arr as $url => $label)
-        $links[] = $link_before . '<a class="'.esc_attr($link_class).'" href="' . esc_attr($url) . '">' . $before . $label . $after . '</a>' . $link_after;
-
-    // We have a list
-    if ( FALSE !== stripos( $items_wrap, '<ul' )
-        || FALSE !== stripos( $items_wrap, '<ol' )
-    ){
-        foreach($links as &$link)
-            $link = '<li class="'.$li_class.'">'.$link.'</li>';
+    foreach ($link_arr as $url => $label) {
+        $links[] = '<a class="' . esc_attr($link_class) . '" href="' . esc_url($url) . '">' .
+        esc_html($label) . '</a>';
     }
 
-    $output = sprintf( $items_wrap, $menu_id, $menu_class, implode('', $links) );
-    if ( ! empty ( $container ) ) {
-        $output  = '<'.$container.' class="'.$container_class.'" id="'.$container_id.'">'.$output.'</'.$container.'>';
+    // wrap all link items
+    foreach ($links as &$link) {
+        $link = '<li class="'.esc_attr($li_class).'">' . $link . '</li>';
     }
 
-    if ( $echo ) {
+    $output = sprintf($items_wrap, $menu_id, $menu_class, implode('', $links));
+    if (!empty($container)) {
+        $output  = '<' . esc_attr($container) . ' class="' . esc_attr($container_class) . '" id="' .
+        esc_attr($container_id) . '">' . $output . '</' . esc_attr($container) . '>'; //$output cannot be escaped
+    }
+
+    if ($echo) {
         echo $output; // WPCS: xss ok;
     }
 
     return $output;
-
 }
 
 
 
-function benjamin_default_header_order() {
+function benjamin_default_header_order()
+{
     $arr = array(
-
+        (object) array(
+            'name' => 'banner',
+            'label' => __('Banner', 'benjamin')
+        ),
         (object) array (
             'name' => 'navbar',
-            'label' => 'Navbar'
+            'label' => __('Navbar', 'benjamin')
         ),
         (object) array (
             'name' => 'hero',
-            'label' => 'Hero'
+            'label' => __('Hero', 'benjamin')
         ),
     );
-
-    $banner = (object) array(
-        'name' => 'banner',
-        'label' => 'Banner'
-    );
-
-    if(benjamin_is_dot_gov())
-        array_unshift($arr, $banner);
 
     return $arr;
 }

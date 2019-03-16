@@ -1,0 +1,14 @@
+
+.postbox[id^='post_formats_'] {
+    display: none;
+
+    textarea,
+    input[type=text] {
+        width: 100%;
+    }
+}
+
+
+#titlediv + #top-sortables{
+    margin-top: 20px;
+}

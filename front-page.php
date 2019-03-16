@@ -31,7 +31,7 @@ if( !$hide_content ):
 <section id="primary" class="usa-grid usa-section">
     <?php
         if($sidebar_position == 'left'):
-            benjamin_get_sidebar($template, $sidebar_position);
+            benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
         endif;
     ?>
 
@@ -43,7 +43,7 @@ if( !$hide_content ):
 
     <?php
         if($sidebar_position == 'right'):
-          benjamin_get_sidebar($template, $sidebar_position);
+          benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
         endif;
     ?>
 

@@ -2,87 +2,73 @@ Benjamin
 ========
 
 
-<img alt="benjamin" src="screenshot.jpg" style="float: right; margin-left: 10px;">
+<img alt="benjamin" src="screenshot.png" style="float: right; margin-left: 10px;">
 
-Benjamin is a flexible and feature rich WordPess theme build with Automattic's _s (underscores) theme 18f's [Web Design Standards](https://standards.usa.gov).  
+Benjamin is a flexible and feature rich WordPess theme build with Automattic's _s (underscores) 
+theme 18f's [Web Design Standards](https://standards.usa.gov).  
 
-Be sure to install the companion plugin, [Franklin](https://github.com/kyle-jennings/Franklin/) to include various 18F components via shortcodes!
+
+Be sure to install the companion plugin, [Franklin](https://github.com/kyle-jennings/Franklin/) 
+to include various 18F components via shortcodes!
 <br>
 
 
 ## Features
 
-#### Configurable settings for many template types:
-* Feeds (archive)
+#### Post Format support 
+* Video
+* Audio
+* Image
+* Quote
+* Status
+* Other post formats can be toggled, but there is no special support yet
+
+#### Customizable layout settings:  
+* Header background image (select the default image if a "featured image" is not set)
+* Header background image positioning
+* Header Size (slim, medium, big, and full page)
+* Sidebar position (left, right, and none)
+* Sidebar size (narrow and wide)
+* Sidebar visibility (hide or show on different screen sizes)
+* Hide parts of a page (such as the navbar or footer)
+
+#### Template specific layout settings:
+* Default settings (the templates below can override the defaults)
+* Feeds (archive, search, categories ect)
 * Frontpage - a flexible page with sortable rows of widget areas
 * Single Posts
 * Single Pages
 * Widgetized Page - a flexible page template with sortable rows of widget areas
 * SideNav Page - a page template which automagically looks for ID'd anchor tags
     and displays a sticky sidenav linking to said tags
-* 404 pages
+* 404 page
 * 4 extra page templates
 * Custom post type single pages, and feeds
+* Each of these templates has it's own specific widget area (only used when override the default settings)
 
 #### Sortable Pages
-As mentioned, both the frontpage and widgetized pages are sortable, so you have control over 3 widgetized areas and page content.
-
-
-![sortable pages](_dev/screenshots/sortable-pages.png#right)
-
-<br>
-
-#### Template settings include:  
-* Header background image (select the default image if a "featured image" is not set)
-* Header background video
-* Header Size (slim, medium, big, and full page)
-* Sidebar position (left or right)
-* Sidebar visibility (hide or show on different screen sizes)
-* Template specific widget ares
-* Hide parts of a page (such as the navbar or footer)
-
-![template-settings](_dev/screenshots/template-settings.png#right)
+Some templates have sortable content area - 3 rows  widgetized areas and a row for the page content.
 
 <br>
 
 #### Feed Featured Posts
-* a post can be marked as "featured" and displayed promptly in the feed page hero
+* a post can be marked as "featured" and displayed promptly in the feed page hero.  
+This replaces the "sticky" feature and works on all custom post types
 
-
-#### Template settings use a "fallback" system
-* Allows setting things once for all templates
-* Or lets you override settings on specific templates
-* The "Feed" settings are used by default, all other templates must be activated
-
-
-#### 3 Color schemes
-##### Standard - The regular US Design Standard colors
-
-![color scheme standard](_dev/screenshots/standard-scheme.png#right)
+#### 2 Color schemes
 
 <br>
-
-##### Classic - Based on the [SitesUSA](https://sites.usa.gov) and [DigitalGov](https://www.digialgov.gov) sites
-
-![color scheme classic](_dev/screenshots/classic-scheme.png#right)
-
-<br>
-
-##### Red - A WIP
-
-![color scheme red](_dev/screenshots/red-scheme.png#right)
-
-<br>
-
 
 #### Header Settings
-* Change the order of the US official site banner, the Hero, and the navbar.
+* Change the order of the site banner (collaspsible widget area), the Hero, and the navbar.
 * Change the navbar size (slim and standard padding, it makes a difference when changing the order)
+* Display search in the navbar
+* Use a brand image for your site title
+* Make the navbar stick to the top of the page
 * A dark navbar color scheme
 
-
-
-![header-settings](_dev/screenshots/navbar-color-style.png#right)
+#### Header content customizer
+* the 404 page and the frontpage have customizable header content
 
 <br>
 

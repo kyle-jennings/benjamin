@@ -9,7 +9,7 @@ function benjamin_widgetized_settings($wp_customize) {
 
     $section_args = array(
         'section' => $section,
-        'title' => 'Widgetized Page',
+        'title' => __('Widgetized Page', 'benjamin'),
         'description' => $template['description'],
     );
 
@@ -22,22 +22,26 @@ function benjamin_widgetized_settings($wp_customize) {
         'sanitize_callback' => 'benjamin_widgetized_sortable_sanitize',
     ) );
 
-    $description = __('The page content is sortable, and optional.  Simply drag the
-    available components from the "available" box over to active.  This setting
-    does not depend on the "Settings Active" setting above.', 'benjamin');
+    $description = __('The page content is sortable, and optional.  Simply drag the 
+        available components from the "available" box over to "active".  Once a widget 
+        area has been dragged to "active" you\'ll need to add some ', 'benjamin');
+    $description .= '<a href="' . esc_attr("javascript:wp.customize.control( 'navbar_brand_control' ).focus();") . 
+        '" data-panel="widgets">';
+    $description .= __('widgets', 'benjamin') . '</a>';
 
     $wp_customize->add_control( new Benjamin_Sortable_Control( $wp_customize,
        'widgetized_sortables_control', array(
            'label'   => __('Sortable Page Content', 'benjamin'),
-           'description' => sprintf( __('%s', 'benjamin'), $description ),
+           /* translators: use the $description variable above - states that the content is sortable via drag and drop */
+           'description' => sprintf( __('%s ', 'benjamin'), $description ),
            'section' => $section,
-           'settings'=> 'widgetized_sortables_setting',
+           'settings' => 'widgetized_sortables_setting',
            'optional' => true,
            'choices' => array(
-                   'widget-area-1' => 'Widget Area 1',
-                   'widget-area-2' => 'Widget Area 2',
-                   'widget-area-3' => 'Widget Area 3',
-                   'page-content' => 'Page Content'
+                   'widget-area-1' => __('Widget Area 1', 'benjamin'),
+                   'widget-area-2' => __('Widget Area 2', 'benjamin'),
+                   'widget-area-3' => __('Widget Area 3', 'benjamin'),
+                   'page-content' => __('Page Content', 'benjamin'),
                )
            )
        )

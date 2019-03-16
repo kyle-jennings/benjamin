@@ -1,5 +1,7 @@
 // 'use strict';
 
+require('./modules/install-franklin');
+
 jQuery(document).ready(function($) {
 
 
@@ -10,3 +12,4 @@ jQuery(document).ready(function($) {
 });
 
 window.$ = jQuery;
+

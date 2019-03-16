@@ -1,0 +1,21 @@
+blockquote {
+    p::before,
+    cite::before {
+        color: $color-gray-light;
+        font-family: 'dashicons';
+        display: inline-block;        
+    }
+    p {
+        font-size: 3rem;
+        margin: 0;
+        margin-bottom: .5rem;
+
+        &::before {
+            content: "\f122";
+        }
+    }
+
+    cite::before {
+        content: "\f460";
+    }
+}

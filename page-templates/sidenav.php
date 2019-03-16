@@ -35,7 +35,7 @@ if( !$hide_content ):
     	<?php
     	while ( have_posts() ) : the_post();
 
-    		get_template_part( 'template-parts/content', 'page' );
+    		get_template_part( 'template-parts/singles/content', 'page' );
 
     		the_post_navigation();
 

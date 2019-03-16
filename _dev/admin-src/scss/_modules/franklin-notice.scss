@@ -1,0 +1,76 @@
+.franklin-notice {
+    background-image: url('../img/banner-772x250.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-size: 1.2rem;
+    margin: 20px 20px 20px 2px;
+    padding: 20px;
+    position: relative;
+
+    &::before {
+        background-color: rgba(0,0,0, .6);
+        content:'';
+        display: block;
+        position: absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left: 0;
+        z-index: 1;
+    }
+
+    p {
+        font-size: 1.2rem;
+        width: 35%;
+    }
+
+    li {
+        line-height: 1.4rem;
+    }
+}
+.franklin-notice__dismiss {
+    text-decoration: none;
+    z-index: 9;
+
+    &::before {
+        color: rgba($white, .6);
+        transition: color 500ms ease;
+    }
+
+    &:hover::before {
+        color: $white;
+    }
+}
+
+
+.franklin-notice__inner {
+    position: relative;
+    z-index: 2;
+}
+
+.franklin-notice__title {
+    color: white;
+    font-size: 4rem;
+    line-height: 5.5rem;
+    margin:1rem 0 0;
+}
+
+.franklin-notice__sub-title {
+    font-size: 1.2rem;
+    margin-top: 0;
+}
+
+.franklin-notice .franklin-notice__button {
+    font-size: 2rem;
+    height: auto;
+    padding: 1rem;
+
+    &.button-ghost {
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        color: darken(white, 40%);
+        font-size: 1rem;
+    }
+}

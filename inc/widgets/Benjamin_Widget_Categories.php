@@ -102,7 +102,7 @@ class Benjamin_Widget_Categories extends WP_Widget {
                 foreach($cats as $cat){
                     echo '<li>';
                         echo '<a href="'.esc_url(get_category_link($cat->term_id)).'">';
-                            echo  esc_html($cat->name);
+                            echo esc_html($cat->name);
                             echo esc_html('&nbsp;('.$cat->count.')');
                         echo '</a>';
                     echo '</li>';

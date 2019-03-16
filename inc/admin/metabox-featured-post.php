@@ -1,26 +1,33 @@
 <?php
 
 
-
+/**
+ * The checkbox markup for marking a post as "featured"
+ */
 function benjamin_featured_post_metabox_markup($post) {
 
     $featured_post = get_option('featured-post--'.$post->post_type, null);
     $checked = ($post->ID === $featured_post) ? 'checked' : '';
 
-?>
+    $output = '';
 
-    <p>
-        Marks this post as the "featured post" in the
-        <b><?php echo esc_html($post->post_type); ?></b> feed.
-    </p>
-    <label for="featured-post--<?php echo esc_html($post->post_type); ?>">Feature this post?</label>
-    <input name="featured-post--<?php echo esc_html($post->post_type); ?>" type="checkbox" value="true" <?php echo esc_html($checked); ?>>
+    $output .= '<p>';
+        /* translators: marks post as "featured" */
+        $output .= sprintf( __('Marks this post as the "featured post" in the <b> %s </b> feed.', 'benjamin'), esc_html($post->post_type) );
+    $output .= '</p>';
 
-<?php
+    $output .= '<label for="featured-post--' . esc_attr($post->post_type) . '"> '. __('Feature this post?', 'benjamin') . ' </label>';
+    $output .= '<input name="featured-post--' . esc_attr($post->post_type) . '" 
+        type="checkbox" value="true" '. esc_html($checked) . ' >';
+
+    echo $output; //WPCS: xss ok.
 }
 
 
-
+/**
+ * Adds the metabox for making a post "featured"
+ * @return [type] [description]
+ */
 function benjamin_featured_post_metabox() {
     $args = array(
        'public'   => true,
@@ -44,7 +51,15 @@ add_action( 'add_meta_boxes', 'benjamin_featured_post_metabox' );
 
 
 
-function benjamin_save_featured_post($post_id, $post, $update) {
+/**
+ * Saves the featured post setting to the DB
+ * 
+ * @param int $post_id The post ID.
+ * @param post $post The post object.
+ * @param bool $update Whether this is an existing post being updated or not.
+ */
+function benjamin_save_featured_post($post_id, $post) {
+
 
     if(!current_user_can("edit_post", $post_id))
         return $post_id;
@@ -56,13 +71,16 @@ function benjamin_save_featured_post($post_id, $post, $update) {
         return $post_id;
 
 
-    if( isset($_POST['featured-post--'.$post->post_type]) ) {
+    // if the post has been stickies, remove that flag and apply our flag
+    if( $post->post_type == 'post' && isset( $_POST['sticky'] ) ) {
+        unset( $_POST['sticky'] );
+        update_option('featured-post--'.$post->post_type, $post_id);
+    } elseif( isset($_POST['featured-post--'.$post->post_type]) ) {
         update_option('featured-post--'.$post->post_type, $post_id);
 
     } elseif( !isset($_POST['featured-post--'.$post->post_type])
         && $post_id == get_option('featured-post--'.$post->post_type, true)
     ) {
-
         delete_option('featured-post--'.$post->post_type);
     }
 

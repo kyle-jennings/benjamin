@@ -5,13 +5,14 @@ function benjamin_page_sortables($target = null) {
     if($target == null)
         return false;
 
+    $page_content_label = __('Page Content', 'benjamin');
     $target_name = strtok($target, '_');
 
-    $sortables = get_theme_mod($target, '[{"name":"page-content","label":"Page Content"}]');
+    $sortables = get_theme_mod($target, '[{"name":"page-content","label":"' . $page_content_label . '"}]');
 
 
     if(!$sortables || $sortables == '[]'){
-        $sortables = '[{"name":"page-content","label":"Page Content"}]';
+        $sortables = '[{"name":"page-content","label":"' . $page_content_label . '"}]';
     }
 
     $sortables = json_decode($sortables);
@@ -50,9 +51,9 @@ function benjamin_page_content($target = null) {
              * called content-___.php (where ___ is the Post Format name) and that will be used instead.
              */
              if ( 'posts' == get_option( 'show_on_front' ) && $target == 'frontpage' ) {
-                 get_template_part( 'template-parts/content', get_post_format() );
+                 get_template_part( 'template-parts/feed/content', get_post_format() );
              } else {
-                 get_template_part( 'template-parts/content', 'page' );
+                 get_template_part( 'template-parts/singles/content', 'page' );
              }
 
 
@@ -90,7 +91,7 @@ function benjamin_sortable_default($target_name){
     $url = esc_url(admin_url( 'customize.php?autofocus[section]='.$target_name.'_settings_section' ));
 
     $output = '';
-    $output .= '<h2>Page not configured</h2>';
+    $output .= '<h2>' . __('Page not configured', 'benjamin') . '</h2>';
     $output .= '<p> <a href="'.$url.'">Click here</a> to set up this page. </p>';
 
     return $output;

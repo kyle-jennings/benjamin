@@ -1,8 +1,6 @@
-article,
-.post,
-.page {
+article {
 
-    margin-bottom: 2.5em;
+    margin-bottom: 6rem;
 
     &::after,
     &::before, {
@@ -11,6 +9,30 @@ article,
     }
 
     &::after {
+        clear: both;
+    }
+
+
+
+    p:before,
+    p:after {
+        content: " "; /* 1 */
+        display: table; /* 2 */
+    }
+
+    p:after {
+        clear: both;
+    }
+
+    /**
+     * For IE 6/7 only
+     * Include this rule to trigger hasLayout and contain floats.
+     */
+    p {
+        *zoom: 1;
+    }
+
+    .entry-footer {
         clear: both;
     }
 }

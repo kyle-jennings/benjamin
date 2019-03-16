@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ruleset name="Custom">
+    <description>Wordpress, but without linelength check.</description>
+    <rule ref="WordPress">
+        <exclude name="WordPress.PHP.YodaConditions"/>
+        <exclude name="WordPress.PHP.DontExtract"/>
+    </rule>
+    
+    <rule ref="WordPress-Extra">
+      <exclude name="WordPress.Files.FileName"/>
+      <exclude name="WordPress.NamingConventions.ValidVariableName"/>
+      <exclude name="WordPress.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition"/>
+    </rule>
+
+</ruleset>

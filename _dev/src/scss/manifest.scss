@@ -34,39 +34,57 @@
 
 // Custom CSS ------------//
 @import '_modules/main';
+@import '_modules/typography';
+
+// hero
 @import '_modules/hero';
+@import '_modules/featured-post';
+@import '_modules/video-bg';
+
+// top navbar
 @import '_modules/navbar';
 @import '_modules/navbar-secondary';
 @import '_modules/navbar--dark';
-@import '_modules/articles';
-@import '_modules/post';
-@import '_modules/sortables';
-@import '_modules/table';
-@import '_modules/sidenav';
-@import '_modules/navlist';
-@import '_modules/footer-nav';
-@import '_modules/widgets';
-@import '_modules/typography';
 @import '_modules/brand';
-@import '_modules/checkboxes';
-@import '_modules/wp-editor';
+
+
+
+@import '_modules/sortables';
+@import '_modules/sidenav';
+
+// entry content
+@import '_modules/entry';
 @import '_modules/wp-styles';
-@import '_modules/page-links';
+@import '_modules/blockquote';
+@import '_modules/table';
+@import '_modules/images';
+
+// navigations
+@import '_modules/navlist';
+@import '_modules/nav-links';
+@import '_modules/footer-nav';
 @import '_modules/post-navigation';
+@import '_modules/page-links';
+
+
+
+// misc
+@import '_modules/audio';
+@import '_modules/wp-editor';
+@import '_modules/widgets';
+@import '_modules/checkboxes';
+@import '_modules/comments';
 @import '_modules/contact-block';
 @import '_modules/media-block';
 @import '_modules/sidebar';
 @import '_modules/sections';
-@import '_modules/featured-post';
 @import '_modules/form';
 @import '_modules/alerts';
-@import '_modules/video-bg';
-@import '_modules/comments';
 @import '_modules/gallery';
-@import '_modules/images';
 
 // custom grid for content area
 @import '_utilities/content-span-columns';
+
 @import '_utilities/content-media';
 @import '_modules/grid-bugfixes';
 @import '_modules/grid';

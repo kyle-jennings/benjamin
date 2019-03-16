@@ -15,8 +15,8 @@ $activate_args = array(
     'settings' => $name . '_settings_active',
     'type' => 'radio',
     'choices' => array(
-        'no' => 'No',
-        'yes' => 'Yes',
+        'no' => __('No', 'benjamin'),
+        'yes' => __('Yes', 'benjamin'),
     ),
     'priority' => 1
 );

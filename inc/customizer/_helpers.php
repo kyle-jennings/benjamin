@@ -1,6 +1,8 @@
 <?php
 
-
+/**
+ * produces a customizer section
+ */
 function benjamin_customize_section( &$wp_customize, $args = array() ) {
 
     extract(shortcode_atts(
@@ -13,12 +15,10 @@ function benjamin_customize_section( &$wp_customize, $args = array() ) {
     ));
 
 
-    
     // the section's args, add the panel arg if the template is NOT the archive
     $section_args = array(
-        /* translators: Displays the dynamically set label */
-        'title' => sprintf( __('%s', 'benjamin'), $title),
-        'description' => sprintf( __('%s', 'benjamin'), $description ),
+        'title' => sprintf( '%s ', $title),
+        'description' => sprintf( '%s ', $description ),
     );
 
     // Add the section for the templates settings
@@ -30,6 +30,9 @@ function benjamin_customize_section( &$wp_customize, $args = array() ) {
 }
 
 
+/**
+ * produces a "label" - this is simply to group like controls together
+ */
 function benjamin_customizer_label(&$wp_customize, $args = array() ) {
 
     extract(shortcode_atts(
@@ -45,16 +48,16 @@ function benjamin_customizer_label(&$wp_customize, $args = array() ) {
     if( !$section || !$setting_id || !$label || !$control_id )
         return;
 
-    $wp_customize->add_setting(
-        $setting_id, array(
-            'default' => 'none',
-            'sanitize_callback' => 'wp_filter_nohtml_kses',
-        )
-    );
+    // $wp_customize->add_setting(
+    //     $setting_id, array(
+    //         'default' => 'none',
+    //         'sanitize_callback' => 'wp_filter_nohtml_kses',
+    //     )
+    // );
 
 
     $args = array(
-        'label' => sprintf( __('%s', 'benjamin'), $label ),
+        'label' => sprintf( '%s ', $label ),
         'type' => 'label',
         'section' => $section,
         'settings' => $setting_id,

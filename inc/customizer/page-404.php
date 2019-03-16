@@ -2,22 +2,45 @@
 
 
 
-function benjamin_404_settings($wp_customize) {
+function benjamin_404_settings( $wp_customize) {
 
 
     $template = benjamin_get_template_info('_404');
-    $section = '404_content_section';
+    $section = '_404_content_section';
 
+    // set up the section
     $section_args = array(
         'section' => $section,
-        'title' => '404 Page',
+        'title' => __('404 Page', 'benjamin'),
         'description' => $template['description'],
+    );
+    benjamin_customize_section( $wp_customize, $section_args );
+
+    /**
+     * This selects what we display in the page header area
+     */
+    
+    // select the what to display in the header
+    $wp_customize->add_setting( '_404_hero_content_setting', array(
+        'default'  => 'title',
+        'sanitize_callback' => 'benjamin_404_hero_content_sanitize',
+    ) );
+
+    $wp_customize->add_control( '_404_hero_content_control', array(
+            'description' => __('Select what to display in the header.','benjamin'),
+            'label'   => __('Header Content', 'benjamin'),
+            'section' => $section,
+            'settings'=> '_404_hero_content_setting',
+            'priority' => 1,
+            'type' => 'select',
+            'choices' => array(
+                'page' => __('Select a Page', 'benjamin'),
+                'title' => __('Default title', 'benjamin'),
+            )
+        )
     );
 
 
-    benjamin_customize_section( $wp_customize, $section_args );
-
-    // Should we display a page in the header?
     $wp_customize->add_setting( '_404_header_page_content_setting', array(
         'default'        => 0,
         'sanitize_callback' => 'absint',
@@ -25,7 +48,7 @@ function benjamin_404_settings($wp_customize) {
 
     $wp_customize->add_control( '_404_header_page_content_control', array(
             'description' => __('Select page content to the header, this is great when the header size is set to full and the other page parts are hidden.','benjamin'),
-            'label'   => __('Use page content in header', 'benjamin'),
+            'label'   => __('Select header content from page', 'benjamin'),
             'section' => $section,
             'settings'=> '_404_header_page_content_setting',
             'type' => 'select',
@@ -35,7 +58,9 @@ function benjamin_404_settings($wp_customize) {
     );
 
 
-    // What is the page content? The premade default, or a user created page?
+    /**
+     * This controls the page content
+     */
     $wp_customize->add_setting( '_404_page_content_setting', array(
         'default'  => 'default',
         'sanitize_callback' => 'benjamin_404_content_sanitize',
@@ -49,8 +74,8 @@ function benjamin_404_settings($wp_customize) {
             'priority' => 1,
             'type' => 'select',
             'choices' => array(
-                'default' => 'Default',
-                'page' => 'Select a Page',
+                'default' => __('Default', 'benjamin'),
+                'page' => __('Select a Page', 'benjamin'),
             )
         )
     );
