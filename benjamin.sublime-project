@@ -1,0 +1,22 @@
+//The installed coding standards are MySource, PEAR, PSR1, PSR12, PSR2, Squiz, 
+//Zend, WordPress-VIP, WordPress, WordPress-Extra, WordPress-Docs and WordPress-Core
+{
+  "folders":
+  [
+    {
+      "path": ".",
+             "folder_exclude_patterns": [
+            ],
+            "file_include_patterns": [
+            ]
+    }
+  ],
+    
+    "settings": {
+        "SublimeLinter.linters.phpcs.@disable": false, 
+        "SublimeLinter.linters.phpcs.args": [
+            "--standard=./phpcs.xml"
+        ], 
+        "SublimeLinter.linters.phpcs.excludes": []
+    }
+}
