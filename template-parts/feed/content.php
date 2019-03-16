@@ -9,69 +9,72 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'entry cf' ); ?>>
-    
-    <header class="entry-header">
-        <h3 class="entry-title">
-        <?php
-            echo benjamin_get_feed_entry_title(); // WPCS: xss ok.
-        ?>
-        </h3>
-    </header><!-- .entry-header -->
 
-    <div class="grid">
-        <?php
-        if(class_exists('BenjaminPostFormat')) {
-            benjamin_post_format_markup( $post, get_post_format() );
-        }
-        ?>
+	<header class="entry-header">
+		<h3 class="entry-title">
+		<?php
+			echo benjamin_get_feed_entry_title(); // WPCS: xss ok.
+		?>
+		</h3>
+	</header><!-- .entry-header -->
 
-        <div class="usa-width-one-fourth">
+	<div class="grid">
+		<?php
+		if( class_exists( 'BenjaminPostFormat' ) ) {
+			benjamin_post_format_markup( $post, get_post_format() );
+		}
+		?>
 
-            <?php 
-                benjamin_post_thumbnail( $post );
-            ?>
+		<div class="usa-width-one-fourth">
 
-            <?php
-            if ( 'page' !== get_post_type() ) :
-            ?>
-                <div class="entry-meta">
-            <?php
-                echo benjamin_get_the_date(); // WPCS: xss ok.
-                echo benjamin_get_the_author(); // WPCS: xss ok.
+			<?php
+				benjamin_post_thumbnail( $post );
+			?>
 
-                echo benjamin_get_the_comment_popup(); // WPCS: xss ok.
-                echo benjamin_get_categories_links(); // WPCS: xss ok.
-                echo benjamin_get_tags_links(); // WPCS: xss ok.
-            ?>
-            </div><!-- .entry-meta -->
-            <?php
-            endif;
-            ?>
-        </div>
+			<?php
+			if ( 'page' !== get_post_type() ) :
+				?>
+				<div class="entry-meta">
+				<?php
+				echo benjamin_get_the_date(); // WPCS: xss ok.
+				echo benjamin_get_the_author(); // WPCS: xss ok.
 
-        <div class="entry-content usa-width-three-fourths">
-            <?php
+				echo benjamin_get_the_comment_popup(); // WPCS: xss ok.
+				echo benjamin_get_categories_links(); // WPCS: xss ok.
+				echo benjamin_get_tags_links(); // WPCS: xss ok.
+				?>
+			</div><!-- .entry-meta -->
+				<?php
+			endif;
+			?>
+		</div>
 
-                the_content( sprintf(
-                    wp_kses(
-                        /* translators: %s: Name of current post. */
-                        __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'benjamin' ),
-                        array( 'span' => array( 'class' => array() ) )
-                    ),
-                    the_title( '<span class="screen-reader-text">"', '"</span>', false )
-                    )
-                );
+		<div class="entry-content usa-width-three-fourths">
+			<?php
 
-            ?>
-        </div><!-- .entry-content -->
-    </div>
+				the_content(
+					sprintf(
+						wp_kses(
+							/* translators: %s: Name of current post. */
+							__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'benjamin' ),
+							array( 'span' => array( 'class' => array() ) )
+						),
+						the_title( '<span class="screen-reader-text">"', '"</span>', false )
+					)
+				);
 
-    <footer class="entry-footer">
-        <?php
-            wp_link_pages( array(
-                'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'benjamin' ),
-                'after'  => '</div>',
-            ) );
-        ?>
-    </footer><!-- .entry-footer -->
+				?>
+		</div><!-- .entry-content -->
+	</div>
+
+	<footer class="entry-footer">
+		<?php
+			wp_link_pages(
+				array(
+					'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'benjamin' ),
+					'after'  => '</div>',
+				)
+			);
+			?>
+	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
