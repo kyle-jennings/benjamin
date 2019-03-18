@@ -2,23 +2,23 @@
 
 class Benjamin_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 
-    private function menuStyleArgs($style = 'side_nav'){
-        if($style == 'side_nav'):
-            $class = 'usa-sidenav-list';
-            $walker = new BenjaminSideNavWalker();
-        elseif($style == 'nav_list'):
-            $class = 'usa-unstyled-list';
-            $walker = new BenjaminNavListWalker();
-        else:
-            $class = '';
-            $walker = null;
-        endif;
+	private function menuStyleArgs( $style = 'side_nav' ) {
+		if ( $style === 'side_nav' ) :
+			$class  = 'usa-sidenav-list';
+			$walker = new BenjaminSideNavWalker();
+		elseif ( $style === 'nav_list' ) :
+			$class  = 'usa-unstyled-list';
+			$walker = new BenjaminNavListWalker();
+		else :
+			$class  = '';
+			$walker = null;
+		endif;
 
-        return array(
-            'class' => $class,
-            'walker' => $walker
-        );
-    }
+		return array(
+			'class'  => $class,
+			'walker' => $walker,
+		);
+	}
 
 	/**
 	 * Outputs the content for the current Custom Menu widget instance.
@@ -31,28 +31,30 @@ class Benjamin_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 	 * @param array $instance Settings for the current Custom Menu widget instance.
 	 */
 	public function widget( $args, $instance ) {
-		// Get menu
+		// Get menu.
 		$nav_menu = ! empty( $instance['nav_menu'] ) ? wp_get_nav_menu_object( $instance['nav_menu'] ) : false;
 
-		if ( !$nav_menu )
+		if ( ! $nav_menu ) {
 			return;
+		}
 
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
 		$instance['title'] = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
 		echo $args['before_widget']; //WPCS: xss ok.
 
-		if ( !empty($instance['title']) )
+		if ( ! empty( $instance['title'] ) ) {
 			echo $args['before_title'] . $instance['title'] . $args['after_title'];  //WPCS: xss ok.
+		}
 
-        $style = ! empty( $instance['menu_style'] ) ? $instance['menu_style'] : 'side_nav';
-        extract($this->menuStyleArgs($style));
+		$style = ! empty( $instance['menu_style'] ) ? $instance['menu_style'] : 'side_nav';
+		extract( $this->menuStyleArgs( $style ) );
 
 		$nav_menu_args = array(
-            'container' => '',
-            'menu_class'     => $class,
-            'walker' => $walker,
-			'menu'        => $nav_menu
+			'container'  => '',
+			'menu_class' => $class,
+			'walker'     => $walker,
+			'menu'       => $nav_menu,
 		);
 
 		/**
@@ -95,14 +97,14 @@ class Benjamin_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 			$instance['nav_menu'] = (int) $new_instance['nav_menu'];
 		}
 
-        if ( ! empty( $new_instance['menu_style'] ) ) {
-            $instance['menu_style'] = sanitize_text_field($new_instance['menu_style']);
-        }
+		if ( ! empty( $new_instance['menu_style'] ) ) {
+			$instance['menu_style'] = sanitize_text_field( $new_instance['menu_style'] );
+		}
 
 		return $instance;
 	}
 
-    /**
+	/**
 	 * Outputs the settings form for the Custom Menu widget.
 	 *
 	 * @since 3.0.0
@@ -114,16 +116,16 @@ class Benjamin_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 	public function form( $instance ) {
 		global $wp_customize;
 
-		$title = isset( $instance['title'] ) ? $instance['title'] : '';
-		$nav_menu = isset( $instance['nav_menu'] ) ? $instance['nav_menu'] : '';
-        $saved_style = isset( $instance['menu_style'] ) ? $instance['menu_style'] : '';
+		$title       = isset( $instance['title'] ) ? $instance['title'] : '';
+		$nav_menu    = isset( $instance['nav_menu'] ) ? $instance['nav_menu'] : '';
+		$saved_style = isset( $instance['menu_style'] ) ? $instance['menu_style'] : '';
 
-		// Get menus
+		// Get menus.
 		$menus = wp_get_nav_menus();
 
-        // styles
-        $find = array('-', '_');
-        $menu_styles = array('side_nav', 'nav_list', 'list');
+		// styles.
+		$find = array( '-', '_' );
+		$menu_styles = array( 'side_nav', 'nav_list', 'list' );
 
 		// If no menus exists, direct the user to go and create some.
 		?>
@@ -136,45 +138,50 @@ class Benjamin_Nav_Menu_Widget extends WP_Nav_Menu_Widget {
 			}
 			?>
 			<?php
-                /* translators: Links to create a new menu */
-                echo sprintf( esc_html__( 'No menus have been created yet. <a href="%s">Create some</a>.', 'benjamin' ), esc_attr( $url ) );
-             ?>
+				/* translators: Links to create a new menu */
+				echo sprintf( esc_html__( 'No menus have been created yet. <a href="%s">Create some</a>.', 'benjamin' ), esc_attr( $url ) );
+			?>
 		</p>
 		<div class="nav-menu-widget-form-controls"
-            <?php if ( empty( $menus ) ) { echo ' style="display:none" '; } ?>>
+		<?php
+		if ( empty( $menus ) ) {
+			echo ' style="display:none" ';
+		}
+		?>
+		>
 			<p>
-				<label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php esc_html_e( 'Title:', 'benjamin' ) ?></label>
-				<input type="text" class="widefat" id="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"
-                    name="<?php echo esc_attr($this->get_field_name( 'title' )); ?>"
-                    value="<?php echo esc_attr( $title ); ?>"/>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'benjamin' ); ?></label>
+				<input type="text" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
+					name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"
+					value="<?php echo esc_attr( $title ); ?>"/>
 			</p>
 			<p>
-				<label for="<?php echo esc_attr($this->get_field_id( 'nav_menu' )); ?>">
-                        <?php esc_html_e( 'Select Menu:', 'benjamin' ); ?></label>
-				<select id="<?php echo esc_attr($this->get_field_id( 'nav_menu' )); ?>"
-                    name="<?php echo esc_attr($this->get_field_name( 'nav_menu' )); ?>">
+				<label for="<?php echo esc_attr( $this->get_field_id( 'nav_menu' ) ); ?>">
+						<?php esc_html_e( 'Select Menu:', 'benjamin' ); ?></label>
+				<select id="<?php echo esc_attr( $this->get_field_id( 'nav_menu' ) ); ?>"
+					name="<?php echo esc_attr( $this->get_field_name( 'nav_menu' ) ); ?>">
 					<option value="0"><?php esc_html_e( '&mdash; Select &mdash;', 'benjamin' ); ?></option>
 					<?php foreach ( $menus as $menu ) : ?>
 						<option value="<?php echo esc_attr( $menu->term_id ); ?>"
-                            <?php selected( $nav_menu, $menu->term_id ); ?>>
+							<?php selected( $nav_menu, $menu->term_id ); ?>>
 							<?php echo esc_html( $menu->name ); ?>
 						</option>
 					<?php endforeach; ?>
 				</select>
 			</p>
 
-            <p>
-				<label for="<?php echo esc_attr($this->get_field_id( 'menu_style' )); ?>">
-                        <?php esc_html_e( 'Menu Style:', 'benjamin' ); ?>
-                </label>
-				<select id="<?php echo esc_attr($this->get_field_id( 'menu_style' )); ?>"
-                      name="<?php echo esc_attr($this->get_field_name( 'menu_style' )); ?>">
+			<p>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'menu_style' ) ); ?>">
+						<?php esc_html_e( 'Menu Style:', 'benjamin' ); ?>
+				</label>
+				<select id="<?php echo esc_attr( $this->get_field_id( 'menu_style' ) ); ?>"
+					name="<?php echo esc_attr( $this->get_field_name( 'menu_style' ) ); ?>">
 					<?php
-                        foreach ( $menu_styles as $style ) :
-                            $label = ucwords(str_replace($find, ' ', $style ));
-                    ?>
+					foreach ( $menu_styles as $style ) :
+						$label = ucwords( str_replace( $find, ' ', $style ) );
+						?>
 						<option value="<?php echo esc_attr( $style ); ?>"
-                            <?php selected( $saved_style, $style ); ?>>
+							<?php selected( $saved_style, $style ); ?>>
 							<?php echo esc_html( $label ); ?>
 						</option>
 					<?php endforeach; ?>

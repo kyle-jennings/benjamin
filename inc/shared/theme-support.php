@@ -34,39 +34,44 @@ function benjamin_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
-
 	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary', 'benjamin' ),
-        'footer' => esc_html__('Footer', 'benjamin')
-	) );
+	register_nav_menus(
+		array(
+			'primary' => esc_html__( 'Primary', 'benjamin' ),
+			'footer'  => esc_html__( 'Footer', 'benjamin' ),
+		)
+	);
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
 	 */
-	add_theme_support( 'html5', array(
-		'comment-form',
-		'comment-list',
-		'gallery',
-		'caption',
-	) );
+	add_theme_support(
+		'html5',
+		array(
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'caption',
+		)
+	);
 
-	add_theme_support( 'custom-logo', array(
-		'height'      => 100,
-		'width'       => 400,
-		'flex-height' => true,
-		'flex-width'  => true,
-		'header-text' => array( 'site-title', 'site-description' ),
-	) );
-
+	add_theme_support(
+		'custom-logo',
+		array(
+			'height'      => 100,
+			'width'       => 400,
+			'flex-height' => true,
+			'flex-width'  => true,
+			'header-text' => array( 'site-title', 'site-description' ),
+		)
+	);
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
-
-    $post_formats = array('audio', 'aside', 'chat', 'gallery', 'image', 'link', 'quote', 'video', 'status');
-    add_theme_support('post-formats', $post_formats);
+	$post_formats = array( 'audio', 'aside', 'chat', 'gallery', 'image', 'link', 'quote', 'video', 'status' );
+	add_theme_support( 'post-formats', $post_formats );
 
 }
 add_action( 'after_setup_theme', 'benjamin_setup' );
