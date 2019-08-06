@@ -21,7 +21,6 @@ function benjamin_template_layout_settings( $wp_customize ) {
 	);
 
 	$templates = benjamin_the_template_list(false, true);
-
 	// for each template in the template list, we set up their customizer sections.
 	foreach ( $templates as $name => $args ) :
 
@@ -46,7 +45,7 @@ function benjamin_template_layout_settings( $wp_customize ) {
 			$name . '_settings_section',
 			$section_args
 		);
-
+		
 		// now do the settings.
 		if ( $name !== BENJAMIN_DEFAULT_TEMPLATE ) {
 			require( 'template-settings/activate.php' );

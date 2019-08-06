@@ -121,16 +121,15 @@ function benjamin_is_feed() {
 function benjamin_which_cpt( $feed = null ) {
 	$cpts = benjamin_get_cpts();
 	$name = get_queried_object()->name;
-
 	if ( ! $feed ) {
 		$name = get_queried_object()->post_type;
 	}
-
+	
 	if ( $feed === 'feed' ) {
 		$feed = '-feed';
 	}
-
-	if ( in_array( $name, $cpts ) ) {
+	
+	if ( array_key_exists( $name, $cpts ) ) {
 		return $name . $feed;
 	}
 

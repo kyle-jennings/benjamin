@@ -421,18 +421,16 @@ function benjamin_get_custom_tax_terms( $id = null, $post_type = null ) {
 		$post      = get_post( $id );
 		$post_type = $post->post_type;
 	}
-
 	if ( !$post_type ) {
 		return;
 	}
-
+	
 	$terms          = array();
 	$taxonomy_names = get_object_taxonomies( $post_type );
-
 	foreach ( $taxonomy_names as $tax ) {
-		$terms += wp_get_post_terms( $id, $tax );
+		$terms = array_merge( $terms, wp_get_post_terms( $id, $tax ) );
 	}
-
+	
 	return $terms;
 }
 

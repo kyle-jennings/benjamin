@@ -496,9 +496,9 @@ class BenjaminHeroContent
 			$this->isFeaturedPost = get_option( 'featured-post--' . $post_type, false );
 		}
 
-		if ( $post->post_title ) {
+		if ( isset( $post->post_title ) ) {
 			$output = '<h1 class="hero__title">' . $post->post_title . '</h1>';
-		} elseif ( $post->name ) {
+		} elseif ( isset( $post->name ) ) {
 			$output = '<h1 class="hero__title">' . $post->name . '</h1>';
 		} else {
 			$output = '<h1 class="hero__title"> Home </h1>';
