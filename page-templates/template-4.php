@@ -31,14 +31,30 @@ if ( ! $hide_content ) :
 	}
 	?>
 	<div class="main-content <?php echo esc_attr( $main_width ); ?>">
-		<?php
-		while ( have_posts() ) :
-			the_post();
+		<h1>IC3 Quiz</h1>
+		<form action="<?php echo esc_attr( admin_url('admin-post.php') ); ?>" method="POST">
+			<input type="hidden" name="action" value="save_ic3_form" />
 
-			get_template_part( 'template-parts/singles/content', 'page' );
+			<div>
+				<p>Are you reporting on behalf of a business?</p>
+				<input type="radio" name="business-report" id='business-yes' value="true">
+				<label for="business-yes">Yes</label>
+  			<input type="radio" name="business-report" id="business-no" value="false">
+				<label for="business-no">No</label>
+			</div>
+			<div>
+				<p>Please describe the incident in your own words.</p>
+				<textarea></textarea>
+			</div>
 
-		endwhile; // End of the loop.
-		?>
+			<div>
+				<p>What is your username?</p>
+				<input type="text">
+			</div>
+
+			<input type="submit" value="submit" />
+		</form>
+
 	</div>
 	<?php
 	if ( $sidebar_position === 'right' ) {

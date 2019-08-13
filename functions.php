@@ -41,3 +41,23 @@ if ( ! defined( 'BENJAMIN_POST_FORMATS' ) ) {
 }
 
 require_once get_template_directory() . '/inc/_inc.php';
+
+
+// FENSES specific code
+function save_ic3_form() {
+	global $wpdb;
+	$inputName = 'hello world!';
+	$wpdb->insert(
+		'wp_test',
+		array('name' => 'hello')
+	);
+
+	// wp_redirect( site_url('/') ); // <-- here goes address of site that user should be redirected after submitting that form
+	wp_redirect('https://google.com');
+	die;
+}
+
+
+// Need to add both actions because we want this to work for both logged-in users and visitors
+add_action( 'admin_post_nopriv_save_ic3_form', 'save_ic3_form' );
+add_action( 'admin_post_save_ic3_form', 'save_ic3_form' );
