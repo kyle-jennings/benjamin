@@ -87,9 +87,9 @@ function benjamin_set_default_menu($args = array())
     if (is_user_logged_in()) {
         $link_arr = array(
             home_url() => __('Home', 'benjamin'),
-            admin_url() => __('Admin', 'benjamin'),
-            admin_url('nav-menus.php') => __('Add a Menu', 'benjamin'),
-            admin_url('customize.php') => __('Customize your Site', 'benjamin'),
+            home_url() => __('About', 'benjamin'),
+            home_url() => __('Articles', 'benjamin'),
+            home_url() => __('Report Center', 'benjamin'),
             wp_logout_url(home_url()) => __('Logout', 'benjamin')
         );
     }
