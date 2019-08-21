@@ -1,0 +1,11 @@
+{
+    "name": "kyle-jennings/benjamin",
+    "description": "WordPress theme for 18f",
+    "homepage": "https://github.com/kyle-jennings/benjamin",
+    "type": "wordpress-theme",
+    "extra": {
+      "branch-alias": {
+        "dev-composer": "dev-dev"
+      }
+    }
+  }

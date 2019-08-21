@@ -1,47 +1,65 @@
 <?php
 
-// cleans strings from machine safe to human readable
+/**
+ * cleans strings from machine safe to human readable
+ *
+ * @param  [type] $string [description]
+ * @return [type]         [description]
+ */
 function benjamin_clean_string( $string ) {
-    $find = array( '-', '_' );
-    $replace = ' ';
-    $string = str_replace( $find, $replace, $string );
-    $string = ucwords( $string );
-    return $string;
+	$find    = array( '-', '_' );
+	$replace = ' ';
+	$string  = str_replace( $find, $replace, $string );
+	$string  = ucwords( $string );
+	return $string;
 }
 
 
 /**
-* Set the content width in pixels, based on the theme's design and stylesheet.
-*
-* Priority 0 to make it available to lower priority callbacks.
-*
-* @global int $content_width
-*/
+ * Set the content width in pixels, based on the theme's design and stylesheet.
+ * Priority 0 to make it available to lower priority callbacks.
+ *
+ * @global int $content_width
+ */
 function benjamin_content_width() {
-    $GLOBALS['content_width'] = apply_filters( 'benjamin_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'benjamin_content_width', 640 );
 }
 add_action( 'after_setup_theme', 'benjamin_content_width', 0 );
 
-
+/**
+ * [benjamin_get_post_format_value description]
+ *
+ * @param  [type] $post_id [description]
+ * @param  [type] $format  [description]
+ * @param  [type] $default [description]
+ * @return [type]          [description]
+ */
 function benjamin_get_post_format_value( $post_id = null, $format = null, $default = null ) {
-    
-    if ( ! $post_id || ! $format ) {
-        return null;
-    }
 
-    $value = get_post_meta( $post_id, '_post_format_value', true );
-    $value = isset( $value[ $format ] ) ? $value[ $format ] : null;
+	if ( ! $post_id || ! $format ) {
+		return null;
+	}
 
-    return $value;
+	$value = get_post_meta( $post_id, '_post_format_value', true );
+	$value = isset( $value[ $format ] ) ? $value[ $format ] : null;
+
+	return $value;
 }
 
-
+/**
+ * [benjamin_use_post_format_content description]
+ *
+ * @param  [type] $post    [description]
+ * @param  string $format  [description]
+ * @param  [type] $exclude [description]
+ * @return [type]          [description]
+ */
 function benjamin_use_post_format_content( $post = null, $format = 'standard', $exclude ) {
-    
-    $include = json_decode( BENJAMIN_POST_FORMATS );
-    if ( !in_array( $format, $include, true ) ) {
-        return false;
-    }
 
-    return benjamin_get_post_format_value( $post->ID, $format, null );
+	$include = json_decode( BENJAMIN_POST_FORMATS );
+	if ( ! in_array( $format, $include, true ) ) {
+		return false;
+	}
+
+	return benjamin_get_post_format_value( $post->ID, $format, null );
 }
