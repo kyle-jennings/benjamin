@@ -33,87 +33,94 @@ if (!$hide_content) :
         ?>
     <div class="main-content <?php echo esc_attr($main_width); ?>">
    
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script>
-        $(function () {
-        $(".datepicker").datepicker();
-        });
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script>
+            $(function () {
+            $(".datepicker").datepicker();
+            });
 
-    </script>
+        </script>
 
-
-    <form>
-
-        <div>
-        <h3>Business or Personal</h3>
-        <div>
-            <p>Are you reporting on behalf of a business?<span class="required">*</span></p>
-            <input type="radio" name="business-report" id="business-report-yes" value="true" required>
-            <label for="business-report-yes">Yes</label>
-            <input type="radio" name="business-report" id="business-report-no" value="false" required>
-            <label for="business-report-no">No</label>
-        </div>
-        </div>
-        <hr>
-
-        <div>
-        <h3>Are you self-reporting, or reporting on behalf of someone else?</h3>
-        <div>
-            <p>Are you reporting an online incident, crime, scam, or a victimization of behalf of another person such as a
-            parent, relative, or grandparent?<span class="required">*</span></p>
-            <input type="radio" name="behalf-of-others-yes" value="true" required>
-            <label for="behalf-of-others-yes">Yes</label>
-            <input type="radio" name="behalf-of-others-no" value="false" required>
-            <label for="behalf-of-others-no">No</label>
-        </div>
-        </div>
-        <hr>
-
-
-        <div>
-        <h3>Tell us what happened.</h3>
-        <div>
-            <p>Please describe the incident in your own words.<span class="required">*</span></p>
-            <textarea required></textarea>
-        </div>
-
-        <div>
-            <p>When did the incident occur?<span class="required">*</span></p>
-            <input type="text" class="datepicker" required>
-        </div>
-
-        <div>
-            <script>
-            $(document).ready(function () {
-                $('#ocurred-multiple-yes').change(function () {
-                if (this.checked) {
-                    $('#more-dates').append('<br><input type="text" class="datepicker" required>');
-                    $('#more-dates').append('<br><input type="text" class="datepicker" required>');
-                    $('#more-dates').append('<br><input type="text" class="datepicker" required>');
-                }
-                });
-                $('#ocurred-multiple-no').change(function () {
-                if (this.checked) {
-                    $('#more-dates').empty();
-                }
-                });
+        <style>
+            .required {
+                color: red;
             }
-            )
-            </script>
-            <p>Did the incident occur multiple times. If yes, please list additional dates and times.</p>
-            <label>Yes
-            <input type="radio" id="ocurred-multiple-yes" name="occurred-multiple" value="true">
-            </label>
-            <label>No
-            <input type="radio" id="ocurred-multiple-no" name="occurred-multiple" value="false" checked>
-            </label>
+        </style>
+        <form>
 
-            <input type="text" class="datepicker" required>
-
-            <div id="more-dates"></div>
-
+        <div>
+            <h3>Business or Personal</h3>
+            <div>
+                <p>Are you reporting on behalf of a business?<span class="required">*</span></p>
+                <input type="radio" name="business-report" id="business-report-yes" value="true" required>
+                <label for="business-report-yes">Yes</label>
+                <input type="radio" name="business-report" id="business-report-no" value="false" required>
+                <label for="business-report-no">No</label>
+            </div>
         </div>
+        <hr>
+
+        <div>
+            <h3>Are you self-reporting, or reporting on behalf of someone else?</h3>
+            <div>
+                <p>Are you reporting an online incident, crime, scam, or a victimization of behalf of another person such as a
+                parent, relative, or grandparent?<span class="required">*</span></p>
+                <label>Yes
+                    <input type="radio" name="behalf-of-otherses" value="true" required>
+                </label>    
+                <label>No
+                    <input type="radio" name="behalf-of-others" value="false" required>
+                </label>
+            </div>
+        </div>
+        <hr>
+
+
+        <div>
+            <h3>Tell us what happened.</h3>
+            <div>
+                <p>Please describe the incident in your own words.<span class="required">*</span></p>
+                <textarea required></textarea>
+            </div>
+
+            <div>
+                <p>When did the incident occur?<span class="required">*</span></p>
+                <input type="text" class="datepicker" required>
+            </div>
+
+            <div>
+                <script>
+                $(document).ready(function () {
+                    $('#ocurred-multiple-yes').change(function () {
+                    if (this.checked) {
+                        $('#more-dates').append('<br><input type="text" class="datepicker" required>');
+                        $('#more-dates').append('<br><input type="text" class="datepicker" required>');
+                        $('#more-dates').append('<br><input type="text" class="datepicker" required>');
+                    }
+                    });
+                    $('#ocurred-multiple-no').change(function () {
+                    if (this.checked) {
+                        $('#more-dates').empty();
+                    }
+                    });
+                }
+                )
+                </script>
+                <p>Did the incident occur multiple times. If yes, please list additional dates and times.</p>
+                <label>Yes
+                <input type="radio" id="ocurred-multiple-yes" name="occurred-multiple" value="true">
+                </label>
+                <label>No
+                <input type="radio" id="ocurred-multiple-no" name="occurred-multiple" value="false" checked>
+                </label>
+
+                <input type="text" class="datepicker" required>
+
+                <div id="more-dates"></div>
+
+            </div>
 
         <div>
             <p>How would you categorize the incident?<span class="required">*</span></p>
@@ -661,7 +668,7 @@ if (!$hide_content) :
             phone number, email, date reported, report number, etc.</p>
             <textarea></textarea>
             <label>Check here if this is an update to a previously filed complaint:
-            <input type="checkbox">
+                <input type="checkbox">
             </label>
         </div>
 
