@@ -15,58 +15,57 @@
 get_header();
 
 /**
- * get all the settings needed for the the template layout
+ * Get all the settings needed for the the template layout
  *
- * returns:
+ * Returns:
  * $template
  * $main_width
  * $hide_content
  * $sidebar_position
- *
  */
-extract(benjamin_template_settings());
+extract( benjamin_template_settings() );
 
-if (!$hide_content) :
-?>
+if ( ! $hide_content ) :
+	?>
 
 
-<section id="primary" class="usa-grid usa-section">
-    <?php
-    if ($sidebar_position == 'left') :
-        benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
-    endif;
-    ?>
+	<section id="primary" class="usa-grid usa-section">
+		<?php
+		if ( $sidebar_position === 'left' ) :
+			benjamin_get_sidebar( $template, $sidebar_position, $sidebar_size );
+		endif;
+		?>
 
-    <div class="main-content <?php echo esc_attr($main_width); ?>">
-    <?php
-    if (have_posts()) :
-        /* Start the Loop */
-        while (have_posts()) :
-            the_post();
+		<div class="main-content <?php echo esc_attr( $main_width ); ?>">
+		<?php
+		if ( have_posts() ) :
+			/* Start the Loop */
+			while ( have_posts() ) :
+				the_post();
 
-        /*
-        * Include the Post-Format-specific template for the content.
-        * If you want to override this in a child theme, then include a file
-        * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-        */
-            get_template_part('template-parts/feed/content', get_post_format());
-        endwhile;
+				/*
+				 * Include the Post-Format-specific template for the content.
+				 * If you want to override this in a child theme, then include a file
+				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+				 */
+				get_template_part( 'template-parts/feed/content', get_post_format() );
+			endwhile;
 
-        benjamin_the_posts_navigation();
-    else :
-        get_template_part('template-parts/feed/content', 'none');
-    endif;
-    ?>
-    </div>
+			benjamin_the_posts_navigation();
+		else :
+			get_template_part( 'template-parts/feed/content', 'none' );
+		endif;
+		?>
+		</div>
 
-    <?php
-    if ($sidebar_position == 'right') :
-        benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
-    endif;
-    ?>
+		<?php
+		if ( $sidebar_position === 'right' ) {
+			benjamin_get_sidebar( $template, $sidebar_position, $sidebar_size );
+		}
+		?>
 
-</section>
+	</section>
 
-<?php
+	<?php
 endif;
 get_footer();

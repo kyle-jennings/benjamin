@@ -10,18 +10,18 @@
  * @return mixed
  */
 function benjamin_sanitize_text_or_array_field( $val ) {
-    
-    if ( is_string( $val ) ) {
-        $val = sanitize_text_field( wp_unslash( $val ) );
-    } elseif ( is_array( $val ) ) {
-        foreach ( $val as $key => &$value ) {
-            if ( is_array( $value ) ) {
-                $value = benjamin_sanitize_text_or_array_field( $value );
-            } else {
-                $value = sanitize_text_field( wp_unslash( $value ) );
-            }
-        }
-    }
 
-    return $val;
+	if ( is_string( $val ) ) {
+		$val = sanitize_text_field( wp_unslash( $val ) );
+	} elseif ( is_array( $val ) ) {
+		foreach ( $val as $key => &$value ) {
+			if ( is_array( $value ) ) {
+				$value = benjamin_sanitize_text_or_array_field( $value );
+			} else {
+				$value = sanitize_text_field( wp_unslash( $value ) );
+			}
+		}
+	}
+
+	return $val;
 }

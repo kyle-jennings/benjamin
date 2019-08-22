@@ -10,14 +10,13 @@ deviations to standard pages
 get_header();
 
 /**
- * get all the settings needed for the the template layout
+ * Get all the settings needed for the the template layout
  *
- * returns:
+ * Returns:
  * $template
  * $main_width
  * $hide_content
  * $sidebar_position
- *
  */
 extract(benjamin_template_settings());
 
@@ -693,8 +692,7 @@ if (!$hide_content) :
 
 </section>
 
-<?php
+	<?php
 endif;
-
 
 get_footer();
