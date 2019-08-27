@@ -18,37 +18,34 @@ get_header();
  * $hide_content
  * $sidebar_position
  */
-extract( benjamin_template_settings() );
+extract(benjamin_template_settings());
 
-if ( ! $hide_content ) :
+if (!$hide_content) :
 	?>
 
 <section id="primary" class="usa-grid usa-section">
 
 	<?php
-	if ( $sidebar_position === 'left' ) {
-		benjamin_get_sidebar( $template, $sidebar_position, $sidebar_size );
-	}
-	?>
-	<div class="main-content <?php echo esc_attr( $main_width ); ?>">
-		<?php
-		while ( have_posts() ) :
-			the_post();
-
-			get_template_part( 'template-parts/singles/content', 'page' );
-
-		endwhile; // End of the loop.
+		if ($sidebar_position === 'left') {
+			benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
+		}
 		?>
+	<div class="main-content <?php echo esc_attr($main_width); ?>">
+		<h1>Thanks for your submission!</h1>
+		<h3>Your confirmation ID: <b>9PN3RLRMXA</b></h3>
+		<p>We've successfully received your submission! You should print this page for your records. If you need to update your submission, please fill out the form again and include your confirmation ID.</p>
+
+		<p>Our team will contact you if we have any updates on your case.</p>
 	</div>
 	<?php
-	if ( $sidebar_position === 'right' ) {
-		benjamin_get_sidebar( $template, $sidebar_position, $sidebar_size );
-	}
-	?>
+		if ($sidebar_position === 'right') {
+			benjamin_get_sidebar($template, $sidebar_position, $sidebar_size);
+		}
+		?>
 
 </section>
 
-	<?php
+<?php
 endif;
 
 

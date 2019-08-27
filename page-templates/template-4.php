@@ -47,7 +47,9 @@ if (!$hide_content) :
                 white-space: pre;
             }
         </style>
-        <form>
+        <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="post">
+
+            <input type="hidden" name="action" value="save_ic3_form">
 
             <div>
                 <h3>Business or Personal</h3>
@@ -117,7 +119,7 @@ if (!$hide_content) :
                 <div>
                     <p>How would you categorize the incident?<span class="required">*</span></p>
                     <div>
-                        <input type="checkbox" name="financial-fraud" value="financial fraud" required>
+                        <input type="checkbox" name="financial-fraud" value="financial fraud">
                         <label for="financial-fraud">Financial fraud</label>
                     </div>
                     <div>
@@ -240,7 +242,7 @@ if (!$hide_content) :
                         </div>
                         <div id="picked-social-network" style="display:none">
                             <label>Please select the social network:
-                                <select required>
+                                <select>
                                     <option value="">--Please choose an option--</option>
                                     <option>Facebook</option>
                                     <option>Twitter</option>
@@ -649,8 +651,8 @@ if (!$hide_content) :
                 <hr>
                 <div>
                     <h3>Electronic Signature</h3>
-                    <label>Your full name:
-                        <input type="text">
+                    <label>Your full name<span class="required">*</span>:
+                        <input type="text" required>
                     </label>
                 </div>
 
