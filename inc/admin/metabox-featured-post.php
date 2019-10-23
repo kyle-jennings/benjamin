@@ -7,7 +7,7 @@
 function benjamin_featured_post_metabox_markup( $post ) {
 
 	$featured_post = get_option( 'featured-post--' . $post->post_type, null );
-	$checked = ( $post->ID === $featured_post ) ? 'checked' : '';
+	$checked       = ( $post->ID === $featured_post ) ? 'checked' : '';
 
 	$output = '';
 
@@ -80,7 +80,7 @@ function benjamin_save_featured_post( $post_id, $post ) {
 		update_option( 'featured-post--' . $post->post_type, $post_id );
 
 	} elseif ( ! isset( $_POST[ 'featured-post--' . $post->post_type ] )
-		&& $post_id == get_option( 'featured-post--' . $post->post_type, true )
+		&& $post_id === get_option( 'featured-post--' . $post->post_type, true )
 	) {
 		delete_option( 'featured-post--' . $post->post_type );
 	}

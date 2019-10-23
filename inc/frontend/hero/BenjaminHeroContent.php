@@ -42,7 +42,7 @@ class BenjaminHeroContent
 	// the fallback
 	public function defaultContent() {
 		$post = get_queried_object();
-		if ( $post->post_title) {
+		if ( $post->post_title ) {
 			$title = $post->post_title;
 		} elseif ( $post->name ) {
 			$title = $post->name;
